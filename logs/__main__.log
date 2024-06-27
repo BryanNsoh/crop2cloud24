@@ -1,0 +1,73 @@
+2024-06-26 19:15:03,880 - __main__ - INFO - Created dataset node_a
+2024-06-26 19:15:04,325 - __main__ - INFO - Created empty table crop2cloud24.node_a.treatment_1
+2024-06-26 19:15:04,995 - __main__ - INFO - Created dataset node_c
+2024-06-26 19:15:05,564 - __main__ - INFO - Created empty table crop2cloud24.node_c.treatment_1
+2024-06-26 19:15:05,567 - __main__ - INFO - Process completed successfully
+2024-06-26 20:11:48,962 - __main__ - ERROR - Error parsing YAML file: while scanning for the next token
+found character '`' that cannot start any token
+  in "c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Documents\Projects\crop2cloud24\src\utils\..\..\sensor_mapping.yaml", line 1, column 1
+2024-06-26 20:11:48,963 - __main__ - ERROR - An error occurred: while scanning for the next token
+found character '`' that cannot start any token
+  in "c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Documents\Projects\crop2cloud24\src\utils\..\..\sensor_mapping.yaml", line 1, column 1
+2024-06-26 20:13:16,945 - __main__ - ERROR - Error parsing YAML file: while parsing a block collection
+  in "c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Documents\Projects\crop2cloud24\src\utils\..\..\sensor_mapping.yaml", line 3, column 1
+expected <block end>, but found '<block mapping start>'
+  in "c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Documents\Projects\crop2cloud24\src\utils\..\..\sensor_mapping.yaml", line 302, column 2
+2024-06-26 20:13:16,946 - __main__ - ERROR - An error occurred: while parsing a block collection
+  in "c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Documents\Projects\crop2cloud24\src\utils\..\..\sensor_mapping.yaml", line 3, column 1
+expected <block end>, but found '<block mapping start>'
+  in "c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Documents\Projects\crop2cloud24\src\utils\..\..\sensor_mapping.yaml", line 302, column 2
+2024-06-26 20:18:37,407 - __main__ - INFO - Created dataset node_c
+2024-06-26 20:18:38,032 - __main__ - INFO - Created empty table crop2cloud24.node_c.treatment_1
+2024-06-26 20:18:38,536 - __main__ - INFO - Created empty table crop2cloud24.node_c.treatment_2
+2024-06-26 20:18:38,926 - __main__ - INFO - Created empty table crop2cloud24.node_c.treatment_3
+2024-06-26 20:18:39,320 - __main__ - INFO - Created empty table crop2cloud24.node_c.treatment_4
+2024-06-26 20:18:39,735 - __main__ - INFO - Created empty table crop2cloud24.node_c.treatment_5
+2024-06-26 20:18:40,377 - __main__ - INFO - Created dataset node_b
+2024-06-26 20:18:40,830 - __main__ - INFO - Created empty table crop2cloud24.node_b.treatment_1
+2024-06-26 20:18:41,315 - __main__ - INFO - Created empty table crop2cloud24.node_b.treatment_2
+2024-06-26 20:18:41,620 - __main__ - INFO - Created empty table crop2cloud24.node_b.treatment_4
+2024-06-26 20:18:42,285 - __main__ - INFO - Created dataset node_a
+2024-06-26 20:18:42,734 - __main__ - INFO - Created empty table crop2cloud24.node_a.treatment_1
+2024-06-26 20:18:43,219 - __main__ - INFO - Created empty table crop2cloud24.node_a.treatment_2
+2024-06-26 20:18:43,758 - __main__ - INFO - Created empty table crop2cloud24.node_a.treatment_3
+2024-06-26 20:18:44,216 - __main__ - INFO - Created empty table crop2cloud24.node_a.treatment_4
+2024-06-26 20:18:44,217 - __main__ - INFO - Process completed successfully
+2024-06-26 20:25:09,469 - __main__ - INFO - Dataset node_c already exists
+2024-06-26 20:25:09,751 - __main__ - INFO - Table crop2cloud24.node_c.treatment_1 already exists
+2024-06-26 20:25:10,020 - __main__ - INFO - Table crop2cloud24.node_c.treatment_2 already exists
+2024-06-26 20:25:10,202 - __main__ - INFO - Table crop2cloud24.node_c.treatment_3 already exists
+2024-06-26 20:25:10,346 - __main__ - INFO - Table crop2cloud24.node_c.treatment_4 already exists
+2024-06-26 20:25:10,585 - __main__ - INFO - Dataset node_b already exists
+2024-06-26 20:25:10,792 - __main__ - INFO - Table crop2cloud24.node_b.treatment_1 already exists
+2024-06-26 20:25:10,964 - __main__ - INFO - Table crop2cloud24.node_b.treatment_2 already exists
+2024-06-26 20:25:11,146 - __main__ - INFO - Table crop2cloud24.node_b.treatment_4 already exists
+2024-06-26 20:25:11,816 - __main__ - INFO - Created dataset node_sdi1c
+2024-06-26 20:25:12,230 - __main__ - INFO - Created empty table crop2cloud24.node_sdi1c.treatment_1
+2024-06-26 20:25:12,614 - __main__ - INFO - Created empty table crop2cloud24.node_sdi1c.treatment_3
+2024-06-26 20:25:13,142 - __main__ - INFO - Created empty table crop2cloud24.node_sdi1c.treatment_5
+2024-06-26 20:25:13,471 - __main__ - INFO - Dataset node_a already exists
+2024-06-26 20:25:13,676 - __main__ - INFO - Table crop2cloud24.node_a.treatment_1 already exists
+2024-06-26 20:25:13,845 - __main__ - INFO - Table crop2cloud24.node_a.treatment_2 already exists
+2024-06-26 20:25:14,019 - __main__ - INFO - Table crop2cloud24.node_a.treatment_3 already exists
+2024-06-26 20:25:14,192 - __main__ - INFO - Table crop2cloud24.node_a.treatment_4 already exists
+2024-06-26 20:25:14,194 - __main__ - INFO - Process completed successfully
+2024-06-26 20:29:20,286 - __main__ - INFO - Created dataset node_c
+2024-06-26 20:29:20,839 - __main__ - INFO - Created table crop2cloud24.node_c.treatment_3
+2024-06-26 20:29:21,333 - __main__ - INFO - Created table crop2cloud24.node_c.treatment_2
+2024-06-26 20:29:21,826 - __main__ - INFO - Created table crop2cloud24.node_c.treatment_1
+2024-06-26 20:29:22,232 - __main__ - INFO - Created table crop2cloud24.node_c.treatment_4
+2024-06-26 20:29:23,000 - __main__ - INFO - Created dataset node_b
+2024-06-26 20:29:23,449 - __main__ - INFO - Created table crop2cloud24.node_b.treatment_1
+2024-06-26 20:29:23,933 - __main__ - INFO - Created table crop2cloud24.node_b.treatment_2
+2024-06-26 20:29:24,428 - __main__ - INFO - Created table crop2cloud24.node_b.treatment_4
+2024-06-26 20:29:25,083 - __main__ - INFO - Created dataset node_sdi1c
+2024-06-26 20:29:25,641 - __main__ - INFO - Created table crop2cloud24.node_sdi1c.treatment_5
+2024-06-26 20:29:26,131 - __main__ - INFO - Created table crop2cloud24.node_sdi1c.treatment_1
+2024-06-26 20:29:26,572 - __main__ - INFO - Created table crop2cloud24.node_sdi1c.treatment_3
+2024-06-26 20:29:27,178 - __main__ - INFO - Created dataset node_a
+2024-06-26 20:29:27,635 - __main__ - INFO - Created table crop2cloud24.node_a.treatment_1
+2024-06-26 20:29:28,132 - __main__ - INFO - Created table crop2cloud24.node_a.treatment_3
+2024-06-26 20:29:28,643 - __main__ - INFO - Created table crop2cloud24.node_a.treatment_2
+2024-06-26 20:29:29,062 - __main__ - INFO - Created table crop2cloud24.node_a.treatment_4
+2024-06-26 20:29:29,063 - __main__ - INFO - Process completed successfully

@@ -1,0 +1,1 @@
+# This is a placeholder for src.utils.bigquery_operations.py
