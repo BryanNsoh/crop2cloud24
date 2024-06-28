@@ -1,4 +1,4 @@
-# LINEAR Field Sensors (Node C)
+# LINEAR_CORN Field Sensors (Node C)
 # Total Sensors: 13 (3 IRT, 10 TDR)
 - hash: "001"
   treatment: 3
@@ -10,7 +10,7 @@
   sdi-12_address: "0"
   depth: 
   node: C
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "002"
   treatment: 2
@@ -22,7 +22,7 @@
   sdi-12_address: "1"
   depth: 
   node: C
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "003"
   treatment: 1
@@ -34,7 +34,7 @@
   sdi-12_address: "c"
   depth: 
   node: C
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "004"
   treatment: 2
@@ -46,7 +46,7 @@
   sdi-12_address: "3"
   depth: 6
   node: C
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "005"
   treatment: 2
@@ -58,7 +58,7 @@
   sdi-12_address: "4"
   depth: 18
   node: C
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "006"
   treatment: 2
@@ -70,7 +70,7 @@
   sdi-12_address: "5"
   depth: 30
   node: C
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "007"
   treatment: 1
@@ -82,7 +82,7 @@
   sdi-12_address: "6"
   depth: 6
   node: C
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "008"
   treatment: 1
@@ -94,7 +94,7 @@
   sdi-12_address: "7"
   depth: 18
   node: C
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "009"
   treatment: 1
@@ -106,7 +106,7 @@
   sdi-12_address: "8"
   depth: 30
   node: C
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "010"
   treatment: 4
@@ -118,7 +118,7 @@
   sdi-12_address: "9"
   depth: 6
   node: C
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "011"
   treatment: 4
@@ -130,7 +130,7 @@
   sdi-12_address: "a"
   depth: 18
   node: C
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "012"
   treatment: 4
@@ -142,9 +142,9 @@
   sdi-12_address: "b"
   depth: 30
   node: C
-  field: LINEAR
+  field: LINEAR_CORN
 
-# LINEAR Field Sensors (Node B)
+# LINEAR_CORN Field Sensors (Node B)
 # Total Sensors: 15 (2 IRT, 13 TDR)
 - hash: "013"
   treatment: 1
@@ -156,7 +156,7 @@
   sdi-12_address: "0"
   depth: 
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "014"
   treatment: 2
@@ -168,7 +168,7 @@
   sdi-12_address: "1"
   depth: 
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "015"
   treatment: 4
@@ -180,7 +180,7 @@
   sdi-12_address: "2"
   depth: 6
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "016"
   treatment: 4
@@ -192,7 +192,7 @@
   sdi-12_address: "3"
   depth: 18
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "017"
   treatment: 4
@@ -204,7 +204,7 @@
   sdi-12_address: "4"
   depth: 30
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "018"
   treatment: 4
@@ -216,7 +216,7 @@
   sdi-12_address: "5"
   depth: 42
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "019"
   treatment: 1
@@ -228,19 +228,19 @@
   sdi-12_address: "6"
   depth: 6
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "020"
   treatment: 1
   plot_number: 5006
   project_id: crop2cloud24
   dataset_id: node_b
-  sensor_id: TDR5006B11724
+  sensor_id: TDR5006B11824
   span: 5
   sdi-12_address: "7"
-  depth: 17
+  depth: 18
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "021"
   treatment: 1
@@ -252,7 +252,7 @@
   sdi-12_address: "8"
   depth: 30
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "022"
   treatment: 1
@@ -264,7 +264,7 @@
   sdi-12_address: "9"
   depth: 42
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "023"
   treatment: 2
@@ -276,7 +276,7 @@
   sdi-12_address: "a"
   depth: 6
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "024"
   treatment: 2
@@ -288,7 +288,7 @@
   sdi-12_address: "b"
   depth: 18
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "025"
   treatment: 2
@@ -300,82 +300,9 @@
   sdi-12_address: "c"
   depth: 30
   node: B
-  field: LINEAR
+  field: LINEAR_CORN
 
-# SDI Field Sensors (Node SDI1C)
-# Total Sensors: 6 (5 IRT, 1 Analog IRT)
-- hash: "026"
-  treatment: 5
-  plot_number: 0011
-  project_id: crop2cloud24
-  dataset_id: node_sdi1c
-  sensor_id: IRT0011C5xxSD
-  span: 5
-  sdi-12_address: "0"
-  depth: 
-  node: C
-  field: SDI
-
-- hash: "027"
-  treatment: 1
-  plot_number: 0012
-  project_id: crop2cloud24
-  dataset_id: node_sdi1c
-  sensor_id: IRT0012C1xxSD
-  span: 5
-  sdi-12_address: "1"
-  depth: 
-  node: C
-  field: SDI
-
-- hash: "028"
-  treatment: 3
-  plot_number: 0014
-  project_id: crop2cloud24
-  dataset_id: node_sdi1c
-  sensor_id: IRT0014C3xxSD
-  span: 5
-  sdi-12_address: "2"
-  depth: 
-  node: C
-  field: SDI
-
-- hash: "029"
-  treatment: 1
-  plot_number: 0032
-  project_id: crop2cloud24
-  dataset_id: node_sdi1c
-  sensor_id: IRT0032C1xxSD
-  span: 5
-  sdi-12_address: "3"
-  depth: 
-  node: C
-  field: SDI
-
-- hash: "030"
-  treatment: 3
-  plot_number: 0029
-  project_id: crop2cloud24
-  dataset_id: node_sdi1c
-  sensor_id: IRT0029C3xxSD
-  span: 5
-  sdi-12_address: "4"
-  depth: 
-  node: C
-  field: SDI
-
-- hash: "031"
-  treatment: 5
-  plot_number: 0036
-  project_id: crop2cloud24
-  dataset_id: node_sdi1c
-  sensor_id: IRT0036C5xxSD
-  span: 5
-  depth: 
-  node: C
-  field: SDI
-
-# LINEAR Field Sensors (Node A)
+# LINEAR_CORN Field Sensors (Node A)
 # Total Sensors: 11 (3 IRT, 8 TDR)
 - hash: "032"
   treatment: 1
@@ -387,7 +314,7 @@
   sdi-12_address: "0"
   depth: 
   node: A
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "033"
   treatment: 3
@@ -399,7 +326,7 @@
   sdi-12_address: "1"
   depth: 
   node: A
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "034"
   treatment: 3
@@ -411,7 +338,7 @@
   sdi-12_address: "9"
   depth: 
   node: A
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "035"
   treatment: 1
@@ -423,7 +350,7 @@
   sdi-12_address: "2"
   depth: 6
   node: A
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "036"
   treatment: 1
@@ -435,7 +362,7 @@
   sdi-12_address: "3"
   depth: 18
   node: A
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "037"
   treatment: 1
@@ -447,7 +374,7 @@
   sdi-12_address: "4"
   depth: 30
   node: A
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "038"
   treatment: 1
@@ -459,7 +386,7 @@
   sdi-12_address: "5"
   depth: 42
   node: A
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "039"
   treatment: 2
@@ -471,7 +398,7 @@
   sdi-12_address: "6"
   depth: 6
   node: A
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "040"
   treatment: 2
@@ -483,7 +410,7 @@
   sdi-12_address: "7"
   depth: 18
   node: A
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "041"
   treatment: 2
@@ -495,7 +422,7 @@
   sdi-12_address: "8"
   depth: 38
   node: A
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "042"
   treatment: 4
@@ -507,7 +434,7 @@
   sdi-12_address: "a"
   depth: 6
   node: A
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "043"
   treatment: 4
@@ -519,7 +446,7 @@
   sdi-12_address: "b"
   depth: 18
   node: A
-  field: LINEAR
+  field: LINEAR_CORN
 
 - hash: "044"
   treatment: 4
@@ -531,4 +458,4 @@
   sdi-12_address: "c"
   depth: 30
   node: A
-  field: LINEAR
+  field: LINEAR_CORN

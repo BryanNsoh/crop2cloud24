@@ -11,12 +11,7 @@ def expand_structure():
 
     # List of files to exclude from expansion
     exclude_files = [
-        'expand_structure.py',
-        'create_project_structure.py',
-        'custom_instructions.md',
-        'file_structure_guide.md',
-        'Project_Structure.mermaid',
-        'Data_Flow_Process.tsx'
+        
     ]
 
     # Preserve .venv directory if it exists

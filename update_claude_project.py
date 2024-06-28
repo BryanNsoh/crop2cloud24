@@ -51,10 +51,10 @@ def collapse_structure():
                 shutil.copy2(full_path, new_path)
                 print(f"Copied '{rel_path}' to '{flattened_name}'")
 
-        # Copy collapse_structure.py to the claude-project directory
-        collapse_structure_path = os.path.join(claude_project_dir, "crop2cloud24.collapse_structure.py")
+        # Copy update_claude_project.py to the claude-project directory
+        collapse_structure_path = os.path.join(claude_project_dir, "crop2cloud24.update_claude_project.py")
         shutil.copy2(__file__, collapse_structure_path)
-        print(f"Copied 'collapse_structure.py' to 'crop2cloud24.collapse_structure.py'")
+        print(f"Copied 'update_claude_project.py' to 'crop2cloud24.update_claude_project.py'")
 
         print("Structure collapse completed")
 
