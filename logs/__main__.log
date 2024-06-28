@@ -71,3 +71,78 @@ expected <block end>, but found '<block mapping start>'
 2024-06-26 20:29:28,643 - __main__ - INFO - Created table crop2cloud24.node_a.treatment_2
 2024-06-26 20:29:29,062 - __main__ - INFO - Created table crop2cloud24.node_a.treatment_4
 2024-06-26 20:29:29,063 - __main__ - INFO - Process completed successfully
+2024-06-28 07:36:19,133 - __main__ - INFO - Created dataset treatment_3
+2024-06-28 07:36:19,833 - __main__ - INFO - Created table crop2cloud24.treatment_3.plot_5001
+2024-06-28 07:36:20,218 - __main__ - INFO - Created table crop2cloud24.treatment_3.plot_12
+2024-06-28 07:36:20,618 - __main__ - INFO - Created table crop2cloud24.treatment_3.plot_0029
+2024-06-28 07:36:21,045 - __main__ - INFO - Created table crop2cloud24.treatment_3.plot_5020
+2024-06-28 07:36:21,428 - __main__ - INFO - Created table crop2cloud24.treatment_3.plot_5018
+2024-06-28 07:36:22,180 - __main__ - INFO - Created dataset treatment_2
+2024-06-28 07:36:22,929 - __main__ - INFO - Created table crop2cloud24.treatment_2.plot_5003
+2024-06-28 07:36:23,335 - __main__ - INFO - Created table crop2cloud24.treatment_2.plot_5012
+2024-06-28 07:36:23,721 - __main__ - INFO - Created table crop2cloud24.treatment_2.plot_5026
+2024-06-28 07:36:24,380 - __main__ - INFO - Created dataset treatment_1
+2024-06-28 07:36:24,849 - __main__ - INFO - Created table crop2cloud24.treatment_1.plot_5010
+2024-06-28 07:36:25,322 - __main__ - INFO - Created table crop2cloud24.treatment_1.plot_5006
+2024-06-28 07:36:25,840 - __main__ - INFO - Created table crop2cloud24.treatment_1.plot_10
+2024-06-28 07:36:26,222 - __main__ - INFO - Created table crop2cloud24.treatment_1.plot_26
+2024-06-28 07:36:26,733 - __main__ - INFO - Created table crop2cloud24.treatment_1.plot_5023
+2024-06-28 07:36:27,385 - __main__ - INFO - Created dataset treatment_4
+2024-06-28 07:36:27,953 - __main__ - INFO - Created table crop2cloud24.treatment_4.plot_5009
+2024-06-28 07:36:28,441 - __main__ - INFO - Created table crop2cloud24.treatment_4.plot_5007
+2024-06-28 07:36:28,951 - __main__ - INFO - Created table crop2cloud24.treatment_4.plot_5027
+2024-06-28 07:36:29,575 - __main__ - INFO - Created dataset treatment_5
+2024-06-28 07:36:30,042 - __main__ - INFO - Created table crop2cloud24.treatment_5.plot_9
+2024-06-28 07:36:30,427 - __main__ - INFO - Created table crop2cloud24.treatment_5.plot_30
+2024-06-28 07:36:30,427 - __main__ - INFO - Process completed successfully
+2024-06-28 07:46:21,204 - __main__ - INFO - Created dataset LINEAR_CORN_trt3
+2024-06-28 07:46:21,645 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-06-28 07:46:22,041 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-06-28 07:46:22,535 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-06-28 07:46:23,183 - __main__ - INFO - Created dataset LINEAR_CORN_trt2
+2024-06-28 07:46:23,642 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-06-28 07:46:24,133 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-06-28 07:46:24,638 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-06-28 07:46:25,318 - __main__ - INFO - Created dataset LINEAR_CORN_trt1
+2024-06-28 07:46:25,819 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-06-28 07:46:26,246 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-06-28 07:46:26,739 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-06-28 07:46:27,293 - __main__ - INFO - Created dataset LINEAR_CORN_trt4
+2024-06-28 07:46:27,831 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-06-28 07:46:28,336 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-06-28 07:46:28,843 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-06-28 07:46:28,843 - __main__ - INFO - Process completed successfully
+2024-06-28 07:48:36,878 - __main__ - INFO - Dataset LINEAR_CORN_trt3 already exists
+2024-06-28 07:48:37,489 - __main__ - INFO - Updated schema for existing table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-06-28 07:48:38,163 - __main__ - INFO - Updated schema for existing table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-06-28 07:48:38,721 - __main__ - INFO - Updated schema for existing table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-06-28 07:48:38,994 - __main__ - INFO - Dataset LINEAR_CORN_trt2 already exists
+2024-06-28 07:48:39,565 - __main__ - INFO - Updated schema for existing table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-06-28 07:48:40,136 - __main__ - INFO - Updated schema for existing table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-06-28 07:48:40,850 - __main__ - INFO - Updated schema for existing table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-06-28 07:48:41,482 - __main__ - INFO - Created dataset LINEAR_CORN_trt1
+2024-06-28 07:48:41,946 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-06-28 07:48:42,547 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-06-28 07:48:43,033 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-06-28 07:48:43,274 - __main__ - INFO - Dataset LINEAR_CORN_trt4 already exists
+2024-06-28 07:48:43,822 - __main__ - INFO - Updated schema for existing table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-06-28 07:48:44,373 - __main__ - INFO - Updated schema for existing table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-06-28 07:48:44,955 - __main__ - INFO - Updated schema for existing table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-06-28 07:48:44,965 - __main__ - INFO - Process completed successfully
+2024-06-28 07:50:56,388 - __main__ - INFO - Dataset LINEAR_CORN_trt3 already exists
+2024-06-28 07:50:56,686 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-06-28 07:50:57,078 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-06-28 07:50:57,859 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-06-28 07:50:58,182 - __main__ - INFO - Dataset LINEAR_CORN_trt2 already exists
+2024-06-28 07:50:58,550 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-06-28 07:50:58,914 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-06-28 07:50:59,237 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-06-28 07:50:59,485 - __main__ - INFO - Dataset LINEAR_CORN_trt1 already exists
+2024-06-28 07:50:59,823 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-06-28 07:51:00,273 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-06-28 07:51:00,670 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-06-28 07:51:00,888 - __main__ - INFO - Dataset LINEAR_CORN_trt4 already exists
+2024-06-28 07:51:01,220 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-06-28 07:51:01,553 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-06-28 07:51:01,955 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-06-28 07:51:01,956 - __main__ - INFO - Process completed successfully

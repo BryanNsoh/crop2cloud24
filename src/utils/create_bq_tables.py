@@ -56,47 +56,60 @@ def ensure_dataset_exists(client, dataset_id):
         dataset = client.create_dataset(dataset)
         logger.info(f"Created dataset {dataset_id}")
 
-def table_exists(client, table_id):
-    try:
-        client.get_table(table_id)
-        return True
-    except exceptions.NotFound:
-        return False
+def update_table_schema(client, table_id, new_schema):
+    table = client.get_table(table_id)
+    existing_fields = set(field.name for field in table.schema)
+    new_fields = set(field.name for field in new_schema)
+    
+    fields_to_add = new_fields - existing_fields
+    
+    if fields_to_add:
+        updated_schema = table.schema[:]
+        for field_name in fields_to_add:
+            new_field = next(field for field in new_schema if field.name == field_name)
+            updated_schema.append(new_field)
+        
+        table.schema = updated_schema
+        table = client.update_table(table, ["schema"])
+        logger.info(f"Updated schema for table {table_id}. Added fields: {fields_to_add}")
+    else:
+        logger.info(f"No new fields to add for table {table_id}")
 
 def create_or_update_table(client, table_id, schema):
-    if not table_exists(client, table_id):
+    try:
+        table = client.get_table(table_id)
+        update_table_schema(client, table_id, schema)
+    except exceptions.NotFound:
         table = bigquery.Table(table_id, schema=schema)
         table = client.create_table(table)
         logger.info(f"Created table {table_id}")
-    else:
-        table = client.get_table(table_id)
-        table.schema = schema
-        table = client.update_table(table, ["schema"])
-        logger.info(f"Updated schema for existing table {table_id}")
 
 def process_sensor_mapping(client, sensor_mapping):
-    # Group sensors by dataset_id, treatment, and collect sensor_ids
-    treatment_sensor_map = {}
+    field_treatment_plot_sensor_map = {}
     for sensor in sensor_mapping:
-        dataset_id = sensor['dataset_id']
+        field = sensor['field']
         treatment = sensor['treatment']
+        plot_number = sensor['plot_number']
         sensor_id = sensor['sensor_id']
         
-        if dataset_id not in treatment_sensor_map:
-            treatment_sensor_map[dataset_id] = {}
-        if treatment not in treatment_sensor_map[dataset_id]:
-            treatment_sensor_map[dataset_id][treatment] = set()
+        if field not in field_treatment_plot_sensor_map:
+            field_treatment_plot_sensor_map[field] = {}
+        if treatment not in field_treatment_plot_sensor_map[field]:
+            field_treatment_plot_sensor_map[field][treatment] = {}
+        if plot_number not in field_treatment_plot_sensor_map[field][treatment]:
+            field_treatment_plot_sensor_map[field][treatment][plot_number] = set()
         
-        treatment_sensor_map[dataset_id][treatment].add(sensor_id)
+        field_treatment_plot_sensor_map[field][treatment][plot_number].add(sensor_id)
     
-    # Create datasets and tables
-    for dataset_id, treatments in treatment_sensor_map.items():
-        ensure_dataset_exists(client, dataset_id)
-        
-        for treatment, sensor_ids in treatments.items():
-            table_id = f"{client.project}.{dataset_id}.treatment_{treatment}"
-            schema = create_table_schema(sensor_ids)
-            create_or_update_table(client, table_id, schema)
+    for field, treatments in field_treatment_plot_sensor_map.items():
+        for treatment, plots in treatments.items():
+            dataset_id = f"{field}_trt{treatment}"
+            ensure_dataset_exists(client, dataset_id)
+            
+            for plot_number, sensor_ids in plots.items():
+                table_id = f"{client.project}.{dataset_id}.plot_{plot_number}"
+                schema = create_table_schema(sensor_ids)
+                create_or_update_table(client, table_id, schema)
 
 def main():
     try:
@@ -111,5 +124,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
-#This is a test for collapse xture
