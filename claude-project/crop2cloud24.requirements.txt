@@ -3,3 +3,4 @@ pandas
 google-cloud-bigquery
 python-dotenv
 PyYAML
+pyarrow
