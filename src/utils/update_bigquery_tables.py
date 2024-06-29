@@ -4,7 +4,7 @@ import numpy as np
 from google.cloud import bigquery
 from google.api_core.exceptions import NotFound
 from logger import get_logger
-from bigquery_operations import load_sensor_mapping, process_and_upload_data, create_bigquery_client
+from bigquery_operations import load_sensor_mapping, create_bigquery_client
 
 logger = get_logger(__name__)
 
@@ -39,8 +39,6 @@ def parse_dat_file(file_name):
     data_hourly = data.resample("h").mean()
 
     data_hourly.reset_index(inplace=True)
-    # Convert TIMESTAMP to datetime64[ns] explicitly
-    data_hourly["TIMESTAMP"] = pd.to_datetime(data_hourly["TIMESTAMP"], utc=True).dt.tz_convert('America/Chicago').dt.tz_localize(None)
     
     logger.info(f"Final columns: {data_hourly.columns.tolist()}")
     logger.info(f"Final shape: {data_hourly.shape}")
@@ -48,6 +46,80 @@ def parse_dat_file(file_name):
     logger.info(f"TIMESTAMP null count: {data_hourly['TIMESTAMP'].isnull().sum()}")
     
     return data_hourly
+
+def insert_or_update_data(client, table_id, df, is_actual=True):
+    logger.info(f"Preparing to {'insert' if is_actual else 'update'} data in {table_id}")
+    logger.info(f"DataFrame columns: {df.columns.tolist()}")
+    logger.info(f"DataFrame shape: {df.shape}")
+
+    # Ensure TIMESTAMP is in UTC
+    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
+
+    # Add is_actual column
+    df['is_actual'] = is_actual
+
+    # Get current schema
+    table = client.get_table(table_id)
+    current_schema = {field.name: field.field_type for field in table.schema}
+    logger.info(f"Current schema for table {table_id}: {current_schema}")
+
+    # Prepare data for upload
+    data_to_upload = df.copy()
+    
+    # Only include columns that are in both the schema and the dataframe
+    columns_to_upload = [col for col in current_schema if col in df.columns]
+    data_to_upload = data_to_upload[columns_to_upload]
+
+    # Fill NaN values with None for BigQuery compatibility
+    data_to_upload = data_to_upload.where(pd.notnull(data_to_upload), None)
+
+    # Sort the dataframe by TIMESTAMP
+    data_to_upload = data_to_upload.sort_values('TIMESTAMP')
+
+    # Create a new schema only including the columns we're uploading
+    upload_schema = [field for field in table.schema if field.name in columns_to_upload]
+
+    # Upload data
+    job_config = bigquery.LoadJobConfig(
+        schema=upload_schema,
+        write_disposition="WRITE_APPEND"
+    )
+    try:
+        job = client.load_table_from_dataframe(data_to_upload, table_id, job_config=job_config)
+        job.result()  # Wait for the job to complete
+        logger.info(f"Successfully loaded {len(data_to_upload)} rows into {table_id}")
+    except Exception as e:
+        logger.error(f"Error uploading data to {table_id}: {str(e)}")
+        raise
+
+def process_and_upload_data(df, sensor_mapping, is_actual=True):
+    client = create_bigquery_client()
+    
+    # Group sensors by treatment and plot
+    sensor_groups = {}
+    for sensor in sensor_mapping:
+        key = (sensor['treatment'], sensor['plot_number'])
+        if key not in sensor_groups:
+            sensor_groups[key] = []
+        sensor_groups[key].append(sensor['sensor_id'])
+
+    # Process and upload data for each group
+    for (treatment, plot_number), sensors in sensor_groups.items():
+        table_id = f"LINEAR_CORN_trt{treatment}.plot_{plot_number}"
+        dataset_id = f"LINEAR_CORN_trt{treatment}"
+        full_table_id = f"{client.project}.{dataset_id}.plot_{plot_number}"
+        
+        # Select relevant columns for this group
+        columns_to_upload = ['TIMESTAMP'] + [s for s in sensors if s in df.columns]
+        df_to_upload = df[columns_to_upload].copy()
+        
+        if not df_to_upload.empty:
+            try:
+                insert_or_update_data(client, full_table_id, df_to_upload, is_actual)
+            except Exception as e:
+                logger.error(f"Failed to upload data for plot {plot_number} to {full_table_id}: {str(e)}")
+        else:
+            logger.info(f"No data to upload for plot {plot_number}")
 
 def main():
     # Load the sensor mapping
@@ -64,7 +136,7 @@ def main():
         df = parse_dat_file(dat_file)
         
         # Process and upload data for each sensor in the dataframe
-        process_and_upload_data(df, sensor_mapping)
+        process_and_upload_data(df, sensor_mapping, is_actual=True)
 
 if __name__ == "__main__":
     main()

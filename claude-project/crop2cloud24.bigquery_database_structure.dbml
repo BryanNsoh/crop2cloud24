@@ -1,94 +1,188 @@
 // Project: crop2cloud24
 // Database: BigQuery
 
+// Note: BigQuery table names cannot contain hyphens. Hyphens in original names have been replaced with underscores.
+// All timestamps are stored in UTC. Local time considerations should be handled in queries or application logic.
+
+// weather dataset
+// This dataset contains weather data from multiple sources
+Table weather.current_weather_mesonet {
+  // Data from Mesonet weather station
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  RECORD FLOAT [note: 'Record identifier']
+  Ta_2m_Avg FLOAT [note: 'Average air temperature at 2m height (°C)']
+  TaMax_2m FLOAT [note: 'Maximum air temperature at 2m height (°C)']
+  TaMaxTime_2m FLOAT [note: 'Time of maximum air temperature']
+  TaMin_2m FLOAT [note: 'Minimum air temperature at 2m height (°C)']
+  TaMinTime_2m FLOAT [note: 'Time of minimum air temperature']
+  RH_2m_Avg FLOAT [note: 'Average relative humidity at 2m height (%)']
+  RHMax_2m FLOAT [note: 'Maximum relative humidity at 2m height (%)']
+  RHMaxTime_2m FLOAT [note: 'Time of maximum relative humidity']
+  RHMin_2m FLOAT [note: 'Minimum relative humidity at 2m height (%)']
+  RHMinTime_2m FLOAT [note: 'Time of minimum relative humidity']
+  Dp_2m_Avg FLOAT [note: 'Average dew point at 2m height (°C)']
+  DpMax_2m FLOAT [note: 'Maximum dew point at 2m height (°C)']
+  DpMaxTime_2m FLOAT [note: 'Time of maximum dew point']
+  DpMin_2m FLOAT [note: 'Minimum dew point at 2m height (°C)']
+  DpMinTime_2m FLOAT [note: 'Time of minimum dew point']
+  HeatIndex_2m_Avg FLOAT [note: 'Average heat index at 2m height']
+  HeatIndexMax_2m FLOAT [note: 'Maximum heat index at 2m height']
+  HeatIndexMaxTime_2m FLOAT [note: 'Time of maximum heat index']
+  WindChill_2m_Avg FLOAT [note: 'Average wind chill at 2m height']
+  WindChillMin_2m FLOAT [note: 'Minimum wind chill at 2m height']
+  WindChillMinTime_2m FLOAT [note: 'Time of minimum wind chill']
+  WndAveSpd_3m FLOAT [note: 'Average wind speed at 3m height (m/s)']
+  WndVecMagAve_3m FLOAT [note: 'Average wind vector magnitude at 3m height']
+  WndAveDir_3m FLOAT [note: 'Average wind direction at 3m height (degrees)']
+  WndAveDirSD_3m FLOAT [note: 'Standard deviation of wind direction at 3m height']
+  WndMaxSpd5s_3m FLOAT [note: 'Maximum 5-second wind speed at 3m height (m/s)']
+  WndMaxSpd5sTime_3m FLOAT [note: 'Time of maximum 5-second wind speed']
+  WndMax_5sec_Dir_3m FLOAT [note: 'Direction of maximum 5-second wind speed (degrees)']
+  PresAvg_1pnt5m FLOAT [note: 'Average pressure at 1.5m height (hPa)']
+  PresMax_1pnt5m FLOAT [note: 'Maximum pressure at 1.5m height (hPa)']
+  PresMaxTime_1pnt5m FLOAT [note: 'Time of maximum pressure']
+  PresMin_1pnt5m FLOAT [note: 'Minimum pressure at 1.5m height (hPa)']
+  PresMinTime_1pnt5m FLOAT [note: 'Time of minimum pressure']
+  Solar_2m_Avg FLOAT [note: 'Average solar radiation at 2m height (W/m²)']
+  Rain_1m_Tot FLOAT [note: 'Total rainfall at 1m height (mm)']
+  Ts_bare_10cm_Avg FLOAT [note: 'Average bare soil temperature at 10cm depth (°C)']
+  TsMax_bare_10cm FLOAT [note: 'Maximum bare soil temperature at 10cm depth (°C)']
+  TsMaxTime_bare_10cm FLOAT [note: 'Time of maximum bare soil temperature']
+  TsMin_bare_10cm FLOAT [note: 'Minimum bare soil temperature at 10cm depth (°C)']
+  TsMinTime_bare_10cm FLOAT [note: 'Time of minimum bare soil temperature']
+}
+
+Table weather.current_openweathermap {
+  // Current weather data from OpenWeatherMap API
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  Ta_2m_Avg FLOAT [note: 'Average air temperature at 2m height (°C)']
+  TaMax_2m FLOAT [note: 'Maximum air temperature at 2m height (°C)']
+  TaMin_2m FLOAT [note: 'Minimum air temperature at 2m height (°C)']
+  RH_2m_Avg FLOAT [note: 'Average relative humidity at 2m height (%)']
+  Dp_2m_Avg FLOAT [note: 'Average dew point at 2m height (°C)']
+  WndAveSpd_3m FLOAT [note: 'Average wind speed at 3m height (m/s)']
+  WndAveDir_3m FLOAT [note: 'Average wind direction at 3m height (degrees)']
+  WndMaxSpd5s_3m FLOAT [note: 'Maximum wind speed (gust) at 3m height (m/s)']
+  PresAvg_1pnt5m FLOAT [note: 'Average pressure at 1.5m height (hPa)']
+  Rain_1m_Tot FLOAT [note: 'Total rainfall at 1m height (mm)']
+  UV_index FLOAT [note: 'UV index']
+  Visibility FLOAT [note: 'Visibility (meters)']
+  Clouds FLOAT [note: 'Cloud coverage (%)']
+}
+
+Table weather.four_day_forecast_openweathermap {
+  // 4-day weather forecast data from OpenWeatherMap API
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the forecasted data point']
+  Ta_2m_Avg FLOAT [note: 'Forecasted average air temperature at 2m height (°C)']
+  TaMax_2m FLOAT [note: 'Forecasted maximum air temperature at 2m height (°C)']
+  TaMin_2m FLOAT [note: 'Forecasted minimum air temperature at 2m height (°C)']
+  RH_2m_Avg FLOAT [note: 'Forecasted average relative humidity at 2m height (%)']
+  Dp_2m_Avg FLOAT [note: 'Forecasted average dew point at 2m height (°C)']
+  WndAveSpd_3m FLOAT [note: 'Forecasted average wind speed at 3m height (m/s)']
+  WndAveDir_3m FLOAT [note: 'Forecasted average wind direction at 3m height (degrees)']
+  WndMaxSpd5s_3m FLOAT [note: 'Forecasted maximum wind speed (gust) at 3m height (m/s)']
+  PresAvg_1pnt5m FLOAT [note: 'Forecasted average pressure at 1.5m height (hPa)']
+  Rain_1m_Tot FLOAT [note: 'Forecasted total rainfall at 1m height (mm)']
+  UV_index FLOAT [note: 'Forecasted UV index']
+  Visibility FLOAT [note: 'Forecasted visibility (meters)']
+  Clouds FLOAT [note: 'Forecasted cloud coverage (%)']
+}
+
 // LINEAR_CORN_trt1 dataset
+// This dataset contains sensor data for treatment 1 of the linear corn experiment
 Table LINEAR_CORN_trt1.plot_5006 {
-  TIMESTAMP TIMESTAMP [not null]
-  IRT5006B1xx24 FLOAT
-  TDR5006B10624 FLOAT
-  TDR5006B11824 FLOAT
-  TDR5006B13024 FLOAT
-  TDR5006B14224 FLOAT
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  IRT5006B1xx24 FLOAT [note: 'Infrared temperature reading for plot 5006']
+  TDR5006B10624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
+  TDR5006B11824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
+  TDR5006B13024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
+  TDR5006B14224 FLOAT [note: 'Time Domain Reflectometry reading at 42cm depth']
 }
 
 Table LINEAR_CORN_trt1.plot_5010 {
-  TIMESTAMP TIMESTAMP [not null]
-  IRT5010C1xx24 FLOAT
-  TDR5010C10624 FLOAT
-  TDR5010C11824 FLOAT
-  TDR5010C13024 FLOAT
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  IRT5010C1xx24 FLOAT [note: 'Infrared temperature reading for plot 5010']
+  TDR5010C10624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
+  TDR5010C11824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
+  TDR5010C13024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
 }
 
 Table LINEAR_CORN_trt1.plot_5023 {
-  TIMESTAMP TIMESTAMP [not null]
-  IRT5023A1xx24 FLOAT
-  TDR5023A10624 FLOAT
-  TDR5023A11824 FLOAT
-  TDR5023A13024 FLOAT
-  TDR5023A14224 FLOAT
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  IRT5023A1xx24 FLOAT [note: 'Infrared temperature reading for plot 5023']
+  TDR5023A10624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
+  TDR5023A11824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
+  TDR5023A13024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
+  TDR5023A14224 FLOAT [note: 'Time Domain Reflectometry reading at 42cm depth']
 }
 
 // LINEAR_CORN_trt2 dataset
+// This dataset contains sensor data for treatment 2 of the linear corn experiment
 Table LINEAR_CORN_trt2.plot_5003 {
-  TIMESTAMP TIMESTAMP [not null]
-  IRT5003C2xx24 FLOAT
-  TDR5003C20624 FLOAT
-  TDR5003C21824 FLOAT
-  TDR5003C23024 FLOAT
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  IRT5003C2xx24 FLOAT [note: 'Infrared temperature reading for plot 5003']
+  TDR5003C20624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
+  TDR5003C21824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
+  TDR5003C23024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
 }
 
 Table LINEAR_CORN_trt2.plot_5012 {
-  TIMESTAMP TIMESTAMP [not null]
-  IRT5012B2xx24 FLOAT
-  TDR5012B20624 FLOAT
-  TDR5012B21824 FLOAT
-  TDR5012B23024 FLOAT
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  IRT5012B2xx24 FLOAT [note: 'Infrared temperature reading for plot 5012']
+  TDR5012B20624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
+  TDR5012B21824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
+  TDR5012B23024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
 }
 
 Table LINEAR_CORN_trt2.plot_5026 {
-  TIMESTAMP TIMESTAMP [not null]
-  TDR5026A20624 FLOAT
-  TDR5026A21824 FLOAT
-  TDR5026A23824 FLOAT
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  TDR5026A20624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
+  TDR5026A21824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
+  TDR5026A23824 FLOAT [note: 'Time Domain Reflectometry reading at 38cm depth']
 }
 
 // LINEAR_CORN_trt3 dataset
+// This dataset contains sensor data for treatment 3 of the linear corn experiment
 Table LINEAR_CORN_trt3.plot_5001 {
-  TIMESTAMP TIMESTAMP [not null]
-  IRT5001C3xx24 FLOAT
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  IRT5001C3xx24 FLOAT [note: 'Infrared temperature reading for plot 5001']
 }
 
 Table LINEAR_CORN_trt3.plot_5018 {
-  TIMESTAMP TIMESTAMP [not null]
-  IRT5018A3xx24 FLOAT
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  IRT5018A3xx24 FLOAT [note: 'Infrared temperature reading for plot 5018']
 }
 
 Table LINEAR_CORN_trt3.plot_5020 {
-  TIMESTAMP TIMESTAMP [not null]
-  IRT5020A3xx24 FLOAT
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  IRT5020A3xx24 FLOAT [note: 'Infrared temperature reading for plot 5020']
 }
 
 // LINEAR_CORN_trt4 dataset
+// This dataset contains sensor data for treatment 4 of the linear corn experiment
 Table LINEAR_CORN_trt4.plot_5007 {
-  TIMESTAMP TIMESTAMP [not null]
-  TDR5007B40624 FLOAT
-  TDR5007B41824 FLOAT
-  TDR5007B43024 FLOAT
-  TDR5007B44224 FLOAT
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  TDR5007B40624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
+  TDR5007B41824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
+  TDR5007B43024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
+  TDR5007B44224 FLOAT [note: 'Time Domain Reflectometry reading at 42cm depth']
 }
 
 Table LINEAR_CORN_trt4.plot_5009 {
-  TIMESTAMP TIMESTAMP [not null]
-  TDR5009C40624 FLOAT
-  TDR5009C41824 FLOAT
-  TDR5009C43024 FLOAT
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  TDR5009C40624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
+  TDR5009C41824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
+  TDR5009C43024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
 }
 
 Table LINEAR_CORN_trt4.plot_5027 {
-  TIMESTAMP TIMESTAMP [not null]
-  TDR5027A40624 FLOAT
-  TDR5027A41824 FLOAT
-  TDR5027A43024 FLOAT
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  TDR5027A40624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
+  TDR5027A41824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
+  TDR5027A43024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
 }
 
-// Indexes and relationships can be added here if needed
+// Note: IRT stands for Infrared Thermometer, used to measure surface temperature
+// Note: TDR stands for Time Domain Reflectometry, used to measure soil moisture
+// The numbers in the field names represent plot numbers and depths
+// All timestamp fields are in UTC. Local time considerations should be handled in queries or application logic.

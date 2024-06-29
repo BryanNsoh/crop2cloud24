@@ -6,7 +6,6 @@ from google.api_core import exceptions
 from dotenv import load_dotenv
 from logger import get_logger
 
-# Set up logging
 logger = get_logger(__name__)
 
 def load_sensor_mapping(file_path):
@@ -41,12 +40,23 @@ def create_bigquery_client():
 def create_table_schema(sensor_ids):
     schema = [
         bigquery.SchemaField("TIMESTAMP", "TIMESTAMP", mode="REQUIRED"),
+        bigquery.SchemaField("is_actual", "BOOLEAN", mode="REQUIRED"),
+        bigquery.SchemaField("prediction_timestamp", "TIMESTAMP", mode="NULLABLE"),
+        bigquery.SchemaField("applied_irrigation", "FLOAT64", mode="NULLABLE"),
     ]
+    
     for sensor_id in sensor_ids:
-        schema.append(bigquery.SchemaField(sensor_id, "FLOAT"))
+        schema.append(bigquery.SchemaField(sensor_id, "FLOAT64", mode="NULLABLE"))
+        schema.append(bigquery.SchemaField(f"{sensor_id}_pred", "FLOAT64", mode="NULLABLE"))
+    
+    # Add stress indices columns
+    for index in ['cwsi', 'et', 'swsi']:
+        schema.append(bigquery.SchemaField(index, "FLOAT64", mode="NULLABLE"))
+        schema.append(bigquery.SchemaField(f"{index}_pred", "FLOAT64", mode="NULLABLE"))
+    
     return schema
 
-def ensure_dataset_exists(client, dataset_id, delete_existing=True):
+def ensure_dataset_exists(client, dataset_id, delete_existing=False):
     dataset_ref = client.dataset(dataset_id)
     try:
         if delete_existing:

@@ -1,3 +1,7 @@
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #         CORN FIELDS
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 # LINEAR_CORN Field Sensors (Node C)
 # Total Sensors: 13 (3 IRT, 10 TDR)
 - hash: "001"
@@ -459,3 +463,78 @@
   depth: 30
   node: A
   field: LINEAR_CORN
+
+  # New entries for DEN and SAP sensors in treatment 1 plots
+
+- hash: "045"
+  treatment: 1
+  plot_number: 5006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: DEN5006B1xx24
+  span: 5
+  node: B
+  field: LINEAR_CORN
+
+- hash: "046"
+  treatment: 1
+  plot_number: 5006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: SAP5006B1xx24
+  span: 5
+  node: B
+  field: LINEAR_CORN
+
+- hash: "047"
+  treatment: 1
+  plot_number: 5010
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: DEN5010C1xx24
+  span: 5
+  node: C
+  field: LINEAR_CORN
+
+- hash: "048"
+  treatment: 1
+  plot_number: 5010
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: SAP5010C1xx24
+  span: 5
+  node: C
+  field: LINEAR_CORN
+
+- hash: "049"
+  treatment: 1
+  plot_number: 5023
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: DEN5023A1xx24
+  span: 5
+  node: A
+  field: LINEAR_CORN
+
+- hash: "050"
+  treatment: 1
+  plot_number: 5023
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: SAP5023A1xx24
+  span: 5
+  node: A
+  field: LINEAR_CORN
+
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #         CORN FIELDS
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #         SOYBEAN FIELDS
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #         SOYBEAN FIELDS
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
