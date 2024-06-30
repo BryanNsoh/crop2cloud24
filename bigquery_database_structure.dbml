@@ -6,8 +6,7 @@
 
 // weather dataset
 // This dataset contains weather data from multiple sources
-Table weather.current_weather_mesonet {
-  // Data from Mesonet weather station
+Table weather.current-weather-mesonet {
   TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
   RECORD FLOAT [note: 'Record identifier']
   Ta_2m_Avg FLOAT [note: 'Average air temperature at 2m height (°C)']
@@ -52,8 +51,7 @@ Table weather.current_weather_mesonet {
   TsMinTime_bare_10cm FLOAT [note: 'Time of minimum bare soil temperature']
 }
 
-Table weather.current_openweathermap {
-  // Current weather data from OpenWeatherMap API
+Table weather.current-openweathermap {
   TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
   Ta_2m_Avg FLOAT [note: 'Average air temperature at 2m height (°C)']
   TaMax_2m FLOAT [note: 'Maximum air temperature at 2m height (°C)']
@@ -70,8 +68,7 @@ Table weather.current_openweathermap {
   Clouds FLOAT [note: 'Cloud coverage (%)']
 }
 
-Table weather.four_day_forecast_openweathermap {
-  // 4-day weather forecast data from OpenWeatherMap API
+Table weather.four-day-forecast-openweathermap {
   TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the forecasted data point']
   Ta_2m_Avg FLOAT [note: 'Forecasted average air temperature at 2m height (°C)']
   TaMax_2m FLOAT [note: 'Forecasted maximum air temperature at 2m height (°C)']
@@ -91,98 +88,262 @@ Table weather.four_day_forecast_openweathermap {
 // LINEAR_CORN_trt1 dataset
 // This dataset contains sensor data for treatment 1 of the linear corn experiment
 Table LINEAR_CORN_trt1.plot_5006 {
-  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
-  IRT5006B1xx24 FLOAT [note: 'Infrared temperature reading for plot 5006']
-  TDR5006B10624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
-  TDR5006B11824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
-  TDR5006B13024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
-  TDR5006B14224 FLOAT [note: 'Time Domain Reflectometry reading at 42cm depth']
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5006B1xx24 FLOAT [note: 'Infrared temperature reading for plot 5006 (°C)']
+  IRT5006B1xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5006 (°C)']
+  TDR5006B10624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5006B10624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5006B11824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5006B11824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5006B13024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5006B13024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  TDR5006B14224 FLOAT [note: 'Time Domain Reflectometry reading at 42cm depth (volumetric water content)']
+  TDR5006B14224_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 42cm depth']
+  DEN5006B1xx24 FLOAT [note: 'Dendrometer reading for plot 5006 (μm)']
+  DEN5006B1xx24_pred FLOAT [note: 'Predicted Dendrometer reading for plot 5006 (μm)']
+  SAP5006B1xx24 FLOAT [note: 'Sap flow reading for plot 5006 (g/h)']
+  SAP5006B1xx24_pred FLOAT [note: 'Predicted Sap flow reading for plot 5006 (g/h)']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
 }
 
 Table LINEAR_CORN_trt1.plot_5010 {
-  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
-  IRT5010C1xx24 FLOAT [note: 'Infrared temperature reading for plot 5010']
-  TDR5010C10624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
-  TDR5010C11824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
-  TDR5010C13024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5010C1xx24 FLOAT [note: 'Infrared temperature reading for plot 5010 (°C)']
+  IRT5010C1xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5010 (°C)']
+  TDR5010C10624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5010C10624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5010C11824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5010C11824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5010C13024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5010C13024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  DEN5010C1xx24 FLOAT [note: 'Dendrometer reading for plot 5010 (μm)']
+  DEN5010C1xx24_pred FLOAT [note: 'Predicted Dendrometer reading for plot 5010 (μm)']
+  SAP5010C1xx24 FLOAT [note: 'Sap flow reading for plot 5010 (g/h)']
+  SAP5010C1xx24_pred FLOAT [note: 'Predicted Sap flow reading for plot 5010 (g/h)']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
 }
 
 Table LINEAR_CORN_trt1.plot_5023 {
-  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
-  IRT5023A1xx24 FLOAT [note: 'Infrared temperature reading for plot 5023']
-  TDR5023A10624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
-  TDR5023A11824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
-  TDR5023A13024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
-  TDR5023A14224 FLOAT [note: 'Time Domain Reflectometry reading at 42cm depth']
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5023A1xx24 FLOAT [note: 'Infrared temperature reading for plot 5023 (°C)']
+  IRT5023A1xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5023 (°C)']
+  TDR5023A10624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5023A10624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5023A11824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5023A11824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5023A13024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5023A13024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  TDR5023A14224 FLOAT [note: 'Time Domain Reflectometry reading at 42cm depth (volumetric water content)']
+  TDR5023A14224_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 42cm depth']
+  DEN5023A1xx24 FLOAT [note: 'Dendrometer reading for plot 5023 (μm)']
+  DEN5023A1xx24_pred FLOAT [note: 'Predicted Dendrometer reading for plot 5023 (μm)']
+  SAP5023A1xx24 FLOAT [note: 'Sap flow reading for plot 5023 (g/h)']
+  SAP5023A1xx24_pred FLOAT [note: 'Predicted Sap flow reading for plot 5023 (g/h)']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
 }
 
 // LINEAR_CORN_trt2 dataset
 // This dataset contains sensor data for treatment 2 of the linear corn experiment
 Table LINEAR_CORN_trt2.plot_5003 {
-  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
-  IRT5003C2xx24 FLOAT [note: 'Infrared temperature reading for plot 5003']
-  TDR5003C20624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
-  TDR5003C21824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
-  TDR5003C23024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5003C2xx24 FLOAT [note: 'Infrared temperature reading for plot 5003 (°C)']
+  IRT5003C2xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5003 (°C)']
+  TDR5003C20624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5003C20624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5003C21824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5003C21824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5003C23024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5003C23024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
 }
 
 Table LINEAR_CORN_trt2.plot_5012 {
-  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
-  IRT5012B2xx24 FLOAT [note: 'Infrared temperature reading for plot 5012']
-  TDR5012B20624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
-  TDR5012B21824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
-  TDR5012B23024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5012B2xx24 FLOAT [note: 'Infrared temperature reading for plot 5012 (°C)']
+  IRT5012B2xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5012 (°C)']
+  TDR5012B20624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5012B20624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5012B21824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5012B21824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5012B23024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5012B23024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
 }
 
 Table LINEAR_CORN_trt2.plot_5026 {
-  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
-  TDR5026A20624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
-  TDR5026A21824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
-  TDR5026A23824 FLOAT [note: 'Time Domain Reflectometry reading at 38cm depth']
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  TDR5026A20624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5026A20624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5026A21824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5026A21824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5026A23824 FLOAT [note: 'Time Domain Reflectometry reading at 38cm depth (volumetric water content)']
+  TDR5026A23824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 38cm depth']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
 }
 
 // LINEAR_CORN_trt3 dataset
 // This dataset contains sensor data for treatment 3 of the linear corn experiment
 Table LINEAR_CORN_trt3.plot_5001 {
-  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
-  IRT5001C3xx24 FLOAT [note: 'Infrared temperature reading for plot 5001']
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5001C3xx24 FLOAT [note: 'Infrared temperature reading for plot 5001 (°C)']
+  IRT5001C3xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5001 (°C)']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
 }
 
 Table LINEAR_CORN_trt3.plot_5018 {
-  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
-  IRT5018A3xx24 FLOAT [note: 'Infrared temperature reading for plot 5018']
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5018A3xx24 FLOAT [note: 'Infrared temperature reading for plot 5018 (°C)']
+  IRT5018A3xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5018 (°C)']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
 }
 
 Table LINEAR_CORN_trt3.plot_5020 {
-  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
-  IRT5020A3xx24 FLOAT [note: 'Infrared temperature reading for plot 5020']
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5020A3xx24 FLOAT [note: 'Infrared temperature reading for plot 5020 (°C)']
+  IRT5020A3xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5020 (°C)']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
 }
 
 // LINEAR_CORN_trt4 dataset
 // This dataset contains sensor data for treatment 4 of the linear corn experiment
 Table LINEAR_CORN_trt4.plot_5007 {
-  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
-  TDR5007B40624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
-  TDR5007B41824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
-  TDR5007B43024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
-  TDR5007B44224 FLOAT [note: 'Time Domain Reflectometry reading at 42cm depth']
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  TDR5007B40624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5007B40624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5007B41824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5007B41824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5007B43024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5007B43024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  TDR5007B44224 FLOAT [note: 'Time Domain Reflectometry reading at 42cm depth (volumetric water content)']
+  TDR5007B44224_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 42cm depth']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
 }
 
 Table LINEAR_CORN_trt4.plot_5009 {
-  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
-  TDR5009C40624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
-  TDR5009C41824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
-  TDR5009C43024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  TDR5009C40624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5009C40624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5009C41824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5009C41824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5009C43024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5009C43024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
 }
 
 Table LINEAR_CORN_trt4.plot_5027 {
-  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
-  TDR5027A40624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth']
-  TDR5027A41824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth']
-  TDR5027A43024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth']
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  TDR5027A40624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5027A40624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5027A41824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5027A41824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5027A43024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5027A43024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
 }
 
-// Note: IRT stands for Infrared Thermometer, used to measure surface temperature
+// Note: IRT stands for Infrared Thermometer, used to measure canopy temperature
 // Note: TDR stands for Time Domain Reflectometry, used to measure soil moisture
-// The numbers in the field names represent plot numbers and depths
-// All timestamp fields are in UTC. Local time considerations should be handled in queries or application logic.
+// Note: DEN stands for Dendrometer, used to measure stem diameter changes
+// Note: SAP stands for Sap Flow sensor, used to measure plant water use
+// The numbers in the field names represent plot numbers and depths (for TDR sensors)
+// All timestamp fields are in UTC. Local time considerations should be handled in queries or application logic
+// Stress indices (CWSI, ET, SWSI) are calculated values based on sensor readings and weather data
+// The '_pred' suffix indicates a predicted value for the corresponding measurement
+
+// Additional tables for irrigation recommendations and model performance tracking

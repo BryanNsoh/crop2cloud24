@@ -40,6 +40,16 @@ def parse_dat_file(file_name):
 
     data_hourly.reset_index(inplace=True)
     
+    # Correct the misspelled column name
+    if 'TDR5006B11724' in data_hourly.columns:
+        if 'TDR5006B11824' in data_hourly.columns:
+            logger.warning("Both correct and incorrect column names exist. Merging data.")
+            data_hourly['TDR5006B11824'] = data_hourly['TDR5006B11824'].fillna(data_hourly['TDR5006B11724'])
+        else:
+            data_hourly['TDR5006B11824'] = data_hourly['TDR5006B11724']
+        data_hourly.drop('TDR5006B11724', axis=1, inplace=True)
+        logger.info("Corrected misspelled column name from TDR5006B11724 to TDR5006B11824")
+    
     logger.info(f"Final columns: {data_hourly.columns.tolist()}")
     logger.info(f"Final shape: {data_hourly.shape}")
     logger.info(f"TIMESTAMP dtype: {data_hourly['TIMESTAMP'].dtype}")
