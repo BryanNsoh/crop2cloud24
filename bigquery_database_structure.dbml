@@ -1,6 +1,40 @@
 // Project: crop2cloud24
 // Database: BigQuery
 
+// Updated Sensor Nomenclature Guide
+// Original Nomenclature
+// The sensor address is composed of these parts in the following order:
+// Sensor Type: Three-letter code
+// 'IRT': Infrared Thermometer
+// 'TDR': Time Domain Reflectometry
+// 'WAM': Watermark
+// 'SAP': Sapflow
+// 'DEN': Dendrometer
+// Field Number: Four-digit number
+// Node: Single letter (A, B, C, D, or E)
+// Treatment: Single digit (1, 2, 5, or 6)
+// Depth: Two-digit number (06, 18, 32, or 40) or 'xx' for non-applicable sensors
+// Timestamp: Two-digit year ('24') (this also doubles as an identifier for the linear field LR
+// Example: TDR2001A10624 (TDR sensor in field 2001, node A, treatment 1, installed at 6 inches, installed in 2024). This nomenclature is for all sensor in the ‘LINEAR’ field.
+// New SDI Logger Nomenclature
+// For the new SDI logger (SDI1C), the nomenclature has been modified:
+// Sensor Type: Remains the same (IRT for Infrared Thermometer)
+// Plot Number: Two-digit number (instead of four)
+// Note: Two zeros are appended before this number when referring to the full plot number
+// Node: Remains the same (C for SDI1C)
+// Treatment: Remains the same (single digit)
+// Depth: Remains 'xx' for IRT sensors (not applicable)
+// Field Identifier: 'SD' (for surface drift) instead of the year
+// Example: IRT0011C5xxSD (IRT sensor in plot 11 (full plot number would be 0011), node C, treatment 5, no depth applicable, in the SDI)
+// Combined Examples
+// Original: IRT2003C2xx24 (IRT sensor in field 2003, node C, treatment 2, installed in 2024) New: IRT0011C5xxSD (IRT sensor in plot 11, node C, treatment 5, in surface drift field)
+// Original: TDR2001A10624 (TDR sensor in field 2001, node A, treatment 1, at 6 inches depth, installed in 2024) New: (No direct equivalent in new system, as it focuses on IRT sensors)
+// Original: WAM2002B53224 (Watermark sensor in field 2002, node B, treatment 5, at 32 inches depth, installed in 2024) New: (No direct equivalent in new system, as it focuses on IRT sensors)
+// New: IRT0012C1xxSD (IRT sensor in plot 12, node C, treatment 1, in surface drift field)
+// New: IRT0036C5xxSD (Analog IRT sensor in plot 36, node C, treatment 5, in surface drift field)
+// Note: In the new system, when referring to the full plot number, add two zeros before the two-digit plot number. For example, plot 11 would be referred to as plot 0011 in the full context.
+
+
 // Note: BigQuery table names cannot contain hyphens. Hyphens in original names have been replaced with underscores.
 // All timestamps are stored in UTC. Local time considerations should be handled in queries or application logic.
 
