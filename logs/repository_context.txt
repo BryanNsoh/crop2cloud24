@@ -1,0 +1,4151 @@
+<repository_structure>
+<directory name="claude-project">
+    <file>
+        <name>crop2cloud24..env</name>
+        <path>crop2cloud24..env</path>
+        <content>
+GOOGLE_APPLICATION_CREDENTIALS=C:\\Users\\bnsoh2\\OneDrive - University of Nebraska-Lincoln\\Documents\\keys\\crop2cloud24-4b30f843e1cf.json
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24..gitignore</name>
+        <path>crop2cloud24..gitignore</path>
+        <content>
+.env
+.venv
+
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.bigquery_database_structure.dbml</name>
+        <path>crop2cloud24.bigquery_database_structure.dbml</path>
+        <content>
+// Project: crop2cloud24
+// Database: BigQuery
+
+// Updated Sensor Nomenclature Guide
+// Original Nomenclature
+// The sensor address is composed of these parts in the following order:
+// Sensor Type: Three-letter code
+// 'IRT': Infrared Thermometer
+// 'TDR': Time Domain Reflectometry
+// 'WAM': Watermark
+// 'SAP': Sapflow
+// 'DEN': Dendrometer
+// Field Number: Four-digit number
+// Node: Single letter (A, B, C, D, or E)
+// Treatment: Single digit (1, 2, 5, or 6)
+// Depth: Two-digit number (06, 18, 32, or 40) or 'xx' for non-applicable sensors
+// Timestamp: Two-digit year ('24') (this also doubles as an identifier for the linear field LR
+// Example: TDR2001A10624 (TDR sensor in field 2001, node A, treatment 1, installed at 6 inches, installed in 2024). This nomenclature is for all sensor in the ‘LINEAR’ field.
+// New SDI Logger Nomenclature
+// For the new SDI logger (SDI1C), the nomenclature has been modified:
+// Sensor Type: Remains the same (IRT for Infrared Thermometer)
+// Plot Number: Two-digit number (instead of four)
+// Note: Two zeros are appended before this number when referring to the full plot number
+// Node: Remains the same (C for SDI1C)
+// Treatment: Remains the same (single digit)
+// Depth: Remains 'xx' for IRT sensors (not applicable)
+// Field Identifier: 'SD' (for surface drift) instead of the year
+// Example: IRT0011C5xxSD (IRT sensor in plot 11 (full plot number would be 0011), node C, treatment 5, no depth applicable, in the SDI)
+// Combined Examples
+// Original: IRT2003C2xx24 (IRT sensor in field 2003, node C, treatment 2, installed in 2024) New: IRT0011C5xxSD (IRT sensor in plot 11, node C, treatment 5, in surface drift field)
+// Original: TDR2001A10624 (TDR sensor in field 2001, node A, treatment 1, at 6 inches depth, installed in 2024) New: (No direct equivalent in new system, as it focuses on IRT sensors)
+// Original: WAM2002B53224 (Watermark sensor in field 2002, node B, treatment 5, at 32 inches depth, installed in 2024) New: (No direct equivalent in new system, as it focuses on IRT sensors)
+// New: IRT0012C1xxSD (IRT sensor in plot 12, node C, treatment 1, in surface drift field)
+// New: IRT0036C5xxSD (Analog IRT sensor in plot 36, node C, treatment 5, in surface drift field)
+// Note: In the new system, when referring to the full plot number, add two zeros before the two-digit plot number. For example, plot 11 would be referred to as plot 0011 in the full context.
+
+
+// Note: BigQuery table names cannot contain hyphens. Hyphens in original names have been replaced with underscores.
+// All timestamps are stored in UTC. Local time considerations should be handled in queries or application logic.
+
+// weather dataset
+// This dataset contains weather data from multiple sources
+Table weather.current-weather-mesonet {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  RECORD FLOAT [note: 'Record identifier']
+  Ta_2m_Avg FLOAT [note: 'Average air temperature at 2m height (°C)']
+  TaMax_2m FLOAT [note: 'Maximum air temperature at 2m height (°C)']
+  TaMaxTime_2m FLOAT [note: 'Time of maximum air temperature']
+  TaMin_2m FLOAT [note: 'Minimum air temperature at 2m height (°C)']
+  TaMinTime_2m FLOAT [note: 'Time of minimum air temperature']
+  RH_2m_Avg FLOAT [note: 'Average relative humidity at 2m height (%)']
+  RHMax_2m FLOAT [note: 'Maximum relative humidity at 2m height (%)']
+  RHMaxTime_2m FLOAT [note: 'Time of maximum relative humidity']
+  RHMin_2m FLOAT [note: 'Minimum relative humidity at 2m height (%)']
+  RHMinTime_2m FLOAT [note: 'Time of minimum relative humidity']
+  Dp_2m_Avg FLOAT [note: 'Average dew point at 2m height (°C)']
+  DpMax_2m FLOAT [note: 'Maximum dew point at 2m height (°C)']
+  DpMaxTime_2m FLOAT [note: 'Time of maximum dew point']
+  DpMin_2m FLOAT [note: 'Minimum dew point at 2m height (°C)']
+  DpMinTime_2m FLOAT [note: 'Time of minimum dew point']
+  HeatIndex_2m_Avg FLOAT [note: 'Average heat index at 2m height']
+  HeatIndexMax_2m FLOAT [note: 'Maximum heat index at 2m height']
+  HeatIndexMaxTime_2m FLOAT [note: 'Time of maximum heat index']
+  WindChill_2m_Avg FLOAT [note: 'Average wind chill at 2m height']
+  WindChillMin_2m FLOAT [note: 'Minimum wind chill at 2m height']
+  WindChillMinTime_2m FLOAT [note: 'Time of minimum wind chill']
+  WndAveSpd_3m FLOAT [note: 'Average wind speed at 3m height (m/s)']
+  WndVecMagAve_3m FLOAT [note: 'Average wind vector magnitude at 3m height']
+  WndAveDir_3m FLOAT [note: 'Average wind direction at 3m height (degrees)']
+  WndAveDirSD_3m FLOAT [note: 'Standard deviation of wind direction at 3m height']
+  WndMaxSpd5s_3m FLOAT [note: 'Maximum 5-second wind speed at 3m height (m/s)']
+  WndMaxSpd5sTime_3m FLOAT [note: 'Time of maximum 5-second wind speed']
+  WndMax_5sec_Dir_3m FLOAT [note: 'Direction of maximum 5-second wind speed (degrees)']
+  PresAvg_1pnt5m FLOAT [note: 'Average pressure at 1.5m height (hPa)']
+  PresMax_1pnt5m FLOAT [note: 'Maximum pressure at 1.5m height (hPa)']
+  PresMaxTime_1pnt5m FLOAT [note: 'Time of maximum pressure']
+  PresMin_1pnt5m FLOAT [note: 'Minimum pressure at 1.5m height (hPa)']
+  PresMinTime_1pnt5m FLOAT [note: 'Time of minimum pressure']
+  Solar_2m_Avg FLOAT [note: 'Average solar radiation at 2m height (W/m²)']
+  Rain_1m_Tot FLOAT [note: 'Total rainfall at 1m height (mm)']
+  Ts_bare_10cm_Avg FLOAT [note: 'Average bare soil temperature at 10cm depth (°C)']
+  TsMax_bare_10cm FLOAT [note: 'Maximum bare soil temperature at 10cm depth (°C)']
+  TsMaxTime_bare_10cm FLOAT [note: 'Time of maximum bare soil temperature']
+  TsMin_bare_10cm FLOAT [note: 'Minimum bare soil temperature at 10cm depth (°C)']
+  TsMinTime_bare_10cm FLOAT [note: 'Time of minimum bare soil temperature']
+}
+
+Table weather.current-openweathermap {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation']
+  Ta_2m_Avg FLOAT [note: 'Average air temperature at 2m height (°C)']
+  TaMax_2m FLOAT [note: 'Maximum air temperature at 2m height (°C)']
+  TaMin_2m FLOAT [note: 'Minimum air temperature at 2m height (°C)']
+  RH_2m_Avg FLOAT [note: 'Average relative humidity at 2m height (%)']
+  Dp_2m_Avg FLOAT [note: 'Average dew point at 2m height (°C)']
+  WndAveSpd_3m FLOAT [note: 'Average wind speed at 3m height (m/s)']
+  WndAveDir_3m FLOAT [note: 'Average wind direction at 3m height (degrees)']
+  WndMaxSpd5s_3m FLOAT [note: 'Maximum wind speed (gust) at 3m height (m/s)']
+  PresAvg_1pnt5m FLOAT [note: 'Average pressure at 1.5m height (hPa)']
+  Rain_1m_Tot FLOAT [note: 'Total rainfall at 1m height (mm)']
+  UV_index FLOAT [note: 'UV index']
+  Visibility FLOAT [note: 'Visibility (meters)']
+  Clouds FLOAT [note: 'Cloud coverage (%)']
+}
+
+Table weather.four-day-forecast-openweathermap {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the forecasted data point']
+  Ta_2m_Avg FLOAT [note: 'Forecasted average air temperature at 2m height (°C)']
+  TaMax_2m FLOAT [note: 'Forecasted maximum air temperature at 2m height (°C)']
+  TaMin_2m FLOAT [note: 'Forecasted minimum air temperature at 2m height (°C)']
+  RH_2m_Avg FLOAT [note: 'Forecasted average relative humidity at 2m height (%)']
+  Dp_2m_Avg FLOAT [note: 'Forecasted average dew point at 2m height (°C)']
+  WndAveSpd_3m FLOAT [note: 'Forecasted average wind speed at 3m height (m/s)']
+  WndAveDir_3m FLOAT [note: 'Forecasted average wind direction at 3m height (degrees)']
+  WndMaxSpd5s_3m FLOAT [note: 'Forecasted maximum wind speed (gust) at 3m height (m/s)']
+  PresAvg_1pnt5m FLOAT [note: 'Forecasted average pressure at 1.5m height (hPa)']
+  Rain_1m_Tot FLOAT [note: 'Forecasted total rainfall at 1m height (mm)']
+  UV_index FLOAT [note: 'Forecasted UV index']
+  Visibility FLOAT [note: 'Forecasted visibility (meters)']
+  Clouds FLOAT [note: 'Forecasted cloud coverage (%)']
+}
+
+// LINEAR_CORN_trt1 dataset
+// This dataset contains sensor data for treatment 1 of the linear corn experiment
+Table LINEAR_CORN_trt1.plot_5006 {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5006B1xx24 FLOAT [note: 'Infrared temperature reading for plot 5006 (°C)']
+  IRT5006B1xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5006 (°C)']
+  TDR5006B10624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5006B10624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5006B11824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5006B11824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5006B13024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5006B13024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  TDR5006B14224 FLOAT [note: 'Time Domain Reflectometry reading at 42cm depth (volumetric water content)']
+  TDR5006B14224_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 42cm depth']
+  DEN5006B1xx24 FLOAT [note: 'Dendrometer reading for plot 5006 (μm)']
+  DEN5006B1xx24_pred FLOAT [note: 'Predicted Dendrometer reading for plot 5006 (μm)']
+  SAP5006B1xx24 FLOAT [note: 'Sap flow reading for plot 5006 (g/h)']
+  SAP5006B1xx24_pred FLOAT [note: 'Predicted Sap flow reading for plot 5006 (g/h)']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
+}
+
+Table LINEAR_CORN_trt1.plot_5010 {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5010C1xx24 FLOAT [note: 'Infrared temperature reading for plot 5010 (°C)']
+  IRT5010C1xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5010 (°C)']
+  TDR5010C10624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5010C10624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5010C11824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5010C11824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5010C13024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5010C13024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  DEN5010C1xx24 FLOAT [note: 'Dendrometer reading for plot 5010 (μm)']
+  DEN5010C1xx24_pred FLOAT [note: 'Predicted Dendrometer reading for plot 5010 (μm)']
+  SAP5010C1xx24 FLOAT [note: 'Sap flow reading for plot 5010 (g/h)']
+  SAP5010C1xx24_pred FLOAT [note: 'Predicted Sap flow reading for plot 5010 (g/h)']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
+}
+
+Table LINEAR_CORN_trt1.plot_5023 {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5023A1xx24 FLOAT [note: 'Infrared temperature reading for plot 5023 (°C)']
+  IRT5023A1xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5023 (°C)']
+  TDR5023A10624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5023A10624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5023A11824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5023A11824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5023A13024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5023A13024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  TDR5023A14224 FLOAT [note: 'Time Domain Reflectometry reading at 42cm depth (volumetric water content)']
+  TDR5023A14224_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 42cm depth']
+  DEN5023A1xx24 FLOAT [note: 'Dendrometer reading for plot 5023 (μm)']
+  DEN5023A1xx24_pred FLOAT [note: 'Predicted Dendrometer reading for plot 5023 (μm)']
+  SAP5023A1xx24 FLOAT [note: 'Sap flow reading for plot 5023 (g/h)']
+  SAP5023A1xx24_pred FLOAT [note: 'Predicted Sap flow reading for plot 5023 (g/h)']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
+}
+
+// LINEAR_CORN_trt2 dataset
+// This dataset contains sensor data for treatment 2 of the linear corn experiment
+Table LINEAR_CORN_trt2.plot_5003 {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5003C2xx24 FLOAT [note: 'Infrared temperature reading for plot 5003 (°C)']
+  IRT5003C2xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5003 (°C)']
+  TDR5003C20624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5003C20624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5003C21824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5003C21824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5003C23024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5003C23024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
+}
+
+Table LINEAR_CORN_trt2.plot_5012 {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5012B2xx24 FLOAT [note: 'Infrared temperature reading for plot 5012 (°C)']
+  IRT5012B2xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5012 (°C)']
+  TDR5012B20624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5012B20624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5012B21824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5012B21824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5012B23024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5012B23024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
+}
+
+Table LINEAR_CORN_trt2.plot_5026 {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  TDR5026A20624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5026A20624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5026A21824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5026A21824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5026A23824 FLOAT [note: 'Time Domain Reflectometry reading at 38cm depth (volumetric water content)']
+  TDR5026A23824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 38cm depth']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
+}
+
+// LINEAR_CORN_trt3 dataset
+// This dataset contains sensor data for treatment 3 of the linear corn experiment
+Table LINEAR_CORN_trt3.plot_5001 {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5001C3xx24 FLOAT [note: 'Infrared temperature reading for plot 5001 (°C)']
+  IRT5001C3xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5001 (°C)']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
+}
+
+Table LINEAR_CORN_trt3.plot_5018 {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5018A3xx24 FLOAT [note: 'Infrared temperature reading for plot 5018 (°C)']
+  IRT5018A3xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5018 (°C)']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
+}
+
+Table LINEAR_CORN_trt3.plot_5020 {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  IRT5020A3xx24 FLOAT [note: 'Infrared temperature reading for plot 5020 (°C)']
+  IRT5020A3xx24_pred FLOAT [note: 'Predicted infrared temperature reading for plot 5020 (°C)']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
+}
+
+// LINEAR_CORN_trt4 dataset
+// This dataset contains sensor data for treatment 4 of the linear corn experiment
+Table LINEAR_CORN_trt4.plot_5007 {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  TDR5007B40624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5007B40624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5007B41824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5007B41824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5007B43024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5007B43024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  TDR5007B44224 FLOAT [note: 'Time Domain Reflectometry reading at 42cm depth (volumetric water content)']
+  TDR5007B44224_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 42cm depth']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
+}
+
+Table LINEAR_CORN_trt4.plot_5009 {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  TDR5009C40624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5009C40624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5009C41824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5009C41824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5009C43024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5009C43024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
+}
+
+Table LINEAR_CORN_trt4.plot_5027 {
+  TIMESTAMP TIMESTAMP [not null, note: 'UTC timestamp of the observation or prediction']
+  is_actual BOOLEAN [not null, note: 'True if this is an actual measurement, False if it\'s a prediction']
+  prediction_timestamp TIMESTAMP [note: 'UTC timestamp when the prediction was made, if applicable']
+  applied_irrigation FLOAT [note: 'Amount of irrigation applied (mm)']
+  TDR5027A40624 FLOAT [note: 'Time Domain Reflectometry reading at 6cm depth (volumetric water content)']
+  TDR5027A40624_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 6cm depth']
+  TDR5027A41824 FLOAT [note: 'Time Domain Reflectometry reading at 18cm depth (volumetric water content)']
+  TDR5027A41824_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 18cm depth']
+  TDR5027A43024 FLOAT [note: 'Time Domain Reflectometry reading at 30cm depth (volumetric water content)']
+  TDR5027A43024_pred FLOAT [note: 'Predicted Time Domain Reflectometry reading at 30cm depth']
+  cwsi FLOAT [note: 'Crop Water Stress Index']
+  cwsi_pred FLOAT [note: 'Predicted Crop Water Stress Index']
+  et FLOAT [note: 'Evapotranspiration (mm)']
+  et_pred FLOAT [note: 'Predicted Evapotranspiration (mm)']
+  swsi FLOAT [note: 'Standardized Water Stress Index']
+  swsi_pred FLOAT [note: 'Predicted Standardized Water Stress Index']
+}
+
+// Note: IRT stands for Infrared Thermometer, used to measure canopy temperature
+// Note: TDR stands for Time Domain Reflectometry, used to measure soil moisture
+// Note: DEN stands for Dendrometer, used to measure stem diameter changes
+// Note: SAP stands for Sap Flow sensor, used to measure plant water use
+// The numbers in the field names represent plot numbers and depths (for TDR sensors)
+// All timestamp fields are in UTC. Local time considerations should be handled in queries or application logic
+// Stress indices (CWSI, ET, SWSI) are calculated values based on sensor readings and weather data
+// The '_pred' suffix indicates a predicted value for the corresponding measurement
+
+// Additional tables for irrigation recommendations and model performance tracking
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.cloud-functions.common-problems&solutions-for-cloud-funcs.md</name>
+        <path>crop2cloud24.cloud-functions.common-problems&solutions-for-cloud-funcs.md</path>
+        <content>
+Certainly. Here's a comprehensive list of issues we encountered, their causes, and the solutions we implemented. This should serve as a valuable reference for future similar projects:
+
+1. Issue: Incorrect column names
+   Cause: Inconsistency between code and actual database schema
+   Solution: Always use the correct column name ('cwsi' in this case) throughout the code. Verify column names in the database schema before writing code.
+
+2. Issue: Attempting to create non-existent temporary tables
+   Cause: Misunderstanding of BigQuery's handling of temporary tables in cloud functions
+   Solution: Avoid using temporary tables in cloud functions. Instead, perform operations directly on the main table.
+
+3. Issue: Type mismatch when calculating duration
+   Cause: Mixing datetime objects with float timestamps
+   Solution: Use consistent time measurement (e.g., time.time() for both start and end times) when calculating durations.
+
+4. Issue: Division by zero in CWSI calculation
+   Cause: Not handling edge cases in the calculation
+   Solution: Add a small epsilon value to prevent division by zero, and return None for invalid CWSI values.
+
+5. Issue: Duplicate rows with same timestamp
+   Cause: Appending new data without checking for existing timestamps
+   Solution: Check for existing timestamps before insertion and add a small offset (e.g., 1 minute) to avoid duplicates.
+
+6. Issue: Processing data outside desired time range
+   Cause: Not filtering data based on specific time criteria
+   Solution: Convert timestamps to local time (CST) and filter for desired range (12 PM to 5 PM in this case).
+
+7. Issue: Inefficient data retrieval
+   Cause: Fetching all data and then filtering in Python
+   Solution: Use BigQuery to filter data server-side before retrieving it.
+
+8. Issue: Incorrect handling of NULL values
+   Cause: Not explicitly handling NULL values in BigQuery and pandas
+   Solution: Use appropriate NULL handling in both BigQuery queries and pandas operations (e.g., dropna()).
+
+9. Issue: Inconsistent data types between BigQuery and pandas
+   Cause: Automatic type inference sometimes leading to mismatches
+   Solution: Explicitly specify data types in BigQuery schema and when creating pandas DataFrames.
+
+10. Issue: Inefficient updating of existing rows
+    Cause: Attempting to update rows one by one
+    Solution: Use batch updates or MERGE operations for better performance.
+
+11. Issue: Incorrect time zone handling
+    Cause: Not considering time zone differences between stored data and local time
+    Solution: Always use UTC in the database and convert to local time only for display or specific calculations.
+
+12. Issue: Not handling BigQuery job failures
+    Cause: Assuming all BigQuery operations succeed
+    Solution: Implement proper error handling and job status checking for all BigQuery operations.
+
+13. Issue: Inconsistent logging
+    Cause: Ad-hoc logging statements added as needed
+    Solution: Implement a consistent logging strategy throughout the code, including appropriate log levels.
+
+14. Issue: Not considering BigQuery quotas and limits
+    Cause: Unawareness of BigQuery's operational limits
+    Solution: Design code with BigQuery's quotas in mind, implement retries and backoff strategies.
+
+15. Issue: Inefficient use of BigQuery resources
+    Cause: Not optimizing queries and data handling
+    Solution: Use appropriate BigQuery best practices like partitioning, clustering, and query optimization.
+
+16. Issue: Not handling schema evolution
+    Cause: Assuming static database schema
+    Solution: Design code to be resilient to schema changes, possibly using schema inference or explicit schema management.
+
+17. Issue: Incorrect error handling in cloud functions
+    Cause: Not considering the stateless nature of cloud functions
+    Solution: Implement proper error handling that doesn't rely on function state between invocations.
+
+18. Issue: Not considering cold start times
+    Cause: Unawareness of cloud function execution model
+    Solution: Optimize code to minimize cold start impact, possibly using global variables for long-lived resources.
+
+19. Issue: Inefficient data processing
+    Cause: Processing all data in a single pass
+    Solution: Implement batching for large datasets to avoid timeout issues and improve efficiency.
+
+20. Issue: Not handling API errors properly
+    Cause: Assuming all API calls succeed
+    Solution: Implement proper error handling and retries for all external API calls.
+
+21. Issue: Inconsistent data types in calculations
+    Cause: Mixing float and integer types in mathematical operations
+    Solution: Ensure consistent data types in calculations, using explicit type casting when necessary.
+
+22. Issue: Not considering the impact of frequent updates
+    Cause: Updating the database too frequently
+    Solution: Batch updates when possible, and consider the trade-off between real-time updates and system load.
+
+23. Issue: Inefficient use of cloud function resources
+    Cause: Not optimizing memory and CPU usage
+    Solution: Profile the code and optimize resource usage, possibly adjusting cloud function configuration.
+
+24. Issue: Not handling missing data properly
+    Cause: Assuming all required data is always present
+    Solution: Implement proper checks for missing data and handle such cases gracefully.
+
+25. Issue: Inconsistent handling of date/time data
+    Cause: Using different date/time representations in different parts of the code
+    Solution: Standardize on a single date/time representation (preferably UTC timestamps) throughout the codebase.
+
+By addressing these issues proactively in future projects, you can significantly reduce debugging time and improve the robustness of your cloud functions and BigQuery interactions.
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.cloud-functions.compute-cwsi.py</name>
+        <path>crop2cloud24.cloud-functions.compute-cwsi.py</path>
+        <content>
+import pandas as pd
+import numpy as np
+from google.cloud import bigquery
+from datetime import datetime, timedelta
+import pytz
+import logging
+import sys
+import time
+import requests
+import os
+import math
+import json
+
+class CustomFormatter(logging.Formatter):
+    def format(self, record):
+        return f"{datetime.now(pytz.timezone('America/Chicago')).strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} CST - {record.levelname} - {record.message}"
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+handler = logging.StreamHandler(sys.stdout)
+handler.setFormatter(CustomFormatter())
+logger.addHandler(handler)
+
+STEFAN_BOLTZMANN = 5.67e-8
+CP = 1005
+GRAVITY = 9.81
+K = 0.41
+CROP_HEIGHT = 1.6
+LATITUDE = 41.15
+SURFACE_ALBEDO = 0.23
+
+API_KEY = os.environ.get('NDVI_API_KEY')
+POLYGON_API_URL = "http://api.agromonitoring.com/agro/1.0/polygons"
+NDVI_API_URL = "http://api.agromonitoring.com/agro/1.0/ndvi/history"
+POLYGON_NAME = "My_Field_Polygon"
+
+def get_or_create_polygon():
+    response = requests.get(
+        POLYGON_API_URL,
+        params={"appid": API_KEY}
+    )
+    
+    if response.status_code == 200:
+        polygons = response.json()
+        for polygon in polygons:
+            if polygon['name'] == POLYGON_NAME:
+                logger.info(f"Found existing polygon with id: {polygon['id']}")
+                return polygon['id']
+    
+    coordinates = [
+    [-100.774075, 41.090012],  # Northwest corner
+    [-100.773341, 41.089999],  # Northeast corner (moved slightly east)
+    [-100.773343, 41.088311],  # Southeast corner (moved slightly east)
+    [-100.774050, 41.088311],  # Southwest corner
+    [-100.774075, 41.090012]   # Closing the polygon
+]
+
+
+    polygon_data = {
+        "name": POLYGON_NAME,
+        "geo_json": {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [coordinates]
+            }
+        }
+    }
+
+    headers = {"Content-Type": "application/json"}
+
+    response = requests.post(
+        POLYGON_API_URL,
+        params={"appid": API_KEY},
+        headers=headers,
+        data=json.dumps(polygon_data)
+    )
+
+    if response.status_code == 201:
+        logger.info("Polygon created successfully")
+        return response.json()['id']
+    else:
+        logger.error(f"Error creating polygon. Status code: {response.status_code}")
+        logger.error(response.text)
+        return None
+
+def get_latest_ndvi(polygon_id):
+    end_date = int(datetime.now().timestamp())
+    start_date = end_date - 30 * 24 * 60 * 60
+
+    params = {
+        "polyid": polygon_id,
+        "start": start_date,
+        "end": end_date,
+        "appid": API_KEY
+    }
+
+    response = requests.get(NDVI_API_URL, params=params)
+    if response.status_code != 200:
+        logger.error(f"Failed to fetch NDVI data: {response.status_code}")
+        return None
+
+    data = response.json()
+    if not data:
+        logger.warning("No NDVI data available")
+        return None
+
+    latest_entry = sorted(data, key=lambda x: x['dt'], reverse=True)[0]
+    return latest_entry['data']['mean']
+
+def calculate_lai(ndvi):
+    return 0.57 * math.exp(2.33 * ndvi)
+
+def celsius_to_kelvin(temp_celsius):
+    return temp_celsius + 273.15
+
+def saturated_vapor_pressure(temperature_celsius):
+    return 0.6108 * np.exp(17.27 * temperature_celsius / (temperature_celsius + 237.3))
+
+def vapor_pressure_deficit(temperature_celsius, relative_humidity):
+    es = saturated_vapor_pressure(temperature_celsius)
+    ea = es * (relative_humidity / 100)
+    return es - ea
+
+def net_radiation(solar_radiation, air_temp_celsius, canopy_temp_celsius, surface_albedo=0.23, emissivity_a=0.85, emissivity_c=0.98):
+    air_temp_kelvin = celsius_to_kelvin(air_temp_celsius)
+    canopy_temp_kelvin = celsius_to_kelvin(canopy_temp_celsius)
+    Rns = (1 - surface_albedo) * solar_radiation
+    Rnl = emissivity_c * STEFAN_BOLTZMANN * canopy_temp_kelvin**4 - emissivity_a * STEFAN_BOLTZMANN * air_temp_kelvin**4
+    return Rns - Rnl
+
+def soil_heat_flux(net_radiation, lai):
+    return net_radiation * np.exp(-0.6 * lai)
+
+def aerodynamic_resistance(wind_speed, measurement_height, zero_plane_displacement, roughness_length):
+    return (np.log((measurement_height - zero_plane_displacement) / roughness_length) * 
+            np.log((measurement_height - zero_plane_displacement) / (roughness_length * 0.1))) / (K**2 * wind_speed)
+
+def psychrometric_constant(atmospheric_pressure_pa):
+    return (CP * atmospheric_pressure_pa) / (0.622 * 2.45e6)
+
+def slope_saturation_vapor_pressure(temperature_celsius):
+    return 4098 * saturated_vapor_pressure(temperature_celsius) / (temperature_celsius + 237.3)**2
+
+def convert_wind_speed(u3, crop_height):
+    z0 = 0.1 * crop_height
+    return u3 * (np.log(2/z0) / np.log(3/z0))
+
+def calculate_cwsi_th1(row, crop_height, lai, latitude, surface_albedo=0.23):
+    Ta = row['Ta_2m_Avg']
+    RH = row['RH_2m_Avg']
+    Rs = row['Solar_2m_Avg']
+    u3 = row['WndAveSpd_3m']
+    P = row['PresAvg_1pnt5m'] * 100
+    Tc = row['canopy_temp']
+    
+    u2 = convert_wind_speed(u3, crop_height)
+    
+    if u2 < 0.5 or Ta > 40 or Ta < 0 or RH < 10 or RH > 100:
+        logger.warning(f"Extreme weather conditions: u2={u2}, Ta={Ta}, RH={RH}")
+        return None
+    
+    VPD = vapor_pressure_deficit(Ta, RH)
+    Rn = net_radiation(Rs, Ta, Tc, surface_albedo)
+    G = soil_heat_flux(Rn, lai)
+    
+    zero_plane_displacement = 0.67 * crop_height
+    roughness_length = 0.123 * crop_height
+    
+    ra = aerodynamic_resistance(u2, 2, zero_plane_displacement, roughness_length)
+    γ = psychrometric_constant(P)
+    Δ = slope_saturation_vapor_pressure(Ta)
+    
+    ρ = P / (287.05 * celsius_to_kelvin(Ta))
+    
+    numerator = (Tc - Ta) - ((ra * (Rn - G)) / (ρ * CP)) + (VPD / γ)
+    denominator = ((Δ + γ) * ra * (Rn - G)) / (ρ * CP * γ) + (VPD / γ)
+    
+    if denominator == 0:
+        logger.warning(f"Division by zero encountered: denominator={denominator}")
+        return None
+    
+    cwsi = numerator / denominator
+    
+    logger.debug(f"CWSI calculation: Ta={Ta}, RH={RH}, u2={u2}, Tc={Tc}, CWSI={cwsi}")
+    
+    if cwsi < 0 or cwsi > 1.5:
+        logger.warning(f"CWSI value out of extended range: {cwsi}")
+        return None
+    
+    return cwsi
+
+def get_bigquery_client():
+    logger.info("Initializing BigQuery client")
+    return bigquery.Client()
+
+def get_irt_tables(client):
+    logger.info("Retrieving IRT tables for treatment 1")
+    dataset = 'LINEAR_CORN_trt1'
+    query = f"""
+    SELECT table_name
+    FROM `crop2cloud24.{dataset}.INFORMATION_SCHEMA.TABLES`
+    WHERE table_name LIKE 'plot_%'
+    """
+    query_job = client.query(query)
+    results = query_job.result()
+    
+    irt_tables = []
+    for row in results:
+        table_name = row['table_name']
+        schema_query = f"""
+        SELECT column_name
+        FROM `crop2cloud24.{dataset}.INFORMATION_SCHEMA.COLUMNS`
+        WHERE table_name = '{table_name}' AND column_name LIKE 'IRT%' AND column_name NOT LIKE '%_pred'
+        """
+        schema_job = client.query(schema_query)
+        schema_results = schema_job.result()
+        if schema_results.total_rows > 0:
+            irt_tables.append(f"{dataset}.{table_name}")
+    
+    logger.info(f"Found {len(irt_tables)} tables with IRT sensors in treatment 1: {irt_tables}")
+    return irt_tables
+
+def get_unprocessed_data(client, table_name, irt_column):
+    logger.info(f"Retrieving unprocessed data for table {table_name}")
+    seven_days_ago = datetime.now(pytz.UTC) - timedelta(days=10)
+    query = f"""
+    SELECT TIMESTAMP, {irt_column}, is_actual
+    FROM `crop2cloud24.{table_name}`
+    WHERE TIMESTAMP >= '{seven_days_ago.isoformat()}'
+    ORDER BY TIMESTAMP
+    """
+    df = client.query(query).to_dataframe()
+    logger.info(f"Retrieved {len(df)} rows for table {table_name}")
+    return df
+
+def get_weather_data(client, start_time, end_time):
+    logger.info(f"Retrieving weather data from {start_time} to {end_time}")
+    query = f"""
+    SELECT *
+    FROM `crop2cloud24.weather.current-weather-mesonet`
+    WHERE TIMESTAMP BETWEEN '{start_time}' AND '{end_time}'
+    ORDER BY TIMESTAMP
+    """
+    df = client.query(query).to_dataframe()
+    logger.info(f"Retrieved {len(df)} weather data rows")
+    return df
+
+def update_cwsi(client, table_name, df_cwsi):
+    logger.info(f"Updating CWSI for table {table_name}")
+    
+    seven_days_ago = datetime.now(pytz.UTC) - timedelta(days=7)
+    delete_query = f"""
+    DELETE FROM `crop2cloud24.{table_name}`
+    WHERE TIMESTAMP >= '{seven_days_ago.isoformat()}' AND cwsi IS NOT NULL
+    """
+    client.query(delete_query).result()
+    
+    df_cwsi['TIMESTAMP'] = df_cwsi['TIMESTAMP'].apply(lambda x: x.replace(minute=1, second=0, microsecond=0))
+
+    job_config = bigquery.LoadJobConfig(
+        schema=[
+            bigquery.SchemaField("TIMESTAMP", "TIMESTAMP", mode="REQUIRED"),
+            bigquery.SchemaField("cwsi", "FLOAT", mode="NULLABLE"),
+            bigquery.SchemaField("is_actual", "BOOLEAN", mode="REQUIRED"),
+        ],
+        write_disposition="WRITE_APPEND",
+    )
+    
+    table_ref = client.dataset(table_name.split('.')[0]).table(table_name.split('.')[1])
+    
+    job = client.load_table_from_dataframe(df_cwsi, table_ref, job_config=job_config)
+    job.result()
+    
+    logger.info(f"Successfully updated CWSI for table {table_name}. Rows processed: {len(df_cwsi)}")
+
+def compute_cwsi(request):
+    start_time = time.time()
+    logger.info("Starting CWSI computation")
+    
+    polygon_id = get_or_create_polygon()
+    if polygon_id is None:
+        logger.error("Failed to get or create polygon. Aborting CWSI computation.")
+        return "CWSI computation aborted due to polygon retrieval/creation failure."
+    
+    latest_ndvi = get_latest_ndvi(polygon_id)
+    if latest_ndvi is None:
+        logger.error("Failed to retrieve NDVI data. Aborting CWSI computation.")
+        return "CWSI computation aborted due to NDVI data retrieval failure."
+    
+    LAI = calculate_lai(latest_ndvi)
+    logger.info(f"Using NDVI: {latest_ndvi}, Calculated LAI: {LAI}")
+    
+    client = get_bigquery_client()
+    irt_tables = get_irt_tables(client)
+
+    total_processed = 0
+    for table_name in irt_tables:
+        logger.info(f"Processing table: {table_name}")
+        
+        try:
+            schema_query = f"""
+            SELECT column_name
+            FROM `crop2cloud24.{table_name.split('.')[0]}.INFORMATION_SCHEMA.COLUMNS`
+            WHERE table_name = '{table_name.split('.')[1]}' AND column_name LIKE 'IRT%' AND column_name NOT LIKE '%_pred'
+            """
+            schema_job = client.query(schema_query)
+            schema_results = schema_job.result()
+            irt_column = next(schema_results)[0]
+            logger.info(f"IRT column for table {table_name}: {irt_column}")
+            
+            df = get_unprocessed_data(client, table_name, irt_column)
+            
+            if df.empty:
+                logger.info(f"No unprocessed data for table {table_name}")
+                continue
+            
+            logger.info(f"Processing {len(df)} rows for table {table_name}")
+            
+            df['TIMESTAMP_CST'] = df['TIMESTAMP'].dt.tz_convert('America/Chicago')
+            df = df[(df['TIMESTAMP_CST'].dt.hour >= 12) & (df['TIMESTAMP_CST'].dt.hour < 17)]
+            
+            if df.empty:
+                logger.info(f"No data within 12 PM to 5 PM CST for table {table_name}")
+                continue
+            
+            start_time_weather = df['TIMESTAMP'].min()
+            end_time_weather = df['TIMESTAMP'].max()
+            
+            weather_data = get_weather_data(client, start_time_weather, end_time_weather)
+            
+            df = df.sort_values('TIMESTAMP')
+            weather_data = weather_data.sort_values('TIMESTAMP')
+            
+            df = pd.merge_asof(df, weather_data, on='TIMESTAMP', direction='nearest')
+            
+            df['canopy_temp'] = df[irt_column]
+            logger.info(f"Calculating CWSI for {len(df)} rows")
+            df['cwsi'] = df.apply(lambda row: calculate_cwsi_th1(row, CROP_HEIGHT, LAI, LATITUDE, SURFACE_ALBEDO), axis=1)
+            df_cwsi = df[['TIMESTAMP', 'cwsi', 'is_actual']].dropna()
+            
+            update_cwsi(client, table_name, df_cwsi)
+            
+            total_processed += len(df_cwsi)
+            logger.info(f"Processed {len(df_cwsi)} rows for table {table_name}")
+        
+        except Exception as e:
+            logger.error(f"Error processing table {table_name}: {str(e)}")
+            continue
+
+    end_time = time.time()
+    duration = end_time - start_time
+    logger.info(f"CWSI computation completed. Total rows processed: {total_processed}")
+    logger.info(f"Total execution time: {duration:.2f} seconds")
+    return f"CWSI computation completed. Total rows processed: {total_processed}. Execution time: {duration:.2f} seconds"
+
+if __name__ == "__main__":
+    compute_cwsi(None)
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.cloud-functions.compute-swsi.py</name>
+        <path>crop2cloud24.cloud-functions.compute-swsi.py</path>
+        <content>
+import os
+from google.cloud import bigquery
+from datetime import datetime, timedelta
+import pytz
+import logging
+import pandas as pd
+import numpy as np
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+# BigQuery details
+PROJECT_ID = "crop2cloud24"
+DATASET_ID = "LINEAR_CORN_trt1"
+
+def calculate_swsi(vwc_values):
+    """Calculate SWSI for a set of VWC values."""
+    MAD = 0.5  # management allowed depletion
+    VWC_WP = 0.11  # volumetric water content at wilting point
+    VWC_FC = 0.29  # volumetric water content at field capacity
+    AWC = VWC_FC - VWC_WP  # Available water capacity of soil
+    VWC_MAD = VWC_FC - MAD * AWC  # threshold for triggering irrigation
+
+    valid_vwc = [vwc for vwc in vwc_values if pd.notna(vwc)]
+    
+    if len(valid_vwc) > 2:
+        avg_vwc = np.mean(valid_vwc) / 100  # Convert from percentage to fraction
+        if avg_vwc < VWC_MAD:
+            return abs(avg_vwc - VWC_MAD) / (VWC_MAD - VWC_WP)
+    return None
+
+def get_plot_data(client, plot_number, start_time, end_time):
+    tdr_columns = {
+        5006: ["TDR5006B10624", "TDR5006B11824", "TDR5006B13024", "TDR5006B14224"],
+        5010: ["TDR5010C10624", "TDR5010C11824", "TDR5010C13024"],
+        5023: ["TDR5023A10624", "TDR5023A11824", "TDR5023A13024", "TDR5023A14224"]
+    }
+    
+    columns = ", ".join(tdr_columns[plot_number])
+    query = f"""
+    SELECT TIMESTAMP, {columns}
+    FROM `{PROJECT_ID}.{DATASET_ID}.plot_{plot_number}`
+    WHERE TIMESTAMP BETWEEN '{start_time}' AND '{end_time}'
+      AND is_actual = TRUE
+    ORDER BY TIMESTAMP
+    """
+    logger.info(f"Executing query: {query}")
+    try:
+        query_job = client.query(query)
+        return list(query_job.result())  # Materialize the results
+    except Exception as e:
+        logger.error(f"Error querying data for plot {plot_number}: {str(e)}")
+        return []
+
+def get_table_schema(client, table_id):
+    try:
+        table = client.get_table(f"{PROJECT_ID}.{DATASET_ID}.{table_id}")
+        return table.schema
+    except Exception as e:
+        logger.error(f"Error getting schema for table {table_id}: {str(e)}")
+        return None
+
+def insert_into_bigquery(client, table_id, data_list):
+    if not data_list:
+        logger.warning(f"No data to insert into {table_id}")
+        return
+
+    table_ref = client.dataset(DATASET_ID).table(table_id)
+    
+    # Get the existing schema
+    schema = get_table_schema(client, table_id)
+    if not schema:
+        logger.error(f"Unable to get schema for table {table_id}")
+        return
+
+    job_config = bigquery.LoadJobConfig(schema=schema)
+    job_config.write_disposition = bigquery.WriteDisposition.WRITE_APPEND
+
+    try:
+        job = client.load_table_from_json(data_list, table_ref, job_config=job_config)
+        job.result()  # Wait for the job to complete
+        logger.info(f"{len(data_list)} rows have been added successfully to {table_id}.")
+    except Exception as e:
+        logger.error(f"Error inserting data into {table_id}: {str(e)}")
+        raise
+
+def compute_swsi(request):
+    try:
+        logger.info("Starting SWSI computation function")
+        client = bigquery.Client()
+        plot_numbers = [5006, 5010, 5023]  # Treatment 1 plot numbers
+        
+        end_time = datetime.now(pytz.UTC)
+        start_time = end_time - timedelta(days=7)  # Process last 7 days of data
+        
+        for plot_number in plot_numbers:
+            logger.info(f"Processing plot {plot_number}")
+            rows = get_plot_data(client, plot_number, start_time, end_time)
+            
+            if not rows:
+                logger.warning(f"No data retrieved for plot {plot_number}")
+                continue
+
+            swsi_data = []
+            for row in rows:
+                vwc_values = [row[col] for col in row.keys() if col.startswith(f"TDR{plot_number}")]
+                swsi = calculate_swsi(vwc_values)
+                if swsi is not None:
+                    swsi_data.append({
+                        "TIMESTAMP": row["TIMESTAMP"].isoformat(),
+                        "swsi": swsi,
+                        "is_actual": True  # Set to True as per existing schema
+                    })
+            
+            logger.info(f"Calculated SWSI for {len(swsi_data)} timestamps in plot {plot_number}")
+            
+            if swsi_data:
+                table_id = f"plot_{plot_number}"
+                insert_into_bigquery(client, table_id, swsi_data)
+            else:
+                logger.warning(f"No SWSI data calculated for plot {plot_number}")
+        
+        logger.info("SWSI computation completed successfully")
+        return 'SWSI computation completed successfully', 200
+    except Exception as e:
+        logger.error(f"Error computing SWSI: {str(e)}", exc_info=True)
+        return f'Error computing SWSI: {str(e)}', 500
+
+# For local testing
+if __name__ == "__main__":
+    compute_swsi(None)
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.cloud-functions.current-openweathermap.py</name>
+        <path>crop2cloud24.cloud-functions.current-openweathermap.py</path>
+        <content>
+import os
+import requests
+from google.cloud import bigquery
+from datetime import datetime
+import pytz
+import logging
+import json
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# OpenWeatherMap API details
+API_KEY = os.environ.get('OPENWEATHERMAP_API_KEY')
+BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
+
+# BigQuery details
+PROJECT_ID = "crop2cloud24"
+DATASET_ID = "weather"
+TABLE_ID = "current-openweathermap"
+
+def get_current_weather(lat, lon):
+    params = {
+        'lat': lat,
+        'lon': lon,
+        'appid': API_KEY,
+        'units': 'metric'
+    }
+    logger.info(f"Requesting current weather data for coordinates: {lat}, {lon}")
+    response = requests.get(BASE_URL, params=params)
+    response.raise_for_status()
+    logger.info("Successfully retrieved current weather data")
+    return response.json()
+
+def map_weather_data(data):
+    logger.info("Mapping weather data to BigQuery schema")
+    cst = pytz.timezone('America/Chicago')
+    timestamp = datetime.now(pytz.UTC).astimezone(cst)
+    mapped_data = {
+        'TIMESTAMP': timestamp.isoformat(),
+        'Ta_2m_Avg': data['main']['temp'],
+        'TaMax_2m': data['main']['temp_max'],
+        'TaMin_2m': data['main']['temp_min'],
+        'RH_2m_Avg': data['main']['humidity'],
+        'Dp_2m_Avg': data['main'].get('dew_point'),
+        'WndAveSpd_3m': data['wind']['speed'],
+        'WndAveDir_3m': data['wind']['deg'],
+        'WndMaxSpd5s_3m': data['wind'].get('gust'),
+        'PresAvg_1pnt5m': data['main']['pressure'],
+        'Rain_1m_Tot': data['rain']['1h'] if 'rain' in data else 0,
+        'UV_index': data.get('uvi', 0),
+        'Visibility': data['visibility'],
+        'Clouds': data['clouds']['all']
+    }
+    logger.info(f"Mapped data: {json.dumps(mapped_data, indent=2)}")
+    return mapped_data
+
+def ensure_table_exists(client):
+    dataset_ref = client.dataset(DATASET_ID)
+    table_ref = dataset_ref.table(TABLE_ID)
+    
+    try:
+        client.get_table(table_ref)
+        logger.info(f"Table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID} already exists")
+    except Exception as e:
+        logger.info(f"Table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID} does not exist. Creating it now.")
+        schema = [
+            bigquery.SchemaField("TIMESTAMP", "TIMESTAMP"),
+            bigquery.SchemaField("Ta_2m_Avg", "FLOAT"),
+            bigquery.SchemaField("TaMax_2m", "FLOAT"),
+            bigquery.SchemaField("TaMin_2m", "FLOAT"),
+            bigquery.SchemaField("RH_2m_Avg", "FLOAT"),
+            bigquery.SchemaField("Dp_2m_Avg", "FLOAT"),
+            bigquery.SchemaField("WndAveSpd_3m", "FLOAT"),
+            bigquery.SchemaField("WndAveDir_3m", "FLOAT"),
+            bigquery.SchemaField("WndMaxSpd5s_3m", "FLOAT"),
+            bigquery.SchemaField("PresAvg_1pnt5m", "FLOAT"),
+            bigquery.SchemaField("Rain_1m_Tot", "FLOAT"),
+            bigquery.SchemaField("UV_index", "FLOAT"),
+            bigquery.SchemaField("Visibility", "FLOAT"),
+            bigquery.SchemaField("Clouds", "FLOAT")
+        ]
+        table = bigquery.Table(table_ref, schema=schema)
+        try:
+            client.create_table(table)
+            logger.info(f"Created table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID}")
+        except Exception as create_error:
+            logger.error(f"Error creating table: {str(create_error)}")
+            raise
+
+def insert_into_bigquery(data):
+    client = bigquery.Client()
+    ensure_table_exists(client)
+    table_ref = client.dataset(DATASET_ID).table(TABLE_ID)
+    
+    errors = client.insert_rows_json(table_ref, [data])
+    if errors:
+        logger.error(f"Errors inserting rows: {errors}")
+    else:
+        logger.info("New row has been added successfully.")
+
+def current_weather_function(request):
+    try:
+        logger.info("Starting current weather function")
+        lat, lon = 41.089075, -100.773775
+        
+        weather_data = get_current_weather(lat, lon)
+        mapped_data = map_weather_data(weather_data)
+        insert_into_bigquery(mapped_data)
+        
+        logger.info("Current weather data processed successfully")
+        return 'Current weather data processed successfully', 200
+    except Exception as e:
+        logger.error(f"Error processing current weather data: {str(e)}", exc_info=True)
+        return f'Error processing current weather data: {str(e)}', 500
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.cloud-functions.four-day-forecast-openweathermap.py</name>
+        <path>crop2cloud24.cloud-functions.four-day-forecast-openweathermap.py</path>
+        <content>
+import os
+import requests
+from google.cloud import bigquery
+from datetime import datetime
+import pytz
+import logging
+import json
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# OpenWeatherMap API details
+API_KEY = os.environ.get('OPENWEATHERMAP_API_KEY')
+BASE_URL = "https://api.openweathermap.org/data/2.5/forecast"
+
+# BigQuery details
+PROJECT_ID = "crop2cloud24"
+DATASET_ID = "weather"
+TABLE_ID = "4-day-forecast-openweathermap"
+
+def get_forecast(lat, lon):
+    params = {
+        'lat': lat,
+        'lon': lon,
+        'appid': API_KEY,
+        'units': 'metric'
+    }
+    logger.info(f"Requesting forecast data for coordinates: {lat}, {lon}")
+    response = requests.get(BASE_URL, params=params)
+    response.raise_for_status()
+    logger.info("Successfully retrieved forecast data")
+    return response.json()
+
+def map_forecast_data(forecast_item):
+    logger.info("Mapping forecast data to BigQuery schema")
+    cst = pytz.timezone('America/Chicago')
+    timestamp = datetime.fromtimestamp(forecast_item['dt'], pytz.UTC).astimezone(cst)
+    mapped_data = {
+        'TIMESTAMP': timestamp.isoformat(),
+        'Ta_2m_Avg': forecast_item['main']['temp'],
+        'TaMax_2m': forecast_item['main']['temp_max'],
+        'TaMin_2m': forecast_item['main']['temp_min'],
+        'RH_2m_Avg': forecast_item['main']['humidity'],
+        'Dp_2m_Avg': forecast_item['main'].get('dew_point'),
+        'WndAveSpd_3m': forecast_item['wind']['speed'],
+        'WndAveDir_3m': forecast_item['wind']['deg'],
+        'WndMaxSpd5s_3m': forecast_item['wind'].get('gust'),
+        'PresAvg_1pnt5m': forecast_item['main']['pressure'],
+        'Rain_1m_Tot': forecast_item['rain']['3h'] if 'rain' in forecast_item else 0,
+        'UV_index': 0,  # Forecast doesn't include UV index
+        'Visibility': forecast_item.get('visibility', 0),
+        'Clouds': forecast_item['clouds']['all']
+    }
+    logger.info(f"Mapped data: {json.dumps(mapped_data, indent=2)}")
+    return mapped_data
+
+def ensure_table_exists(client):
+    dataset_ref = client.dataset(DATASET_ID)
+    table_ref = dataset_ref.table(TABLE_ID)
+    
+    try:
+        client.get_table(table_ref)
+        logger.info(f"Table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID} already exists")
+    except Exception as e:
+        logger.info(f"Table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID} does not exist. Creating it now.")
+        schema = [
+            bigquery.SchemaField("TIMESTAMP", "TIMESTAMP"),
+            bigquery.SchemaField("Ta_2m_Avg", "FLOAT"),
+            bigquery.SchemaField("TaMax_2m", "FLOAT"),
+            bigquery.SchemaField("TaMin_2m", "FLOAT"),
+            bigquery.SchemaField("RH_2m_Avg", "FLOAT"),
+            bigquery.SchemaField("Dp_2m_Avg", "FLOAT"),
+            bigquery.SchemaField("WndAveSpd_3m", "FLOAT"),
+            bigquery.SchemaField("WndAveDir_3m", "FLOAT"),
+            bigquery.SchemaField("WndMaxSpd5s_3m", "FLOAT"),
+            bigquery.SchemaField("PresAvg_1pnt5m", "FLOAT"),
+            bigquery.SchemaField("Rain_1m_Tot", "FLOAT"),
+            bigquery.SchemaField("UV_index", "FLOAT"),
+            bigquery.SchemaField("Visibility", "FLOAT"),
+            bigquery.SchemaField("Clouds", "FLOAT")
+        ]
+        table = bigquery.Table(table_ref, schema=schema)
+        table.time_partitioning = bigquery.TimePartitioning(
+            type_=bigquery.TimePartitioningType.DAY,
+            field="TIMESTAMP"
+        )
+        try:
+            client.create_table(table)
+            logger.info(f"Created table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID}")
+        except Exception as create_error:
+            logger.error(f"Error creating table: {str(create_error)}")
+            raise
+
+def insert_into_bigquery(data_list):
+    client = bigquery.Client()
+    ensure_table_exists(client)
+    table_ref = client.dataset(DATASET_ID).table(TABLE_ID)
+    
+    job_config = bigquery.LoadJobConfig()
+    job_config.write_disposition = bigquery.WriteDisposition.WRITE_TRUNCATE
+    job_config.autodetect = True
+
+    job = client.load_table_from_json(data_list, table_ref, job_config=job_config)
+    job.result()  # Wait for the job to complete
+
+    logger.info(f"{len(data_list)} rows have been added/updated successfully.")
+
+def four_day_forecast_openweathermap(request):
+    try:
+        logger.info("Starting 4-day forecast function")
+        lat, lon = 41.089075, -100.773775
+        
+        forecast_data = get_forecast(lat, lon)
+        mapped_data_list = [map_forecast_data(item) for item in forecast_data['list']]
+        
+        insert_into_bigquery(mapped_data_list)
+        
+        logger.info("Forecast data processed successfully")
+        return 'Forecast data processed successfully', 200
+    except Exception as e:
+        logger.error(f"Error processing forecast data: {str(e)}", exc_info=True)
+        return f'Error processing forecast data: {str(e)}', 500
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.cloud-functions.mesonet-weather-updater.py</name>
+        <path>crop2cloud24.cloud-functions.mesonet-weather-updater.py</path>
+        <content>
+import requests
+import os
+import pandas as pd
+import numpy as np
+from google.cloud import bigquery
+from pytz import timezone
+from datetime import datetime
+import logging
+
+from flask import jsonify
+
+# URL and target file
+base_url = "https://data.mesonet.unl.edu/data/north_platte_3sw_beta/latest/sincelast/"
+file_to_download = "North_Platte_3SW_Beta_1min.csv"
+
+# BigQuery table details
+project_id = "crop2cloud24"
+dataset_id = "weather"
+table_id = "current-weather-mesonet"
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+class DateTimeConverter:
+    @staticmethod
+    def to_utc(timestamp):
+        central = timezone('America/Chicago')
+        if timestamp.tzinfo is None:
+            # Assume Central Time if no timezone info
+            timestamp = central.localize(timestamp)
+        return timestamp.astimezone(timezone('UTC'))
+
+class DataParser:
+    def __init__(self, table_name):
+        self.table_name = table_name
+        self.cwd = "/tmp"  # Use /tmp directory in Cloud Functions
+
+    def parse_weather_csv(self, filename):
+        def date_parser(date_string):
+            return pd.to_datetime(date_string, format="%Y-%m-%d %H:%M:%S", errors="coerce")
+
+        filename = os.path.join(self.cwd, filename)
+
+        try:
+            df = pd.read_csv(
+                filename,
+                header=1,
+                skiprows=[2, 3],
+                parse_dates=["TIMESTAMP"],
+                date_parser=date_parser,
+            )
+            logger.info(f"Successfully read CSV file: {filename}")
+            print("DataFrame after reading CSV:")
+            print(df.head())
+        except Exception as e:
+            logger.error(f"Error reading CSV file: {filename}. Error: {str(e)}")
+            raise
+
+        df = df.rename(columns=lambda x: x.strip())
+        df["TIMESTAMP"] = pd.to_datetime(df["TIMESTAMP"], errors="coerce")
+        df = df.dropna(subset=["TIMESTAMP"])
+        df["TIMESTAMP"] = df["TIMESTAMP"].apply(DateTimeConverter.to_utc)
+        df = df.set_index("TIMESTAMP")
+        df = df.apply(pd.to_numeric, errors="coerce")
+
+        # Remove columns that are not in the BigQuery table schema
+        columns_to_remove = ['BattVolts_Min', 'LithBatt_Min', 'MaintMode']
+        df = df.drop(columns=columns_to_remove, errors='ignore')
+
+        print("DataFrame after processing:")
+        print(df.head())
+        print("Columns:", df.columns.tolist())
+        print("Index:", df.index.tolist())
+
+        return df
+
+def ensure_dataset_and_table_exist(client, project_id, dataset_id, table_id, schema):
+    dataset_ref = client.dataset(dataset_id, project=project_id)
+    try:
+        client.get_dataset(dataset_ref)
+    except Exception:
+        dataset = bigquery.Dataset(dataset_ref)
+        dataset = client.create_dataset(dataset)
+        logger.info(f"Dataset {dataset_id} created.")
+
+    table_ref = dataset_ref.table(table_id)
+    try:
+        client.get_table(table_ref)
+    except Exception:
+        table = bigquery.Table(table_ref, schema=schema)
+        table = client.create_table(table)
+        logger.info(f"Table {table_id} created.")
+
+def download_and_process_data():
+    logger.info("Function execution started")
+
+    try:
+        os.makedirs("/tmp", exist_ok=True)
+        logger.info("Temporary directory created")
+    except Exception as e:
+        logger.error(f"Error creating temporary directory. Error: {str(e)}")
+        raise
+
+    full_url = f"{base_url}{file_to_download}"
+    try:
+        r = requests.get(full_url, allow_redirects=True)
+        r.raise_for_status()
+        logger.info(f"Successfully downloaded file: {file_to_download}")
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Error downloading file: {file_to_download}. Error: {str(e)}")
+        raise
+
+    if r.status_code == 200:
+        try:
+            with open(f"/tmp/{file_to_download}", "wb") as f_out:
+                f_out.write(r.content)
+            logger.info(f"File saved: {file_to_download}")
+        except Exception as e:
+            logger.error(f"Error saving file: {file_to_download}. Error: {str(e)}")
+            raise
+
+    parser = DataParser(f"{project_id}.{dataset_id}.{table_id}")
+    try:
+        df = parser.parse_weather_csv(f"/tmp/{file_to_download}")
+        logger.info("CSV file parsed successfully")
+        logger.info(f"Parsed DataFrame:\n{df.head()}")
+    except Exception as e:
+        logger.error(f"Error parsing CSV file. Error: {str(e)}")
+        raise
+
+    client = bigquery.Client()
+
+    schema = [
+        bigquery.SchemaField("TIMESTAMP", "TIMESTAMP"),  # Changed to TIMESTAMP
+        bigquery.SchemaField("RECORD", "FLOAT"),
+        bigquery.SchemaField("Ta_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("TaMax_2m", "FLOAT"),
+        bigquery.SchemaField("TaMaxTime_2m", "FLOAT"),
+        bigquery.SchemaField("TaMin_2m", "FLOAT"),
+        bigquery.SchemaField("TaMinTime_2m", "FLOAT"),
+        bigquery.SchemaField("RH_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("RHMax_2m", "FLOAT"),
+        bigquery.SchemaField("RHMaxTime_2m", "FLOAT"),
+        bigquery.SchemaField("RHMin_2m", "FLOAT"),
+        bigquery.SchemaField("RHMinTime_2m", "FLOAT"),
+        bigquery.SchemaField("Dp_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("DpMax_2m", "FLOAT"),
+        bigquery.SchemaField("DpMaxTime_2m", "FLOAT"),
+        bigquery.SchemaField("DpMin_2m", "FLOAT"),
+        bigquery.SchemaField("DpMinTime_2m", "FLOAT"),
+        bigquery.SchemaField("HeatIndex_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("HeatIndexMax_2m", "FLOAT"),
+        bigquery.SchemaField("HeatIndexMaxTime_2m", "FLOAT"),
+        bigquery.SchemaField("WindChill_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("WindChillMin_2m", "FLOAT"),
+        bigquery.SchemaField("WindChillMinTime_2m", "FLOAT"),
+        bigquery.SchemaField("WndAveSpd_3m", "FLOAT"),
+        bigquery.SchemaField("WndVecMagAve_3m", "FLOAT"),
+        bigquery.SchemaField("WndAveDir_3m", "FLOAT"),
+        bigquery.SchemaField("WndAveDirSD_3m", "FLOAT"),
+        bigquery.SchemaField("WndMaxSpd5s_3m", "FLOAT"),
+        bigquery.SchemaField("WndMaxSpd5sTime_3m", "FLOAT"),
+        bigquery.SchemaField("WndMax_5sec_Dir_3m", "FLOAT"),
+        bigquery.SchemaField("PresAvg_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("PresMax_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("PresMaxTime_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("PresMin_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("PresMinTime_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("Solar_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("Rain_1m_Tot", "FLOAT"),
+        bigquery.SchemaField("Ts_bare_10cm_Avg", "FLOAT"),
+        bigquery.SchemaField("TsMax_bare_10cm", "FLOAT"),
+        bigquery.SchemaField("TsMaxTime_bare_10cm", "FLOAT"),
+        bigquery.SchemaField("TsMin_bare_10cm", "FLOAT"),
+        bigquery.SchemaField("TsMinTime_bare_10cm", "FLOAT"),
+    ]
+
+    # Ensure dataset and table exist
+    ensure_dataset_and_table_exist(client, project_id, dataset_id, table_id, schema)
+
+    job_config = bigquery.LoadJobConfig(
+        schema=schema,
+        write_disposition=bigquery.WriteDisposition.WRITE_APPEND,
+    )
+
+    try:
+        job = client.load_table_from_dataframe(
+            df.reset_index(),  # Reset index to include TIMESTAMP as a column
+            f"{project_id}.{dataset_id}.{table_id}",
+            job_config=job_config,
+        )
+        job.result()
+        logger.info("Data loaded into BigQuery table successfully")
+    except Exception as e:
+        logger.error(f"Error loading data into BigQuery table. Error: {str(e)}")
+        raise
+
+    logger.info("Function execution completed")
+
+def entry_point(request):
+    try:
+        download_and_process_data()
+        return jsonify({"message": "Data processed successfully"}), 200
+    except Exception as e:
+        logger.error(f"Error in entry_point function: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.custom_instructions.md</name>
+        <path>crop2cloud24.custom_instructions.md</path>
+        <content>
+- This project is in the Chicago timezone but data is stored in UTC on bigquery. Thus all computations must convert from UTC to central time. This must be unambiguously understood.
+- Always provide full updated code. never include placeholders in code
+- See the Data_Flow_Process.tsc to understand the full structure of the project repo
+- Whenever you want to do a bigquery operation think: will this operation be done repeatedly? would it do to create a general fuinction for it in bigquery operations so we can import and use?
+- Always use the custom logger module logger.py for logging:
+To use this logging solution in your other modules, you can simply import and use it like this:
+
+```python
+from src.utils.logger import get_logger
+
+logger = get_logger()  # Uses the calling module's name
+# or
+logger = get_logger("custom_name")  # Uses a custom name
+
+logger.info("This is an info message")
+logger.error("This is an error message")
+```
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.Data_Flow_Process.tsx</name>
+        <path>crop2cloud24.Data_Flow_Process.tsx</path>
+        <content>
+import React from 'react';
+import { ArrowRight, Database, FileText, Code, Cloud, BarChart, Droplet } from 'lucide-react';
+
+const Box = ({ title, children, color, width = 'w-64', height = 'h-auto' }) => (
+  <div className={`p-2 rounded-lg border-2 ${color} ${width} ${height} flex flex-col items-center justify-center text-center text-sm`}>
+    <h3 className="font-bold mb-1">{title}</h3>
+    {children}
+  </div>
+);
+
+const Arrow = ({ label, direction = 'right' }) => (
+  <div className={`flex flex-col items-center mx-2 ${direction === 'down' ? 'transform rotate-90' : ''}`}>
+    <ArrowRight className="my-1" />
+    <span className="text-xs">{label}</span>
+  </div>
+);
+
+const DataFlow = () => (
+  <div className="flex flex-col items-center space-y-6 p-4">
+    <div className="flex items-start">
+      <Box title="Initial Setup Script" color="border-green-500">
+        <Code size={24} />
+        <span>Creates BigQuery table structure</span>
+      </Box>
+      <Arrow label="Setup" direction="down" />
+    </div>
+
+    <div className="flex items-start">
+      <Box title="Local Files" color="border-blue-500">
+        <FileText size={24} />
+        <span>Raw sensor data (.dat files)</span>
+      </Box>
+      <Arrow label="Ingest" />
+      <Box title="Data Ingestion" color="border-green-500">
+        <Code size={24} />
+        <span>Process raw data</span>
+        <span>Upload to BigQuery</span>
+      </Box>
+      <Arrow label="Upload" />
+      <Box title="BigQuery: Raw Data" color="border-purple-500">
+        <Database size={24} />
+        <div>
+          <div>sensor_readings</div>
+          <div>weather_data</div>
+        </div>
+      </Box>
+    </div>
+    
+    <div className="flex items-start">
+      <Box title="BigQuery: Raw Data" color="border-purple-500">
+        <Database size={24} />
+        <div>
+          <div>sensor_readings</div>
+          <div>weather_data</div>
+        </div>
+      </Box>
+      <Arrow label="Fetch" />
+      <Box title="Log Llama Model" color="border-yellow-500">
+        <Cloud size={24} />
+        <span>Predict values for next 4 days</span>
+        <span>Using sensor data and weather data</span>
+      </Box>
+      <Arrow label="Store" />
+      <Box title="BigQuery: Predictions" color="border-purple-500">
+        <Database size={24} />
+        <div>
+          <div>predicted_sensor_readings</div>
+          <div>predicted_weather_data</div>
+        </div>
+      </Box>
+    </div>
+    
+    <div className="flex items-start">
+      <Box title="BigQuery: All Data" color="border-purple-500" width="w-72">
+        <Database size={24} />
+        <div>
+          <div>sensor_readings (current & predicted)</div>
+          <div>weather_data (current & predicted)</div>
+        </div>
+      </Box>
+      <Arrow label="Fetch" />
+      <Box title="Stress Indices Computation" color="border-red-500" width="w-72">
+        <BarChart size={24} />
+        <span>Compute for current and predicted data:</span>
+        <div>CWSI, SWSI, ET, MDS</div>
+      </Box>
+      <Arrow label="Store" />
+      <Box title="BigQuery: Treatment Tables" color="border-purple-500" width="w-72">
+        <Database size={24} />
+        <div>
+          <div>treatment_X_stress_indices</div>
+          <div>(current and predicted values)</div>
+        </div>
+      </Box>
+    </div>
+    
+    <div className="flex items-start">
+      <Box title="BigQuery: All Data" color="border-purple-500" width="w-80">
+        <Database size={24} />
+        <div>
+          <div>sensor_readings (current & predicted)</div>
+          <div>weather_data (current & predicted)</div>
+          <div>treatment_X_stress_indices (current & predicted)</div>
+        </div>
+      </Box>
+      <Arrow label="Fetch" />
+      <Box title="Predictive Control Model" color="border-indigo-500" width="w-80">
+        <Droplet size={24} />
+        <span>Determine optimal irrigation amount</span>
+        <span>to keep stress indices below threshold</span>
+        <span>over the next 4 days</span>
+      </Box>
+      <Arrow label="Store" />
+      <Box title="BigQuery: Irrigation Recommendation" color="border-purple-500">
+        <Database size={24} />
+        <div>
+          <div>irrigation_recommendations</div>
+          <div>(per treatment)</div>
+        </div>
+      </Box>
+    </div>
+    
+    <div className="mt-4 text-sm">
+      <div><strong>Note:</strong> All steps are orchestrated by run_pipeline.py</div>
+      <div>Treatment-specific tables are created for each unique treatment</div>
+    </div>
+  </div>
+);
+
+export default DataFlow;
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.file_structure_guide.md</name>
+        <path>crop2cloud24.file_structure_guide.md</path>
+        <content>
+# Comprehensive File Structure Guide for crop2cloud24 Project
+
+## Overview
+
+The crop2cloud24 project employs a dual-structure approach to accommodate various development environments, AI assistance, and execution requirements. This guide explains the rationale, implementation, and usage of both structures, and is intended for AI models, human developers, and any other stakeholders involved in the project.
+
+## Dual Structure Approach
+
+### 1. Flat Structure (Development and AI Assistance)
+
+Located in: `claude-project` directory
+
+Purpose: 
+- Facilitates easy sharing of the entire project structure with AI models
+- Simplifies version control
+- Allows for straightforward file updates in constrained environments
+
+Naming Convention:
+```
+crop2cloud24.<module>.<submodule>.<file_name>
+```
+
+Example: `crop2cloud24.src.S1_data_ingestion.ingest_data.py`
+
+### 2. Nested Structure (Execution and Testing)
+
+Located in: Parent `crop2cloud24` directory
+
+Purpose:
+- Represents the actual runtime structure of the project
+- Used for execution, testing, and deployment
+
+Structure Example:
+```
+crop2cloud24/
+├── src/
+│   ├── S1_data_ingestion/
+│   │   └── ingest_data.py
+│   └── ...
+├── tests/
+├── .env
+├── requirements.txt
+└── ...
+```
+
+## Structure Conversion
+
+File: `expand_structure.py` (located in `claude-project` directory)
+
+Functionality:
+1. Reads files from the flat structure
+2. Creates corresponding nested directory structure
+3. Copies files to their appropriate nested locations
+4. Overwrites existing files in the nested structure
+
+Usage: Run this script after making changes in the flat structure to update the nested structure.
+
+## Workflow
+
+### For AI Model Assistance:
+1. The entire flat structure is provided for context and understanding
+2. When discussing or modifying files, use the flat structure naming convention
+3. Assume the existence of the nested structure for runtime considerations
+
+### For Human Developers:
+1. Make changes in the flat structure (`claude-project` directory)
+2. Run `expand_structure.py` to update the nested structure
+3. Execute and test the project using the nested structure
+4. Use version control on the flat structure
+
+### Code Execution:
+- Always performed by human users, never by AI models
+- Always use the nested structure in the `crop2cloud24` directory for execution
+
+## File Handling Nuances
+
+1. **Root-Level Files**: 
+   - Flat: `crop2cloud24.<filename>`
+   - Nested: `crop2cloud24/<filename>`
+
+2. **Hidden Files**:
+   - Flat: Use double dots (e.g., `crop2cloud24..env`)
+   - Nested: Standard hidden file format (e.g., `crop2cloud24/.env`)
+
+3. **Deep Nesting**:
+   - Flat: Use additional dot separators (e.g., `crop2cloud24.src.deep.deeper.deepest.file.py`)
+   - Nested: Corresponds to additional subdirectories
+
+4. **Empty Directories**:
+   - May require placeholder files in the flat structure to ensure creation in the nested structure
+
+## Best Practices
+
+1. **Consistency**: Always use the appropriate structure convention based on the context (flat for development, nested for execution)
+
+2. **Updates**: Make all updates in the flat structure, then propagate to nested
+
+3. **Version Control**: Focus on the flat structure for version control operations
+
+4. **Documentation**: Keep this guide updated as the project structure evolves
+
+5. **IDE/Editor Configuration**: Set up your development environment to understand and work with both structures
+
+6. **Continuous Integration**: Ensure CI/CD pipelines are aware of and can handle the dual-structure approach
+
+## Benefits
+
+1. **Universal Compatibility**: Works across various environments, including AI assistance platforms
+
+2. **Clear Representation**: Maintains an unambiguous project structure in all contexts
+
+3. **Flexible Development**: Allows for easy file manipulation even in constrained environments
+
+4. **Execution Readiness**: The nested structure is always prepared for actual project runtime
+
+5. **Version Control Efficiency**: Simplified tracking of changes in a flat structure
+
+## Considerations
+
+1. **Learning Curve**: New team members may need time to understand and adapt to the dual-structure approach
+
+2. **Maintenance Overhead**: Requires diligence in keeping both structures synchronized
+
+3. **Potential for Confusion**: Clear communication is crucial to avoid misunderstandings about which structure to use in different contexts
+
+4. **Tool Compatibility**: Some development tools may need configuration to work seamlessly with this approach
+
+By thoroughly understanding and correctly utilizing this dual-structure approach, all stakeholders can contribute effectively to the project while maintaining consistency and operational efficiency across different environments and use cases.
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.Project_Structure.mermaid</name>
+        <path>crop2cloud24.Project_Structure.mermaid</path>
+        <content>
+graph TD
+    A[crop2cloud24] --> B[src]
+    A --> C[.env]
+    A --> D[requirements.txt]
+    A --> E[README.md]
+    A --> F[.gitignore]
+    A --> G[pyproject.toml]
+    A --> H[sensor_mapping.yaml]
+    A --> I[run_pipeline.py]
+    A --> J[Project_Structure.mermaid]
+    A --> K[Data_Flow_Process.tsx]
+    A --> L[setup.py]
+    A --> M[file_structure_guide.md]
+    A --> N[custom_instructions.md]
+    B --> O[S1_data_ingestion]
+    B --> P[utils]
+    B --> Q[S2_stress_indices]
+    B --> R[models]
+    B --> S[S3_irrigation_prediction]
+    O --> T[ingest_data.py]
+    P --> U[bigquery_operations.py]
+    P --> V[create_bq_tables.py]
+    P --> W[logger.py]
+    Q --> X[cwsi.py]
+    Q --> Y[swsi.py]
+    Q --> Z[et.py]
+    Q --> AA[mds.py]
+    R --> AB[prediction_model.py]
+    S --> AC[irrigation_model.py]
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.pyproject.toml</name>
+        <path>crop2cloud24.pyproject.toml</path>
+        <content>
+# This is a placeholder for pyproject.toml
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.README.md</name>
+        <path>crop2cloud24.README.md</path>
+        <content>
+# This is a placeholder for README.md
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.repo_context_extractor.py</name>
+        <path>crop2cloud24.repo_context_extractor.py</path>
+        <content>
+import os
+import sys
+
+EXCLUDED_DIRS = {".git", "__pycache__", "node_modules", "venv", ".venv"}
+EXCLUDED_FILES = {".gitignore", "README.md"}
+
+def create_file_element(file_path, root_folder):
+    """
+    Create an XML element for a file, including its content.
+
+    Args:
+        file_path (str): The path to the file.
+        root_folder (str): The root directory of the repository.
+
+    Returns:
+        str: The formatted XML element for the file.
+    """
+    relative_path = os.path.relpath(file_path, root_folder)
+    file_name = os.path.basename(file_path)
+
+    file_element = [
+        f"    <file>\n        <name>{file_name}</name>\n        <path>{relative_path}</path>\n"
+    ]
+
+    file_element.append("        <content>\n")
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+            file_element.append(file.read())
+    except Exception as e:
+        file_element.append(f"Error reading file: {str(e)}")
+    file_element.append("\n        </content>\n")
+
+    file_element.append("    </file>\n")
+    return "".join(file_element)
+
+def get_repo_structure(root_folder):
+    """
+    Get the directory structure of the repository with embedded file content.
+
+    Args:
+        root_folder (str): The root directory of the repository.
+
+    Returns:
+        str: The formatted XML structure of the repository.
+    """
+    structure = ["<repository_structure>\n"]
+
+    for subdir, dirs, files in os.walk(root_folder):
+        dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRS]
+        level = subdir.replace(root_folder, "").count(os.sep)
+        indent = " " * 4 * level
+        structure.append(f'{indent}<directory name="{os.path.basename(subdir)}">\n')
+
+        for file in files:
+            if file not in EXCLUDED_FILES:
+                file_path = os.path.join(subdir, file)
+                file_element = create_file_element(file_path, root_folder)
+                structure.append(file_element)
+
+        structure.append(f"{indent}</directory>\n")
+
+    structure.append("</repository_structure>\n")
+    return "".join(structure)
+
+def main():
+    """
+    Main function to execute the script.
+    """
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    claude_project_dir = os.path.join(script_dir, "claude-project")
+
+    if not os.path.exists(claude_project_dir):
+        print(f"Error: 'claude-project' folder not found in {script_dir}")
+        sys.exit(1)
+
+    logs_folder = os.path.join(script_dir, "logs")
+    if not os.path.exists(logs_folder):
+        os.makedirs(logs_folder)
+
+    output_file = os.path.join(logs_folder, "repository_context.txt")
+
+    repo_structure = get_repo_structure(claude_project_dir)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(repo_structure)
+
+    print(f"Repository context has been extracted to {output_file}")
+
+if __name__ == "__main__":
+    main()
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.requirements.txt</name>
+        <path>crop2cloud24.requirements.txt</path>
+        <content>
+numpy
+pandas
+google-cloud-bigquery
+python-dotenv
+PyYAML
+pyarrow
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.run_pipeline.py</name>
+        <path>crop2cloud24.run_pipeline.py</path>
+        <content>
+# This is a placeholder for run_pipeline.py
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.sensor_mapping.yaml</name>
+        <path>crop2cloud24.sensor_mapping.yaml</path>
+        <content>
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #         CORN FIELDS
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# LINEAR_CORN Field Sensors (Node C)
+# Total Sensors: 13 (3 IRT, 10 TDR)
+- hash: "001"
+  treatment: 3
+  plot_number: 5001
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: IRT5001C3xx24
+  span: 5
+  sdi-12_address: "0"
+  depth: 
+  node: C
+  field: LINEAR_CORN
+
+- hash: "002"
+  treatment: 2
+  plot_number: 5003
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: IRT5003C2xx24
+  span: 5
+  sdi-12_address: "1"
+  depth: 
+  node: C
+  field: LINEAR_CORN
+
+- hash: "003"
+  treatment: 1
+  plot_number: 5010
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: IRT5010C1xx24
+  span: 5
+  sdi-12_address: "c"
+  depth: 
+  node: C
+  field: LINEAR_CORN
+
+- hash: "004"
+  treatment: 2
+  plot_number: 5003
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR5003C20624
+  span: 5
+  sdi-12_address: "3"
+  depth: 6
+  node: C
+  field: LINEAR_CORN
+
+- hash: "005"
+  treatment: 2
+  plot_number: 5003
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR5003C21824
+  span: 5
+  sdi-12_address: "4"
+  depth: 18
+  node: C
+  field: LINEAR_CORN
+
+- hash: "006"
+  treatment: 2
+  plot_number: 5003
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR5003C23024
+  span: 5
+  sdi-12_address: "5"
+  depth: 30
+  node: C
+  field: LINEAR_CORN
+
+- hash: "007"
+  treatment: 1
+  plot_number: 5010
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR5010C10624
+  span: 5
+  sdi-12_address: "6"
+  depth: 6
+  node: C
+  field: LINEAR_CORN
+
+- hash: "008"
+  treatment: 1
+  plot_number: 5010
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR5010C11824
+  span: 5
+  sdi-12_address: "7"
+  depth: 18
+  node: C
+  field: LINEAR_CORN
+
+- hash: "009"
+  treatment: 1
+  plot_number: 5010
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR5010C13024
+  span: 5
+  sdi-12_address: "8"
+  depth: 30
+  node: C
+  field: LINEAR_CORN
+
+- hash: "010"
+  treatment: 4
+  plot_number: 5009
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR5009C40624
+  span: 5
+  sdi-12_address: "9"
+  depth: 6
+  node: C
+  field: LINEAR_CORN
+
+- hash: "011"
+  treatment: 4
+  plot_number: 5009
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR5009C41824
+  span: 5
+  sdi-12_address: "a"
+  depth: 18
+  node: C
+  field: LINEAR_CORN
+
+- hash: "012"
+  treatment: 4
+  plot_number: 5009
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR5009C43024
+  span: 5
+  sdi-12_address: "b"
+  depth: 30
+  node: C
+  field: LINEAR_CORN
+
+# LINEAR_CORN Field Sensors (Node B)
+# Total Sensors: 15 (2 IRT, 13 TDR)
+- hash: "013"
+  treatment: 1
+  plot_number: 5006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: IRT5006B1xx24
+  span: 5
+  sdi-12_address: "0"
+  depth: 
+  node: B
+  field: LINEAR_CORN
+
+- hash: "014"
+  treatment: 2
+  plot_number: 5012
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: IRT5012B2xx24
+  span: 5
+  sdi-12_address: "1"
+  depth: 
+  node: B
+  field: LINEAR_CORN
+
+- hash: "015"
+  treatment: 4
+  plot_number: 5007
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR5007B40624
+  span: 5
+  sdi-12_address: "2"
+  depth: 6
+  node: B
+  field: LINEAR_CORN
+
+- hash: "016"
+  treatment: 4
+  plot_number: 5007
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR5007B41824
+  span: 5
+  sdi-12_address: "3"
+  depth: 18
+  node: B
+  field: LINEAR_CORN
+
+- hash: "017"
+  treatment: 4
+  plot_number: 5007
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR5007B43024
+  span: 5
+  sdi-12_address: "4"
+  depth: 30
+  node: B
+  field: LINEAR_CORN
+
+- hash: "018"
+  treatment: 4
+  plot_number: 5007
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR5007B44224
+  span: 5
+  sdi-12_address: "5"
+  depth: 42
+  node: B
+  field: LINEAR_CORN
+
+- hash: "019"
+  treatment: 1
+  plot_number: 5006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR5006B10624
+  span: 5
+  sdi-12_address: "6"
+  depth: 6
+  node: B
+  field: LINEAR_CORN
+
+- hash: "020"
+  treatment: 1
+  plot_number: 5006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR5006B11824
+  span: 5
+  sdi-12_address: "7"
+  depth: 18
+  node: B
+  field: LINEAR_CORN
+
+- hash: "021"
+  treatment: 1
+  plot_number: 5006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR5006B13024
+  span: 5
+  sdi-12_address: "8"
+  depth: 30
+  node: B
+  field: LINEAR_CORN
+
+- hash: "022"
+  treatment: 1
+  plot_number: 5006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR5006B14224
+  span: 5
+  sdi-12_address: "9"
+  depth: 42
+  node: B
+  field: LINEAR_CORN
+
+- hash: "023"
+  treatment: 2
+  plot_number: 5012
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR5012B20624
+  span: 5
+  sdi-12_address: "a"
+  depth: 6
+  node: B
+  field: LINEAR_CORN
+
+- hash: "024"
+  treatment: 2
+  plot_number: 5012
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR5012B21824
+  span: 5
+  sdi-12_address: "b"
+  depth: 18
+  node: B
+  field: LINEAR_CORN
+
+- hash: "025"
+  treatment: 2
+  plot_number: 5012
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR5012B23024
+  span: 5
+  sdi-12_address: "c"
+  depth: 30
+  node: B
+  field: LINEAR_CORN
+
+# LINEAR_CORN Field Sensors (Node A)
+# Total Sensors: 11 (3 IRT, 8 TDR)
+- hash: "032"
+  treatment: 1
+  plot_number: 5023
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: IRT5023A1xx24
+  span: 5
+  sdi-12_address: "0"
+  depth: 
+  node: A
+  field: LINEAR_CORN
+
+- hash: "033"
+  treatment: 3
+  plot_number: 5020
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: IRT5020A3xx24
+  span: 5
+  sdi-12_address: "1"
+  depth: 
+  node: A
+  field: LINEAR_CORN
+
+- hash: "034"
+  treatment: 3
+  plot_number: 5018
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: IRT5018A3xx24
+  span: 5
+  sdi-12_address: "9"
+  depth: 
+  node: A
+  field: LINEAR_CORN
+
+- hash: "035"
+  treatment: 1
+  plot_number: 5023
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR5023A10624
+  span: 5
+  sdi-12_address: "2"
+  depth: 6
+  node: A
+  field: LINEAR_CORN
+
+- hash: "036"
+  treatment: 1
+  plot_number: 5023
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR5023A11824
+  span: 5
+  sdi-12_address: "3"
+  depth: 18
+  node: A
+  field: LINEAR_CORN
+
+- hash: "037"
+  treatment: 1
+  plot_number: 5023
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR5023A13024
+  span: 5
+  sdi-12_address: "4"
+  depth: 30
+  node: A
+  field: LINEAR_CORN
+
+- hash: "038"
+  treatment: 1
+  plot_number: 5023
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR5023A14224
+  span: 5
+  sdi-12_address: "5"
+  depth: 42
+  node: A
+  field: LINEAR_CORN
+
+- hash: "039"
+  treatment: 2
+  plot_number: 5026
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR5026A20624
+  span: 5
+  sdi-12_address: "6"
+  depth: 6
+  node: A
+  field: LINEAR_CORN
+
+- hash: "040"
+  treatment: 2
+  plot_number: 5026
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR5026A21824
+  span: 5
+  sdi-12_address: "7"
+  depth: 18
+  node: A
+  field: LINEAR_CORN
+
+- hash: "041"
+  treatment: 2
+  plot_number: 5026
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR5026A23824
+  span: 5
+  sdi-12_address: "8"
+  depth: 38
+  node: A
+  field: LINEAR_CORN
+
+- hash: "042"
+  treatment: 4
+  plot_number: 5027
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR5027A40624
+  span: 5
+  sdi-12_address: "a"
+  depth: 6
+  node: A
+  field: LINEAR_CORN
+
+- hash: "043"
+  treatment: 4
+  plot_number: 5027
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR5027A41824
+  span: 5
+  sdi-12_address: "b"
+  depth: 18
+  node: A
+  field: LINEAR_CORN
+
+- hash: "044"
+  treatment: 4
+  plot_number: 5027
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR5027A43024
+  span: 5
+  sdi-12_address: "c"
+  depth: 30
+  node: A
+  field: LINEAR_CORN
+
+  # New entries for DEN and SAP sensors in treatment 1 plots
+
+- hash: "045"
+  treatment: 1
+  plot_number: 5006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: DEN5006B1xx24
+  span: 5
+  node: B
+  field: LINEAR_CORN
+
+- hash: "046"
+  treatment: 1
+  plot_number: 5006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: SAP5006B1xx24
+  span: 5
+  node: B
+  field: LINEAR_CORN
+
+- hash: "047"
+  treatment: 1
+  plot_number: 5010
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: DEN5010C1xx24
+  span: 5
+  node: C
+  field: LINEAR_CORN
+
+- hash: "048"
+  treatment: 1
+  plot_number: 5010
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: SAP5010C1xx24
+  span: 5
+  node: C
+  field: LINEAR_CORN
+
+- hash: "049"
+  treatment: 1
+  plot_number: 5023
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: DEN5023A1xx24
+  span: 5
+  node: A
+  field: LINEAR_CORN
+
+- hash: "050"
+  treatment: 1
+  plot_number: 5023
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: SAP5023A1xx24
+  span: 5
+  node: A
+  field: LINEAR_CORN
+
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #         CORN FIELDS
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #         SOYBEAN FIELDS
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #         SOYBEAN FIELDS
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.setup.py</name>
+        <path>crop2cloud24.setup.py</path>
+        <content>
+from setuptools import setup, find_packages
+
+# Read the contents of your requirements file
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
+
+setup(
+    name="crop2cloud24",
+    version="0.1",
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
+    install_requires=requirements,
+    entry_points={
+        "console_scripts": [
+            "run_pipeline=src.run_pipeline:main",
+        ],
+    },
+    # Include additional files in the package
+    package_data={
+        "": ["*.yaml", "*.md", "*.tsx", "*.mermaid"],
+    },
+    # Specify files to include in the distribution
+    data_files=[
+        ('', ['README.md', 'requirements.txt', '.gitignore', 'pyproject.toml', 
+              'sensor_mapping.yaml', 'Project_Structure.mermaid', 'Data_Flow_Process.tsx',
+              'file_structure_guide.md', 'custom_instructions.md']),
+    ],
+)
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.models.prediction_model.py</name>
+        <path>crop2cloud24.src.models.prediction_model.py</path>
+        <content>
+# This is a placeholder for src.models.prediction_model.py
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.models.__init__.py</name>
+        <path>crop2cloud24.src.models.__init__.py</path>
+        <content>
+# This file is intentionally left empty to mark this directory as a Python package.
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.mpc_data_prep.config.py</name>
+        <path>crop2cloud24.src.mpc_data_prep.config.py</path>
+        <content>
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# BigQuery client
+PROJECT_ID = "crop2cloud24"
+
+# SQLite database
+DB_NAME = 'mpc_data.db'
+
+# Specify the number of historical days to retrieve
+HISTORICAL_DAYS = 30
+
+# Cloud function trigger URLs
+TRIGGER_URLS = [
+    # 'https://us-central1-crop2cloud24.cloudfunctions.net/compute-cwsi',
+    # 'https://us-central1-crop2cloud24.cloudfunctions.net/compute-swsi',
+    # 'https://us-central1-crop2cloud24.cloudfunctions.net/current-openweathermap',
+    # 'https://us-central1-crop2cloud24.cloudfunctions.net/weather-updater',
+    # 'https://us-central1-crop2cloud24.cloudfunctions.net/forecast_four_day_rolling',
+    # 'https://us-central1-crop2cloud24.cloudfunctions.net/forecast_four_day_static'
+]
+
+# Weather table names
+WEATHER_TABLES = [
+    'current-weather-mesonet',
+    'forecast_four_day_static',
+    'forecast_four_day_rolling'
+]
+
+# Sensor data configuration
+TREATMENT_1_DATASET = "LINEAR_CORN_trt1"
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.mpc_data_prep.main.py</name>
+        <path>crop2cloud24.src.mpc_data_prep.main.py</path>
+        <content>
+import logging
+import requests
+from google.cloud import bigquery
+from .config import TRIGGER_URLS, PROJECT_ID, WEATHER_TABLES
+from .weather.data_retrieval import get_all_weather_data
+from .weather.data_processing import process_weather_data
+from .weather.database_operations import store_weather_data
+from .sensor.data_retrieval import get_all_plot_data
+from .sensor.data_processing import process_plot_data
+from .sensor.database_operations import store_plot_data
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+def trigger_cloud_functions():
+    for url in TRIGGER_URLS:
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                logger.info(f"Successfully triggered: {url}")
+            else:
+                logger.warning(f"Failed to trigger: {url}. Status code: {response.status_code}")
+        except requests.RequestException as e:
+            logger.error(f"Error triggering {url}: {e}")
+
+def main():
+    logger.info("Starting MPC data preparation")
+    
+    logger.info("Triggering cloud functions...")
+    trigger_cloud_functions()
+
+    client = bigquery.Client(project=PROJECT_ID)
+
+    logger.info("Retrieving and processing weather data...")
+    try:
+        weather_data = get_all_weather_data(client, WEATHER_TABLES)
+        processed_weather_data = process_weather_data(weather_data)
+        store_weather_data(processed_weather_data)
+        logger.info("Weather data processing completed.")
+    except Exception as e:
+        logger.error(f"Error processing weather data: {str(e)}")
+        raise
+
+    logger.info("Retrieving and processing plot data...")
+    try:
+        plot_data = get_all_plot_data(client)
+        processed_plot_data = process_plot_data(plot_data)
+        store_plot_data(processed_plot_data)
+        logger.info("Plot data processing completed.")
+    except Exception as e:
+        logger.error(f"Error processing plot data: {str(e)}")
+        raise
+
+    logger.info("Data preparation completed.")
+
+if __name__ == "__main__":
+    main()
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.mpc_data_prep.sensor.database_operations.py</name>
+        <path>crop2cloud24.src.mpc_data_prep.sensor.database_operations.py</path>
+        <content>
+import sqlite3
+import pandas as pd
+import logging
+from ..config import DB_NAME
+
+logger = logging.getLogger(__name__)
+
+def create_plot_table(conn, plot_number):
+    conn.execute(f"""
+    CREATE TABLE IF NOT EXISTS plot_{plot_number} (
+        TIMESTAMP TEXT PRIMARY KEY,
+        is_actual INTEGER,
+        prediction_timestamp TEXT,
+        applied_irrigation REAL,
+        TDR_{plot_number}_10624 REAL,
+        TDR_{plot_number}_10624_pred REAL,
+        SAP_{plot_number}_1xx24 REAL,
+        SAP_{plot_number}_1xx24_pred REAL,
+        TDR_{plot_number}_13024 REAL,
+        TDR_{plot_number}_13024_pred REAL,
+        IRT_{plot_number}_1xx24 REAL,
+        IRT_{plot_number}_1xx24_pred REAL,
+        TDR_{plot_number}_11824 REAL,
+        TDR_{plot_number}_11824_pred REAL,
+        DEN_{plot_number}_1xx24 REAL,
+        DEN_{plot_number}_1xx24_pred REAL,
+        TDR_{plot_number}_14224 REAL,
+        TDR_{plot_number}_14224_pred REAL,
+        cwsi REAL,
+        cwsi_pred REAL,
+        et REAL,
+        et_pred REAL,
+        swsi REAL,
+        swsi_pred REAL
+    )
+    """)
+    logger.info(f"Created plot_{plot_number} table")
+
+def store_plot_data(plot_data):
+    logger.info("Storing plot data")
+    conn = sqlite3.connect(DB_NAME)
+    
+    for plot_number, df in plot_data.items():
+        create_plot_table(conn, plot_number)
+        df.to_sql(f'plot_{plot_number}', conn, if_exists='replace', index=False)
+        logger.info(f"Stored {len(df)} records for plot {plot_number}")
+    
+    conn.close()
+    logger.info("Finished storing plot data")
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.mpc_data_prep.sensor.data_processing.py</name>
+        <path>crop2cloud24.src.mpc_data_prep.sensor.data_processing.py</path>
+        <content>
+import pandas as pd
+import numpy as np
+import logging
+
+logger = logging.getLogger(__name__)
+
+def process_plot_data(plot_data):
+    processed_data = {}
+    for plot_number, df in plot_data.items():
+        logger.info(f"Processing data for plot {plot_number}")
+        
+        # Remove duplicate timestamps
+        df = df.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='first')
+        
+        # Interpolate missing values
+        numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
+        df[numeric_columns] = df[numeric_columns].interpolate(method='time')
+        
+        processed_data[plot_number] = df
+        
+        logger.info(f"Processed data for plot {plot_number}. Shape: {df.shape}")
+        logger.info(f"Sample of processed data for plot {plot_number}:\n{df.head().to_string()}")
+    
+    return processed_data
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.mpc_data_prep.sensor.data_retrieval.py</name>
+        <path>crop2cloud24.src.mpc_data_prep.sensor.data_retrieval.py</path>
+        <content>
+import pandas as pd
+import numpy as np
+from google.cloud import bigquery
+import logging
+from datetime import datetime, timedelta
+import pytz
+
+from ..config import PROJECT_ID, TREATMENT_1_DATASET, HISTORICAL_DAYS
+
+logger = logging.getLogger(__name__)
+
+def get_treatment_1_plots(client):
+    query = f"""
+    SELECT table_name
+    FROM `{PROJECT_ID}.{TREATMENT_1_DATASET}.INFORMATION_SCHEMA.TABLES`
+    WHERE table_name LIKE 'plot_%'
+    """
+    logger.info(f"Executing query to get treatment 1 plots:\n{query}")
+    tables = [row.table_name for row in client.query(query).result()]
+    plot_numbers = [int(table_name.split('_')[1]) for table_name in tables]
+    logger.info(f"Found plot numbers: {plot_numbers}")
+    return sorted(plot_numbers)
+
+def get_plot_data(client, plot_number):
+    end_time = datetime.now(pytz.UTC)
+    start_time = end_time - timedelta(days=HISTORICAL_DAYS)
+    
+    query = f"""
+    SELECT *
+    FROM `{PROJECT_ID}.{TREATMENT_1_DATASET}.plot_{plot_number}`
+    WHERE TIMESTAMP BETWEEN '{start_time}' AND '{end_time}'
+    ORDER BY TIMESTAMP
+    """
+    
+    logger.info(f"Executing query for plot {plot_number}:\n{query}")
+    df = client.query(query).to_dataframe()
+    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
+    
+    logger.info(f"Plot {plot_number} data range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
+    logger.info(f"Plot {plot_number} data shape: {df.shape}")
+    logger.info(f"Plot {plot_number} columns: {df.columns.tolist()}")
+    logger.info(f"Sample of plot {plot_number} data:\n{df.head().to_string()}")
+    
+    return df
+
+def get_all_plot_data(client):
+    plot_numbers = get_treatment_1_plots(client)
+    plot_data = {}
+    for plot_number in plot_numbers:
+        plot_data[plot_number] = get_plot_data(client, plot_number)
+    return plot_data
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.mpc_data_prep.sensor.__init__.py</name>
+        <path>crop2cloud24.src.mpc_data_prep.sensor.__init__.py</path>
+        <content>
+from .data_retrieval import get_all_plot_data
+from .data_processing import process_plot_data
+from .database_operations import store_plot_data
+
+__all__ = ['get_all_plot_data', 'process_plot_data', 'store_plot_data']
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.mpc_data_prep.weather.database_operations.py</name>
+        <path>crop2cloud24.src.mpc_data_prep.weather.database_operations.py</path>
+        <content>
+import sqlite3
+import pandas as pd
+import numpy as np
+import logging
+from ..config import DB_NAME
+
+logger = logging.getLogger(__name__)
+
+def create_weather_table(conn):
+    conn.execute("""
+    CREATE TABLE IF NOT EXISTS weather_data (
+        TIMESTAMP TEXT PRIMARY KEY,
+        RECORD REAL,
+        Ta_2m_Avg REAL,
+        TaMax_2m REAL,
+        TaMin_2m REAL,
+        RH_2m_Avg REAL,
+        Dp_2m_Avg REAL,
+        WndAveSpd_3m REAL,
+        WndAveDir_3m REAL,
+        WndMaxSpd5s_3m REAL,
+        PresAvg_1pnt5m REAL,
+        Rain_1m_Tot REAL,
+        Solar_2m_Avg REAL,
+        Ts_bare_10cm_Avg REAL,
+        UV_index REAL,
+        Visibility REAL,
+        Clouds REAL,
+        is_forecast INTEGER
+    )
+    """)
+    logger.info("Created weather_data table")
+
+def store_weather_data(weather_df):
+    logger.info(f"Storing weather data. Shape: {weather_df.shape}")
+    conn = sqlite3.connect(DB_NAME)
+    create_weather_table(conn)
+    
+    weather_df['is_forecast'] = np.where(weather_df['TIMESTAMP'] > pd.Timestamp.now(tz='UTC'), 1, 0)
+    weather_df.to_sql('weather_data', conn, if_exists='replace', index=False)
+    
+    logger.info(f"Stored {len(weather_df)} weather data records")
+    
+    conn.close()
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.mpc_data_prep.weather.data_processing.py</name>
+        <path>crop2cloud24.src.mpc_data_prep.weather.data_processing.py</path>
+        <content>
+import pandas as pd
+import numpy as np
+import logging
+
+logger = logging.getLogger(__name__)
+
+def log_dataframe_info(df: pd.DataFrame, stage: str):
+    logger.info(f"--- DataFrame Info at {stage} ---")
+    logger.info(f"Shape: {df.shape}")
+    logger.info(f"Columns: {df.columns.tolist()}")
+    logger.info(f"Index: {df.index.name}")
+    logger.info(f"Data types:\n{df.dtypes}")
+    logger.info(f"First few rows:\n{df.head().to_string()}")
+    logger.info(f"NaN count:\n{df.isna().sum()}")
+    if 'TIMESTAMP' in df.columns:
+        logger.info(f"TIMESTAMP column - min: {df['TIMESTAMP'].min()}, max: {df['TIMESTAMP'].max()}")
+    elif df.index.name == 'TIMESTAMP':
+        logger.info(f"TIMESTAMP index - min: {df.index.min()}, max: {df.index.max()}")
+    logger.info("----------------------------")
+
+def create_full_hourly_index(start_time: pd.Timestamp, end_time: pd.Timestamp) -> pd.DatetimeIndex:
+    logger.info(f"Creating full hourly index from {start_time} to {end_time}")
+    return pd.date_range(start=start_time, end=end_time, freq='h')
+
+def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
+    logger.info("Removing duplicates")
+    log_dataframe_info(df, "Before removing duplicates")
+    df = df.sort_values('TIMESTAMP').groupby('TIMESTAMP').last().reset_index()
+    log_dataframe_info(df, "After removing duplicates")
+    return df
+
+def interpolate_hourly(df: pd.DataFrame, full_index: pd.DatetimeIndex) -> pd.DataFrame:
+    logger.info("Interpolating hourly data")
+    log_dataframe_info(df, "Before interpolation")
+    
+    df = remove_duplicates(df)
+    df = df.set_index('TIMESTAMP')
+    df_hourly = df.reindex(full_index)
+    
+    numeric_columns = df_hourly.select_dtypes(include=['float64', 'int64']).columns
+    logger.info(f"Numeric columns for interpolation: {numeric_columns.tolist()}")
+    
+    df_hourly[numeric_columns] = df_hourly[numeric_columns].interpolate(method='time')
+    
+    if 'Rain_1m_Tot' in df_hourly.columns:
+        df_hourly['Rain_1m_Tot'] = df_hourly['Rain_1m_Tot'].fillna(0)
+    
+    df_hourly = df_hourly.reset_index()  # Reset index to make TIMESTAMP a column again
+    
+    log_dataframe_info(df_hourly, "After interpolation")
+    return df_hourly
+
+def clip_forecast_data(df: pd.DataFrame, clip_timestamp: pd.Timestamp) -> tuple[pd.DataFrame, pd.DataFrame]:
+    logger.info(f"Clipping forecast data at {clip_timestamp}")
+    log_dataframe_info(df, "Before clipping")
+    df_former = df[df['TIMESTAMP'] <= clip_timestamp]
+    df_latter = df[df['TIMESTAMP'] > clip_timestamp]
+    logger.info(f"Clipped data shapes - Former: {df_former.shape}, Latter: {df_latter.shape}")
+    log_dataframe_info(df_former, "Clipped former data")
+    log_dataframe_info(df_latter, "Clipped latter data")
+    return df_former, df_latter
+
+def combine_weather_data(mesonet_df: pd.DataFrame, static_former: pd.DataFrame, rolling_former: pd.DataFrame) -> pd.DataFrame:
+    logger.info("Combining weather data")
+    log_dataframe_info(mesonet_df, "Mesonet data before combination")
+    log_dataframe_info(static_former, "Static forecast data before combination")
+    log_dataframe_info(rolling_former, "Rolling forecast data before combination")
+    
+    # Ensure 'TIMESTAMP' is a column in all DataFrames
+    for df in [mesonet_df, static_former, rolling_former]:
+        if 'TIMESTAMP' not in df.columns and df.index.name == 'TIMESTAMP':
+            df.reset_index(inplace=True)
+    
+    combined_df = pd.concat([mesonet_df, static_former, rolling_former], axis=0)
+    log_dataframe_info(combined_df, "After concatenation")
+    
+    combined_df = combined_df.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='first')
+    log_dataframe_info(combined_df, "After sorting and removing duplicates")
+    
+    return combined_df
+
+def process_weather_data(weather_data: dict[str, pd.DataFrame]) -> pd.DataFrame:
+    logger.info("Starting weather data processing")
+    
+    mesonet_data = weather_data['current-weather-mesonet']
+    static_forecast = weather_data['forecast_four_day_static']
+    rolling_forecast = weather_data['forecast_four_day_rolling']
+    
+    log_dataframe_info(mesonet_data, "Mesonet data at start")
+    log_dataframe_info(static_forecast, "Static forecast data at start")
+    log_dataframe_info(rolling_forecast, "Rolling forecast data at start")
+
+    mesonet_latest_timestamp = mesonet_data['TIMESTAMP'].max()
+    logger.info(f"Latest mesonet timestamp: {mesonet_latest_timestamp}")
+    
+    full_index = create_full_hourly_index(
+        min(mesonet_data['TIMESTAMP'].min(), static_forecast['TIMESTAMP'].min(), rolling_forecast['TIMESTAMP'].min()),
+        max(static_forecast['TIMESTAMP'].max(), rolling_forecast['TIMESTAMP'].max())
+    )
+    
+    static_former, _ = clip_forecast_data(static_forecast, mesonet_latest_timestamp)
+    rolling_former, rolling_latter = clip_forecast_data(rolling_forecast, mesonet_latest_timestamp)
+
+    logger.info("Interpolating hourly data...")
+    static_former_hourly = interpolate_hourly(static_former, full_index)
+    rolling_former_hourly = interpolate_hourly(rolling_former, full_index)
+    mesonet_hourly = interpolate_hourly(mesonet_data, full_index)
+
+    logger.info("Combining data...")
+    try:
+        combined_data = combine_weather_data(mesonet_hourly, static_former_hourly, rolling_former_hourly)
+        log_dataframe_info(combined_data, "Final combined data")
+    except Exception as e:
+        logger.error(f"Error in combine_weather_data: {str(e)}")
+        logger.error("Dumping DataFrames before combination:")
+        log_dataframe_info(mesonet_hourly, "Mesonet hourly before combination")
+        log_dataframe_info(static_former_hourly, "Static forecast hourly before combination")
+        log_dataframe_info(rolling_former_hourly, "Rolling forecast hourly before combination")
+        raise
+
+    return combined_data
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.mpc_data_prep.weather.data_retrieval.py</name>
+        <path>crop2cloud24.src.mpc_data_prep.weather.data_retrieval.py</path>
+        <content>
+import pandas as pd
+import numpy as np
+from google.cloud import bigquery
+from datetime import datetime, timedelta
+import pytz
+import logging
+from ..config import PROJECT_ID, HISTORICAL_DAYS
+
+logger = logging.getLogger(__name__)
+
+# List of columns to exclude (based on columns with many null values in mesonet data)
+EXCLUDE_COLUMNS = [
+    'TaMaxTime_2m', 'TaMinTime_2m', 'RHMaxTime_2m', 'RHMinTime_2m',
+    'DpMaxTime_2m', 'DpMinTime_2m', 'HeatIndexMaxTime_2m',
+    'WindChillMinTime_2m', 'WndMaxSpd5sTime_3m', 'PresMaxTime_1pnt5m',
+    'PresMinTime_1pnt5m', 'TsMaxTime_bare_10cm', 'TsMinTime_bare_10cm'
+]
+
+def get_columns_to_exclude(df, threshold=0.95):
+    """
+    Identify columns with a high percentage of null values.
+    
+    Args:
+    df (pd.DataFrame): The DataFrame to analyze
+    threshold (float): The threshold for null value percentage (default: 0.95)
+    
+    Returns:
+    list: Columns with null value percentage above the threshold
+    """
+    null_percentages = df.isnull().mean()
+    return list(null_percentages[null_percentages > threshold].index)
+
+def get_weather_data(client, table_name):
+    end_time = datetime.now(pytz.UTC)
+    start_time = end_time - timedelta(days=HISTORICAL_DAYS)
+    
+    # First, get all columns
+    schema_query = f"""
+    SELECT column_name
+    FROM `{PROJECT_ID}.weather.INFORMATION_SCHEMA.COLUMNS`
+    WHERE table_name = '{table_name}'
+    """
+    schema_job = client.query(schema_query)
+    all_columns = [row['column_name'] for row in schema_job]
+    
+    # Exclude the predefined columns
+    columns_to_select = [col for col in all_columns if col not in EXCLUDE_COLUMNS]
+    
+    columns_string = ", ".join(columns_to_select)
+    
+    query = f"""
+    SELECT {columns_string}
+    FROM `{PROJECT_ID}.weather.{table_name}`
+    WHERE TIMESTAMP BETWEEN '{start_time}' AND '{end_time}'
+    ORDER BY TIMESTAMP
+    """
+    
+    logger.info(f"Executing query for {table_name}:\n{query}")
+    df = client.query(query).to_dataframe()
+    
+    logger.info(f"Raw data retrieved for {table_name}. Shape: {df.shape}")
+    
+    # Identify additional columns to exclude based on null percentage
+    additional_excludes = get_columns_to_exclude(df)
+    logger.info(f"Additional columns excluded due to high null percentage: {additional_excludes}")
+    
+    # Remove additional columns with high null percentage
+    df = df.drop(columns=additional_excludes, errors='ignore')
+    
+    logger.info(f"Columns with null values: {df.columns[df.isnull().any()].tolist()}")
+    logger.info(f"Number of null values per column:\n{df.isnull().sum()}")
+    
+    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
+    
+    null_timestamps = df['TIMESTAMP'].isnull().sum()
+    logger.info(f"Number of null timestamps after conversion: {null_timestamps}")
+    
+    df = df.dropna(subset=['TIMESTAMP'])
+    logger.info(f"Shape after dropping null timestamps: {df.shape}")
+    
+    logger.info(f"{table_name} data range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
+    logger.info(f"{table_name} data shape: {df.shape}")
+    logger.info(f"{table_name} columns: {df.columns.tolist()}")
+    logger.info(f"Sample of {table_name} data:\n{df.head().to_string()}")
+    
+    return df
+
+def get_all_weather_data(client, table_names):
+    weather_data = {}
+    for table_name in table_names:
+        weather_data[table_name] = get_weather_data(client, table_name)
+    return weather_data
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.mpc_data_prep.weather.__init__.py</name>
+        <path>crop2cloud24.src.mpc_data_prep.weather.__init__.py</path>
+        <content>
+from .data_retrieval import get_all_weather_data
+from .data_processing import process_weather_data
+
+__all__ = ['get_all_weather_data', 'process_weather_data', 'store_weather_data']
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.run_mpc_data_prep.py</name>
+        <path>crop2cloud24.src.run_mpc_data_prep.py</path>
+        <content>
+import logging
+from mpc_data_prep.main import main
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    main()
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.S1_data_ingestion.ingest_data.py</name>
+        <path>crop2cloud24.src.S1_data_ingestion.ingest_data.py</path>
+        <content>
+# This is a placeholder for src.S1_data_ingestion.ingest_data.py
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.S1_data_ingestion.__init__.py</name>
+        <path>crop2cloud24.src.S1_data_ingestion.__init__.py</path>
+        <content>
+# This file is intentionally left empty to mark this directory as a Python package.
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.S2_stress_indices.cwsi.py</name>
+        <path>crop2cloud24.src.S2_stress_indices.cwsi.py</path>
+        <content>
+# This is a placeholder for src.S2_stress_indices.cwsi.py
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.S2_stress_indices.et.py</name>
+        <path>crop2cloud24.src.S2_stress_indices.et.py</path>
+        <content>
+# This is a placeholder for src.S2_stress_indices.et.py
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.S2_stress_indices.mds.py</name>
+        <path>crop2cloud24.src.S2_stress_indices.mds.py</path>
+        <content>
+# This is a placeholder for src.S2_stress_indices.mds.py
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.S2_stress_indices.swsi.py</name>
+        <path>crop2cloud24.src.S2_stress_indices.swsi.py</path>
+        <content>
+# This is a placeholder for src.S2_stress_indices.swsi.py
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.S2_stress_indices.__init__.py</name>
+        <path>crop2cloud24.src.S2_stress_indices.__init__.py</path>
+        <content>
+# This file is intentionally left empty to mark this directory as a Python package.
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.S3_irrigation_prediction.irrigation_model.py</name>
+        <path>crop2cloud24.src.S3_irrigation_prediction.irrigation_model.py</path>
+        <content>
+# This is a placeholder for src.S3_irrigation_prediction.irrigation_model.py
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.S3_irrigation_prediction.__init__.py</name>
+        <path>crop2cloud24.src.S3_irrigation_prediction.__init__.py</path>
+        <content>
+# This file is intentionally left empty to mark this directory as a Python package.
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.utils.backfill_mesonet_data.py</name>
+        <path>crop2cloud24.src.utils.backfill_mesonet_data.py</path>
+        <content>
+import os
+import pandas as pd
+import numpy as np
+from google.cloud import bigquery
+from pytz import timezone
+from datetime import datetime, timedelta
+import logging
+from dateutil.parser import parse
+
+# BigQuery table details
+project_id = "crop2cloud24"
+dataset_id = "weather"
+table_id = "current-weather-mesonet"
+
+# Specify the path to your local CSV file here
+CSV_PATH = r"C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (3).csv"
+
+# Specify the start date for backfilling here (format: YYYY-MM-DD)
+START_DATE = "2024-06-01"
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+class DateTimeConverter:
+    @staticmethod
+    def to_utc(timestamp):
+        central = timezone('America/Chicago')
+        if timestamp.tzinfo is None:
+            # Assume Central Time if no timezone info
+            timestamp = central.localize(timestamp)
+        return timestamp.astimezone(timezone('UTC'))
+
+class DataParser:
+    def parse_weather_csv(self, filename):
+        def date_parser(date_string):
+            return pd.to_datetime(date_string, format="%Y-%m-%d %H:%M:%S", errors="coerce")
+
+        try:
+            df = pd.read_csv(
+                filename,
+                header=1,
+                skiprows=[2, 3],
+                parse_dates=["TIMESTAMP"],
+                date_parser=date_parser,
+            )
+            logger.info(f"Successfully read CSV file: {filename}")
+        except Exception as e:
+            logger.error(f"Error reading CSV file: {filename}. Error: {str(e)}")
+            raise
+
+        df = df.rename(columns=lambda x: x.strip())
+        df["TIMESTAMP"] = pd.to_datetime(df["TIMESTAMP"], errors="coerce")
+        df = df.dropna(subset=["TIMESTAMP"])
+        df["TIMESTAMP"] = df["TIMESTAMP"].apply(DateTimeConverter.to_utc)
+        df = df.set_index("TIMESTAMP")
+        df = df.apply(pd.to_numeric, errors="coerce")
+
+        # Remove columns that are not in the BigQuery table schema
+        columns_to_remove = ['BattVolts_Min', 'LithBatt_Min', 'MaintMode']
+        df = df.drop(columns=columns_to_remove, errors='ignore')
+
+        return df
+
+def get_earliest_timestamp(client, project_id, dataset_id, table_id):
+    query = f"""
+    SELECT MIN(TIMESTAMP) as earliest_timestamp
+    FROM `{project_id}.{dataset_id}.{table_id}`
+    """
+    query_job = client.query(query)
+    results = query_job.result()
+    for row in results:
+        return row.earliest_timestamp
+    return None
+
+def backfill_data():
+    client = bigquery.Client()
+
+    # Get the earliest timestamp from the BigQuery table
+    earliest_timestamp = get_earliest_timestamp(client, project_id, dataset_id, table_id)
+    if earliest_timestamp is None:
+        logger.error("Unable to retrieve earliest timestamp from BigQuery table")
+        return
+
+    logger.info(f"Earliest timestamp in BigQuery table: {earliest_timestamp}")
+
+    # Parse the start date
+    start_date = parse(START_DATE).replace(tzinfo=timezone('UTC'))
+    
+    # Ensure start_date is before earliest_timestamp
+    if start_date >= earliest_timestamp:
+        logger.error("Start date must be before the earliest timestamp in the BigQuery table")
+        return
+
+    # Parse the CSV file
+    parser = DataParser()
+    df = parser.parse_weather_csv(CSV_PATH)
+
+    # Filter the dataframe to include only the data we want to backfill
+    df_to_insert = df[(df.index >= start_date) & (df.index < earliest_timestamp)]
+
+    if df_to_insert.empty:
+        logger.info("No data to backfill within the specified date range")
+        return
+
+    logger.info(f"Preparing to insert {len(df_to_insert)} rows")
+
+    # Prepare the data for insertion
+    df_to_insert = df_to_insert.reset_index()
+
+    # Define the schema
+    schema = [
+        bigquery.SchemaField("TIMESTAMP", "TIMESTAMP"),
+        bigquery.SchemaField("RECORD", "FLOAT"),
+        bigquery.SchemaField("Ta_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("TaMax_2m", "FLOAT"),
+        bigquery.SchemaField("TaMaxTime_2m", "FLOAT"),
+        bigquery.SchemaField("TaMin_2m", "FLOAT"),
+        bigquery.SchemaField("TaMinTime_2m", "FLOAT"),
+        bigquery.SchemaField("RH_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("RHMax_2m", "FLOAT"),
+        bigquery.SchemaField("RHMaxTime_2m", "FLOAT"),
+        bigquery.SchemaField("RHMin_2m", "FLOAT"),
+        bigquery.SchemaField("RHMinTime_2m", "FLOAT"),
+        bigquery.SchemaField("Dp_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("DpMax_2m", "FLOAT"),
+        bigquery.SchemaField("DpMaxTime_2m", "FLOAT"),
+        bigquery.SchemaField("DpMin_2m", "FLOAT"),
+        bigquery.SchemaField("DpMinTime_2m", "FLOAT"),
+        bigquery.SchemaField("HeatIndex_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("HeatIndexMax_2m", "FLOAT"),
+        bigquery.SchemaField("HeatIndexMaxTime_2m", "FLOAT"),
+        bigquery.SchemaField("WindChill_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("WindChillMin_2m", "FLOAT"),
+        bigquery.SchemaField("WindChillMinTime_2m", "FLOAT"),
+        bigquery.SchemaField("WndAveSpd_3m", "FLOAT"),
+        bigquery.SchemaField("WndVecMagAve_3m", "FLOAT"),
+        bigquery.SchemaField("WndAveDir_3m", "FLOAT"),
+        bigquery.SchemaField("WndAveDirSD_3m", "FLOAT"),
+        bigquery.SchemaField("WndMaxSpd5s_3m", "FLOAT"),
+        bigquery.SchemaField("WndMaxSpd5sTime_3m", "FLOAT"),
+        bigquery.SchemaField("WndMax_5sec_Dir_3m", "FLOAT"),
+        bigquery.SchemaField("PresAvg_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("PresMax_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("PresMaxTime_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("PresMin_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("PresMinTime_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("Solar_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("Rain_1m_Tot", "FLOAT"),
+        bigquery.SchemaField("Ts_bare_10cm_Avg", "FLOAT"),
+        bigquery.SchemaField("TsMax_bare_10cm", "FLOAT"),
+        bigquery.SchemaField("TsMaxTime_bare_10cm", "FLOAT"),
+        bigquery.SchemaField("TsMin_bare_10cm", "FLOAT"),
+        bigquery.SchemaField("TsMinTime_bare_10cm", "FLOAT"),
+    ]
+
+    # Configure the load job
+    job_config = bigquery.LoadJobConfig(
+        schema=schema,
+        write_disposition=bigquery.WriteDisposition.WRITE_APPEND,
+    )
+
+    # Load the data into BigQuery
+    table_ref = client.dataset(dataset_id).table(table_id)
+    job = client.load_table_from_dataframe(df_to_insert, table_ref, job_config=job_config)
+
+    try:
+        job.result()  # Wait for the job to complete
+        logger.info(f"Successfully inserted {job.output_rows} rows into BigQuery table")
+    except Exception as e:
+        logger.error(f"Error inserting data into BigQuery: {str(e)}")
+
+if __name__ == "__main__":
+    backfill_data()
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.utils.bigquery_operations.py</name>
+        <path>crop2cloud24.src.utils.bigquery_operations.py</path>
+        <content>
+import os
+import yaml
+from google.cloud import bigquery
+from google.oauth2 import service_account
+from google.api_core import exceptions
+from dotenv import load_dotenv
+from logger import get_logger
+import pandas as pd
+from datetime import datetime
+import pytz
+
+logger = get_logger(__name__)
+
+def load_sensor_mapping(file_path='sensor_mapping.yaml'):
+    try:
+        with open(file_path, 'r') as file:
+            return yaml.safe_load(file)
+    except FileNotFoundError:
+        logger.error(f"Sensor mapping file not found: {file_path}")
+        raise
+    except yaml.YAMLError as e:
+        logger.error(f"Error parsing YAML file: {e}")
+        raise
+
+def create_bigquery_client():
+    load_dotenv()
+    credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+    
+    if not credentials_path:
+        logger.error("GOOGLE_APPLICATION_CREDENTIALS not set in .env file")
+        raise ValueError("GOOGLE_APPLICATION_CREDENTIALS not set in .env file")
+    
+    try:
+        credentials = service_account.Credentials.from_service_account_file(
+            credentials_path,
+            scopes=["https://www.googleapis.com/auth/cloud-platform"],
+        )
+        return bigquery.Client(credentials=credentials, project=credentials.project_id)
+    except Exception as e:
+        logger.error(f"Error creating BigQuery client: {e}")
+        raise
+
+def ensure_dataset_exists(client, dataset_id):
+    dataset_ref = client.dataset(dataset_id)
+    try:
+        client.get_dataset(dataset_ref)
+        logger.info(f"Dataset {dataset_id} already exists")
+    except exceptions.NotFound:
+        dataset = bigquery.Dataset(dataset_ref)
+        dataset = client.create_dataset(dataset)
+        logger.info(f"Created dataset {dataset_id}")
+
+def get_table_schema(client, table_id):
+    try:
+        table = client.get_table(table_id)
+        return {field.name: field.field_type for field in table.schema}
+    except exceptions.NotFound:
+        return {}
+
+def update_table_schema(client, table_id, new_columns):
+    table = client.get_table(table_id)
+    original_schema = table.schema
+    new_schema = original_schema[:]
+
+    for col_name, col_type in new_columns.items():
+        if col_name not in [field.name for field in original_schema]:
+            new_schema.append(bigquery.SchemaField(col_name, col_type, mode="NULLABLE"))
+
+    if new_schema != original_schema:
+        table.schema = new_schema
+        client.update_table(table, ["schema"])
+        logger.info(f"Updated schema for table {table_id}")
+
+def get_latest_actual_timestamp(client, table_id):
+    query = f"""
+    SELECT MAX(TIMESTAMP) as latest_timestamp
+    FROM `{table_id}`
+    WHERE is_actual = TRUE
+    """
+    query_job = client.query(query)
+    results = query_job.result()
+    for row in results:
+        if row.latest_timestamp:
+            return row.latest_timestamp
+    return None
+
+def insert_or_update_data(client, table_id, df, is_actual=True):
+    logger.info(f"Preparing to {'insert' if is_actual else 'update'} data in {table_id}")
+    logger.info(f"DataFrame columns: {df.columns.tolist()}")
+    logger.info(f"DataFrame shape: {df.shape}")
+
+    # Ensure TIMESTAMP is in Central Time
+    chicago_tz = pytz.timezone('America/Chicago')
+    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP']).dt.tz_convert(chicago_tz)
+
+    # Add is_actual column
+    df['is_actual'] = is_actual
+
+    if is_actual:
+        # Get the latest actual timestamp from the table (already in Central Time)
+        latest_timestamp = get_latest_actual_timestamp(client, table_id)
+        if latest_timestamp:
+            df = df[df['TIMESTAMP'] > latest_timestamp]
+            logger.info(f"Filtered data to {len(df)} new rows after {latest_timestamp}")
+    else:
+        # For predictions, delete existing predictions before inserting new ones
+        delete_query = f"""
+        DELETE FROM `{table_id}`
+        WHERE is_actual = FALSE AND TIMESTAMP >= '{df['TIMESTAMP'].min()}'
+        """
+        client.query(delete_query).result()
+        logger.info(f"Deleted existing predictions from {df['TIMESTAMP'].min()}")
+
+    if df.empty:
+        logger.info(f"No new data to {'insert' if is_actual else 'update'} in {table_id}")
+        return
+
+    # Sort the dataframe by timestamp
+    df = df.sort_values('TIMESTAMP')
+
+    # Get current schema
+    current_schema = get_table_schema(client, table_id)
+    logger.info(f"Current schema for table {table_id}: {current_schema}")
+
+    # Identify new columns
+    new_columns = {col: 'FLOAT64' for col in df.columns if col not in current_schema and col not in ['TIMESTAMP', 'is_actual']}
+
+    # Update schema if new columns exist
+    if new_columns:
+        logger.info(f"New columns to be added: {new_columns}")
+        update_table_schema(client, table_id, new_columns)
+
+    # Ensure we only upload columns that exist in the schema
+    columns_to_upload = [col for col in df.columns if col in current_schema or col in new_columns]
+    df = df[columns_to_upload]
+
+    # Prepare job config
+    job_config = bigquery.LoadJobConfig(
+        schema=[
+            bigquery.SchemaField('TIMESTAMP', 'TIMESTAMP', mode='REQUIRED'),
+            bigquery.SchemaField('is_actual', 'BOOLEAN', mode='REQUIRED')
+        ] + [
+            bigquery.SchemaField(col, 'FLOAT64', mode='NULLABLE') 
+            for col in columns_to_upload if col not in ['TIMESTAMP', 'is_actual']
+        ],
+        write_disposition="WRITE_APPEND",
+    )
+
+    # Upload data
+    try:
+        job = client.load_table_from_dataframe(df, table_id, job_config=job_config)
+        job.result()  # Wait for the job to complete
+        logger.info(f"Successfully loaded {len(df)} rows into {table_id}")
+    except exceptions.BadRequest as e:
+        logger.error(f"Error uploading data to {table_id}: {str(e)}")
+        raise
+
+def verify_bigquery_data(client, table_id, df):
+    logger.info(f"Verifying data in {table_id}")
+
+    # Query to get the count of rows and the min/max timestamps
+    query = f"""
+    SELECT 
+        COUNT(*) as row_count,
+        MIN(TIMESTAMP) as min_timestamp,
+        MAX(TIMESTAMP) as max_timestamp,
+        SUM(CASE WHEN is_actual THEN 1 ELSE 0 END) as actual_count,
+        SUM(CASE WHEN NOT is_actual THEN 1 ELSE 0 END) as prediction_count
+    FROM `{table_id}`
+    """
+    query_job = client.query(query)
+    results = query_job.result()
+
+    for row in results:
+        logger.info(f"Table {table_id} contains {row.row_count} rows")
+        logger.info(f"Timestamp range: {row.min_timestamp} to {row.max_timestamp}")
+        logger.info(f"Actual readings: {row.actual_count}")
+        logger.info(f"Predictions: {row.prediction_count}")
+
+    # Compare with the original dataframe
+    logger.info(f"Original dataframe contains {len(df)} rows")
+    logger.info(f"Original timestamp range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
+
+    # Query to get a sample of data for manual inspection
+    sample_query = f"""
+    SELECT *
+    FROM `{table_id}`
+    ORDER BY TIMESTAMP DESC
+    LIMIT 10
+    """
+    sample_job = client.query(sample_query)
+    sample_results = sample_job.result()
+
+    logger.info("Sample of uploaded data:")
+    for row in sample_results:
+        logger.info(row)
+
+def process_and_upload_data(df, sensor_mapping, is_actual=True):
+    client = create_bigquery_client()
+    
+    # Group sensors by treatment and plot
+    sensor_groups = {}
+    for sensor in sensor_mapping:
+        key = (sensor['treatment'], sensor['plot_number'])
+        if key not in sensor_groups:
+            sensor_groups[key] = []
+        sensor_groups[key].append(sensor['sensor_id'])
+
+    # Process and upload data for each group
+    for (treatment, plot_number), sensors in sensor_groups.items():
+        table_id = f"LINEAR_CORN_trt{treatment}.plot_{plot_number}"
+        dataset_id = f"LINEAR_CORN_trt{treatment}"
+        ensure_dataset_exists(client, dataset_id)
+        full_table_id = f"{client.project}.{dataset_id}.plot_{plot_number}"
+        
+        # Select relevant columns for this group
+        columns_to_upload = ['TIMESTAMP'] + [s for s in sensors if s in df.columns]
+        df_to_upload = df[columns_to_upload].dropna(subset=columns_to_upload[1:], how='all')
+        
+        if not df_to_upload.empty:
+            try:
+                insert_or_update_data(client, full_table_id, df_to_upload, is_actual)
+                verify_bigquery_data(client, full_table_id, df_to_upload)
+            except Exception as e:
+                logger.error(f"Failed to upload or verify data for plot {plot_number} to {full_table_id}: {str(e)}")
+        else:
+            logger.info(f"No data to upload for plot {plot_number}")
+
+    return sensor_groups
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.utils.create_bigquery_tables.py</name>
+        <path>crop2cloud24.src.utils.create_bigquery_tables.py</path>
+        <content>
+import os
+import yaml
+from google.cloud import bigquery
+from google.oauth2 import service_account
+from google.api_core import exceptions
+from dotenv import load_dotenv
+from logger import get_logger
+
+logger = get_logger(__name__)
+
+def load_sensor_mapping(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            return yaml.safe_load(file)
+    except FileNotFoundError:
+        logger.error(f"Sensor mapping file not found: {file_path}")
+        raise
+    except yaml.YAMLError as e:
+        logger.error(f"Error parsing YAML file: {e}")
+        raise
+
+def create_bigquery_client():
+    load_dotenv()
+    credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+    
+    if not credentials_path:
+        logger.error("GOOGLE_APPLICATION_CREDENTIALS not set in .env file")
+        raise ValueError("GOOGLE_APPLICATION_CREDENTIALS not set in .env file")
+    
+    try:
+        credentials = service_account.Credentials.from_service_account_file(
+            credentials_path,
+            scopes=["https://www.googleapis.com/auth/cloud-platform"],
+        )
+        return bigquery.Client(credentials=credentials, project=credentials.project_id)
+    except Exception as e:
+        logger.error(f"Error creating BigQuery client: {e}")
+        raise
+
+def create_table_schema(sensor_ids):
+    schema = [
+        bigquery.SchemaField("TIMESTAMP", "TIMESTAMP", mode="REQUIRED"),
+        bigquery.SchemaField("is_actual", "BOOLEAN", mode="REQUIRED"),
+        bigquery.SchemaField("prediction_timestamp", "TIMESTAMP", mode="NULLABLE"),
+        bigquery.SchemaField("applied_irrigation", "FLOAT64", mode="NULLABLE"),
+    ]
+    
+    for sensor_id in sensor_ids:
+        schema.append(bigquery.SchemaField(sensor_id, "FLOAT64", mode="NULLABLE"))
+        schema.append(bigquery.SchemaField(f"{sensor_id}_pred", "FLOAT64", mode="NULLABLE"))
+    
+    # Add stress indices columns
+    for index in ['cwsi', 'et', 'swsi']:
+        schema.append(bigquery.SchemaField(index, "FLOAT64", mode="NULLABLE"))
+        schema.append(bigquery.SchemaField(f"{index}_pred", "FLOAT64", mode="NULLABLE"))
+    
+    return schema
+
+def ensure_dataset_exists(client, dataset_id, delete_existing=False):
+    dataset_ref = client.dataset(dataset_id)
+    try:
+        if delete_existing:
+            client.delete_dataset(dataset_ref, delete_contents=True, not_found_ok=True)
+            logger.info(f"Deleted existing dataset {dataset_id}")
+        dataset = client.get_dataset(dataset_ref)
+        logger.info(f"Dataset {dataset_id} already exists")
+    except exceptions.NotFound:
+        dataset = bigquery.Dataset(dataset_ref)
+        dataset = client.create_dataset(dataset)
+        logger.info(f"Created dataset {dataset_id}")
+
+def update_table_schema(client, table_id, new_schema):
+    table = client.get_table(table_id)
+    existing_fields = set(field.name for field in table.schema)
+    new_fields = set(field.name for field in new_schema)
+    
+    fields_to_add = new_fields - existing_fields
+    
+    if fields_to_add:
+        updated_schema = table.schema[:]
+        for field_name in fields_to_add:
+            new_field = next(field for field in new_schema if field.name == field_name)
+            updated_schema.append(new_field)
+        
+        table.schema = updated_schema
+        table = client.update_table(table, ["schema"])
+        logger.info(f"Updated schema for table {table_id}. Added fields: {fields_to_add}")
+    else:
+        logger.info(f"No new fields to add for table {table_id}")
+
+def create_or_update_table(client, table_id, schema, delete_existing=False):
+    try:
+        if delete_existing:
+            client.delete_table(table_id, not_found_ok=True)
+            logger.info(f"Deleted existing table {table_id}")
+        table = client.get_table(table_id)
+        update_table_schema(client, table_id, schema)
+    except exceptions.NotFound:
+        table = bigquery.Table(table_id, schema=schema)
+        table = client.create_table(table)
+        logger.info(f"Created table {table_id}")
+
+def process_sensor_mapping(client, sensor_mapping, delete_existing=False):
+    field_treatment_plot_sensor_map = {}
+    for sensor in sensor_mapping:
+        field = sensor['field']
+        treatment = sensor['treatment']
+        plot_number = sensor['plot_number']
+        sensor_id = sensor['sensor_id']
+        
+        if field not in field_treatment_plot_sensor_map:
+            field_treatment_plot_sensor_map[field] = {}
+        if treatment not in field_treatment_plot_sensor_map[field]:
+            field_treatment_plot_sensor_map[field][treatment] = {}
+        if plot_number not in field_treatment_plot_sensor_map[field][treatment]:
+            field_treatment_plot_sensor_map[field][treatment][plot_number] = set()
+        
+        field_treatment_plot_sensor_map[field][treatment][plot_number].add(sensor_id)
+    
+    for field, treatments in field_treatment_plot_sensor_map.items():
+        for treatment, plots in treatments.items():
+            dataset_id = f"{field}_trt{treatment}"
+            ensure_dataset_exists(client, dataset_id, delete_existing)
+            
+            for plot_number, sensor_ids in plots.items():
+                table_id = f"{client.project}.{dataset_id}.plot_{plot_number}"
+                schema = create_table_schema(sensor_ids)
+                create_or_update_table(client, table_id, schema, delete_existing)
+
+def main():
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        yaml_path = os.path.join(script_dir, '..', '..', 'sensor_mapping.yaml')
+        sensor_mapping = load_sensor_mapping(yaml_path)
+        client = create_bigquery_client()
+
+        delete_flag = input("Do you want to delete existing tables/datasets before creating new ones? (y/n): ").lower() == 'y'
+
+        if delete_flag:
+            confirmation1 = input("Are you sure you want to delete existing tables/datasets? (y/n): ").lower()
+            if confirmation1 == 'y':
+                confirmation2 = input("This action is irreversible. Type 'y' again to confirm deletion: ").lower()
+                if confirmation2 == 'y':
+                    logger.info("Deletion confirmed. Proceeding with table creation (including deletion of existing ones).")
+                    process_sensor_mapping(client, sensor_mapping, delete_existing=True)
+                else:
+                    logger.info("Deletion cancelled. Proceeding with table creation without deleting existing ones.")
+                    process_sensor_mapping(client, sensor_mapping, delete_existing=False)
+            else:
+                logger.info("Deletion cancelled. Proceeding with table creation without deleting existing ones.")
+                process_sensor_mapping(client, sensor_mapping, delete_existing=False)
+        else:
+            logger.info("Proceeding with table creation without deleting existing ones.")
+            process_sensor_mapping(client, sensor_mapping, delete_existing=False)
+
+        logger.info("Process completed successfully")
+    except Exception as e:
+        logger.error(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    main()
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.utils.logger.py</name>
+        <path>crop2cloud24.src.utils.logger.py</path>
+        <content>
+# src/utils/logger.py
+
+import os
+import logging
+from logging.handlers import RotatingFileHandler
+import sys
+from datetime import datetime
+
+class RepoLogger:
+    def __init__(self, log_dir="logs", max_size=5*1024*1024, backup_count=3):
+        """
+        Initializes the logger.
+
+        Args:
+            log_dir (str): The directory to store log files. Defaults to 'logs'.
+            max_size (int): Maximum size of each log file in bytes. Defaults to 5MB.
+            backup_count (int): Number of backup files to keep. Defaults to 3.
+        """
+        self.log_dir = log_dir
+        self.max_size = max_size
+        self.backup_count = backup_count
+        self.loggers = {}
+
+    def get_logger(self, name=None, level=logging.INFO):
+        """
+        Retrieves or creates a logger with the given name.
+
+        Args:
+            name (str, optional): The name of the logger. If None, uses the calling module's name.
+            level (int, optional): The logging level to be set. Defaults to logging.INFO.
+
+        Returns:
+            logging.Logger: The logger instance.
+        """
+        if name is None:
+            name = self._get_caller_name()
+
+        if name not in self.loggers:
+            logger = logging.getLogger(name)
+            logger.setLevel(level)
+            
+            if not logger.handlers:
+                self._setup_file_handler(logger, name)
+                self._setup_console_handler(logger)
+
+            self.loggers[name] = logger
+
+        return self.loggers[name]
+
+    def _get_caller_name(self):
+        """Get the name of the calling module."""
+        frame = sys._getframe(2)
+        return os.path.splitext(os.path.basename(frame.f_code.co_filename))[0]
+
+    def _setup_file_handler(self, logger, name):
+        """Sets up a rotating file handler for the logger."""
+        if not os.path.exists(self.log_dir):
+            os.makedirs(self.log_dir)
+
+        log_file = os.path.join(self.log_dir, f"{name}.log")
+        file_handler = RotatingFileHandler(
+            log_file,
+            maxBytes=self.max_size,
+            backupCount=self.backup_count
+        )
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
+
+    def _setup_console_handler(self, logger):
+        """Sets up a console handler for the logger."""
+        console_handler = logging.StreamHandler()
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        console_handler.setFormatter(formatter)
+        logger.addHandler(console_handler)
+
+# Global instance of RepoLogger
+repo_logger = RepoLogger()
+
+# Convenience function to get a logger
+def get_logger(name=None, level=logging.INFO):
+    return repo_logger.get_logger(name, level)
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.utils.prediction_operations.py</name>
+        <path>crop2cloud24.src.utils.prediction_operations.py</path>
+        <content>
+import pandas as pd
+from google.cloud import bigquery
+from logger import get_logger
+from bigquery_operations import create_bigquery_client, insert_or_update_data
+
+logger = get_logger(__name__)
+
+def insert_predictions(client, table_id, predictions_df):
+    """
+    Insert prediction data into BigQuery table.
+    
+    :param client: BigQuery client
+    :param table_id: Full table ID (project.dataset.table)
+    :param predictions_df: DataFrame containing predictions
+    """
+    # Ensure prediction_timestamp is set
+    predictions_df['prediction_timestamp'] = pd.Timestamp.now(tz='UTC')
+    
+    # Insert predictions
+    insert_or_update_data(client, table_id, predictions_df, is_actual=False)
+
+def get_data_for_analysis(client, table_id, start_time, end_time):
+    """
+    Retrieve both actual and predicted data for analysis.
+    
+    :param client: BigQuery client
+    :param table_id: Full table ID (project.dataset.table)
+    :param start_time: Start of the time range
+    :param end_time: End of the time range
+    :return: DataFrame containing both actual and predicted data
+    """
+    query = f"""
+    SELECT *
+    FROM `{table_id}`
+    WHERE TIMESTAMP BETWEEN '{start_time}' AND '{end_time}'
+    ORDER BY TIMESTAMP, is_actual DESC
+    """
+    
+    query_job = client.query(query)
+    results = query_job.result()
+    
+    df = results.to_dataframe()
+    
+    # Process the dataframe to combine actual and predicted values
+    df_actual = df[df['is_actual']].set_index('TIMESTAMP')
+    df_predicted = df[~df['is_actual']].set_index('TIMESTAMP')
+    
+    # Combine actual and predicted data
+    df_combined = pd.concat([df_actual, df_predicted], axis=1, keys=['actual', 'predicted'])
+    df_combined.columns = ['_'.join(col).strip() for col in df_combined.columns.values]
+    
+    return df_combined
+
+def get_latest_data_for_prediction(client, table_id, hours=24):
+    """
+    Retrieve the latest actual data for making predictions.
+    
+    :param client: BigQuery client
+    :param table_id: Full table ID (project.dataset.table)
+    :param hours: Number of hours of data to retrieve
+    :return: DataFrame containing the latest actual data
+    """
+    query = f"""
+    SELECT *
+    FROM `{table_id}`
+    WHERE is_actual = TRUE
+    ORDER BY TIMESTAMP DESC
+    LIMIT {hours}
+    """
+    
+    query_job = client.query(query)
+    results = query_job.result()
+    
+    df = results.to_dataframe()
+    df = df.sort_values('TIMESTAMP')
+    
+    return df
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.utils.update_bigquery_tables.py</name>
+        <path>crop2cloud24.src.utils.update_bigquery_tables.py</path>
+        <content>
+import os
+import pandas as pd
+import numpy as np
+from google.cloud import bigquery
+from google.api_core.exceptions import NotFound
+from logger import get_logger
+from bigquery_operations import load_sensor_mapping, create_bigquery_client
+
+logger = get_logger(__name__)
+
+def parse_dat_file(file_name):
+    logger.info(f"Parsing file: {file_name}")
+    with open(file_name, "r") as file:
+        lines = file.readlines()
+    headers = lines[1].strip().split(",")
+    data_lines = lines[4:]
+    data = pd.DataFrame([line.strip().split(",") for line in data_lines], columns=headers)
+    
+    data.columns = data.columns.str.replace('"', "").str.replace("RECORD", "RecNbr")
+    data.columns = data.columns.str.replace("_Avg", "")
+    data = data.replace({"NAN": np.nan, '"NAN"': np.nan})
+    data["TIMESTAMP"] = data["TIMESTAMP"].str.replace('"', "")
+    
+    logger.info(f"Original columns: {data.columns.tolist()}")
+
+    # Convert columns to numeric, ignoring errors
+    for col in data.columns:
+        if col != "TIMESTAMP":
+            data[col] = pd.to_numeric(data[col], errors='coerce')
+    
+    data["TIMESTAMP"] = pd.to_datetime(data["TIMESTAMP"], errors="coerce")
+    logger.info(f"Number of rows before dropping NaT timestamps: {len(data)}")
+    data = data[~data["TIMESTAMP"].isna()]
+    logger.info(f"Number of rows after dropping NaT timestamps: {len(data)}")
+    
+    data = data.set_index("TIMESTAMP")
+
+    data.index = data.index.tz_localize("America/Chicago")
+    
+    # Correct the misspelled column names
+    if 'TDR5006B11724' in data.columns:
+        if 'TDR5006B11824' in data.columns:
+            logger.warning("Both correct and incorrect column names exist for TDR5006B11824. Merging data.")
+            data['TDR5006B11824'] = data['TDR5006B11824'].fillna(data['TDR5006B11724'])
+        else:
+            data['TDR5006B11824'] = data['TDR5006B11724']
+        data.drop('TDR5006B11724', axis=1, inplace=True)
+        logger.info("Corrected misspelled column name from TDR5006B11724 to TDR5006B11824")
+
+    if 'TDR5026A23824' in data.columns:
+        if 'TDR5026A23024' in data.columns:
+            logger.warning("Both correct and incorrect column names exist for TDR5026A23024. Merging data.")
+            data['TDR5026A23024'] = data['TDR5026A23024'].fillna(data['TDR5026A23824'])
+        else:
+            data['TDR5026A23024'] = data['TDR5026A23824']
+        data.drop('TDR5026A23824', axis=1, inplace=True)
+        logger.info("Corrected misspelled column name from TDR5026A23824 to TDR5026A23024")
+    
+    logger.info(f"Final columns: {data.columns.tolist()}")
+    logger.info(f"Final shape: {data.shape}")
+    logger.info(f"TIMESTAMP dtype: {data.index.dtype}")
+    logger.info(f"TIMESTAMP null count: {data.index.isnull().sum()}")
+    
+    return data
+
+def insert_or_update_data(client, table_id, df, is_actual=True):
+    logger.info(f"Preparing to {'insert' if is_actual else 'update'} data in {table_id}")
+    logger.info(f"DataFrame columns: {df.columns.tolist()}")
+    logger.info(f"DataFrame shape: {df.shape}")
+
+    # Ensure TIMESTAMP is in UTC
+    df.index = df.index.tz_convert('UTC')
+
+    # Add is_actual column
+    df['is_actual'] = is_actual
+
+    # Get current schema
+    table = client.get_table(table_id)
+    current_schema = {field.name: field.field_type for field in table.schema}
+    logger.info(f"Current schema for table {table_id}: {current_schema}")
+
+    # Prepare data for upload
+    data_to_upload = df.reset_index()  # Reset index to make TIMESTAMP a column
+    
+    # Only include columns that are in both the schema and the dataframe
+    columns_to_upload = [col for col in current_schema if col in data_to_upload.columns]
+    data_to_upload = data_to_upload[columns_to_upload]
+
+    # Fill NaN values with None for BigQuery compatibility
+    data_to_upload = data_to_upload.where(pd.notnull(data_to_upload), None)
+
+    # Sort the dataframe by TIMESTAMP
+    data_to_upload = data_to_upload.sort_values('TIMESTAMP')
+
+    # Create a new schema only including the columns we're uploading
+    upload_schema = [field for field in table.schema if field.name in columns_to_upload]
+
+    # Upload data
+    job_config = bigquery.LoadJobConfig(
+        schema=upload_schema,
+        write_disposition="WRITE_APPEND"
+    )
+    try:
+        job = client.load_table_from_dataframe(data_to_upload, table_id, job_config=job_config)
+        job.result()  # Wait for the job to complete
+        logger.info(f"Successfully loaded {len(data_to_upload)} rows into {table_id}")
+    except Exception as e:
+        logger.error(f"Error uploading data to {table_id}: {str(e)}")
+        raise
+
+def process_and_upload_data(df, sensor_mapping, is_actual=True):
+    client = create_bigquery_client()
+    
+    # Group sensors by treatment and plot
+    sensor_groups = {}
+    for sensor in sensor_mapping:
+        key = (sensor['treatment'], sensor['plot_number'])
+        if key not in sensor_groups:
+            sensor_groups[key] = []
+        sensor_groups[key].append(sensor['sensor_id'])
+
+    # Process and upload data for each group
+    for (treatment, plot_number), sensors in sensor_groups.items():
+        table_id = f"LINEAR_CORN_trt{treatment}.plot_{plot_number}"
+        dataset_id = f"LINEAR_CORN_trt{treatment}"
+        full_table_id = f"{client.project}.{dataset_id}.plot_{plot_number}"
+        
+        # Select relevant columns for this group
+        columns_to_upload = sensors  # We don't need to include 'TIMESTAMP' as it's the index
+        df_to_upload = df[df.columns.intersection(columns_to_upload)].copy()
+        
+        if not df_to_upload.empty:
+            try:
+                insert_or_update_data(client, full_table_id, df_to_upload, is_actual)
+            except Exception as e:
+                logger.error(f"Failed to upload data for plot {plot_number} to {full_table_id}: {str(e)}")
+        else:
+            logger.info(f"No data to upload for plot {plot_number}")
+
+def main():
+    # Load the sensor mapping
+    sensor_mapping = load_sensor_mapping()
+    
+    dat_files = [
+        r"C:\Campbellsci\PC400\nodeC_NodeC.dat",
+        r"C:\Campbellsci\PC400\nodeB_NodeB.dat",
+        r"C:\Campbellsci\PC400\nodeA_NodeA.dat"
+    ]
+
+    for dat_file in dat_files:
+        logger.info(f"Processing file: {dat_file}")
+        df = parse_dat_file(dat_file)
+        
+        # Process and upload data for each sensor in the dataframe
+        process_and_upload_data(df, sensor_mapping, is_actual=True)
+
+if __name__ == "__main__":
+    main()
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.utils.__init__.py</name>
+        <path>crop2cloud24.src.utils.__init__.py</path>
+        <content>
+# This file is intentionally left empty to mark this directory as a Python package.
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.src.__init__.py</name>
+        <path>crop2cloud24.src.__init__.py</path>
+        <content>
+# This file is intentionally left empty to mark this directory as a Python package.
+        </content>
+    </file>
+    <file>
+        <name>crop2cloud24.update_claude_project.py</name>
+        <path>crop2cloud24.update_claude_project.py</path>
+        <content>
+import os
+import shutil
+import tempfile
+
+def collapse_structure():
+    # Get the current directory (where the script is run from)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    claude_project_dir = os.path.join(current_dir, "claude-project")
+
+    # Create a temporary directory for backup
+    with tempfile.TemporaryDirectory() as temp_dir:
+        # If claude-project exists, move it to the temp directory
+        if os.path.exists(claude_project_dir):
+            temp_claude_project = os.path.join(temp_dir, "claude-project-backup")
+            shutil.move(claude_project_dir, temp_claude_project)
+            print(f"Existing claude-project backed up to temporary directory")
+
+        # Create a fresh claude-project directory
+        os.makedirs(claude_project_dir)
+        print(f"Created fresh claude-project directory")
+
+        # List of directories and files to exclude
+        exclude_list = ['.git', '.venv', '__pycache__', 'claude-project', 'logs']
+        exclude_extensions = ['.pyc', '.log', '.db', '.csv']  
+        # Walk through the current directory structure
+        for root, dirs, files in os.walk(current_dir):
+            # Remove excluded directories
+            dirs[:] = [d for d in dirs if d not in exclude_list]
+
+            for file in files:
+                # Skip excluded files
+                if any(file.endswith(ext) for ext in exclude_extensions) or any(excl in root.split(os.sep) for excl in exclude_list):
+                    continue
+
+                # Get the full path of the file
+                full_path = os.path.join(root, file)
+                
+                # Get the relative path from the current directory
+                rel_path = os.path.relpath(full_path, current_dir)
+                
+                # Create the flattened file name
+                flattened_name = "crop2cloud24." + rel_path.replace(os.path.sep, ".")
+                
+                # Create the new path in claude-project
+                new_path = os.path.join(claude_project_dir, flattened_name)
+                
+                # Ensure the directory exists
+                os.makedirs(os.path.dirname(new_path), exist_ok=True)
+                
+                # Copy the file
+                shutil.copy2(full_path, new_path)
+                print(f"Copied '{rel_path}' to '{flattened_name}'")
+
+        # Copy update_claude_project.py to the claude-project directory
+        collapse_structure_path = os.path.join(claude_project_dir, "crop2cloud24.update_claude_project.py")
+        shutil.copy2(__file__, collapse_structure_path)
+        print(f"Copied 'update_claude_project.py' to 'crop2cloud24.update_claude_project.py'")
+
+        print("Structure collapse completed")
+
+        # Here, the temporary directory (including the old claude-project backup) will be automatically deleted
+
+if __name__ == "__main__":
+    collapse_structure()
+        </content>
+    </file>
+</directory>
+</repository_structure>

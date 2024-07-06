@@ -224,7 +224,7 @@ def get_irt_tables(client):
 
 def get_unprocessed_data(client, table_name, irt_column):
     logger.info(f"Retrieving unprocessed data for table {table_name}")
-    seven_days_ago = datetime.now(pytz.UTC) - timedelta(days=7)
+    seven_days_ago = datetime.now(pytz.UTC) - timedelta(days=10)
     query = f"""
     SELECT TIMESTAMP, {irt_column}, is_actual
     FROM `crop2cloud24.{table_name}`

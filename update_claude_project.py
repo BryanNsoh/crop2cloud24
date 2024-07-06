@@ -21,7 +21,7 @@ def collapse_structure():
 
         # List of directories and files to exclude
         exclude_list = ['.git', '.venv', '__pycache__', 'claude-project', 'logs']
-        exclude_extensions = ['.pyc', '.log']  
+        exclude_extensions = ['.pyc', '.log', '.db', '.csv']  
         # Walk through the current directory structure
         for root, dirs, files in os.walk(current_dir):
             # Remove excluded directories
