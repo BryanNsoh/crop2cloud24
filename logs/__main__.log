@@ -2475,3 +2475,17 @@
 2024-06-30 08:51:32,986 - __main__ - INFO - DataFrame shape: (206, 4)
 2024-06-30 08:51:33,194 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt4.plot_5027: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5027A40624': 'FLOAT', 'TDR5027A40624_pred': 'FLOAT', 'TDR5027A43024': 'FLOAT', 'TDR5027A43024_pred': 'FLOAT', 'TDR5027A41824': 'FLOAT', 'TDR5027A41824_pred': 'FLOAT', 'cwsi': 'FLOAT', 'cwsi_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
 2024-06-30 08:51:35,903 - __main__ - INFO - Successfully loaded 206 rows into crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-07 16:34:39,633 - __main__ - INFO - Processing plot 5006
+2024-07-07 16:34:40,512 - __main__ - INFO - Saved HTML plot to html_plots\plot_5006.html
+2024-07-07 16:34:41,626 - __main__ - INFO - Processing plot 5006
+2024-07-07 16:34:42,473 - __main__ - INFO - Saved HTML plot to html_plots\plot_5006.html
+2024-07-07 16:35:16,098 - __main__ - INFO - Processing plot 5006
+2024-07-07 16:35:17,018 - __main__ - INFO - Saved HTML plot to html_plots\plot_5006.html
+2024-07-07 16:41:25,506 - __main__ - INFO - Processing plot 5006
+2024-07-07 16:41:25,623 - __main__ - ERROR - Error processing plot 5006: Already tz-aware, use tz_convert to convert.
+2024-07-07 16:41:25,623 - __main__ - INFO - Processing plot 5010
+2024-07-07 16:41:25,731 - __main__ - ERROR - Error processing plot 5010: Already tz-aware, use tz_convert to convert.
+2024-07-07 16:41:25,733 - __main__ - INFO - Processing plot 5023
+2024-07-07 16:41:25,848 - __main__ - ERROR - Error processing plot 5023: Already tz-aware, use tz_convert to convert.
+2024-07-07 16:42:32,471 - __main__ - INFO - Processing plot 5006
+2024-07-07 16:42:33,464 - __main__ - INFO - Saved HTML plot to html_plots\plot_5006.html
