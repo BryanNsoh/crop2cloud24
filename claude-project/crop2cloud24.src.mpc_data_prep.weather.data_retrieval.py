@@ -13,7 +13,8 @@ EXCLUDE_COLUMNS = [
     'TaMaxTime_2m', 'TaMinTime_2m', 'RHMaxTime_2m', 'RHMinTime_2m',
     'DpMaxTime_2m', 'DpMinTime_2m', 'HeatIndexMaxTime_2m',
     'WindChillMinTime_2m', 'WndMaxSpd5sTime_3m', 'PresMaxTime_1pnt5m',
-    'PresMinTime_1pnt5m', 'TsMaxTime_bare_10cm', 'TsMinTime_bare_10cm', 'is_forecast'
+    'PresMinTime_1pnt5m', 'TsMaxTime_bare_10cm', 'TsMinTime_bare_10cm', 'is_forecast', 
+    'collection_time'
 ]
 
 def get_columns_to_exclude(df, threshold=0.95):
@@ -48,12 +49,21 @@ def get_weather_data(client, table_name):
     
     columns_string = ", ".join(columns_to_select)
     
-    query = f"""
-    SELECT {columns_string}
-    FROM `{PROJECT_ID}.weather.{table_name}`
-    WHERE TIMESTAMP BETWEEN '{start_time}' AND '{end_time}'
-    ORDER BY TIMESTAMP
-    """
+    # Adjust the query based on whether it's a forecast table or not
+    if 'forecast' in table_name:
+        query = f"""
+        SELECT {columns_string}
+        FROM `{PROJECT_ID}.weather.{table_name}`
+        WHERE TIMESTAMP >= '{start_time}'
+        ORDER BY TIMESTAMP
+        """
+    else:
+        query = f"""
+        SELECT {columns_string}
+        FROM `{PROJECT_ID}.weather.{table_name}`
+        WHERE TIMESTAMP BETWEEN '{start_time}' AND '{end_time}'
+        ORDER BY TIMESTAMP
+        """
     
     logger.info(f"Executing query for {table_name}:\n{query}")
     df = client.query(query).to_dataframe()

@@ -13,7 +13,8 @@ EXCLUDE_COLUMNS = [
     'TaMaxTime_2m', 'TaMinTime_2m', 'RHMaxTime_2m', 'RHMinTime_2m',
     'DpMaxTime_2m', 'DpMinTime_2m', 'HeatIndexMaxTime_2m',
     'WindChillMinTime_2m', 'WndMaxSpd5sTime_3m', 'PresMaxTime_1pnt5m',
-    'PresMinTime_1pnt5m', 'TsMaxTime_bare_10cm', 'TsMinTime_bare_10cm', 'is_forecast'
+    'PresMinTime_1pnt5m', 'TsMaxTime_bare_10cm', 'TsMinTime_bare_10cm', 'is_forecast', 
+    'collection_time'
 ]
 
 def get_columns_to_exclude(df, threshold=0.95):

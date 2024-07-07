@@ -34,14 +34,14 @@ def main():
     logger.info("Retrieving and processing weather data...")
     try:
         weather_data = get_all_weather_data(client, WEATHER_TABLES)
-        mesonet_data, static_forecast, rolling_forecast = process_weather_data(weather_data)
-        store_weather_data(mesonet_data, static_forecast, rolling_forecast)
+        merged_weather_data = process_weather_data(weather_data)
+        store_weather_data(merged_weather_data)
         logger.info("Weather data processing completed.")
     except Exception as e:
         logger.error(f"Error processing weather data: {str(e)}")
         raise
 
-    logger.info("Retrieving and processing plot data...")
+    logger.info("Retrieving and processing sensor data...")
     try:
         plot_data = get_all_plot_data(client)
         processed_plot_data = process_plot_data(plot_data)

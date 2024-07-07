@@ -1,172 +1,143 @@
 import pandas as pd
 import numpy as np
+from google.cloud import bigquery
 import logging
 from datetime import datetime, timedelta
 import pytz
-from google.cloud import bigquery
 
 logger = logging.getLogger(__name__)
 
-PROJECT_ID = "crop2cloud24"
-HISTORICAL_DAYS = 30
-client = bigquery.Client()
+def resample_mesonet_data(mesonet_data: pd.DataFrame) -> pd.DataFrame:
+    """
+    Resample mesonet data to hourly intervals.
+    Average all columns except 'Rain_1m_Tot', which is summed.
+    """
+    logger.info("Resampling mesonet data to hourly intervals")
+    
+    # Set TIMESTAMP as index for resampling
+    mesonet_data = mesonet_data.set_index('TIMESTAMP')
+    
+    # Identify columns to average (all except 'Rain_1m_Tot')
+    columns_to_average = [col for col in mesonet_data.columns if col != 'Rain_1m_Tot']
+    
+    # Create a dictionary for resampling operations
+    resampling_dict = {col: 'mean' for col in columns_to_average}
+    resampling_dict['Rain_1m_Tot'] = 'sum'
+    
+    # Resample data
+    resampled_data = mesonet_data.resample('H').agg(resampling_dict)
+    
+    # Reset index to make TIMESTAMP a column again
+    resampled_data = resampled_data.reset_index()
+    
+    logger.info(f"Original mesonet data shape: {mesonet_data.shape}")
+    logger.info(f"Resampled mesonet data shape: {resampled_data.shape}")
+    
+    return resampled_data
 
-def log_dataframe_info(df: pd.DataFrame, stage: str):
-    logger.info(f"--- DataFrame Info at {stage} ---")
-    logger.info(f"Shape: {df.shape}")
-    logger.info(f"Columns: {df.columns.tolist()}")
-    logger.info(f"Index: {df.index.name}")
-    logger.info(f"Data types:\n{df.dtypes}")
-    logger.info(f"First few rows:\n{df.head().to_string()}")
-    logger.info(f"NaN count:\n{df.isna().sum()}")
-    if 'TIMESTAMP' in df.columns:
-        logger.info(f"TIMESTAMP column - min: {df['TIMESTAMP'].min()}, max: {df['TIMESTAMP'].max()}")
-    logger.info("----------------------------")
+def align_forecast_timestamps(forecast_df: pd.DataFrame, latest_mesonet_timestamp: pd.Timestamp) -> pd.DataFrame:
+    """
+    Align forecast timestamps with mesonet data, decrementing until the latest forecast timestamp
+    is flush with the latest mesonet timestamp.
+    """
+    logger.info(f"Original forecast timestamp range: {forecast_df['TIMESTAMP'].min()} to {forecast_df['TIMESTAMP'].max()}")
+    
+    time_difference = forecast_df['TIMESTAMP'].max() - latest_mesonet_timestamp
+    hours_to_subtract = time_difference.total_seconds() / 3600
+    logger.info(f"Hours to subtract from forecast timestamps: {hours_to_subtract}")
+    
+    forecast_df['TIMESTAMP'] = forecast_df['TIMESTAMP'] - pd.Timedelta(hours=hours_to_subtract)
+    
+    logger.info(f"Adjusted forecast timestamp range: {forecast_df['TIMESTAMP'].min()} to {forecast_df['TIMESTAMP'].max()}")
+    
+    # Log a sample of adjusted timestamps
+    sample_timestamps = forecast_df['TIMESTAMP'].sample(min(5, len(forecast_df))).sort_values()
+    logger.info(f"Sample of adjusted forecast timestamps:\n{sample_timestamps.to_string()}")
+    
+    return forecast_df
 
-def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
-    logger.info(f"Removing duplicates. Initial shape: {df.shape}")
-    df = df.sort_values('TIMESTAMP').groupby('TIMESTAMP', as_index=False).last()
-    logger.info(f"After removing duplicates. Shape: {df.shape}")
-    return df
+def merge_weather_data(mesonet_data: pd.DataFrame, static_forecast: pd.DataFrame, rolling_forecast: pd.DataFrame) -> pd.DataFrame:
+    logger.info("Merging weather data")
+    
+    # Ensure all timestamps are in UTC, convert to timezone-naive, and have nanosecond precision
+    for df in [mesonet_data, static_forecast, rolling_forecast]:
+        df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True).dt.tz_convert('UTC').dt.tz_localize(None).astype('datetime64[ns]')
+    
+    # Get the latest mesonet timestamp
+    latest_mesonet_timestamp = mesonet_data['TIMESTAMP'].max()
+    logger.info(f"Latest mesonet timestamp: {latest_mesonet_timestamp}")
+    logger.info(f"Mesonet data range: {mesonet_data['TIMESTAMP'].min()} to {mesonet_data['TIMESTAMP'].max()}")
+    
+    # Log number of matching timestamps before alignment
+    matches_before = sum(mesonet_data['TIMESTAMP'].dt.floor('h').isin(static_forecast['TIMESTAMP'].dt.floor('h')))
+    logger.info(f"Number of matching timestamps (same hour) before alignment: {matches_before}")
+    
+    # Align forecast timestamps
+    static_forecast = align_forecast_timestamps(static_forecast, latest_mesonet_timestamp)
+    rolling_forecast = align_forecast_timestamps(rolling_forecast, latest_mesonet_timestamp)
+    
+    # Log number of matching timestamps after alignment
+    matches_after = sum(mesonet_data['TIMESTAMP'].dt.floor('h').isin(static_forecast['TIMESTAMP'].dt.floor('h')))
+    logger.info(f"Number of matching timestamps (same hour) after alignment: {matches_after}")
+    
+    # Print common datapoints within the same hour range
+    common_hours = set(mesonet_data['TIMESTAMP'].dt.floor('h')) & set(static_forecast['TIMESTAMP'].dt.floor('h'))
+    logger.info(f"Common hours between mesonet and forecast data: {sorted(common_hours)}")
+    
+    # Add suffixes to forecast columns
+    static_forecast_columns = {col: f"{col}_static_forecast" for col in static_forecast.columns if col != "TIMESTAMP"}
+    rolling_forecast_columns = {col: f"{col}_rolling_forecast" for col in rolling_forecast.columns if col != "TIMESTAMP"}
+    
+    static_forecast = static_forecast.rename(columns=static_forecast_columns)
+    rolling_forecast = rolling_forecast.rename(columns=rolling_forecast_columns)
+    
+    # Merge dataframes
+    merged_data = pd.merge_asof(
+        mesonet_data, 
+        static_forecast, 
+        on='TIMESTAMP',
+        direction='nearest',
+        tolerance=pd.Timedelta('1h')
+    )
+    merged_data = pd.merge_asof(
+        merged_data, 
+        rolling_forecast, 
+        on='TIMESTAMP',
+        direction='nearest',
+        tolerance=pd.Timedelta('1h')
+    )
+    
+    logger.info(f"Merged data range: {merged_data['TIMESTAMP'].min()} to {merged_data['TIMESTAMP'].max()}")
+    logger.info(f"Total rows in merged data: {len(merged_data)}")
+    
+    # Log number of non-null datapoints in merged table
+    non_null_counts = merged_data.notna().sum()
+    logger.info(f"Number of non-null datapoints in merged table:")
+    for col, count in non_null_counts.items():
+        logger.info(f"{col}: {count}")
+    
+    return merged_data
 
-def process_weather_data(weather_data: dict[str, pd.DataFrame]) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def process_weather_data(weather_data: dict[str, pd.DataFrame]) -> pd.DataFrame:
     logger.info("Starting weather data processing")
     
     mesonet_data = weather_data['current-weather-mesonet']
     static_forecast = weather_data['forecast_four_day_static']
     rolling_forecast = weather_data['forecast_four_day_rolling']
     
-    log_dataframe_info(mesonet_data, "Mesonet data")
-    log_dataframe_info(static_forecast, "Static forecast data")
-    log_dataframe_info(rolling_forecast, "Rolling forecast data")
-
     # Remove duplicates
-    mesonet_data = remove_duplicates(mesonet_data)
-    static_forecast = remove_duplicates(static_forecast)
-    rolling_forecast = remove_duplicates(rolling_forecast)
-
-    log_dataframe_info(mesonet_data, "Final mesonet data")
-    log_dataframe_info(static_forecast, "Final static forecast data")
-    log_dataframe_info(rolling_forecast, "Final rolling forecast data")
-
-    return mesonet_data, static_forecast, rolling_forecast
-
-
-# Commented out processing steps for future reference
-
-# def handle_timestamp(df: pd.DataFrame, action: str = 'ensure') -> pd.DataFrame:
-#     if action == 'ensure':
-#         if 'TIMESTAMP' not in df.columns and df.index.name != 'TIMESTAMP':
-#             if 'index' in df.columns and pd.api.types.is_datetime64_any_dtype(df['index']):
-#                 df = df.rename(columns={'index': 'TIMESTAMP'})
-#             else:
-#                 logger.error("DataFrame does not have a TIMESTAMP column or index")
-#                 raise ValueError("DataFrame must have a TIMESTAMP column or index")
-#         elif df.index.name == 'TIMESTAMP':
-#             df = df.reset_index()
-#     elif action == 'to_index':
-#         df = handle_timestamp(df, 'ensure')
-#         df = df.set_index('TIMESTAMP')
-#     elif action == 'from_index':
-#         if df.index.name == 'TIMESTAMP':
-#             df = df.reset_index()
-#     else:
-#         logger.error(f"Invalid action '{action}' in handle_timestamp")
-#         raise ValueError(f"Invalid action '{action}' in handle_timestamp")
+    mesonet_data = mesonet_data.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='last')
+    static_forecast = static_forecast.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='last')
+    rolling_forecast = rolling_forecast.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='last')
     
-#     return df
+    logger.info(f"Mesonet data shape after removing duplicates: {mesonet_data.shape}")
+    logger.info(f"Static forecast data shape after removing duplicates: {static_forecast.shape}")
+    logger.info(f"Rolling forecast data shape after removing duplicates: {rolling_forecast.shape}")
 
-# def log_dataframe_info(df: pd.DataFrame, stage: str):
-#     logger.info(f"--- DataFrame Info at {stage} ---")
-#     logger.info(f"Shape: {df.shape}")
-#     logger.info(f"Columns: {df.columns.tolist()}")
-#     logger.info(f"Index: {df.index.name}")
-#     logger.info(f"Data types:\n{df.dtypes}")
-#     logger.info(f"First few rows:\n{df.head().to_string()}")
-#     logger.info(f"NaN count:\n{df.isna().sum()}")
-#     df = handle_timestamp(df, 'ensure')
-#     logger.info(f"TIMESTAMP column - min: {df['TIMESTAMP'].min()}, max: {df['TIMESTAMP'].max()}")
-#     logger.info("----------------------------")
+    # Resample mesonet data to hourly intervals
+    mesonet_data = resample_mesonet_data(mesonet_data)
 
-# def create_full_hourly_index(start_time: pd.Timestamp, end_time: pd.Timestamp) -> pd.DatetimeIndex:
-#     logger.info(f"Creating full hourly index from {start_time} to {end_time}")
-#     return pd.date_range(start=start_time, end=end_time, freq='h', tz='UTC')
+    # Merge weather data
+    merged_data = merge_weather_data(mesonet_data, static_forecast, rolling_forecast)
 
-# def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
-#     logger.info(f"Removing duplicates. Initial shape: {df.shape}")
-#     df = handle_timestamp(df, 'ensure')
-#     df = df.sort_values('TIMESTAMP').groupby('TIMESTAMP', as_index=False).last()
-#     logger.info(f"After removing duplicates. Shape: {df.shape}")
-#     return df
-
-# def interpolate_hourly(df: pd.DataFrame, full_index: pd.DatetimeIndex) -> pd.DataFrame:
-#     logger.info(f"Interpolating hourly data for DataFrame with shape {df.shape}")
-    
-#     df = handle_timestamp(df, 'ensure')
-#     df = remove_duplicates(df)
-    
-#     logger.info(f"Columns before setting index: {df.columns.tolist()}")
-#     df = df.set_index('TIMESTAMP')
-#     logger.info(f"Index name after setting: {df.index.name}")
-    
-#     df_hourly = df.reindex(full_index)
-    
-#     numeric_columns = df_hourly.select_dtypes(include=['float64', 'int64']).columns
-#     logger.info(f"Numeric columns for interpolation: {numeric_columns.tolist()}")
-    
-#     df_hourly[numeric_columns] = df_hourly[numeric_columns].interpolate(method='time')
-    
-#     if 'Rain_1m_Tot' in df_hourly.columns:
-#         df_hourly['Rain_1m_Tot'] = df_hourly['Rain_1m_Tot'].fillna(0)
-    
-#     df_hourly = df_hourly.reset_index()
-#     df_hourly = df_hourly.rename(columns={'index': 'TIMESTAMP'})  # Ensure the column is named 'TIMESTAMP'
-    
-#     log_dataframe_info(df_hourly, "After interpolation")
-#     return df_hourly
-
-# def clip_forecast_data(df: pd.DataFrame, clip_timestamp: pd.Timestamp) -> tuple[pd.DataFrame, pd.DataFrame]:
-#     logger.info(f"Clipping forecast data at {clip_timestamp}")
-#     log_dataframe_info(df, "Before clipping")
-#     df = handle_timestamp(df, 'ensure')
-#     df_former = df[df['TIMESTAMP'] <= clip_timestamp]
-#     df_latter = df[df['TIMESTAMP'] > clip_timestamp]
-#     logger.info(f"Clipped data shapes - Former: {df_former.shape}, Latter: {df_latter.shape}")
-#     log_dataframe_info(df_former, "Clipped former data")
-#     log_dataframe_info(df_latter, "Clipped latter data")
-#     return df_former, df_latter
-
-# def process_weather_data(weather_data: dict[str, pd.DataFrame]) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-#     logger.info("Starting weather data processing")
-    
-#     mesonet_data = weather_data['current-weather-mesonet']
-#     static_forecast = weather_data['forecast_four_day_static']
-#     rolling_forecast = weather_data['forecast_four_day_rolling']
-    
-#     log_dataframe_info(mesonet_data, "Mesonet data at start")
-#     log_dataframe_info(static_forecast, "Static forecast data at start")
-#     log_dataframe_info(rolling_forecast, "Rolling forecast data at start")
-
-#     mesonet_data = handle_timestamp(mesonet_data, 'ensure')
-#     mesonet_latest_timestamp = mesonet_data['TIMESTAMP'].max()
-#     logger.info(f"Latest mesonet timestamp: {mesonet_latest_timestamp}")
-    
-#     full_index = create_full_hourly_index(
-#         min(mesonet_data['TIMESTAMP'].min(), static_forecast['TIMESTAMP'].min(), rolling_forecast['TIMESTAMP'].min()),
-#         max(static_forecast['TIMESTAMP'].max(), rolling_forecast['TIMESTAMP'].max())
-#     )
-    
-#     logger.info("Interpolating hourly data...")
-#     mesonet_hourly = interpolate_hourly(mesonet_data, full_index)
-#     static_forecast_hourly = interpolate_hourly(static_forecast, full_index)
-#     rolling_forecast_hourly = interpolate_hourly(rolling_forecast, full_index)
-
-#     logger.info("Clipping forecast data...")
-#     _, static_forecast_future = clip_forecast_data(static_forecast_hourly, mesonet_latest_timestamp)
-#     _, rolling_forecast_future = clip_forecast_data(rolling_forecast_hourly, mesonet_latest_timestamp)
-
-#     log_dataframe_info(mesonet_hourly, "Final mesonet data")
-#     log_dataframe_info(static_forecast_future, "Final static forecast data")
-#     log_dataframe_info(rolling_forecast_future, "Final rolling forecast data")
-
-#     return mesonet_hourly, static_forecast_future, rolling_forecast_future
+    return merged_data
