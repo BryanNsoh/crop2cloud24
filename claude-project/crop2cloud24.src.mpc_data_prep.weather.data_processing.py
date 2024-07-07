@@ -61,28 +61,18 @@ def merge_weather_data(mesonet_data: pd.DataFrame, static_forecast: pd.DataFrame
     
     # Ensure all timestamps are in UTC, convert to timezone-naive, and have nanosecond precision
     for df in [mesonet_data, static_forecast, rolling_forecast]:
-        df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True).dt.tz_convert('UTC').dt.tz_localize(None).astype('datetime64[ns]')
+        df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True).dt.tz_localize(None).astype('datetime64[ns]')
     
-    # Get the latest mesonet timestamp
-    latest_mesonet_timestamp = mesonet_data['TIMESTAMP'].max()
-    logger.info(f"Latest mesonet timestamp: {latest_mesonet_timestamp}")
-    logger.info(f"Mesonet data range: {mesonet_data['TIMESTAMP'].min()} to {mesonet_data['TIMESTAMP'].max()}")
+    # Create a complete timeline of hourly timestamps
+    start_time = min(mesonet_data['TIMESTAMP'].min(), static_forecast['TIMESTAMP'].min(), rolling_forecast['TIMESTAMP'].min())
+    end_time = max(mesonet_data['TIMESTAMP'].max(), static_forecast['TIMESTAMP'].max(), rolling_forecast['TIMESTAMP'].max())
+    full_timeline = pd.date_range(start=start_time, end=end_time, freq='H')
     
-    # Log number of matching timestamps before alignment
-    matches_before = sum(mesonet_data['TIMESTAMP'].dt.floor('h').isin(static_forecast['TIMESTAMP'].dt.floor('h')))
-    logger.info(f"Number of matching timestamps (same hour) before alignment: {matches_before}")
+    # Create a base dataframe with the full timeline
+    base_df = pd.DataFrame({'TIMESTAMP': full_timeline})
     
-    # Align forecast timestamps
-    static_forecast = align_forecast_timestamps(static_forecast, latest_mesonet_timestamp)
-    rolling_forecast = align_forecast_timestamps(rolling_forecast, latest_mesonet_timestamp)
-    
-    # Log number of matching timestamps after alignment
-    matches_after = sum(mesonet_data['TIMESTAMP'].dt.floor('h').isin(static_forecast['TIMESTAMP'].dt.floor('h')))
-    logger.info(f"Number of matching timestamps (same hour) after alignment: {matches_after}")
-    
-    # Print common datapoints within the same hour range
-    common_hours = set(mesonet_data['TIMESTAMP'].dt.floor('h')) & set(static_forecast['TIMESTAMP'].dt.floor('h'))
-    logger.info(f"Common hours between mesonet and forecast data: {sorted(common_hours)}")
+    # Merge mesonet data
+    merged_data = pd.merge(base_df, mesonet_data, on='TIMESTAMP', how='left')
     
     # Add suffixes to forecast columns
     static_forecast_columns = {col: f"{col}_static_forecast" for col in static_forecast.columns if col != "TIMESTAMP"}
@@ -91,21 +81,9 @@ def merge_weather_data(mesonet_data: pd.DataFrame, static_forecast: pd.DataFrame
     static_forecast = static_forecast.rename(columns=static_forecast_columns)
     rolling_forecast = rolling_forecast.rename(columns=rolling_forecast_columns)
     
-    # Merge dataframes
-    merged_data = pd.merge_asof(
-        mesonet_data, 
-        static_forecast, 
-        on='TIMESTAMP',
-        direction='nearest',
-        tolerance=pd.Timedelta('1h')
-    )
-    merged_data = pd.merge_asof(
-        merged_data, 
-        rolling_forecast, 
-        on='TIMESTAMP',
-        direction='nearest',
-        tolerance=pd.Timedelta('1h')
-    )
+    # Merge forecast data
+    merged_data = pd.merge(merged_data, static_forecast, on='TIMESTAMP', how='left')
+    merged_data = pd.merge(merged_data, rolling_forecast, on='TIMESTAMP', how='left')
     
     logger.info(f"Merged data range: {merged_data['TIMESTAMP'].min()} to {merged_data['TIMESTAMP'].max()}")
     logger.info(f"Total rows in merged data: {len(merged_data)}")
@@ -115,6 +93,10 @@ def merge_weather_data(mesonet_data: pd.DataFrame, static_forecast: pd.DataFrame
     logger.info(f"Number of non-null datapoints in merged table:")
     for col, count in non_null_counts.items():
         logger.info(f"{col}: {count}")
+    
+    # Log a sample of the merged data to show the structure
+    logger.info("Sample of merged data:")
+    logger.info(merged_data.sample(10).to_string())
     
     return merged_data
 
@@ -136,6 +118,11 @@ def process_weather_data(weather_data: dict[str, pd.DataFrame]) -> pd.DataFrame:
 
     # Resample mesonet data to hourly intervals
     mesonet_data = resample_mesonet_data(mesonet_data)
+
+    # Align forecast timestamps
+    latest_mesonet_timestamp = mesonet_data['TIMESTAMP'].max()
+    static_forecast = align_forecast_timestamps(static_forecast, latest_mesonet_timestamp)
+    rolling_forecast = align_forecast_timestamps(rolling_forecast, latest_mesonet_timestamp)
 
     # Merge weather data
     merged_data = merge_weather_data(mesonet_data, static_forecast, rolling_forecast)
