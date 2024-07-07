@@ -48,12 +48,21 @@ def get_weather_data(client, table_name):
     
     columns_string = ", ".join(columns_to_select)
     
-    query = f"""
-    SELECT {columns_string}
-    FROM `{PROJECT_ID}.weather.{table_name}`
-    WHERE TIMESTAMP BETWEEN '{start_time}' AND '{end_time}'
-    ORDER BY TIMESTAMP
-    """
+    # Adjust the query based on whether it's a forecast table or not
+    if 'forecast' in table_name:
+        query = f"""
+        SELECT {columns_string}
+        FROM `{PROJECT_ID}.weather.{table_name}`
+        WHERE TIMESTAMP >= '{start_time}'
+        ORDER BY TIMESTAMP
+        """
+    else:
+        query = f"""
+        SELECT {columns_string}
+        FROM `{PROJECT_ID}.weather.{table_name}`
+        WHERE TIMESTAMP BETWEEN '{start_time}' AND '{end_time}'
+        ORDER BY TIMESTAMP
+        """
     
     logger.info(f"Executing query for {table_name}:\n{query}")
     df = client.query(query).to_dataframe()

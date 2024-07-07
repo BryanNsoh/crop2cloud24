@@ -12,9 +12,15 @@ def process_plot_data(plot_data):
         # Remove duplicate timestamps
         df = df.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='first')
         
+        # Set 'TIMESTAMP' as index for interpolation
+        df = df.set_index('TIMESTAMP')
+        
         # Interpolate missing values
         numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
         df[numeric_columns] = df[numeric_columns].interpolate(method='time')
+        
+        # Reset index to make 'TIMESTAMP' a column again
+        df = df.reset_index()
         
         processed_data[plot_number] = df
         

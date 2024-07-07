@@ -34,8 +34,8 @@ def main():
     logger.info("Retrieving and processing weather data...")
     try:
         weather_data = get_all_weather_data(client, WEATHER_TABLES)
-        processed_weather_data = process_weather_data(weather_data)
-        store_weather_data(processed_weather_data)
+        mesonet_data, static_forecast, rolling_forecast = process_weather_data(weather_data)
+        store_weather_data(mesonet_data, static_forecast, rolling_forecast)
         logger.info("Weather data processing completed.")
     except Exception as e:
         logger.error(f"Error processing weather data: {str(e)}")
