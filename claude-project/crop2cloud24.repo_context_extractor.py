@@ -2,7 +2,7 @@ import os
 import sys
 
 EXCLUDED_DIRS = {".git", "__pycache__", "node_modules", "venv", ".venv"}
-EXCLUDED_FILES = {".gitignore", "README.md"}
+EXCLUDED_FILES = {".gitignore", ".html", ".png", ".db"}
 
 def create_file_element(file_path, root_folder):
     """

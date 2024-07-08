@@ -32,24 +32,21 @@ def get_plot_tables(conn):
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name LIKE 'plot_%'")
     return [row[0] for row in cursor.fetchall()]
 
-def clean_data(conn, table_name, start_date, end_date):
+def clean_data(conn, table_name, start_date=None, end_date=None):
     """Clean and prepare data for a specific plot."""
     query = f"""
     SELECT p.*, w.Ta_2m_Avg, w.RH_2m_Avg, w.Rain_1m_Tot
     FROM {table_name} p
     LEFT JOIN weather_data w ON p.TIMESTAMP = w.TIMESTAMP
-    WHERE p.TIMESTAMP BETWEEN '{start_date}' AND '{end_date}'
-    AND p.is_actual = 1
-    ORDER BY p.TIMESTAMP
     """
+    if start_date and end_date:
+        query += f" WHERE p.TIMESTAMP BETWEEN '{start_date}' AND '{end_date}'"
+    query += " AND p.is_actual = 1 ORDER BY p.TIMESTAMP"
+    
     df = pd.read_sql_query(query, conn)
     
     # Convert TIMESTAMP to datetime using ISO8601 format
     df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], format='ISO8601')
-    
-    # Print a sample of the parsed timestamps for verification
-    print(f"Sample timestamps for {table_name}:")
-    print(df['TIMESTAMP'].head())
     
     # Replace negative values with NaN
     for col in df.select_dtypes(include=['float64']).columns:
@@ -174,16 +171,32 @@ def create_interactive_plot(df, plot_number):
 
     fig.write_html(os.path.join(HTML_PLOTS_DIR, f'{plot_number}_interactive.html'))
 
-def main():
+def generate_plots(plot_numbers=None, days=None):
+    """
+    Generate plots for specified plot numbers or all plots if none specified.
+    
+    :param plot_numbers: List of plot numbers to generate plots for. If None, generates for all plots.
+    :param days: Number of days of data to include in the plots. If None, includes all available data.
+    """
     conn = sqlite3.connect(DB_PATH)
-    plot_tables = get_plot_tables(conn)
+    all_plot_tables = get_plot_tables(conn)
+    
+    if plot_numbers is None:
+        plot_tables = all_plot_tables
+    else:
+        plot_tables = [f"plot_{num}" for num in plot_numbers if f"plot_{num}" in all_plot_tables]
 
     end_date = datetime.now(pytz.UTC)
-    start_date = end_date - timedelta(days=30)  # Get data for the last 30 days
-
+    
     for table in plot_tables:
         plot_number = table.split('_')[1]
-        df = clean_data(conn, table, start_date, end_date)
+        
+        if days is None:
+            # If days is None, fetch all available data
+            df = clean_data(conn, table)
+        else:
+            start_date = end_date - timedelta(days=days)
+            df = clean_data(conn, table, start_date, end_date)
         
         if not df.empty:
             create_static_plot(df, plot_number)
@@ -196,4 +209,4 @@ def main():
     print("All plots generated successfully.")
 
 if __name__ == "__main__":
-    main()
+    generate_plots()

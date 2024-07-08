@@ -47,10 +47,6 @@ def clean_data(conn, table_name, start_date, end_date):
     # Convert TIMESTAMP to datetime using ISO8601 format
     df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], format='ISO8601')
     
-    # Print a sample of the parsed timestamps for verification
-    print(f"Sample timestamps for {table_name}:")
-    print(df['TIMESTAMP'].head())
-    
     # Replace negative values with NaN
     for col in df.select_dtypes(include=['float64']).columns:
         df[col] = df[col].where(df[col] >= 0)
@@ -174,15 +170,39 @@ def create_interactive_plot(df, plot_number):
 
     fig.write_html(os.path.join(HTML_PLOTS_DIR, f'{plot_number}_interactive.html'))
 
-def main():
+def generate_plots(plot_numbers=None, days=None):
+    """
+    Generate plots for specified plot numbers or all plots if none specified.
+    
+    :param plot_numbers: List of plot numbers to generate plots for. If None, generates for all plots.
+    :param days: Number of days of data to include in the plots. If None, includes all available data.
+    """
     conn = sqlite3.connect(DB_PATH)
-    plot_tables = get_plot_tables(conn)
+    all_plot_tables = get_plot_tables(conn)
+    
+    if plot_numbers is None:
+        plot_tables = all_plot_tables
+    else:
+        plot_tables = [f"plot_{num}" for num in plot_numbers if f"plot_{num}" in all_plot_tables]
 
     end_date = datetime.now(pytz.UTC)
-    start_date = end_date - timedelta(days=30)  # Get data for the last 30 days
-
+    
     for table in plot_tables:
         plot_number = table.split('_')[1]
+        
+        if days is None:
+            # If days is None, fetch all available data
+            query = f"""
+            SELECT MIN(TIMESTAMP) as start_date
+            FROM {table}
+            """
+            cursor = conn.cursor()
+            cursor.execute(query)
+            result = cursor.fetchone()
+            start_date = pd.to_datetime(result[0], utc=True) if result[0] else end_date
+        else:
+            start_date = end_date - timedelta(days=days)
+
         df = clean_data(conn, table, start_date, end_date)
         
         if not df.empty:
@@ -196,4 +216,4 @@ def main():
     print("All plots generated successfully.")
 
 if __name__ == "__main__":
-    main()
+    generate_plots()

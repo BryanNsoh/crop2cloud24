@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
+
 import sqlite3
 import pandas as pd
 import numpy as np
@@ -9,13 +13,23 @@ import time
 import requests
 import math
 import json
-import matplotlib.pyplot as plt
-from matplotlib.dates import DateFormatter, HourLocator, DayLocator
 from dotenv import load_dotenv
 import os
+from crop2cloud24.src.utils import generate_plots
 
 # Load environment variables from .env file
 load_dotenv()
+
+# Configuration
+DAYS_BACK = None  # Set to None for all available data, or specify a number of days
+DB_PATH = 'mpc_data.db'
+STEFAN_BOLTZMANN = 5.67e-8
+CP = 1005
+GRAVITY = 9.81
+K = 0.41
+CROP_HEIGHT = 1.6
+LATITUDE = 41.15
+SURFACE_ALBEDO = 0.23
 
 class CustomFormatter(logging.Formatter):
     def format(self, record):
@@ -27,16 +41,6 @@ logger.setLevel(logging.INFO)
 handler = logging.StreamHandler(sys.stdout)
 handler.setFormatter(CustomFormatter())
 logger.addHandler(handler)
-
-DB_PATH = 'mpc_data.db'
-
-STEFAN_BOLTZMANN = 5.67e-8
-CP = 1005
-GRAVITY = 9.81
-K = 0.41
-CROP_HEIGHT = 1.6
-LATITUDE = 41.15
-SURFACE_ALBEDO = 0.23
 
 # Use dotenv to get the API key
 API_KEY = os.getenv('NDVI_API_KEY')
@@ -205,12 +209,19 @@ def get_db_connection():
     return sqlite3.connect(DB_PATH)
 
 def get_plot_data(conn, plot_number, irt_column):
-    query = f"""
-    SELECT TIMESTAMP, {irt_column}, is_actual
-    FROM plot_{plot_number}
-    WHERE TIMESTAMP >= datetime('now', '-10 days')
-    ORDER BY TIMESTAMP
-    """
+    if DAYS_BACK is None:
+        query = f"""
+        SELECT TIMESTAMP, {irt_column}, is_actual
+        FROM plot_{plot_number}
+        ORDER BY TIMESTAMP
+        """
+    else:
+        query = f"""
+        SELECT TIMESTAMP, {irt_column}, is_actual
+        FROM plot_{plot_number}
+        WHERE TIMESTAMP >= datetime('now', '-{DAYS_BACK} days')
+        ORDER BY TIMESTAMP
+        """
     df = pd.read_sql_query(query, conn, parse_dates=['TIMESTAMP'])
     df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
     return df
@@ -241,90 +252,6 @@ def update_cwsi(conn, plot_number, df_cwsi):
     conn.commit()
     
     logger.info(f"Successfully updated CWSI for plot {plot_number}. Rows processed: {len(df_cwsi)}")
-
-def plot_temperatures(df, plot_number):
-    # Ensure data is hourly
-    df = df.set_index('TIMESTAMP').resample('H').mean().reset_index()
-    
-    # Create figure and axis objects with subplots()
-    fig, ax = plt.subplots(figsize=(15, 8))
-    
-    # Plot data
-    ax.plot(df['TIMESTAMP'], df['canopy_temp'], label='Canopy Temperature', color='green')
-    ax.plot(df['TIMESTAMP'], df['Ta_2m_Avg'], label='Air Temperature', color='red')
-    
-    # Set title and labels
-    ax.set_title(f'Hourly Temperatures for Plot {plot_number}')
-    ax.set_xlabel('Date')
-    ax.set_ylabel('Temperature (°C)')
-    
-    # Set x-axis major ticks to midnight of each day
-    ax.xaxis.set_major_locator(DayLocator())
-    ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
-    
-    # Set x-axis minor ticks to show hours
-    ax.xaxis.set_minor_locator(HourLocator(interval=6))
-    ax.xaxis.set_minor_formatter(DateFormatter('%H:00'))
-    
-    # Rotate and align the tick labels so they look better
-    plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right')
-    plt.setp(ax.xaxis.get_minorticklabels(), rotation=45, ha='right')
-    
-    # Use a more fine-grained grid
-    ax.grid(which='both', linestyle=':', linewidth='0.5', color='gray')
-    
-    # Add legend
-    ax.legend()
-    
-    # Adjust layout and save
-    plt.tight_layout()
-    plt.savefig(os.path.join('images', f'temperatures_plot_{plot_number}.png'))
-    plt.close()
-
-def plot_precipitation(df, plot_number):
-    # Ensure data is hourly and calculate cumulative precipitation
-    df = df.set_index('TIMESTAMP').resample('H').agg({'Rain_Tot': 'sum', 'TIMESTAMP': 'first'}).reset_index(drop=True)
-    df['Cumulative_Rain'] = df['Rain_Tot'].cumsum()
-    
-    fig, ax1 = plt.subplots(figsize=(15, 8))
-    
-    # Plot hourly precipitation
-    ax1.bar(df['TIMESTAMP'], df['Rain_Tot'], width=1/24, align='center', label='Hourly Precipitation', color='blue', alpha=0.6)
-    ax1.set_ylabel('Hourly Precipitation (mm)', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
-    
-    # Plot cumulative precipitation on secondary y-axis
-    ax2 = ax1.twinx()
-    ax2.plot(df['TIMESTAMP'], df['Cumulative_Rain'], color='red', label='Cumulative Precipitation')
-    ax2.set_ylabel('Cumulative Precipitation (mm)', color='red')
-    ax2.tick_params(axis='y', labelcolor='red')
-    
-    plt.title(f'Precipitation for Plot {plot_number}')
-    ax1.set_xlabel('Date')
-    
-    # Set x-axis major ticks to midnight of each day
-    ax1.xaxis.set_major_locator(DayLocator())
-    ax1.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
-    
-    # Set x-axis minor ticks to show hours
-    ax1.xaxis.set_minor_locator(HourLocator(interval=6))
-    ax1.xaxis.set_minor_formatter(DateFormatter('%H:00'))
-    
-    # Rotate and align the tick labels so they look better
-    plt.setp(ax1.xaxis.get_majorticklabels(), rotation=45, ha='right')
-    plt.setp(ax1.xaxis.get_minorticklabels(), rotation=45, ha='right')
-    
-    # Use a more fine-grained grid
-    ax1.grid(which='both', linestyle=':', linewidth='0.5', color='gray')
-    
-    # Combine legends
-    lines1, labels1 = ax1.get_legend_handles_labels()
-    lines2, labels2 = ax2.get_legend_handles_labels()
-    ax1.legend(lines1 + lines2, labels1 + labels2, loc='upper left')
-    
-    plt.tight_layout()
-    plt.savefig(os.path.join('images', f'precipitation_plot_{plot_number}.png'))
-    plt.close()
 
 def compute_cwsi(plot_number):
     start_time = time.time()
@@ -379,13 +306,6 @@ def compute_cwsi(plot_number):
     
     df['canopy_temp'] = df[irt_column]
     
-    # Create 'images' directory if it doesn't exist
-    os.makedirs('images', exist_ok=True)
-    
-    # Plot temperatures and precipitation before CWSI computation
-    plot_temperatures(df, plot_number)
-    plot_precipitation(df, plot_number)
-    
     logger.info(f"Calculating CWSI for {len(df)} rows")
     df['cwsi'] = df.apply(lambda row: calculate_cwsi_th1(row, CROP_HEIGHT, LAI, LATITUDE, SURFACE_ALBEDO), axis=1)
     df_cwsi = df[['TIMESTAMP', 'cwsi', 'is_actual']].dropna()
@@ -393,25 +313,6 @@ def compute_cwsi(plot_number):
     update_cwsi(conn, plot_number, df_cwsi)
     
     conn.close()
-    
-    # Plot CWSI results
-    plt.figure(figsize=(15, 8))
-    plt.scatter(df_cwsi['TIMESTAMP'], df_cwsi['cwsi'], label='CWSI', alpha=0.6)
-    plt.title(f'CWSI for Plot {plot_number}')
-    plt.xlabel('Date')
-    plt.ylabel('CWSI')
-    plt.legend()
-    plt.gca().xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
-    plt.gca().xaxis.set_major_locator(DayLocator())
-    plt.gca().xaxis.set_minor_locator(HourLocator(interval=6))
-    plt.gca().xaxis.set_minor_formatter(DateFormatter('%H:00'))
-    plt.setp(plt.gca().xaxis.get_majorticklabels(), rotation=45, ha='right')
-    plt.setp(plt.gca().xaxis.get_minorticklabels(), rotation=45, ha='right')
-    plt.ylim(0, 1.5)  # Set y-axis limits to 0-1.5 for CWSI
-    plt.grid(which='both', linestyle=':', linewidth='0.5', color='gray')
-    plt.tight_layout()
-    plt.savefig(os.path.join('images', f'cwsi_plot_{plot_number}.png'))
-    plt.close()
     
     end_time = time.time()
     duration = end_time - start_time
@@ -424,6 +325,9 @@ def main():
     for plot_number in plot_numbers:
         result = compute_cwsi(plot_number)
         print(result)
+    
+    # Generate plots using the imported function
+    generate_plots(plot_numbers=plot_numbers, days=DAYS_BACK)
 
 if __name__ == "__main__":
     main()

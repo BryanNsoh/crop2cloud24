@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 from google.cloud import bigquery
 from google.api_core.exceptions import NotFound
-from logger import get_logger
-from bigquery_operations import load_sensor_mapping, create_bigquery_client
+from .logger import get_logger
+from .bigquery_operations import load_sensor_mapping, create_bigquery_client
 
 logger = get_logger(__name__)
 

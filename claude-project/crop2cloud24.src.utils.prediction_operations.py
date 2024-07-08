@@ -1,7 +1,7 @@
 import pandas as pd
 from google.cloud import bigquery
-from logger import get_logger
-from bigquery_operations import create_bigquery_client, insert_or_update_data
+from .logger import get_logger
+from .bigquery_operations import create_bigquery_client, insert_or_update_data
 
 logger = get_logger(__name__)
 

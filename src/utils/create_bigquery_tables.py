@@ -4,7 +4,7 @@ from google.cloud import bigquery
 from google.oauth2 import service_account
 from google.api_core import exceptions
 from dotenv import load_dotenv
-from logger import get_logger
+from .logger import get_logger
 
 logger = get_logger(__name__)
 
