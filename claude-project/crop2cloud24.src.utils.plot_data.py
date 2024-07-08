@@ -32,16 +32,17 @@ def get_plot_tables(conn):
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name LIKE 'plot_%'")
     return [row[0] for row in cursor.fetchall()]
 
-def clean_data(conn, table_name, start_date, end_date):
+def clean_data(conn, table_name, start_date=None, end_date=None):
     """Clean and prepare data for a specific plot."""
     query = f"""
     SELECT p.*, w.Ta_2m_Avg, w.RH_2m_Avg, w.Rain_1m_Tot
     FROM {table_name} p
     LEFT JOIN weather_data w ON p.TIMESTAMP = w.TIMESTAMP
-    WHERE p.TIMESTAMP BETWEEN '{start_date}' AND '{end_date}'
-    AND p.is_actual = 1
-    ORDER BY p.TIMESTAMP
     """
+    if start_date and end_date:
+        query += f" WHERE p.TIMESTAMP BETWEEN '{start_date}' AND '{end_date}'"
+    query += " AND p.is_actual = 1 ORDER BY p.TIMESTAMP"
+    
     df = pd.read_sql_query(query, conn)
     
     # Convert TIMESTAMP to datetime using ISO8601 format
@@ -192,18 +193,10 @@ def generate_plots(plot_numbers=None, days=None):
         
         if days is None:
             # If days is None, fetch all available data
-            query = f"""
-            SELECT MIN(TIMESTAMP) as start_date
-            FROM {table}
-            """
-            cursor = conn.cursor()
-            cursor.execute(query)
-            result = cursor.fetchone()
-            start_date = pd.to_datetime(result[0], utc=True) if result[0] else end_date
+            df = clean_data(conn, table)
         else:
             start_date = end_date - timedelta(days=days)
-
-        df = clean_data(conn, table, start_date, end_date)
+            df = clean_data(conn, table, start_date, end_date)
         
         if not df.empty:
             create_static_plot(df, plot_number)
