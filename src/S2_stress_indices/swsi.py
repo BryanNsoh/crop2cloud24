@@ -8,6 +8,32 @@ import sys
 import time
 import random
 
+"""
+This script calculates the Soil Water Stress Index (SWSI) for agricultural plots.
+
+Data Sources:
+1. Soil properties: Obtained from Web Soil Survey, specific to the experimental site.
+   Includes saturation, field capacity, permanent wilting point, and bulk density for different soil layers.
+2. Plot data: Retrieved from a SQLite database ('mpc_data.db') containing time series of soil moisture measurements.
+3. Management Allowed Depletion (MAD): Set to 0.45 (45%) based on the recommendation by Panda et al. (2004) 
+   for maize grown in sandy loam soils in sub-tropical regions.
+
+Calculations:
+1. Volumetric Water Content (VWC): Measured directly by soil moisture sensors at different depths.
+2. Weighted averages: Calculated for field capacity (fc) and permanent wilting point (pwp) across soil layers.
+3. Available Water Capacity (AWC): Difference between weighted fc and weighted pwp.
+4. Threshold VWC (VWCt): Calculated as weighted_fc - MAD * AWC.
+5. SWSI: Calculated as (VWCt - avg_vwc) / (VWCt - weighted_pwp) when avg_vwc < VWCt, otherwise 0.
+
+The SWSI calculation methodology is based on the paper:
+Panda, R.K., Behera, S.K., Kashyap, P.S., 2004. Effective management of irrigation water for maize under 
+stressed conditions. Agricultural Water Management, 66(3), 181-203.
+https://doi.org/10.1016/j.agwat.2003.12.001
+
+The paper recommends scheduling irrigation at 45% MAD of available soil water during non-critical growth 
+stages for optimal yield, water use efficiency, and net return for maize in sandy loam soils in sub-tropical regions.
+"""
+
 # Configuration
 DB_PATH = 'mpc_data.db'
 PLOTS = ['plot_5006', 'plot_5010', 'plot_5023']
@@ -17,7 +43,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 # Soil properties
-# taken from Saleh assignment 3
+# Obtained from Web Soil Survey
 SOIL_LAYERS = [
     {"depth": (0, 12), "saturation": 0.528, "fc": 0.277, "pwp": 0.123, "bulk_density": 1.25},
     {"depth": (12, 18), "saturation": 0.509, "fc": 0.282, "pwp": 0.129, "bulk_density": 1.3},
@@ -47,9 +73,6 @@ def get_plot_data(conn, plot_number):
     df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True, errors='coerce')
     df = df.dropna(subset=['TIMESTAMP'])
     
-    logger.info(f"Retrieved {len(df)} rows for {plot_number}")
-    logger.info(f"Date range for {plot_number}: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
-    
     # Convert VWC values from percent to decimal and handle NaN values
     for col in tdr_columns[plot_number]:
         df[col] = pd.to_numeric(df[col], errors='coerce') / 100.0
@@ -57,65 +80,70 @@ def get_plot_data(conn, plot_number):
     # Drop rows where all TDR columns are NaN
     df = df.dropna(subset=tdr_columns[plot_number], how='all')
     
-    logger.info(f"After cleaning, {len(df)} rows remain for {plot_number}")
+    logger.info(f"{plot_number}: Retrieved {len(df)} rows. Date range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
+    
+    # Log VWC statistics for each depth
+    for col in tdr_columns[plot_number]:
+        valid_vwc = df[col].dropna()
+        logger.info(f"{plot_number} - {col} VWC stats: Min: {valid_vwc.min():.4f}, Max: {valid_vwc.max():.4f}, Median: {valid_vwc.median():.4f}")
     
     return df
 
 def calculate_swsi(vwc_values, plot_number):
     """Calculate SWSI for a set of VWC values."""
-    MAD = 0.5  # management allowed depletion
+    MAD = 0.45  # management allowed depletion, set to 45% as per Panda et al. (2004)
     
     valid_vwc = [vwc for vwc in vwc_values if pd.notna(vwc)]
     
-    if len(valid_vwc) > 2:
-        avg_vwc = np.mean(valid_vwc)
+    if len(valid_vwc) < 3:
+        return None, None, None, None, None, None, f"Insufficient valid VWC values: {len(valid_vwc)}"
+    
+    avg_vwc = np.mean(valid_vwc)
 
-        # Calculate weighted average of soil properties based on sensor depths
-        total_depth = sum(layer['depth'][1] - layer['depth'][0] for layer in SOIL_LAYERS)
-        weighted_fc = sum(layer['fc'] * (layer['depth'][1] - layer['depth'][0]) / total_depth for layer in SOIL_LAYERS)
-        weighted_pwp = sum(layer['pwp'] * (layer['depth'][1] - layer['depth'][0]) / total_depth for layer in SOIL_LAYERS)
-        
-        AWC = weighted_fc - weighted_pwp  # Available water capacity of soil
-        VWC_MAD = weighted_fc - MAD * AWC  # threshold for triggering irrigation
+    # Calculate weighted average of soil properties based on sensor depths
+    total_depth = sum(layer['depth'][1] - layer['depth'][0] for layer in SOIL_LAYERS)
+    weighted_fc = sum(layer['fc'] * (layer['depth'][1] - layer['depth'][0]) / total_depth for layer in SOIL_LAYERS)
+    weighted_pwp = sum(layer['pwp'] * (layer['depth'][1] - layer['depth'][0]) / total_depth for layer in SOIL_LAYERS)
+    
+    AWC = weighted_fc - weighted_pwp  # Available water capacity of soil
+    VWCt = weighted_fc - MAD * AWC  # threshold for triggering irrigation
 
-        if avg_vwc < VWC_MAD:
-            swsi = abs(avg_vwc - VWC_MAD) / (VWC_MAD - weighted_pwp)
-            return swsi, avg_vwc, weighted_fc, weighted_pwp, VWC_MAD
-        else:
-            return None, avg_vwc, weighted_fc, weighted_pwp, VWC_MAD
+    if avg_vwc < VWCt:
+        swsi = (VWCt - avg_vwc) / (VWCt - weighted_pwp)
+        return swsi, avg_vwc, weighted_fc, weighted_pwp, VWCt, AWC, None
     else:
-        return None, None, None, None, None
+        return 0, avg_vwc, weighted_fc, weighted_pwp, VWCt, AWC, "VWC above threshold"
 
 def compute_swsi(plot_number, df):
     logger.info(f"Computing SWSI for {plot_number}")
     swsi_values = []
     all_swsi = []
-    sample_size = min(5, len(df))  # Get 5 samples or all if less than 5
-    sample_indices = random.sample(range(len(df)), sample_size)
+    error_counts = {"Insufficient VWC": 0, "VWC above threshold": 0, "Other": 0}
     
-    for index, row in df.iterrows():
+    # Print VWCt and AWC once for this plot
+    vwc_values = df.iloc[0][df.columns[df.columns.str.startswith('TDR')]].tolist()
+    _, _, weighted_fc, weighted_pwp, VWCt, AWC, _ = calculate_swsi(vwc_values, plot_number)
+    logger.info(f"{plot_number} - VWCt: {VWCt:.4f}, AWC: {AWC:.4f}, Weighted FC: {weighted_fc:.4f}, Weighted PWP: {weighted_pwp:.4f}")
+    
+    for _, row in df.iterrows():
         vwc_values = [row[col] for col in df.columns if col.startswith('TDR')]
-        swsi, avg_vwc, weighted_fc, weighted_pwp, VWC_MAD = calculate_swsi(vwc_values, plot_number)
+        swsi, avg_vwc, _, _, _, _, error_reason = calculate_swsi(vwc_values, plot_number)
         
         if swsi is not None:
             all_swsi.append(swsi)
+        elif error_reason:
+            if "Insufficient" in error_reason:
+                error_counts["Insufficient VWC"] += 1
+            elif "VWC above threshold" in error_reason:
+                error_counts["VWC above threshold"] += 1
+            else:
+                error_counts["Other"] += 1
         
         swsi_values.append({
             'TIMESTAMP': row['TIMESTAMP'],
             'swsi': swsi,
             'is_actual': True
         })
-        
-        # Log sample calculations
-        if index in sample_indices:
-            logger.info(f"Sample calculation for {plot_number} at {row['TIMESTAMP']}:")
-            logger.info(f"  VWC values: {vwc_values}")
-            logger.info(f"  Average VWC: {avg_vwc:.4f}" if avg_vwc is not None else "  Average VWC: None")
-            logger.info(f"  Weighted FC: {weighted_fc:.4f}" if weighted_fc is not None else "  Weighted FC: None")
-            logger.info(f"  Weighted PWP: {weighted_pwp:.4f}" if weighted_pwp is not None else "  Weighted PWP: None")
-            logger.info(f"  VWC at MAD: {VWC_MAD:.4f}" if VWC_MAD is not None else "  VWC at MAD: None")
-            logger.info(f"  Calculated SWSI: {swsi:.4f}" if swsi is not None else "  SWSI not calculated")
-            logger.info("------------------------")
     
     swsi_df = pd.DataFrame(swsi_values)
     
@@ -123,11 +151,12 @@ def compute_swsi(plot_number, df):
     logger.info(f"SWSI Summary for {plot_number}:")
     logger.info(f"  Total timestamps processed: {len(df)}")
     logger.info(f"  SWSI calculated for: {len(all_swsi)} timestamps")
+    logger.info(f"  Failed calculations:")
+    for reason, count in error_counts.items():
+        logger.info(f"    {reason}: {count}")
+    
     if all_swsi:
-        logger.info(f"  Min SWSI: {min(all_swsi):.4f}")
-        logger.info(f"  Max SWSI: {max(all_swsi):.4f}")
-        logger.info(f"  Average SWSI: {np.mean(all_swsi):.4f}")
-        logger.info(f"  Median SWSI: {np.median(all_swsi):.4f}")
+        logger.info(f"  SWSI statistics: Min: {min(all_swsi):.4f}, Max: {max(all_swsi):.4f}, Avg: {np.mean(all_swsi):.4f}, Median: {np.median(all_swsi):.4f}")
     else:
         logger.warning(f"  No valid SWSI values calculated for {plot_number}")
     
