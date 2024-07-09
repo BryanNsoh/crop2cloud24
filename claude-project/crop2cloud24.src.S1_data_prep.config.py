@@ -14,12 +14,12 @@ HISTORICAL_DAYS = 30
 
 # Cloud function trigger URLs
 TRIGGER_URLS = [
-    # 'https://us-central1-crop2cloud24.cloudfunctions.net/compute-cwsi',
-    # 'https://us-central1-crop2cloud24.cloudfunctions.net/compute-swsi',
-    # 'https://us-central1-crop2cloud24.cloudfunctions.net/current-openweathermap',
-    # 'https://us-central1-crop2cloud24.cloudfunctions.net/weather-updater',
-    # 'https://us-central1-crop2cloud24.cloudfunctions.net/forecast_four_day_rolling',
-    # 'https://us-central1-crop2cloud24.cloudfunctions.net/forecast_four_day_static'
+    'https://us-central1-crop2cloud24.cloudfunctions.net/compute-cwsi',
+    'https://us-central1-crop2cloud24.cloudfunctions.net/compute-swsi',
+    'https://us-central1-crop2cloud24.cloudfunctions.net/current-openweathermap',
+    'https://us-central1-crop2cloud24.cloudfunctions.net/weather-updater',
+    'https://us-central1-crop2cloud24.cloudfunctions.net/forecast_four_day_rolling',
+    'https://us-central1-crop2cloud24.cloudfunctions.net/forecast_four_day_static'
 ]
 
 # Weather table names

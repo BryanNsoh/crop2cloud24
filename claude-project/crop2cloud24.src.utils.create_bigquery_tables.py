@@ -4,7 +4,7 @@ from google.cloud import bigquery
 from google.oauth2 import service_account
 from google.api_core import exceptions
 from dotenv import load_dotenv
-from .logger import get_logger
+from logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -50,7 +50,7 @@ def create_table_schema(sensor_ids):
         schema.append(bigquery.SchemaField(f"{sensor_id}_pred", "FLOAT64", mode="NULLABLE"))
     
     # Add stress indices columns
-    for index in ['cwsi', 'et', 'swsi']:
+    for index in ['cwsi-th1', 'cwsi-eb2', 'et', 'swsi']:
         schema.append(bigquery.SchemaField(index, "FLOAT64", mode="NULLABLE"))
         schema.append(bigquery.SchemaField(f"{index}_pred", "FLOAT64", mode="NULLABLE"))
     

@@ -44,7 +44,7 @@ def main():
     logger.info("Retrieving and processing sensor data...")
     try:
         plot_data = get_all_plot_data(client)
-        processed_plot_data = process_plot_data(plot_data)
+        processed_plot_data = process_plot_data(plot_data, merged_weather_data)
         store_plot_data(processed_plot_data)
         logger.info("Plot data processing completed.")
     except Exception as e:
