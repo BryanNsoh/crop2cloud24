@@ -199,10 +199,6 @@ def calculate_cwsi_th1(row, crop_height, lai, latitude, surface_albedo=0.23):
     
     logger.debug(f"CWSI calculation: Ta={Ta}, RH={RH}, u2={u2}, Tc={Tc}, CWSI={cwsi}")
     
-    if cwsi < 0 or cwsi > 1.5:
-        logger.warning(f"CWSI value out of extended range: {cwsi}")
-        return None
-    
     return cwsi
 
 def get_db_connection():
@@ -243,12 +239,21 @@ def update_cwsi(conn, plot_number, df_cwsi):
     logger.info(f"Updating CWSI for plot {plot_number}")
     
     cursor = conn.cursor()
+    
+    # First, set all rows to NULL
+    cursor.execute(f"""
+    UPDATE plot_{plot_number}
+    SET `cwsi-th1` = NULL, is_actual = 0
+    """)
+    
+    # Then, update with new values
     for _, row in df_cwsi.iterrows():
         cursor.execute(f"""
         UPDATE plot_{plot_number}
-        SET cwsi = ?, is_actual = 1
+        SET `cwsi-th1` = ?, is_actual = 1
         WHERE TIMESTAMP = ?
-        """, (row['cwsi'], row['TIMESTAMP'].strftime('%Y-%m-%d %H:%M:%S')))
+        """, (row['cwsi-th1'], row['TIMESTAMP'].strftime('%Y-%m-%d %H:%M:%S')))
+    
     conn.commit()
     
     logger.info(f"Successfully updated CWSI for plot {plot_number}. Rows processed: {len(df_cwsi)}")
@@ -307,8 +312,8 @@ def compute_cwsi(plot_number):
     df['canopy_temp'] = df[irt_column]
     
     logger.info(f"Calculating CWSI for {len(df)} rows")
-    df['cwsi'] = df.apply(lambda row: calculate_cwsi_th1(row, CROP_HEIGHT, LAI, LATITUDE, SURFACE_ALBEDO), axis=1)
-    df_cwsi = df[['TIMESTAMP', 'cwsi', 'is_actual']].dropna()
+    df['cwsi-th1'] = df.apply(lambda row: calculate_cwsi_th1(row, CROP_HEIGHT, LAI, LATITUDE, SURFACE_ALBEDO), axis=1)
+    df_cwsi = df[['TIMESTAMP', 'cwsi-th1', 'is_actual']].dropna()
     
     update_cwsi(conn, plot_number, df_cwsi)
     
