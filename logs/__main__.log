@@ -2489,3 +2489,35 @@
 2024-07-07 16:41:25,848 - __main__ - ERROR - Error processing plot 5023: Already tz-aware, use tz_convert to convert.
 2024-07-07 16:42:32,471 - __main__ - INFO - Processing plot 5006
 2024-07-07 16:42:33,464 - __main__ - INFO - Saved HTML plot to html_plots\plot_5006.html
+2024-07-09 07:01:43,812 - __main__ - INFO - Table crop2cloud24.weather.current-weather-mesonet deleted.
+2024-07-09 07:01:44,045 - __main__ - INFO - Created table crop2cloud24.weather.current-weather-mesonet
+2024-07-09 07:05:37,774 - __main__ - INFO - Table crop2cloud24.weather.current-weather-mesonet deleted.
+2024-07-09 07:05:38,045 - __main__ - INFO - Created table crop2cloud24.weather.current-weather-mesonet
+2024-07-09 07:05:38,051 - __main__ - ERROR - Error reading CSV file: C:\path\to\your\large_csv_file.csv. Error: [Errno 2] No such file or directory: 'C:\\path\\to\\your\\large_csv_file.csv'
+2024-07-09 07:05:52,300 - __main__ - INFO - Table crop2cloud24.weather.current-weather-mesonet deleted.
+2024-07-09 07:05:52,544 - __main__ - INFO - Created table crop2cloud24.weather.current-weather-mesonet
+2024-07-09 07:05:52,554 - __main__ - INFO - Successfully opened CSV file: C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (6).csv
+2024-07-09 07:07:24,207 - __main__ - INFO - Table crop2cloud24.weather.current-weather-mesonet deleted.
+2024-07-09 07:07:24,451 - __main__ - INFO - Created table crop2cloud24.weather.current-weather-mesonet
+2024-07-09 07:07:24,461 - __main__ - INFO - Successfully opened CSV file: C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (6).csv
+2024-07-09 07:10:15,780 - __main__ - INFO - Table crop2cloud24.weather.current-weather-mesonet deleted.
+2024-07-09 07:10:15,996 - __main__ - INFO - Created table crop2cloud24.weather.current-weather-mesonet
+2024-07-09 07:10:16,006 - __main__ - INFO - Successfully opened CSV file: C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (6).csv
+2024-07-09 07:10:27,963 - __main__ - INFO - Inserted 3247 rows. Total rows inserted: 3247
+2024-07-09 07:12:56,954 - __main__ - INFO - Table crop2cloud24.weather.current-weather-mesonet deleted.
+2024-07-09 07:12:57,179 - __main__ - INFO - Created table crop2cloud24.weather.current-weather-mesonet
+2024-07-09 07:12:57,189 - __main__ - INFO - Successfully opened CSV file: C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (6).csv
+2024-07-09 07:14:54,872 - __main__ - INFO - Successfully opened CSV file: C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (6).csv
+2024-07-09 07:15:06,584 - __main__ - INFO - Inserted 3243 rows. Total rows inserted: 3243
+2024-07-09 07:22:21,391 - __main__ - INFO - Table crop2cloud24.weather.current-weather-mesonet deleted.
+2024-07-09 07:22:21,588 - __main__ - INFO - Created table crop2cloud24.weather.current-weather-mesonet
+2024-07-09 07:22:21,588 - __main__ - INFO - Waiting for 5 seconds before starting data insertion...
+2024-07-09 07:22:26,605 - __main__ - INFO - Successfully opened CSV file: C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (6).csv
+2024-07-09 07:22:48,818 - __main__ - INFO - Waiting for 5 seconds before starting data insertion...
+2024-07-09 07:22:53,826 - __main__ - INFO - Successfully opened CSV file: C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (6).csv
+2024-07-09 07:23:03,312 - __main__ - INFO - Inserted 3235 rows. Total rows inserted: 3235
+2024-07-09 07:23:07,044 - __main__ - INFO - Inserted 10000 rows. Total rows inserted: 13235
+2024-07-09 07:23:10,769 - __main__ - INFO - Inserted 10000 rows. Total rows inserted: 23235
+2024-07-09 07:23:14,155 - __main__ - INFO - Inserted 10000 rows. Total rows inserted: 33235
+2024-07-09 07:23:17,413 - __main__ - INFO - Inserted 9870 rows. Total rows inserted: 43105
+2024-07-09 07:23:17,413 - __main__ - INFO - Finished processing. Total rows inserted: 43105

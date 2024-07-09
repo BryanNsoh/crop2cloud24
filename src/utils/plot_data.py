@@ -51,8 +51,13 @@ def get_weather_data(conn):
     
     # Convert TIMESTAMP to datetime, interpret as UTC, then convert to CST
     df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
+    print(f"Step 1 - Converted to datetime (UTC):\n{df['TIMESTAMP'].head()}")
+    
     df['TIMESTAMP'] = df['TIMESTAMP'].dt.tz_convert(CST)
+    print(f"Step 2 - Converted to CST:\n{df['TIMESTAMP'].head()}")
+    
     df['TIMESTAMP'] = df['TIMESTAMP'] - pd.Timedelta(hours=5)
+    print(f"Step 3 - Adjusted by subtracting 5 hours:\n{df['TIMESTAMP'].head()}")
     
     ###
     # SOMETHING IS FUCKING WRONG HERE WHY I GOTTA DECREMENT THE THING TWICE FOR IT TO WORK??? WHAT IS HTE ROOT CAUSE OF THIS? ANYWAYS AT LEASE WE GETTIN SOMEWHERE

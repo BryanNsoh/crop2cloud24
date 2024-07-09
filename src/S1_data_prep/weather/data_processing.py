@@ -23,7 +23,6 @@ def resample_mesonet_data(mesonet_data: pd.DataFrame) -> pd.DataFrame:
     # Create a dictionary for resampling operations
     resampling_dict = {col: 'mean' for col in columns_to_average}
     resampling_dict['Rain_1m_Tot'] = 'sum'
-    
     # Resample data
     resampled_data = mesonet_data.resample('H').agg(resampling_dict)
     
@@ -58,10 +57,6 @@ def align_forecast_timestamps(forecast_df: pd.DataFrame, latest_mesonet_timestam
 
 def merge_weather_data(mesonet_data: pd.DataFrame, static_forecast: pd.DataFrame, rolling_forecast: pd.DataFrame) -> pd.DataFrame:
     logger.info("Merging weather data")
-    
-    # Ensure all timestamps are in UTC, convert to timezone-naive, and have nanosecond precision
-    for df in [mesonet_data, static_forecast, rolling_forecast]:
-        df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True).dt.tz_localize(None).astype('datetime64[ns]')
     
     # Create a complete timeline of hourly timestamps
     start_time = min(mesonet_data['TIMESTAMP'].min(), static_forecast['TIMESTAMP'].min(), rolling_forecast['TIMESTAMP'].min())

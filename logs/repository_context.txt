@@ -15,6 +15,7 @@ NDVI_API_KEY=35fa246e02d4f69aff239e8767783f14
         <content>
 .env
 .venv
+claude-project
 
         </content>
     </file>
@@ -2524,6 +2525,213 @@ setup(
         </content>
     </file>
     <file>
+        <name>crop2cloud24.sqlite_database_schema.dbml</name>
+        <path>crop2cloud24.sqlite_database_schema.dbml</path>
+        <content>
+Table mesonet_data {
+  0 TIMESTAMP
+  1 RECORD
+  2 Ta_2m_Avg
+  3 TaMax_2m
+  4 TaMin_2m
+  5 RH_2m_Avg
+  6 RHMax_2m
+  7 RHMin_2m
+  8 Dp_2m_Avg
+  9 DpMax_2m
+  10 DpMin_2m
+  11 HeatIndex_2m_Avg
+  12 HeatIndexMax_2m
+  13 WindChill_2m_Avg
+  14 WindChillMin_2m
+  15 WndAveSpd_3m
+  16 WndVecMagAve_3m
+  17 WndAveDir_3m
+  18 WndAveDirSD_3m
+  19 WndMaxSpd5s_3m
+  20 WndMax_5sec_Dir_3m
+  21 PresAvg_1pnt5m
+  22 PresMax_1pnt5m
+  23 PresMin_1pnt5m
+  24 Solar_2m_Avg
+  25 Rain_1m_Tot
+  26 Ts_bare_10cm_Avg
+  27 TsMax_bare_10cm
+  28 TsMin_bare_10cm
+}
+
+Table static_forecast {
+  0 TIMESTAMP
+  1 collection_time
+  2 Ta_2m_Avg
+  3 TaMax_2m
+  4 TaMin_2m
+  5 RH_2m_Avg
+  6 WndAveSpd_3m
+  7 WndAveDir_3m
+  8 WndMaxSpd5s_3m
+  9 PresAvg_1pnt5m
+  10 Rain_1m_Tot
+  11 UV_index
+  12 Visibility
+  13 Clouds
+}
+
+Table rolling_forecast {
+  0 TIMESTAMP
+  1 collection_time
+  2 Ta_2m_Avg
+  3 TaMax_2m
+  4 TaMin_2m
+  5 RH_2m_Avg
+  6 WndAveSpd_3m
+  7 WndAveDir_3m
+  8 WndMaxSpd5s_3m
+  9 PresAvg_1pnt5m
+  10 Rain_1m_Tot
+  11 UV_index
+  12 Visibility
+  13 Clouds
+}
+
+Table weather_data {
+  0 TIMESTAMP
+  1 RECORD
+  2 Ta_2m_Avg
+  3 TaMax_2m
+  4 TaMin_2m
+  5 RH_2m_Avg
+  6 RHMax_2m
+  7 RHMin_2m
+  8 Dp_2m_Avg
+  9 DpMax_2m
+  10 DpMin_2m
+  11 HeatIndex_2m_Avg
+  12 HeatIndexMax_2m
+  13 WindChill_2m_Avg
+  14 WindChillMin_2m
+  15 WndAveSpd_3m
+  16 WndVecMagAve_3m
+  17 WndAveDir_3m
+  18 WndAveDirSD_3m
+  19 WndMaxSpd5s_3m
+  20 WndMax_5sec_Dir_3m
+  21 PresAvg_1pnt5m
+  22 PresMax_1pnt5m
+  23 PresMin_1pnt5m
+  24 Solar_2m_Avg
+  25 Ts_bare_10cm_Avg
+  26 TsMax_bare_10cm
+  27 TsMin_bare_10cm
+  28 Rain_1m_Tot
+  29 Ta_2m_Avg_static_forecast
+  30 TaMax_2m_static_forecast
+  31 TaMin_2m_static_forecast
+  32 RH_2m_Avg_static_forecast
+  33 WndAveSpd_3m_static_forecast
+  34 WndAveDir_3m_static_forecast
+  35 WndMaxSpd5s_3m_static_forecast
+  36 PresAvg_1pnt5m_static_forecast
+  37 Rain_1m_Tot_static_forecast
+  38 UV_index_static_forecast
+  39 Visibility_static_forecast
+  40 Clouds_static_forecast
+  41 Ta_2m_Avg_rolling_forecast
+  42 TaMax_2m_rolling_forecast
+  43 TaMin_2m_rolling_forecast
+  44 RH_2m_Avg_rolling_forecast
+  45 WndAveSpd_3m_rolling_forecast
+  46 WndAveDir_3m_rolling_forecast
+  47 WndMaxSpd5s_3m_rolling_forecast
+  48 PresAvg_1pnt5m_rolling_forecast
+  49 Rain_1m_Tot_rolling_forecast
+  50 UV_index_rolling_forecast
+  51 Visibility_rolling_forecast
+  52 Clouds_rolling_forecast
+}
+
+Table plot_5006 {
+  0 TIMESTAMP
+  1 is_actual
+  2 prediction_timestamp
+  3 applied_irrigation
+  4 TDR5006B10624
+  5 TDR5006B10624_pred
+  6 SAP5006B1xx24
+  7 SAP5006B1xx24_pred
+  8 TDR5006B13024
+  9 TDR5006B13024_pred
+  10 IRT5006B1xx24
+  11 IRT5006B1xx24_pred
+  12 TDR5006B11824
+  13 TDR5006B11824_pred
+  14 DEN5006B1xx24
+  15 DEN5006B1xx24_pred
+  16 TDR5006B14224
+  17 TDR5006B14224_pred
+  18 cwsi
+  19 cwsi_pred
+  20 et
+  21 et_pred
+  22 swsi
+  23 swsi_pred
+}
+
+Table plot_5010 {
+  0 TIMESTAMP
+  1 is_actual
+  2 prediction_timestamp
+  3 applied_irrigation
+  4 TDR5010C11824
+  5 TDR5010C11824_pred
+  6 TDR5010C13024
+  7 TDR5010C13024_pred
+  8 IRT5010C1xx24
+  9 IRT5010C1xx24_pred
+  10 TDR5010C10624
+  11 TDR5010C10624_pred
+  12 SAP5010C1xx24
+  13 SAP5010C1xx24_pred
+  14 DEN5010C1xx24
+  15 DEN5010C1xx24_pred
+  16 cwsi
+  17 cwsi_pred
+  18 et
+  19 et_pred
+  20 swsi
+  21 swsi_pred
+}
+
+Table plot_5023 {
+  0 TIMESTAMP
+  1 is_actual
+  2 prediction_timestamp
+  3 applied_irrigation
+  4 TDR5023A11824
+  5 TDR5023A11824_pred
+  6 IRT5023A1xx24
+  7 IRT5023A1xx24_pred
+  8 TDR5023A10624
+  9 TDR5023A10624_pred
+  10 DEN5023A1xx24
+  11 DEN5023A1xx24_pred
+  12 TDR5023A13024
+  13 TDR5023A13024_pred
+  14 TDR5023A14224
+  15 TDR5023A14224_pred
+  16 SAP5023A1xx24
+  17 SAP5023A1xx24_pred
+  18 cwsi
+  19 cwsi_pred
+  20 et
+  21 et_pred
+  22 swsi
+  23 swsi_pred
+}
+
+        </content>
+    </file>
+    <file>
         <name>crop2cloud24.src.models.prediction_model.py</name>
         <path>crop2cloud24.src.models.prediction_model.py</path>
         <content>
@@ -2908,7 +3116,6 @@ def resample_mesonet_data(mesonet_data: pd.DataFrame) -> pd.DataFrame:
     # Create a dictionary for resampling operations
     resampling_dict = {col: 'mean' for col in columns_to_average}
     resampling_dict['Rain_1m_Tot'] = 'sum'
-    
     # Resample data
     resampled_data = mesonet_data.resample('H').agg(resampling_dict)
     
@@ -2943,10 +3150,6 @@ def align_forecast_timestamps(forecast_df: pd.DataFrame, latest_mesonet_timestam
 
 def merge_weather_data(mesonet_data: pd.DataFrame, static_forecast: pd.DataFrame, rolling_forecast: pd.DataFrame) -> pd.DataFrame:
     logger.info("Merging weather data")
-    
-    # Ensure all timestamps are in UTC, convert to timezone-naive, and have nanosecond precision
-    for df in [mesonet_data, static_forecast, rolling_forecast]:
-        df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True).dt.tz_localize(None).astype('datetime64[ns]')
     
     # Create a complete timeline of hourly timestamps
     start_time = min(mesonet_data['TIMESTAMP'].min(), static_forecast['TIMESTAMP'].min(), rolling_forecast['TIMESTAMP'].min())
@@ -3035,7 +3238,7 @@ EXCLUDE_COLUMNS = [
     'DpMaxTime_2m', 'DpMinTime_2m', 'HeatIndexMaxTime_2m',
     'WindChillMinTime_2m', 'WndMaxSpd5sTime_3m', 'PresMaxTime_1pnt5m',
     'PresMinTime_1pnt5m', 'TsMaxTime_bare_10cm', 'TsMinTime_bare_10cm', 'is_forecast', 
-    'collection_time'
+    'collection_time', 'BattVolts_Min', 'LithBatt_Min', 'MaintMode'
 ]
 
 def get_columns_to_exclude(df, threshold=0.95):
@@ -3101,7 +3304,7 @@ def get_weather_data(client, table_name):
     logger.info(f"Columns with null values: {df.columns[df.isnull().any()].tolist()}")
     logger.info(f"Number of null values per column:\n{df.isnull().sum()}")
     
-    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
+    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'])
     
     null_timestamps = df['TIMESTAMP'].isnull().sum()
     logger.info(f"Number of null timestamps after conversion: {null_timestamps}")
@@ -4699,6 +4902,175 @@ if __name__ == "__main__":
         </content>
     </file>
     <file>
+        <name>crop2cloud24.src.utils.create_bigquery_weather_tables.py</name>
+        <path>crop2cloud24.src.utils.create_bigquery_weather_tables.py</path>
+        <content>
+import os
+import time
+from google.cloud import bigquery
+from google.api_core import exceptions
+from dotenv import load_dotenv
+import pandas as pd
+import numpy as np
+from datetime import datetime, timedelta
+import pytz
+from logger import get_logger
+
+# Load environment variables
+load_dotenv()
+
+# Set up logging
+logger = get_logger(__name__)
+
+# BigQuery details
+PROJECT_ID = "crop2cloud24"
+DATASET_ID = "weather"
+TABLE_ID = "current-weather-mesonet"
+
+# Local file path (update this to your local file path)
+LOCAL_CSV_PATH = r"C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (6).csv"
+
+# Number of days of data to keep
+DAYS_TO_KEEP = 30
+
+# Columns to exclude
+EXCLUDE_COLUMNS = [
+    'TaMaxTime_2m', 'TaMinTime_2m', 'RHMaxTime_2m', 'RHMinTime_2m',
+    'DpMaxTime_2m', 'DpMinTime_2m', 'HeatIndexMaxTime_2m',
+    'WindChillMinTime_2m', 'WndMaxSpd5sTime_3m', 'PresMaxTime_1pnt5m',
+    'PresMinTime_1pnt5m', 'TsMaxTime_bare_10cm', 'TsMinTime_bare_10cm', 'is_forecast', 
+    'collection_time', 'BattVolts_Min', 'LithBatt_Min', 'MaintMode'
+]
+
+def create_bigquery_client():
+    credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+    if not credentials_path:
+        raise ValueError("GOOGLE_APPLICATION_CREDENTIALS not set in .env file")
+    return bigquery.Client()
+
+def delete_existing_table(client):
+    table_ref = client.dataset(DATASET_ID).table(TABLE_ID)
+    try:
+        client.delete_table(table_ref)
+        logger.info(f"Table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID} deleted.")
+    except exceptions.NotFound:
+        logger.info(f"Table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID} does not exist.")
+
+def create_table(client):
+    schema = [
+        bigquery.SchemaField("TIMESTAMP", "TIMESTAMP"),
+        bigquery.SchemaField("RECORD", "FLOAT"),
+        bigquery.SchemaField("Ta_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("TaMax_2m", "FLOAT"),
+        bigquery.SchemaField("TaMin_2m", "FLOAT"),
+        bigquery.SchemaField("RH_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("RHMax_2m", "FLOAT"),
+        bigquery.SchemaField("RHMin_2m", "FLOAT"),
+        bigquery.SchemaField("Dp_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("DpMax_2m", "FLOAT"),
+        bigquery.SchemaField("DpMin_2m", "FLOAT"),
+        bigquery.SchemaField("HeatIndex_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("HeatIndexMax_2m", "FLOAT"),
+        bigquery.SchemaField("WindChill_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("WindChillMin_2m", "FLOAT"),
+        bigquery.SchemaField("WndAveSpd_3m", "FLOAT"),
+        bigquery.SchemaField("WndVecMagAve_3m", "FLOAT"),
+        bigquery.SchemaField("WndAveDir_3m", "FLOAT"),
+        bigquery.SchemaField("WndAveDirSD_3m", "FLOAT"),
+        bigquery.SchemaField("WndMaxSpd5s_3m", "FLOAT"),
+        bigquery.SchemaField("WndMax_5sec_Dir_3m", "FLOAT"),
+        bigquery.SchemaField("PresAvg_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("PresMax_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("PresMin_1pnt5m", "FLOAT"),
+        bigquery.SchemaField("Solar_2m_Avg", "FLOAT"),
+        bigquery.SchemaField("Rain_1m_Tot", "FLOAT"),
+        bigquery.SchemaField("Ts_bare_10cm_Avg", "FLOAT"),
+        bigquery.SchemaField("TsMax_bare_10cm", "FLOAT"),
+        bigquery.SchemaField("TsMin_bare_10cm", "FLOAT"),
+    ]
+
+    table = bigquery.Table(client.dataset(DATASET_ID).table(TABLE_ID), schema=schema)
+    table = client.create_table(table)
+    logger.info(f"Created table {table.project}.{table.dataset_id}.{table.table_id}")
+
+def process_and_upload_csv(client):
+    cutoff_date = datetime.now(pytz.UTC) - timedelta(days=DAYS_TO_KEEP)
+    cutoff_date = cutoff_date.replace(tzinfo=None)  # Make cutoff_date timezone-naive
+
+    try:
+        df = pd.read_csv(
+            LOCAL_CSV_PATH,
+            header=1,
+            skiprows=[2, 3],
+            parse_dates=["TIMESTAMP"],
+            date_format="%Y-%m-%d %H:%M:%S",
+            chunksize=10000  # Process the file in chunks to avoid memory issues
+        )
+        logger.info(f"Successfully opened CSV file: {LOCAL_CSV_PATH}")
+    except Exception as e:
+        logger.error(f"Error reading CSV file: {LOCAL_CSV_PATH}. Error: {str(e)}")
+        raise
+
+    total_rows_inserted = 0
+
+    for chunk in df:
+        chunk = chunk.rename(columns=lambda x: x.strip())
+        chunk["TIMESTAMP"] = pd.to_datetime(chunk["TIMESTAMP"], errors="coerce")
+        chunk = chunk.dropna(subset=["TIMESTAMP"])
+
+        # Remove excluded columns
+        chunk = chunk.drop(columns=EXCLUDE_COLUMNS, errors='ignore')
+
+        # Remove columns that are not in the BigQuery table schema
+        columns_to_remove = ['BattVolts_Min', 'LithBatt_Min', 'MaintMode']
+        chunk = chunk.drop(columns=columns_to_remove, errors='ignore')
+
+        # Convert all columns (except TIMESTAMP) to numeric, coercing errors to NaN
+        for col in chunk.columns:
+            if col != "TIMESTAMP":
+                chunk[col] = pd.to_numeric(chunk[col], errors='coerce')
+
+        # Filter for last 30 days
+        chunk = chunk[chunk["TIMESTAMP"] >= cutoff_date]
+
+        if not chunk.empty:
+            # Convert timestamps to strings in ISO format for BigQuery
+            chunk["TIMESTAMP"] = chunk["TIMESTAMP"].dt.strftime("%Y-%m-%d %H:%M:%S")
+            
+            # Replace NaN values with None for BigQuery compatibility
+            chunk = chunk.where(pd.notnull(chunk), None)
+            
+            # Convert to records, explicitly replacing any remaining NaNs
+            rows_to_insert = [{k: (v if pd.notnull(v) else None) for k, v in row.items()} 
+                              for row in chunk.to_dict('records')]
+
+            table_ref = client.dataset(DATASET_ID).table(TABLE_ID)
+            errors = client.insert_rows_json(table_ref, rows_to_insert)
+            if errors:
+                logger.error(f"Encountered errors while inserting rows: {errors}")
+            else:
+                total_rows_inserted += len(rows_to_insert)
+                logger.info(f"Inserted {len(rows_to_insert)} rows. Total rows inserted: {total_rows_inserted}")
+
+    logger.info(f"Finished processing. Total rows inserted: {total_rows_inserted}")
+
+def main():
+    client = create_bigquery_client()
+    
+    #delete_existing_table(client)
+    #create_table(client)
+    
+    # Add a small delay (5 seconds) between table creation and data insertion
+    logger.info("Waiting for 5 seconds before starting data insertion...")
+    time.sleep(5)
+    
+    process_and_upload_csv(client)
+
+if __name__ == "__main__":
+    main()
+        </content>
+    </file>
+    <file>
         <name>crop2cloud24.src.utils.logger.py</name>
         <path>crop2cloud24.src.utils.logger.py</path>
         <content>
@@ -4790,8 +5162,6 @@ def get_logger(name=None, level=logging.INFO):
         <name>crop2cloud24.src.utils.plot_data.py</name>
         <path>crop2cloud24.src.utils.plot_data.py</path>
         <content>
-# src/utils/plot_data.py
-
 import os
 import sqlite3
 import pandas as pd
@@ -4802,6 +5172,11 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from datetime import datetime, timedelta
 import pytz
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 # Get the project root directory
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -4818,42 +5193,106 @@ os.makedirs(HTML_PLOTS_DIR, exist_ok=True)
 # Custom color palette
 COLORS = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"]
 
+# Define CST timezone
+CST = pytz.timezone('America/Chicago')
+
 def get_plot_tables(conn):
     """Get all plot tables from the database."""
     cursor = conn.cursor()
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name LIKE 'plot_%'")
     return [row[0] for row in cursor.fetchall()]
 
-def clean_data(conn, table_name, start_date=None, end_date=None):
+def get_weather_data(conn):
+    """Retrieve weather data from the database."""
+    query = """
+    SELECT TIMESTAMP, Ta_2m_Avg, TaMax_2m, TaMin_2m, RH_2m_Avg, 
+           Dp_2m_Avg, WndAveSpd_3m, Solar_2m_Avg, Rain_1m_Tot
+    FROM weather_data
+    WHERE TIMESTAMP IS NOT NULL
+    ORDER BY TIMESTAMP
+    """
+    df = pd.read_sql_query(query, conn, parse_dates=['TIMESTAMP'])
+    
+    # Convert TIMESTAMP to datetime, interpret as UTC, then convert to CST
+    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
+    print(f"Step 1 - Converted to datetime (UTC):\n{df['TIMESTAMP'].head()}")
+    
+    df['TIMESTAMP'] = df['TIMESTAMP'].dt.tz_convert(CST)
+    print(f"Step 2 - Converted to CST:\n{df['TIMESTAMP'].head()}")
+    
+    df['TIMESTAMP'] = df['TIMESTAMP'] - pd.Timedelta(hours=5)
+    print(f"Step 3 - Adjusted by subtracting 5 hours:\n{df['TIMESTAMP'].head()}")
+    
+    ###
+    # SOMETHING IS FUCKING WRONG HERE WHY I GOTTA DECREMENT THE THING TWICE FOR IT TO WORK??? WHAT IS HTE ROOT CAUSE OF THIS? ANYWAYS AT LEASE WE GETTIN SOMEWHERE
+    
+    
+    # Remove timezone information for easier plotting
+    df['TIMESTAMP'] = df['TIMESTAMP'].dt.tz_localize(None)
+    
+    df = df.dropna(subset=['TIMESTAMP'])
+    
+    # Replace negative values with NaN for relevant columns
+    numeric_columns = ['Ta_2m_Avg', 'TaMax_2m', 'TaMin_2m', 'RH_2m_Avg', 'WndAveSpd_3m', 'Solar_2m_Avg', 'Rain_1m_Tot']
+    for col in numeric_columns:
+        df[col] = df[col].where(df[col] >= 0)
+    
+    logger.info(f"Weather data retrieved. Shape: {df.shape}")
+    logger.info(f"Weather data range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()} (CST)")
+    return df
+
+def clean_data(conn, table_name):
     """Clean and prepare data for a specific plot."""
     query = f"""
-    SELECT p.*, w.Ta_2m_Avg, w.RH_2m_Avg, w.Rain_1m_Tot
-    FROM {table_name} p
-    LEFT JOIN weather_data w ON p.TIMESTAMP = w.TIMESTAMP
+    SELECT *
+    FROM {table_name}
+    WHERE TIMESTAMP IS NOT NULL AND is_actual = 1
+    ORDER BY TIMESTAMP
     """
-    if start_date and end_date:
-        query += f" WHERE p.TIMESTAMP BETWEEN '{start_date}' AND '{end_date}'"
-    query += " AND p.is_actual = 1 ORDER BY p.TIMESTAMP"
     
-    df = pd.read_sql_query(query, conn)
+    df = pd.read_sql_query(query, conn, parse_dates=['TIMESTAMP'])
     
-    # Convert TIMESTAMP to datetime using ISO8601 format
-    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], format='ISO8601')
+    # Convert TIMESTAMP to datetime, interpret as UTC, then convert to CST
+    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
+    df['TIMESTAMP'] = df['TIMESTAMP'].dt.tz_convert(CST)
     
-    # Replace negative values with NaN
-    for col in df.select_dtypes(include=['float64']).columns:
+    # Remove timezone information for easier plotting
+    df['TIMESTAMP'] = df['TIMESTAMP'].dt.tz_localize(None)
+    
+    df = df.dropna(subset=['TIMESTAMP'])
+    
+    # Replace negative values with NaN for numeric columns
+    numeric_columns = df.select_dtypes(include=['float64']).columns
+    for col in numeric_columns:
         df[col] = df[col].where(df[col] >= 0)
     
     # Replace VWC values of 0 with NaN
     tdr_columns = [col for col in df.columns if col.startswith('TDR') and not col.endswith('_pred')]
     df[tdr_columns] = df[tdr_columns].replace(0, np.nan)
     
-    # Convert None to NaN for precipitation data
-    df['Rain_1m_Tot'] = pd.to_numeric(df['Rain_1m_Tot'], errors='coerce')
+    logger.info(f"Data cleaned for {table_name}. Shape: {df.shape}")
+    logger.info(f"Date range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()} (CST)")
     
     return df
 
-def create_static_plot(df, plot_number):
+def log_data_summary(df, plot_number):
+    """Log summary statistics for the dataframe."""
+    logger.info(f"Data summary for plot {plot_number}:")
+    logger.info(f"Date range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
+    
+    for column in df.columns:
+        if column != 'TIMESTAMP' and column != 'is_actual':
+            non_null_data = df[column].dropna()
+            if not non_null_data.empty:
+                logger.info(f"{column}:")
+                logger.info(f"  Range: {non_null_data.min():.2f} to {non_null_data.max():.2f}")
+                logger.info(f"  Mean: {non_null_data.mean():.2f}")
+                logger.info(f"  Median: {non_null_data.median():.2f}")
+                logger.info(f"  Non-null count: {non_null_data.count()} out of {len(df)}")
+            else:
+                logger.warning(f"{column}: All values are null")
+
+def create_static_plot(df, weather_df, plot_number):
     """Create a static plot using matplotlib."""
     fig, axs = plt.subplots(3, 2, figsize=(20, 30), sharex=True)
     fig.suptitle(f'Data for Plot {plot_number}', fontsize=16)
@@ -4865,21 +5304,30 @@ def create_static_plot(df, plot_number):
     axs[0, 0].set_ylabel('VWC (%)')
     axs[0, 0].legend()
 
-    # Canopy Temperature Plot
+    # Canopy Temperature and Air Temperature Plot
     irt_column = next((col for col in df.columns if col.startswith('IRT') and not col.endswith('_pred')), None)
     if irt_column:
         axs[1, 0].plot(df['TIMESTAMP'], df[irt_column], label='Canopy Temp', color=COLORS[0])
-    if 'Ta_2m_Avg' in df.columns:
-        axs[1, 0].plot(df['TIMESTAMP'], df['Ta_2m_Avg'], label='Air Temp', color=COLORS[1])
+        logger.info(f"Plotting canopy temperature from column: {irt_column}")
+    else:
+        logger.warning("No IRT column found for canopy temperature")
+    if 'Ta_2m_Avg' in weather_df.columns:
+        axs[1, 0].plot(weather_df['TIMESTAMP'], weather_df['Ta_2m_Avg'], label='Air Temp', color=COLORS[1])
+        logger.info("Plotting air temperature from Ta_2m_Avg column")
+    else:
+        logger.warning("Ta_2m_Avg column not found in weather dataframe")
     axs[1, 0].set_ylabel('Temperature (°C)')
     axs[1, 0].legend()
 
     # Precipitation Plot
-    if 'Rain_1m_Tot' in df.columns:
-        valid_rain = df.dropna(subset=['Rain_1m_Tot'])
+    if 'Rain_1m_Tot' in weather_df.columns:
+        valid_rain = weather_df.dropna(subset=['Rain_1m_Tot'])
         axs[2, 0].bar(valid_rain['TIMESTAMP'], valid_rain['Rain_1m_Tot'], label='Precipitation', color=COLORS[2])
         axs[2, 0].set_ylabel('Precipitation (mm)')
         axs[2, 0].legend()
+        logger.info(f"Plotting precipitation data. Non-null count: {len(valid_rain)}")
+    else:
+        logger.warning("Rain_1m_Tot column not found in weather dataframe")
 
     # CWSI and SWSI Plot
     if 'cwsi' in df.columns and 'swsi' in df.columns:
@@ -4887,29 +5335,39 @@ def create_static_plot(df, plot_number):
         axs[0, 1].plot(df['TIMESTAMP'], df['swsi'], label='SWSI', color=COLORS[3])
         axs[0, 1].set_ylabel('Index')
         axs[0, 1].legend()
+        logger.info("Plotting CWSI and SWSI data")
+    else:
+        logger.warning("CWSI or SWSI column not found in dataframe")
 
     # ET Plot
     if 'et' in df.columns:
         axs[1, 1].plot(df['TIMESTAMP'], df['et'], label='ET', color=COLORS[4])
         axs[1, 1].set_ylabel('ET (mm)')
         axs[1, 1].legend()
+        logger.info("Plotting ET data")
+    else:
+        logger.warning("ET column not found in dataframe")
 
     # Relative Humidity Plot
-    if 'RH_2m_Avg' in df.columns:
-        axs[2, 1].plot(df['TIMESTAMP'], df['RH_2m_Avg'], label='RH', color=COLORS[1])
+    if 'RH_2m_Avg' in weather_df.columns:
+        axs[2, 1].plot(weather_df['TIMESTAMP'], weather_df['RH_2m_Avg'], label='RH', color=COLORS[1])
         axs[2, 1].set_ylabel('Relative Humidity (%)')
         axs[2, 1].legend()
+        logger.info("Plotting Relative Humidity data")
+    else:
+        logger.warning("RH_2m_Avg column not found in weather dataframe")
 
     # Format x-axis
     for ax in axs.flat:
-        ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
+        ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d %H:%M', tz=CST))
         plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right')
 
     plt.tight_layout()
     plt.savefig(os.path.join(PLOTS_DIR, f'{plot_number}_static.png'))
     plt.close()
+    logger.info(f"Static plot saved for plot {plot_number}")
 
-def create_interactive_plot(df, plot_number):
+def create_interactive_plot(df, weather_df, plot_number):
     """Create an interactive plot using plotly."""
     fig = make_subplots(rows=3, cols=2, shared_xaxes=True, shared_yaxes=False)
 
@@ -4919,20 +5377,29 @@ def create_interactive_plot(df, plot_number):
         fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df[col], name=col, line=dict(color=COLORS[i % len(COLORS)])),
                       row=1, col=1)
 
-    # Canopy Temperature Plot
+    # Canopy Temperature and Air Temperature Plot
     irt_column = next((col for col in df.columns if col.startswith('IRT') and not col.endswith('_pred')), None)
     if irt_column:
         fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df[irt_column], name='Canopy Temp', line=dict(color=COLORS[0])),
                       row=2, col=1)
-    if 'Ta_2m_Avg' in df.columns:
-        fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['Ta_2m_Avg'], name='Air Temp', line=dict(color=COLORS[1])),
+        logger.info(f"Plotting canopy temperature from column: {irt_column}")
+    else:
+        logger.warning("No IRT column found for canopy temperature")
+    if 'Ta_2m_Avg' in weather_df.columns:
+        fig.add_trace(go.Scatter(x=weather_df['TIMESTAMP'], y=weather_df['Ta_2m_Avg'], name='Air Temp', line=dict(color=COLORS[1])),
                       row=2, col=1)
+        logger.info("Plotting air temperature from Ta_2m_Avg column")
+    else:
+        logger.warning("Ta_2m_Avg column not found in weather dataframe")
 
     # Precipitation Plot
-    if 'Rain_1m_Tot' in df.columns:
-        valid_rain = df.dropna(subset=['Rain_1m_Tot'])
+    if 'Rain_1m_Tot' in weather_df.columns:
+        valid_rain = weather_df.dropna(subset=['Rain_1m_Tot'])
         fig.add_trace(go.Bar(x=valid_rain['TIMESTAMP'], y=valid_rain['Rain_1m_Tot'], name='Precipitation', marker_color=COLORS[2]),
                       row=3, col=1)
+        logger.info(f"Plotting precipitation data. Non-null count: {len(valid_rain)}")
+    else:
+        logger.warning("Rain_1m_Tot column not found in weather dataframe")
 
     # CWSI and SWSI Plot
     if 'cwsi' in df.columns and 'swsi' in df.columns:
@@ -4940,16 +5407,25 @@ def create_interactive_plot(df, plot_number):
                       row=1, col=2)
         fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['swsi'], name='SWSI', line=dict(color=COLORS[3])),
                       row=1, col=2)
+        logger.info("Plotting CWSI and SWSI data")
+    else:
+        logger.warning("CWSI or SWSI column not found in dataframe")
 
     # ET Plot
     if 'et' in df.columns:
         fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['et'], name='ET', line=dict(color=COLORS[4])),
                       row=2, col=2)
+        logger.info("Plotting ET data")
+    else:
+        logger.warning("ET column not found in dataframe")
 
     # Relative Humidity Plot
-    if 'RH_2m_Avg' in df.columns:
-        fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['RH_2m_Avg'], name='RH', line=dict(color=COLORS[1])),
+    if 'RH_2m_Avg' in weather_df.columns:
+        fig.add_trace(go.Scatter(x=weather_df['TIMESTAMP'], y=weather_df['RH_2m_Avg'], name='RH', line=dict(color=COLORS[1])),
                       row=3, col=2)
+        logger.info("Plotting Relative Humidity data")
+    else:
+        logger.warning("RH_2m_Avg column not found in weather dataframe")
 
     fig.update_layout(title=f'Data for Plot {plot_number}', height=900, width=1200)
 
@@ -4961,14 +5437,17 @@ def create_interactive_plot(df, plot_number):
     fig.update_yaxes(title_text="ET (mm)", row=2, col=2)
     fig.update_yaxes(title_text="Relative Humidity (%)", row=3, col=2)
 
-    fig.write_html(os.path.join(HTML_PLOTS_DIR, f'{plot_number}_interactive.html'))
+    # Update x-axis to show CST time
+    fig.update_xaxes(tickformat="%Y-%m-%d %H:%M")
 
-def generate_plots(plot_numbers=None, days=None):
+    fig.write_html(os.path.join(HTML_PLOTS_DIR, f'{plot_number}_interactive.html'))
+    logger.info(f"Interactive plot saved for plot {plot_number}")
+
+def generate_plots(plot_numbers=None):
     """
     Generate plots for specified plot numbers or all plots if none specified.
     
     :param plot_numbers: List of plot numbers to generate plots for. If None, generates for all plots.
-    :param days: Number of days of data to include in the plots. If None, includes all available data.
     """
     conn = sqlite3.connect(DB_PATH)
     all_plot_tables = get_plot_tables(conn)
@@ -4978,27 +5457,31 @@ def generate_plots(plot_numbers=None, days=None):
     else:
         plot_tables = [f"plot_{num}" for num in plot_numbers if f"plot_{num}" in all_plot_tables]
 
-    end_date = datetime.now(pytz.UTC)
+    # Get weather data
+    weather_df = get_weather_data(conn)
     
     for table in plot_tables:
         plot_number = table.split('_')[1]
+        logger.info(f"Processing data for plot {plot_number}")
         
-        if days is None:
-            # If days is None, fetch all available data
-            df = clean_data(conn, table)
-        else:
-            start_date = end_date - timedelta(days=days)
-            df = clean_data(conn, table, start_date, end_date)
+        df = clean_data(conn, table)
         
         if not df.empty:
-            create_static_plot(df, plot_number)
-            create_interactive_plot(df, plot_number)
-            print(f"Generated plots for {table}")
+            log_data_summary(df, plot_number)
+            
+            # Filter weather data to match the plot data's date range
+            plot_start = df['TIMESTAMP'].min()
+            plot_end = df['TIMESTAMP'].max()
+            filtered_weather_df = weather_df[(weather_df['TIMESTAMP'] >= plot_start) & (weather_df['TIMESTAMP'] <= plot_end)]
+            
+            create_static_plot(df, filtered_weather_df, plot_number)
+            create_interactive_plot(df, filtered_weather_df, plot_number)
+            logger.info(f"Generated plots for {table}")
         else:
-            print(f"No data available for {table}")
+            logger.warning(f"No data available for {table}")
 
     conn.close()
-    print("All plots generated successfully.")
+    logger.info("All plots generated successfully.")
 
 if __name__ == "__main__":
     generate_plots()
