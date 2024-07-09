@@ -2521,3 +2521,354 @@
 2024-07-09 07:23:14,155 - __main__ - INFO - Inserted 10000 rows. Total rows inserted: 33235
 2024-07-09 07:23:17,413 - __main__ - INFO - Inserted 9870 rows. Total rows inserted: 43105
 2024-07-09 07:23:17,413 - __main__ - INFO - Finished processing. Total rows inserted: 43105
+2024-07-09 08:10:31,643 - __main__ - INFO - Deletion confirmed. Proceeding with table creation (including deletion of existing ones).
+2024-07-09 08:10:32,303 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt3
+2024-07-09 08:10:32,960 - __main__ - INFO - Created dataset LINEAR_CORN_trt3
+2024-07-09 08:10:33,087 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-09 08:10:33,504 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-09 08:10:33,618 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-09 08:10:34,005 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-09 08:10:34,117 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-09 08:10:34,595 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-09 08:10:35,027 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt2
+2024-07-09 08:10:35,674 - __main__ - INFO - Created dataset LINEAR_CORN_trt2
+2024-07-09 08:10:35,803 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-09 08:10:36,196 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-09 08:10:36,310 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-09 08:10:36,801 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-09 08:10:36,909 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-09 08:10:37,309 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-09 08:10:37,683 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt1
+2024-07-09 08:10:38,337 - __main__ - INFO - Created dataset LINEAR_CORN_trt1
+2024-07-09 08:10:38,530 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-09 08:10:38,996 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-09 08:10:39,107 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-09 08:10:39,593 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-09 08:10:39,685 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-09 08:10:40,096 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-09 08:10:40,440 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt4
+2024-07-09 08:10:41,037 - __main__ - INFO - Created dataset LINEAR_CORN_trt4
+2024-07-09 08:10:41,148 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-09 08:10:41,738 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-09 08:10:41,844 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-09 08:10:42,313 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-09 08:10:42,399 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-09 08:10:42,798 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-09 08:10:42,798 - __main__ - INFO - Process completed successfully
+2024-07-09 08:17:44,180 - __main__ - INFO - Deletion confirmed. Proceeding with table creation (including deletion of existing ones).
+2024-07-09 08:17:44,828 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt3
+2024-07-09 08:17:45,455 - __main__ - INFO - Created dataset LINEAR_CORN_trt3
+2024-07-09 08:17:45,559 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-09 08:17:45,999 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-09 08:17:46,108 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-09 08:17:46,622 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-09 08:17:46,717 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-09 08:17:47,110 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-09 08:17:47,563 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt2
+2024-07-09 08:17:48,177 - __main__ - INFO - Created dataset LINEAR_CORN_trt2
+2024-07-09 08:17:48,288 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-09 08:17:48,702 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-09 08:17:48,789 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-09 08:17:49,218 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-09 08:17:49,349 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-09 08:17:49,792 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-09 08:17:50,165 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt1
+2024-07-09 08:17:50,895 - __main__ - INFO - Created dataset LINEAR_CORN_trt1
+2024-07-09 08:17:50,996 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-09 08:17:51,600 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-09 08:17:51,680 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-09 08:17:52,115 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-09 08:17:52,264 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-09 08:17:52,700 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-09 08:17:52,997 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt4
+2024-07-09 08:17:53,629 - __main__ - INFO - Created dataset LINEAR_CORN_trt4
+2024-07-09 08:17:53,733 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-09 08:17:54,198 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-09 08:17:54,299 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-09 08:17:54,717 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-09 08:17:54,838 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-09 08:17:55,311 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-09 08:17:55,311 - __main__ - INFO - Process completed successfully
+2024-07-09 08:19:50,049 - __main__ - INFO - Processing folder: /path/to/first/folder
+2024-07-09 08:19:50,051 - __main__ - WARNING - File not found: /path/to/first/folder\nodeC_NodeC.dat
+2024-07-09 08:19:50,052 - __main__ - WARNING - File not found: /path/to/first/folder\nodeB_NodeB.dat
+2024-07-09 08:19:50,053 - __main__ - WARNING - File not found: /path/to/first/folder\nodeA_NodeA.dat
+2024-07-09 08:19:50,054 - __main__ - INFO - Processing folder: /path/to/second/folder
+2024-07-09 08:19:50,055 - __main__ - WARNING - File not found: /path/to/second/folder\nodeC_NodeC.dat
+2024-07-09 08:19:50,055 - __main__ - WARNING - File not found: /path/to/second/folder\nodeB_NodeB.dat
+2024-07-09 08:19:50,056 - __main__ - WARNING - File not found: /path/to/second/folder\nodeA_NodeA.dat
+2024-07-09 08:21:19,281 - __main__ - INFO - Processing folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-09 08:21:19,282 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-09 08:21:19,282 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-09 08:21:19,299 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-09 08:21:19,319 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-09 08:21:19,323 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-09 08:21:19,586 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-09 08:21:19,586 - __main__ - INFO - Final shape: (608, 15)
+2024-07-09 08:21:19,587 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-09 08:21:19,588 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-09 08:21:19,592 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-09 08:21:19,593 - __main__ - INFO - DataFrame columns: ['IRT5001C3xx24']
+2024-07-09 08:21:19,594 - __main__ - INFO - DataFrame shape: (608, 1)
+2024-07-09 08:21:20,036 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt3.plot_5001: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT5001C3xx24': 'FLOAT', 'IRT5001C3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:21:22,985 - __main__ - INFO - Successfully loaded 608 rows into temporary table crop2cloud24.LINEAR_CORN_trt3.plot_5001_temp
+2024-07-09 08:21:26,617 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-09 08:21:26,792 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt3.plot_5001_temp deleted
+2024-07-09 08:21:26,802 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-09 08:21:26,802 - __main__ - INFO - DataFrame columns: ['IRT5003C2xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024']
+2024-07-09 08:21:26,802 - __main__ - INFO - DataFrame shape: (608, 4)
+2024-07-09 08:21:26,991 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt2.plot_5003: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5003C20624': 'FLOAT', 'TDR5003C20624_pred': 'FLOAT', 'IRT5003C2xx24': 'FLOAT', 'IRT5003C2xx24_pred': 'FLOAT', 'TDR5003C21824': 'FLOAT', 'TDR5003C21824_pred': 'FLOAT', 'TDR5003C23024': 'FLOAT', 'TDR5003C23024_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:21:31,355 - __main__ - INFO - Successfully loaded 608 rows into temporary table crop2cloud24.LINEAR_CORN_trt2.plot_5003_temp
+2024-07-09 08:21:34,381 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-09 08:21:34,599 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt2.plot_5003_temp deleted
+2024-07-09 08:21:34,599 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-09 08:21:34,599 - __main__ - INFO - DataFrame columns: ['IRT5010C1xx24', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024']
+2024-07-09 08:21:34,599 - __main__ - INFO - DataFrame shape: (608, 4)
+2024-07-09 08:21:34,809 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt1.plot_5010: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'DEN5010C1xx24': 'FLOAT', 'DEN5010C1xx24_pred': 'FLOAT', 'TDR5010C10624': 'FLOAT', 'TDR5010C10624_pred': 'FLOAT', 'TDR5010C13024': 'FLOAT', 'TDR5010C13024_pred': 'FLOAT', 'IRT5010C1xx24': 'FLOAT', 'IRT5010C1xx24_pred': 'FLOAT', 'SAP5010C1xx24': 'FLOAT', 'SAP5010C1xx24_pred': 'FLOAT', 'TDR5010C11824': 'FLOAT', 'TDR5010C11824_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:21:37,585 - __main__ - INFO - Successfully loaded 608 rows into temporary table crop2cloud24.LINEAR_CORN_trt1.plot_5010_temp
+2024-07-09 08:21:40,968 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-09 08:21:41,131 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt1.plot_5010_temp deleted
+2024-07-09 08:21:41,133 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-09 08:21:41,134 - __main__ - INFO - DataFrame columns: ['TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-09 08:21:41,136 - __main__ - INFO - DataFrame shape: (608, 3)
+2024-07-09 08:21:41,334 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt4.plot_5009: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5009C43024': 'FLOAT', 'TDR5009C43024_pred': 'FLOAT', 'TDR5009C40624': 'FLOAT', 'TDR5009C40624_pred': 'FLOAT', 'TDR5009C41824': 'FLOAT', 'TDR5009C41824_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:21:45,069 - __main__ - INFO - Successfully loaded 608 rows into temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5009_temp
+2024-07-09 08:21:47,914 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-09 08:21:48,073 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5009_temp deleted
+2024-07-09 08:21:48,073 - __main__ - INFO - No data to upload for plot 5006
+2024-07-09 08:21:48,073 - __main__ - INFO - No data to upload for plot 5012
+2024-07-09 08:21:48,073 - __main__ - INFO - No data to upload for plot 5007
+2024-07-09 08:21:48,073 - __main__ - INFO - No data to upload for plot 5023
+2024-07-09 08:21:48,082 - __main__ - INFO - No data to upload for plot 5020
+2024-07-09 08:21:48,082 - __main__ - INFO - No data to upload for plot 5018
+2024-07-09 08:21:48,082 - __main__ - INFO - No data to upload for plot 5026
+2024-07-09 08:21:48,082 - __main__ - INFO - No data to upload for plot 5027
+2024-07-09 08:21:48,093 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-09 08:21:48,097 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-09 08:21:48,114 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-09 08:21:48,133 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-09 08:21:48,136 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-09 08:21:48,136 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-09 08:21:48,136 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'TDR5006B11824']
+2024-07-09 08:21:48,140 - __main__ - INFO - Final shape: (608, 16)
+2024-07-09 08:21:48,142 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-09 08:21:48,143 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-09 08:21:48,146 - __main__ - INFO - No data to upload for plot 5001
+2024-07-09 08:21:48,148 - __main__ - INFO - No data to upload for plot 5003
+2024-07-09 08:21:48,148 - __main__ - INFO - No data to upload for plot 5010
+2024-07-09 08:21:48,148 - __main__ - INFO - No data to upload for plot 5009
+2024-07-09 08:21:48,148 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-09 08:21:48,148 - __main__ - INFO - DataFrame columns: ['IRT5006B1xx24', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5006B11824']
+2024-07-09 08:21:48,148 - __main__ - INFO - DataFrame shape: (608, 5)
+2024-07-09 08:21:48,803 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt1.plot_5006: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5006B14224': 'FLOAT', 'TDR5006B14224_pred': 'FLOAT', 'DEN5006B1xx24': 'FLOAT', 'DEN5006B1xx24_pred': 'FLOAT', 'IRT5006B1xx24': 'FLOAT', 'IRT5006B1xx24_pred': 'FLOAT', 'TDR5006B13024': 'FLOAT', 'TDR5006B13024_pred': 'FLOAT', 'TDR5006B11824': 'FLOAT', 'TDR5006B11824_pred': 'FLOAT', 'SAP5006B1xx24': 'FLOAT', 'SAP5006B1xx24_pred': 'FLOAT', 'TDR5006B10624': 'FLOAT', 'TDR5006B10624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:21:53,370 - __main__ - INFO - Successfully loaded 608 rows into temporary table crop2cloud24.LINEAR_CORN_trt1.plot_5006_temp
+2024-07-09 08:21:56,587 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-09 08:21:56,758 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt1.plot_5006_temp deleted
+2024-07-09 08:21:56,760 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-09 08:21:56,761 - __main__ - INFO - DataFrame columns: ['IRT5012B2xx24', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-09 08:21:56,762 - __main__ - INFO - DataFrame shape: (608, 4)
+2024-07-09 08:21:56,931 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt2.plot_5012: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5012B23024': 'FLOAT', 'TDR5012B23024_pred': 'FLOAT', 'IRT5012B2xx24': 'FLOAT', 'IRT5012B2xx24_pred': 'FLOAT', 'TDR5012B20624': 'FLOAT', 'TDR5012B20624_pred': 'FLOAT', 'TDR5012B21824': 'FLOAT', 'TDR5012B21824_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:22:02,587 - __main__ - INFO - Successfully loaded 608 rows into temporary table crop2cloud24.LINEAR_CORN_trt2.plot_5012_temp
+2024-07-09 08:22:05,712 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-09 08:22:05,853 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt2.plot_5012_temp deleted
+2024-07-09 08:22:05,855 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-09 08:22:05,856 - __main__ - INFO - DataFrame columns: ['TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224']
+2024-07-09 08:22:05,858 - __main__ - INFO - DataFrame shape: (608, 4)
+2024-07-09 08:22:06,030 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt4.plot_5007: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5007B43024': 'FLOAT', 'TDR5007B43024_pred': 'FLOAT', 'TDR5007B41824': 'FLOAT', 'TDR5007B41824_pred': 'FLOAT', 'TDR5007B44224': 'FLOAT', 'TDR5007B44224_pred': 'FLOAT', 'TDR5007B40624': 'FLOAT', 'TDR5007B40624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:22:08,910 - __main__ - INFO - Successfully loaded 608 rows into temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5007_temp
+2024-07-09 08:22:11,929 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-09 08:22:12,132 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5007_temp deleted
+2024-07-09 08:22:12,132 - __main__ - INFO - No data to upload for plot 5023
+2024-07-09 08:22:12,132 - __main__ - INFO - No data to upload for plot 5020
+2024-07-09 08:22:12,132 - __main__ - INFO - No data to upload for plot 5018
+2024-07-09 08:22:12,132 - __main__ - INFO - No data to upload for plot 5026
+2024-07-09 08:22:12,132 - __main__ - INFO - No data to upload for plot 5027
+2024-07-09 08:22:12,142 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-09 08:22:12,144 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-09 08:22:12,172 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-09 08:22:12,182 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-09 08:22:12,184 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-09 08:22:12,187 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-09 08:22:12,188 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-09 08:22:12,188 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-09 08:22:12,188 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-09 08:22:12,191 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-09 08:22:12,196 - __main__ - INFO - No data to upload for plot 5001
+2024-07-09 08:22:12,196 - __main__ - INFO - No data to upload for plot 5003
+2024-07-09 08:22:12,201 - __main__ - INFO - No data to upload for plot 5010
+2024-07-09 08:22:12,203 - __main__ - INFO - No data to upload for plot 5009
+2024-07-09 08:22:12,204 - __main__ - INFO - No data to upload for plot 5006
+2024-07-09 08:22:12,205 - __main__ - INFO - No data to upload for plot 5012
+2024-07-09 08:22:12,206 - __main__ - INFO - No data to upload for plot 5007
+2024-07-09 08:22:12,208 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-09 08:22:12,209 - __main__ - INFO - DataFrame columns: ['IRT5023A1xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224']
+2024-07-09 08:22:12,209 - __main__ - INFO - DataFrame shape: (1006, 5)
+2024-07-09 08:22:12,573 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt1.plot_5023: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'DEN5023A1xx24': 'FLOAT', 'DEN5023A1xx24_pred': 'FLOAT', 'TDR5023A14224': 'FLOAT', 'TDR5023A14224_pred': 'FLOAT', 'IRT5023A1xx24': 'FLOAT', 'IRT5023A1xx24_pred': 'FLOAT', 'SAP5023A1xx24': 'FLOAT', 'SAP5023A1xx24_pred': 'FLOAT', 'TDR5023A10624': 'FLOAT', 'TDR5023A10624_pred': 'FLOAT', 'TDR5023A11824': 'FLOAT', 'TDR5023A11824_pred': 'FLOAT', 'TDR5023A13024': 'FLOAT', 'TDR5023A13024_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:22:15,621 - __main__ - INFO - Successfully loaded 1006 rows into temporary table crop2cloud24.LINEAR_CORN_trt1.plot_5023_temp
+2024-07-09 08:22:18,594 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-09 08:22:18,787 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt1.plot_5023_temp deleted
+2024-07-09 08:22:18,788 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-09 08:22:18,789 - __main__ - INFO - DataFrame columns: ['IRT5020A3xx24']
+2024-07-09 08:22:18,790 - __main__ - INFO - DataFrame shape: (1006, 1)
+2024-07-09 08:22:18,977 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt3.plot_5020: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT5020A3xx24': 'FLOAT', 'IRT5020A3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:22:22,063 - __main__ - INFO - Successfully loaded 1006 rows into temporary table crop2cloud24.LINEAR_CORN_trt3.plot_5020_temp
+2024-07-09 08:22:24,952 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-09 08:22:25,092 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt3.plot_5020_temp deleted
+2024-07-09 08:22:25,092 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-09 08:22:25,092 - __main__ - INFO - DataFrame columns: ['IRT5018A3xx24']
+2024-07-09 08:22:25,092 - __main__ - INFO - DataFrame shape: (1006, 1)
+2024-07-09 08:22:25,309 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt3.plot_5018: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT5018A3xx24': 'FLOAT', 'IRT5018A3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:22:29,590 - __main__ - INFO - Successfully loaded 1006 rows into temporary table crop2cloud24.LINEAR_CORN_trt3.plot_5018_temp
+2024-07-09 08:22:32,729 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-09 08:22:32,902 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt3.plot_5018_temp deleted
+2024-07-09 08:22:32,902 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-09 08:22:32,902 - __main__ - INFO - DataFrame columns: ['TDR5026A20624', 'TDR5026A21824']
+2024-07-09 08:22:32,911 - __main__ - INFO - DataFrame shape: (1006, 2)
+2024-07-09 08:22:33,075 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt2.plot_5026: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5026A20624': 'FLOAT', 'TDR5026A20624_pred': 'FLOAT', 'TDR5026A21824': 'FLOAT', 'TDR5026A21824_pred': 'FLOAT', 'TDR5026A23824': 'FLOAT', 'TDR5026A23824_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:22:35,771 - __main__ - INFO - Successfully loaded 1006 rows into temporary table crop2cloud24.LINEAR_CORN_trt2.plot_5026_temp
+2024-07-09 08:22:38,672 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-09 08:22:38,830 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt2.plot_5026_temp deleted
+2024-07-09 08:22:38,830 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-09 08:22:38,830 - __main__ - INFO - DataFrame columns: ['TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-09 08:22:38,830 - __main__ - INFO - DataFrame shape: (1006, 3)
+2024-07-09 08:22:38,963 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt4.plot_5027: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5027A41824': 'FLOAT', 'TDR5027A41824_pred': 'FLOAT', 'TDR5027A43024': 'FLOAT', 'TDR5027A43024_pred': 'FLOAT', 'TDR5027A40624': 'FLOAT', 'TDR5027A40624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:22:41,459 - __main__ - INFO - Successfully loaded 1006 rows into temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5027_temp
+2024-07-09 08:22:44,135 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-09 08:22:44,325 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5027_temp deleted
+2024-07-09 08:22:44,325 - __main__ - INFO - Processing folder: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous
+2024-07-09 08:22:44,325 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-09 08:22:44,325 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-09 08:22:44,340 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-09 08:22:44,349 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-09 08:22:44,354 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-09 08:22:44,356 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-09 08:22:44,357 - __main__ - INFO - Final shape: (232, 16)
+2024-07-09 08:22:44,358 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-09 08:22:44,358 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-09 08:22:44,362 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-09 08:22:44,362 - __main__ - INFO - DataFrame columns: ['IRT5001C3xx24']
+2024-07-09 08:22:44,363 - __main__ - INFO - DataFrame shape: (232, 1)
+2024-07-09 08:22:44,778 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt3.plot_5001: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT5001C3xx24': 'FLOAT', 'IRT5001C3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:22:47,948 - __main__ - INFO - Successfully loaded 232 rows into temporary table crop2cloud24.LINEAR_CORN_trt3.plot_5001_temp
+2024-07-09 08:22:51,004 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-09 08:22:51,173 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt3.plot_5001_temp deleted
+2024-07-09 08:22:51,173 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-09 08:22:51,173 - __main__ - INFO - DataFrame columns: ['IRT5003C2xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024']
+2024-07-09 08:22:51,183 - __main__ - INFO - DataFrame shape: (232, 4)
+2024-07-09 08:22:51,339 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt2.plot_5003: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5003C20624': 'FLOAT', 'TDR5003C20624_pred': 'FLOAT', 'IRT5003C2xx24': 'FLOAT', 'IRT5003C2xx24_pred': 'FLOAT', 'TDR5003C21824': 'FLOAT', 'TDR5003C21824_pred': 'FLOAT', 'TDR5003C23024': 'FLOAT', 'TDR5003C23024_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:22:53,639 - __main__ - INFO - Successfully loaded 232 rows into temporary table crop2cloud24.LINEAR_CORN_trt2.plot_5003_temp
+2024-07-09 08:22:57,626 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-09 08:22:57,789 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt2.plot_5003_temp deleted
+2024-07-09 08:22:57,789 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-09 08:22:57,789 - __main__ - INFO - DataFrame columns: ['IRT5010C1xx24', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'DEN5010C1xx24']
+2024-07-09 08:22:57,789 - __main__ - INFO - DataFrame shape: (232, 5)
+2024-07-09 08:22:58,059 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt1.plot_5010: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'DEN5010C1xx24': 'FLOAT', 'DEN5010C1xx24_pred': 'FLOAT', 'TDR5010C10624': 'FLOAT', 'TDR5010C10624_pred': 'FLOAT', 'TDR5010C13024': 'FLOAT', 'TDR5010C13024_pred': 'FLOAT', 'IRT5010C1xx24': 'FLOAT', 'IRT5010C1xx24_pred': 'FLOAT', 'SAP5010C1xx24': 'FLOAT', 'SAP5010C1xx24_pred': 'FLOAT', 'TDR5010C11824': 'FLOAT', 'TDR5010C11824_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:23:01,392 - __main__ - INFO - Successfully loaded 232 rows into temporary table crop2cloud24.LINEAR_CORN_trt1.plot_5010_temp
+2024-07-09 08:23:04,605 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-09 08:23:04,784 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt1.plot_5010_temp deleted
+2024-07-09 08:23:04,785 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-09 08:23:04,785 - __main__ - INFO - DataFrame columns: ['TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-09 08:23:04,785 - __main__ - INFO - DataFrame shape: (232, 3)
+2024-07-09 08:23:04,969 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt4.plot_5009: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5009C43024': 'FLOAT', 'TDR5009C43024_pred': 'FLOAT', 'TDR5009C40624': 'FLOAT', 'TDR5009C40624_pred': 'FLOAT', 'TDR5009C41824': 'FLOAT', 'TDR5009C41824_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:23:07,685 - __main__ - INFO - Successfully loaded 232 rows into temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5009_temp
+2024-07-09 08:23:10,374 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-09 08:23:10,550 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5009_temp deleted
+2024-07-09 08:23:10,560 - __main__ - INFO - No data to upload for plot 5006
+2024-07-09 08:23:10,560 - __main__ - INFO - No data to upload for plot 5012
+2024-07-09 08:23:10,560 - __main__ - INFO - No data to upload for plot 5007
+2024-07-09 08:23:10,560 - __main__ - INFO - No data to upload for plot 5023
+2024-07-09 08:23:10,560 - __main__ - INFO - No data to upload for plot 5020
+2024-07-09 08:23:10,560 - __main__ - INFO - No data to upload for plot 5018
+2024-07-09 08:23:10,567 - __main__ - INFO - No data to upload for plot 5026
+2024-07-09 08:23:10,568 - __main__ - INFO - No data to upload for plot 5027
+2024-07-09 08:23:10,569 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-09 08:23:10,569 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-09 08:23:10,573 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-09 08:23:10,578 - __main__ - INFO - Number of rows before dropping NaT timestamps: 233
+2024-07-09 08:23:10,579 - __main__ - INFO - Number of rows after dropping NaT timestamps: 233
+2024-07-09 08:23:10,581 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-09 08:23:10,581 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-09 08:23:10,584 - __main__ - INFO - Final shape: (233, 17)
+2024-07-09 08:23:10,584 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-09 08:23:10,585 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-09 08:23:10,589 - __main__ - INFO - No data to upload for plot 5001
+2024-07-09 08:23:10,590 - __main__ - INFO - No data to upload for plot 5003
+2024-07-09 08:23:10,592 - __main__ - INFO - No data to upload for plot 5010
+2024-07-09 08:23:10,593 - __main__ - INFO - No data to upload for plot 5009
+2024-07-09 08:23:10,595 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-09 08:23:10,595 - __main__ - INFO - DataFrame columns: ['IRT5006B1xx24', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-09 08:23:10,595 - __main__ - INFO - DataFrame shape: (233, 6)
+2024-07-09 08:23:10,973 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt1.plot_5006: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5006B14224': 'FLOAT', 'TDR5006B14224_pred': 'FLOAT', 'DEN5006B1xx24': 'FLOAT', 'DEN5006B1xx24_pred': 'FLOAT', 'IRT5006B1xx24': 'FLOAT', 'IRT5006B1xx24_pred': 'FLOAT', 'TDR5006B13024': 'FLOAT', 'TDR5006B13024_pred': 'FLOAT', 'TDR5006B11824': 'FLOAT', 'TDR5006B11824_pred': 'FLOAT', 'SAP5006B1xx24': 'FLOAT', 'SAP5006B1xx24_pred': 'FLOAT', 'TDR5006B10624': 'FLOAT', 'TDR5006B10624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:23:13,949 - __main__ - INFO - Successfully loaded 233 rows into temporary table crop2cloud24.LINEAR_CORN_trt1.plot_5006_temp
+2024-07-09 08:23:16,808 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-09 08:23:16,971 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt1.plot_5006_temp deleted
+2024-07-09 08:23:16,971 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-09 08:23:16,971 - __main__ - INFO - DataFrame columns: ['IRT5012B2xx24', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-09 08:23:16,971 - __main__ - INFO - DataFrame shape: (233, 4)
+2024-07-09 08:23:17,114 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt2.plot_5012: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5012B23024': 'FLOAT', 'TDR5012B23024_pred': 'FLOAT', 'IRT5012B2xx24': 'FLOAT', 'IRT5012B2xx24_pred': 'FLOAT', 'TDR5012B20624': 'FLOAT', 'TDR5012B20624_pred': 'FLOAT', 'TDR5012B21824': 'FLOAT', 'TDR5012B21824_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:23:19,375 - __main__ - INFO - Successfully loaded 233 rows into temporary table crop2cloud24.LINEAR_CORN_trt2.plot_5012_temp
+2024-07-09 08:23:22,530 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-09 08:23:22,705 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt2.plot_5012_temp deleted
+2024-07-09 08:23:22,705 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-09 08:23:22,705 - __main__ - INFO - DataFrame columns: ['TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224']
+2024-07-09 08:23:22,705 - __main__ - INFO - DataFrame shape: (233, 4)
+2024-07-09 08:23:22,867 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt4.plot_5007: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5007B43024': 'FLOAT', 'TDR5007B43024_pred': 'FLOAT', 'TDR5007B41824': 'FLOAT', 'TDR5007B41824_pred': 'FLOAT', 'TDR5007B44224': 'FLOAT', 'TDR5007B44224_pred': 'FLOAT', 'TDR5007B40624': 'FLOAT', 'TDR5007B40624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:23:26,040 - __main__ - INFO - Successfully loaded 233 rows into temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5007_temp
+2024-07-09 08:23:28,999 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-09 08:23:29,155 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5007_temp deleted
+2024-07-09 08:23:29,155 - __main__ - INFO - No data to upload for plot 5023
+2024-07-09 08:23:29,155 - __main__ - INFO - No data to upload for plot 5020
+2024-07-09 08:23:29,155 - __main__ - INFO - No data to upload for plot 5018
+2024-07-09 08:23:29,155 - __main__ - INFO - No data to upload for plot 5026
+2024-07-09 08:23:29,155 - __main__ - INFO - No data to upload for plot 5027
+2024-07-09 08:23:29,166 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-09 08:23:29,167 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-09 08:23:29,171 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-09 08:23:29,179 - __main__ - INFO - Number of rows before dropping NaT timestamps: 234
+2024-07-09 08:23:29,181 - __main__ - INFO - Number of rows after dropping NaT timestamps: 234
+2024-07-09 08:23:29,182 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-09 08:23:29,183 - __main__ - INFO - Final shape: (234, 17)
+2024-07-09 08:23:29,185 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-09 08:23:29,186 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-09 08:23:29,190 - __main__ - INFO - No data to upload for plot 5001
+2024-07-09 08:23:29,190 - __main__ - INFO - No data to upload for plot 5003
+2024-07-09 08:23:29,190 - __main__ - INFO - No data to upload for plot 5010
+2024-07-09 08:23:29,190 - __main__ - INFO - No data to upload for plot 5009
+2024-07-09 08:23:29,200 - __main__ - INFO - No data to upload for plot 5006
+2024-07-09 08:23:29,200 - __main__ - INFO - No data to upload for plot 5012
+2024-07-09 08:23:29,206 - __main__ - INFO - No data to upload for plot 5007
+2024-07-09 08:23:29,206 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-09 08:23:29,206 - __main__ - INFO - DataFrame columns: ['IRT5023A1xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'DEN5023A1xx24']
+2024-07-09 08:23:29,206 - __main__ - INFO - DataFrame shape: (234, 6)
+2024-07-09 08:23:29,612 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt1.plot_5023: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'DEN5023A1xx24': 'FLOAT', 'DEN5023A1xx24_pred': 'FLOAT', 'TDR5023A14224': 'FLOAT', 'TDR5023A14224_pred': 'FLOAT', 'IRT5023A1xx24': 'FLOAT', 'IRT5023A1xx24_pred': 'FLOAT', 'SAP5023A1xx24': 'FLOAT', 'SAP5023A1xx24_pred': 'FLOAT', 'TDR5023A10624': 'FLOAT', 'TDR5023A10624_pred': 'FLOAT', 'TDR5023A11824': 'FLOAT', 'TDR5023A11824_pred': 'FLOAT', 'TDR5023A13024': 'FLOAT', 'TDR5023A13024_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:23:32,411 - __main__ - INFO - Successfully loaded 234 rows into temporary table crop2cloud24.LINEAR_CORN_trt1.plot_5023_temp
+2024-07-09 08:23:35,636 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-09 08:23:35,807 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt1.plot_5023_temp deleted
+2024-07-09 08:23:35,807 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-09 08:23:35,807 - __main__ - INFO - DataFrame columns: ['IRT5020A3xx24']
+2024-07-09 08:23:35,817 - __main__ - INFO - DataFrame shape: (234, 1)
+2024-07-09 08:23:35,994 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt3.plot_5020: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT5020A3xx24': 'FLOAT', 'IRT5020A3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:23:38,566 - __main__ - INFO - Successfully loaded 234 rows into temporary table crop2cloud24.LINEAR_CORN_trt3.plot_5020_temp
+2024-07-09 08:23:41,751 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-09 08:23:41,955 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt3.plot_5020_temp deleted
+2024-07-09 08:23:41,955 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-09 08:23:41,955 - __main__ - INFO - DataFrame columns: ['IRT5018A3xx24']
+2024-07-09 08:23:41,955 - __main__ - INFO - DataFrame shape: (234, 1)
+2024-07-09 08:23:42,125 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt3.plot_5018: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT5018A3xx24': 'FLOAT', 'IRT5018A3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:23:44,682 - __main__ - INFO - Successfully loaded 234 rows into temporary table crop2cloud24.LINEAR_CORN_trt3.plot_5018_temp
+2024-07-09 08:23:47,896 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-09 08:23:48,063 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt3.plot_5018_temp deleted
+2024-07-09 08:23:48,063 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-09 08:23:48,063 - __main__ - INFO - DataFrame columns: ['TDR5026A20624', 'TDR5026A21824']
+2024-07-09 08:23:48,063 - __main__ - INFO - DataFrame shape: (234, 2)
+2024-07-09 08:23:48,224 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt2.plot_5026: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5026A20624': 'FLOAT', 'TDR5026A20624_pred': 'FLOAT', 'TDR5026A21824': 'FLOAT', 'TDR5026A21824_pred': 'FLOAT', 'TDR5026A23824': 'FLOAT', 'TDR5026A23824_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:23:52,515 - __main__ - INFO - Successfully loaded 234 rows into temporary table crop2cloud24.LINEAR_CORN_trt2.plot_5026_temp
+2024-07-09 08:23:55,527 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-09 08:23:55,687 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt2.plot_5026_temp deleted
+2024-07-09 08:23:55,687 - __main__ - INFO - Preparing to merge data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-09 08:23:55,687 - __main__ - INFO - DataFrame columns: ['TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-09 08:23:55,687 - __main__ - INFO - DataFrame shape: (234, 3)
+2024-07-09 08:23:55,869 - __main__ - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt4.plot_5027: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5027A41824': 'FLOAT', 'TDR5027A41824_pred': 'FLOAT', 'TDR5027A43024': 'FLOAT', 'TDR5027A43024_pred': 'FLOAT', 'TDR5027A40624': 'FLOAT', 'TDR5027A40624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-09 08:23:58,869 - __main__ - INFO - Successfully loaded 234 rows into temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5027_temp
+2024-07-09 08:24:02,262 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-09 08:24:02,415 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5027_temp deleted

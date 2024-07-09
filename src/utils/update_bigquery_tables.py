@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 from google.cloud import bigquery
 from google.api_core.exceptions import NotFound
-from .logger import get_logger
-from .bigquery_operations import load_sensor_mapping, create_bigquery_client
+from logger import get_logger
+from bigquery_operations import load_sensor_mapping, create_bigquery_client
 
 logger = get_logger(__name__)
 
@@ -23,7 +23,6 @@ def parse_dat_file(file_name):
     
     logger.info(f"Original columns: {data.columns.tolist()}")
 
-    # Convert columns to numeric, ignoring errors
     for col in data.columns:
         if col != "TIMESTAMP":
             data[col] = pd.to_numeric(data[col], errors='coerce')
@@ -37,7 +36,6 @@ def parse_dat_file(file_name):
 
     data.index = data.index.tz_localize("America/Chicago")
     
-    # Correct the misspelled column names
     if 'TDR5006B11724' in data.columns:
         if 'TDR5006B11824' in data.columns:
             logger.warning("Both correct and incorrect column names exist for TDR5006B11824. Merging data.")
@@ -64,54 +62,60 @@ def parse_dat_file(file_name):
     return data
 
 def insert_or_update_data(client, table_id, df, is_actual=True):
-    logger.info(f"Preparing to {'insert' if is_actual else 'update'} data in {table_id}")
+    logger.info(f"Preparing to merge data in {table_id}")
     logger.info(f"DataFrame columns: {df.columns.tolist()}")
     logger.info(f"DataFrame shape: {df.shape}")
 
-    # Ensure TIMESTAMP is in UTC
     df.index = df.index.tz_convert('UTC')
-
-    # Add is_actual column
     df['is_actual'] = is_actual
 
-    # Get current schema
     table = client.get_table(table_id)
     current_schema = {field.name: field.field_type for field in table.schema}
     logger.info(f"Current schema for table {table_id}: {current_schema}")
 
-    # Prepare data for upload
-    data_to_upload = df.reset_index()  # Reset index to make TIMESTAMP a column
-    
-    # Only include columns that are in both the schema and the dataframe
+    data_to_upload = df.reset_index()
     columns_to_upload = [col for col in current_schema if col in data_to_upload.columns]
     data_to_upload = data_to_upload[columns_to_upload]
-
-    # Fill NaN values with None for BigQuery compatibility
     data_to_upload = data_to_upload.where(pd.notnull(data_to_upload), None)
-
-    # Sort the dataframe by TIMESTAMP
     data_to_upload = data_to_upload.sort_values('TIMESTAMP')
 
-    # Create a new schema only including the columns we're uploading
-    upload_schema = [field for field in table.schema if field.name in columns_to_upload]
-
-    # Upload data
+    temp_table_id = f"{table_id}_temp"
+    
     job_config = bigquery.LoadJobConfig(
-        schema=upload_schema,
-        write_disposition="WRITE_APPEND"
+        schema=[field for field in table.schema if field.name in columns_to_upload],
+        write_disposition="WRITE_TRUNCATE"
     )
+
     try:
-        job = client.load_table_from_dataframe(data_to_upload, table_id, job_config=job_config)
-        job.result()  # Wait for the job to complete
-        logger.info(f"Successfully loaded {len(data_to_upload)} rows into {table_id}")
+        job = client.load_table_from_dataframe(data_to_upload, temp_table_id, job_config=job_config)
+        job.result()
+        logger.info(f"Successfully loaded {len(data_to_upload)} rows into temporary table {temp_table_id}")
+
+        merge_query = f"""
+        MERGE `{table_id}` T
+        USING `{temp_table_id}` S
+        ON T.TIMESTAMP = S.TIMESTAMP
+        WHEN MATCHED THEN
+          UPDATE SET {', '.join([f'{col} = S.{col}' for col in columns_to_upload if col != 'TIMESTAMP'])}
+        WHEN NOT MATCHED THEN
+          INSERT ({', '.join(columns_to_upload)})
+          VALUES ({', '.join([f'S.{col}' for col in columns_to_upload])})
+        """
+
+        merge_job = client.query(merge_query)
+        merge_job.result()
+        logger.info(f"Successfully merged data into {table_id}")
+
     except Exception as e:
-        logger.error(f"Error uploading data to {table_id}: {str(e)}")
+        logger.error(f"Error uploading and merging data to {table_id}: {str(e)}")
         raise
+    finally:
+        client.delete_table(temp_table_id, not_found_ok=True)
+        logger.info(f"Temporary table {temp_table_id} deleted")
 
 def process_and_upload_data(df, sensor_mapping, is_actual=True):
     client = create_bigquery_client()
     
-    # Group sensors by treatment and plot
     sensor_groups = {}
     for sensor in sensor_mapping:
         key = (sensor['treatment'], sensor['plot_number'])
@@ -119,14 +123,12 @@ def process_and_upload_data(df, sensor_mapping, is_actual=True):
             sensor_groups[key] = []
         sensor_groups[key].append(sensor['sensor_id'])
 
-    # Process and upload data for each group
     for (treatment, plot_number), sensors in sensor_groups.items():
         table_id = f"LINEAR_CORN_trt{treatment}.plot_{plot_number}"
         dataset_id = f"LINEAR_CORN_trt{treatment}"
         full_table_id = f"{client.project}.{dataset_id}.plot_{plot_number}"
         
-        # Select relevant columns for this group
-        columns_to_upload = sensors  # We don't need to include 'TIMESTAMP' as it's the index
+        columns_to_upload = sensors
         df_to_upload = df[df.columns.intersection(columns_to_upload)].copy()
         
         if not df_to_upload.empty:
@@ -137,22 +139,31 @@ def process_and_upload_data(df, sensor_mapping, is_actual=True):
         else:
             logger.info(f"No data to upload for plot {plot_number}")
 
-def main():
-    # Load the sensor mapping
-    sensor_mapping = load_sensor_mapping()
-    
+def process_folder(folder_path, sensor_mapping):
     dat_files = [
-        r"C:\Campbellsci\PC400\nodeC_NodeC.dat",
-        r"C:\Campbellsci\PC400\nodeB_NodeB.dat",
-        r"C:\Campbellsci\PC400\nodeA_NodeA.dat"
+        os.path.join(folder_path, "nodeC_NodeC.dat"),
+        os.path.join(folder_path, "nodeB_NodeB.dat"),
+        os.path.join(folder_path, "nodeA_NodeA.dat")
     ]
 
     for dat_file in dat_files:
-        logger.info(f"Processing file: {dat_file}")
-        df = parse_dat_file(dat_file)
-        
-        # Process and upload data for each sensor in the dataframe
-        process_and_upload_data(df, sensor_mapping, is_actual=True)
+        if os.path.exists(dat_file):
+            logger.info(f"Processing file: {dat_file}")
+            df = parse_dat_file(dat_file)
+            process_and_upload_data(df, sensor_mapping, is_actual=True)
+        else:
+            logger.warning(f"File not found: {dat_file}")
+
+def main(folders):
+    sensor_mapping = load_sensor_mapping()
+    
+    for folder in folders:
+        logger.info(f"Processing folder: {folder}")
+        process_folder(folder, sensor_mapping)
 
 if __name__ == "__main__":
-    main()
+    folders = [
+        r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024",
+        r"c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous"
+    ]
+    main(folders)
