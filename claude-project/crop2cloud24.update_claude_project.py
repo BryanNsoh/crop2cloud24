@@ -7,6 +7,11 @@ def collapse_structure():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     claude_project_dir = os.path.join(current_dir, "claude-project")
 
+    print(f"Current directory: {current_dir}")
+    print(f"Claude project directory: {claude_project_dir}")
+
+    # Rest of the function remains the same...
+    
     # Create a temporary directory for backup
     with tempfile.TemporaryDirectory() as temp_dir:
         # If claude-project exists, move it to the temp directory
@@ -22,6 +27,9 @@ def collapse_structure():
         # List of directories and files to exclude
         exclude_list = ['.git', '.venv', '__pycache__', 'claude-project', 'logs']
         exclude_extensions = ['.pyc', '.log', '.db', '.csv', '.html', '.png']  
+
+        file_count = 0  # Initialize file count
+
         # Walk through the current directory structure
         for root, dirs, files in os.walk(current_dir):
             # Remove excluded directories
@@ -50,13 +58,19 @@ def collapse_structure():
                 # Copy the file
                 shutil.copy2(full_path, new_path)
                 print(f"Copied '{rel_path}' to '{flattened_name}'")
+                file_count += 1
 
         # Copy update_claude_project.py to the claude-project directory
         collapse_structure_path = os.path.join(claude_project_dir, "crop2cloud24.update_claude_project.py")
         shutil.copy2(__file__, collapse_structure_path)
         print(f"Copied 'update_claude_project.py' to 'crop2cloud24.update_claude_project.py'")
 
-        print("Structure collapse completed")
+        print(f"Structure collapse completed. Total files copied: {file_count}")
+
+        # Here, the temporary directory (including the old claude-project backup) will be automatically deleted
+
+if __name__ == "__main__":
+    collapse_structure()
 
         # Here, the temporary directory (including the old claude-project backup) will be automatically deleted
 

@@ -1,0 +1,102 @@
+Table plot_5010 {
+  TIMESTAMP TIMESTAMP not null
+  is_actual INTEGER not null
+  TDR5010C11824 REAL not null
+  TDR5010C13024 REAL not null
+  IRT5010C1xx24 REAL not null
+  TDR5010C10624 REAL not null
+  cwsi REAL not null
+  swsi REAL not null
+}
+
+Table plot_5006 {
+  TIMESTAMP TIMESTAMP not null
+  is_actual INTEGER not null
+  TDR5006B10624 REAL not null
+  TDR5006B13024 REAL not null
+  IRT5006B1xx24 REAL not null
+  TDR5006B11824 REAL not null
+  TDR5006B14224 REAL not null
+  cwsi REAL not null
+  swsi REAL not null
+}
+
+Table plot_5023 {
+  TIMESTAMP TIMESTAMP not null
+  is_actual INTEGER not null
+  TDR5023A11824 REAL not null
+  IRT5023A1xx24 REAL not null
+  TDR5023A10624 REAL not null
+  TDR5023A13024 REAL not null
+  TDR5023A14224 REAL not null
+  cwsi REAL not null
+  swsi REAL not null
+}
+
+Table weather {
+  TIMESTAMP TEXT not null
+  Rain_1m_Tot REAL not null
+  RECORD REAL not null
+  Ta_2m_Avg REAL not null
+  TaMax_2m REAL not null
+  TaMin_2m REAL not null
+  RH_2m_Avg REAL not null
+  RHMax_2m REAL not null
+  RHMin_2m REAL not null
+  Dp_2m_Avg REAL not null
+  DpMax_2m REAL not null
+  DpMin_2m REAL not null
+  HeatIndex_2m_Avg REAL not null
+  HeatIndexMax_2m REAL not null
+  WindChill_2m_Avg REAL not null
+  WindChillMin_2m REAL not null
+  WndAveSpd_3m REAL not null
+  WndVecMagAve_3m REAL not null
+  WndAveDir_3m REAL not null
+  WndAveDirSD_3m REAL not null
+  WndMaxSpd5s_3m REAL not null
+  WndMax_5sec_Dir_3m REAL not null
+  PresAvg_1pnt5m REAL not null
+  PresMax_1pnt5m REAL not null
+  PresMin_1pnt5m REAL not null
+  Solar_2m_Avg REAL not null
+  Ts_bare_10cm_Avg REAL not null
+  TsMax_bare_10cm REAL not null
+  TsMin_bare_10cm REAL not null
+  static_historic_forecast_Rain_1m_Tot REAL not null
+  static_historic_forecast_Ta_2m_Avg REAL not null
+  static_historic_forecast_TaMax_2m REAL not null
+  static_historic_forecast_TaMin_2m REAL not null
+  static_historic_forecast_RH_2m_Avg REAL not null
+  static_historic_forecast_WndAveSpd_3m REAL not null
+  static_historic_forecast_WndAveDir_3m REAL not null
+  static_historic_forecast_WndMaxSpd5s_3m REAL not null
+  static_historic_forecast_PresAvg_1pnt5m REAL not null
+  static_historic_forecast_UV_index REAL not null
+  static_historic_forecast_Visibility REAL not null
+  static_historic_forecast_Clouds REAL not null
+  rolling_historic_forecast_Rain_1m_Tot REAL not null
+  rolling_historic_forecast_Ta_2m_Avg REAL not null
+  rolling_historic_forecast_TaMax_2m REAL not null
+  rolling_historic_forecast_TaMin_2m REAL not null
+  rolling_historic_forecast_RH_2m_Avg REAL not null
+  rolling_historic_forecast_WndAveSpd_3m REAL not null
+  rolling_historic_forecast_WndAveDir_3m REAL not null
+  rolling_historic_forecast_WndMaxSpd5s_3m REAL not null
+  rolling_historic_forecast_PresAvg_1pnt5m REAL not null
+  rolling_historic_forecast_UV_index REAL not null
+  rolling_historic_forecast_Visibility REAL not null
+  rolling_historic_forecast_Clouds REAL not null
+  rolling_forecast_Rain_1m_Tot REAL not null
+  rolling_forecast_Ta_2m_Avg REAL not null
+  rolling_forecast_TaMax_2m REAL not null
+  rolling_forecast_TaMin_2m REAL not null
+  rolling_forecast_RH_2m_Avg REAL not null
+  rolling_forecast_WndAveSpd_3m REAL not null
+  rolling_forecast_WndAveDir_3m REAL not null
+  rolling_forecast_WndMaxSpd5s_3m REAL not null
+  rolling_forecast_PresAvg_1pnt5m REAL not null
+  rolling_forecast_UV_index REAL not null
+  rolling_forecast_Visibility REAL not null
+  rolling_forecast_Clouds REAL not null
+}

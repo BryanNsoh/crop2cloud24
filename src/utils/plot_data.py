@@ -63,10 +63,15 @@ def clean_data(conn, table_name):
     tdr_columns = [col for col in df.columns if col.startswith('TDR') and not col.endswith('_pred')]
     df[tdr_columns] = df[tdr_columns].replace(0, np.nan)
     
+    # Filter CWSI data to include only measurements between 12 PM and 5 PM CST
+    cwsi_columns = ['cwsi-eb2', 'cwsi-th1', 'swsi']
+    df_cwsi = df[df['TIMESTAMP'].dt.hour.between(12, 16)]  # 12 PM to 4:59 PM
+    
     logger.info(f"Data cleaned for {table_name}. Shape: {df.shape}")
     logger.info(f"Date range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()} (CST)")
+    logger.info(f"CWSI data filtered. Shape: {df_cwsi.shape}")
     
-    return df
+    return df, df_cwsi
 
 def log_data_summary(df, plot_number):
     """Log summary statistics for the dataframe."""
@@ -85,7 +90,7 @@ def log_data_summary(df, plot_number):
             else:
                 logger.warning(f"{column}: All values are null")
 
-def create_static_plot(df, plot_number):
+def create_static_plot(df, df_cwsi, plot_number):
     """Create a static plot using matplotlib."""
     fig, axs = plt.subplots(3, 2, figsize=(20, 30), sharex=True)
     fig.suptitle(f'Data for Plot {plot_number}', fontsize=16)
@@ -122,13 +127,13 @@ def create_static_plot(df, plot_number):
         logger.warning("Rain_1m_Tot column not found in dataframe")
 
     # CWSI-EB2, CWSI-TH1, and SWSI Plot
-    if 'cwsi-eb2' in df.columns and 'cwsi-th1' in df.columns and 'swsi' in df.columns:
-        axs[0, 1].plot(df['TIMESTAMP'], df['cwsi-eb2'], label='CWSI-EB2', color=COLORS[2])
-        axs[0, 1].plot(df['TIMESTAMP'], df['cwsi-th1'], label='CWSI-TH1', color=COLORS[3])
-        axs[0, 1].plot(df['TIMESTAMP'], df['swsi'], label='SWSI', color=COLORS[4])
+    if 'cwsi-eb2' in df_cwsi.columns and 'cwsi-th1' in df_cwsi.columns and 'swsi' in df_cwsi.columns:
+        axs[0, 1].plot(df_cwsi['TIMESTAMP'], df_cwsi['cwsi-eb2'], label='CWSI-EB2', color=COLORS[2])
+        axs[0, 1].plot(df_cwsi['TIMESTAMP'], df_cwsi['cwsi-th1'], label='CWSI-TH1', color=COLORS[3])
+        axs[0, 1].plot(df_cwsi['TIMESTAMP'], df_cwsi['swsi'], label='SWSI', color=COLORS[4])
         axs[0, 1].set_ylabel('Index')
         axs[0, 1].legend()
-        logger.info("Plotting CWSI-EB2, CWSI-TH1, and SWSI data")
+        logger.info("Plotting CWSI-EB2, CWSI-TH1, and SWSI data (12 PM - 5 PM CST)")
     else:
         logger.warning("CWSI-EB2, CWSI-TH1, or SWSI column not found in dataframe")
 
@@ -160,7 +165,7 @@ def create_static_plot(df, plot_number):
     plt.close()
     logger.info(f"Static plot saved for plot {plot_number}")
 
-def create_interactive_plot(df, plot_number):
+def create_interactive_plot(df, df_cwsi, plot_number):
     """Create an interactive plot using plotly."""
     fig = make_subplots(rows=3, cols=2, shared_xaxes=True, shared_yaxes=False)
 
@@ -194,14 +199,14 @@ def create_interactive_plot(df, plot_number):
         logger.warning("Rain_1m_Tot column not found in dataframe")
 
     # CWSI-EB2, CWSI-TH1, and SWSI Plot
-    if 'cwsi-eb2' in df.columns and 'cwsi-th1' in df.columns and 'swsi' in df.columns:
-        fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['cwsi-eb2'], name='CWSI-EB2', line=dict(color=COLORS[2])),
+    if 'cwsi-eb2' in df_cwsi.columns and 'cwsi-th1' in df_cwsi.columns and 'swsi' in df_cwsi.columns:
+        fig.add_trace(go.Scatter(x=df_cwsi['TIMESTAMP'], y=df_cwsi['cwsi-eb2'], name='CWSI-EB2', line=dict(color=COLORS[2])),
                       row=1, col=2)
-        fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['cwsi-th1'], name='CWSI-TH1', line=dict(color=COLORS[3])),
+        fig.add_trace(go.Scatter(x=df_cwsi['TIMESTAMP'], y=df_cwsi['cwsi-th1'], name='CWSI-TH1', line=dict(color=COLORS[3])),
                       row=1, col=2)
-        fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['swsi'], name='SWSI', line=dict(color=COLORS[4])),
+        fig.add_trace(go.Scatter(x=df_cwsi['TIMESTAMP'], y=df_cwsi['swsi'], name='SWSI', line=dict(color=COLORS[4])),
                       row=1, col=2)
-        logger.info("Plotting CWSI-EB2, CWSI-TH1, and SWSI data")
+        logger.info("Plotting CWSI-EB2, CWSI-TH1, and SWSI data (12 PM - 5 PM CST)")
     else:
         logger.warning("CWSI-EB2, CWSI-TH1, or SWSI column not found in dataframe")
 
@@ -255,12 +260,12 @@ def generate_plots(plot_numbers=None):
         plot_number = table.split('_')[1]
         logger.info(f"Processing data for plot {plot_number}")
         
-        df = clean_data(conn, table)
+        df, df_cwsi = clean_data(conn, table)
         
         if not df.empty:
             log_data_summary(df, plot_number)
-            create_static_plot(df, plot_number)
-            create_interactive_plot(df, plot_number)
+            create_static_plot(df, df_cwsi, plot_number)
+            create_interactive_plot(df, df_cwsi, plot_number)
             logger.info(f"Generated plots for {table}")
         else:
             logger.warning(f"No data available for {table}")
