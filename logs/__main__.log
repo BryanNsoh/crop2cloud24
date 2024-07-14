@@ -2872,3 +2872,37 @@
 2024-07-09 08:23:58,869 - __main__ - INFO - Successfully loaded 234 rows into temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5027_temp
 2024-07-09 08:24:02,262 - __main__ - INFO - Successfully merged data into crop2cloud24.LINEAR_CORN_trt4.plot_5027
 2024-07-09 08:24:02,415 - __main__ - INFO - Temporary table crop2cloud24.LINEAR_CORN_trt4.plot_5027_temp deleted
+2024-07-14 18:02:12,387 - __main__ - INFO - Deletion confirmed. Proceeding with table creation (including deletion of existing ones).
+2024-07-14 18:02:13,205 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt3
+2024-07-14 18:02:13,878 - __main__ - INFO - Created dataset LINEAR_CORN_trt3
+2024-07-14 18:02:13,976 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-14 18:02:14,524 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-14 18:02:14,642 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-14 18:02:15,118 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-14 18:02:15,226 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-14 18:02:15,750 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-14 18:02:16,086 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt2
+2024-07-14 18:02:16,758 - __main__ - INFO - Created dataset LINEAR_CORN_trt2
+2024-07-14 18:02:16,848 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-14 18:02:17,308 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-14 18:02:17,410 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-14 18:02:17,803 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-14 18:02:17,913 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-14 18:02:18,302 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-14 18:02:18,640 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt1
+2024-07-14 18:02:19,237 - __main__ - INFO - Created dataset LINEAR_CORN_trt1
+2024-07-14 18:02:19,323 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-14 18:02:19,817 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-14 18:02:19,933 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-14 18:02:20,418 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-14 18:02:20,584 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-14 18:02:21,018 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-14 18:02:21,338 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt4
+2024-07-14 18:02:21,981 - __main__ - INFO - Created dataset LINEAR_CORN_trt4
+2024-07-14 18:02:22,105 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-14 18:02:22,505 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-14 18:02:22,603 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-14 18:02:23,130 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-14 18:02:23,231 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-14 18:02:23,730 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-14 18:02:23,730 - __main__ - INFO - Process completed successfully
