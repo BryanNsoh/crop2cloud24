@@ -19,13 +19,11 @@ TRIGGER_URLS = [
     'https://us-central1-crop2cloud24.cloudfunctions.net/current-openweathermap',
     'https://us-central1-crop2cloud24.cloudfunctions.net/weather-updater',
     'https://us-central1-crop2cloud24.cloudfunctions.net/forecast_four_day_rolling',
-    'https://us-central1-crop2cloud24.cloudfunctions.net/forecast_four_day_static'
 ]
 
 # Weather table names
 WEATHER_TABLES = [
     'current-weather-mesonet',
-    'forecast_four_day_static',
     'forecast_four_day_rolling'
 ]
 

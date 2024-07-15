@@ -2006,40 +2006,297 @@ if __name__ == "__main__":
         <name>crop2cloud24.mpc_data.dbml</name>
         <path>crop2cloud24.mpc_data.dbml</path>
         <content>
-Table plot_5010 {
-  TIMESTAMP TIMESTAMP not null
-  is_actual INTEGER not null
-  TDR5010C11824 REAL not null
-  TDR5010C13024 REAL not null
-  IRT5010C1xx24 REAL not null
-  TDR5010C10624 REAL not null
-  cwsi REAL not null
-  swsi REAL not null
+Database Metadata:
+
+Table mesonet_data {
+  // Columns for mesonet_data table
+}
+
+Table static_forecast {
+  // Columns for static_forecast table
+}
+
+Table rolling_forecast {
+  // Columns for rolling_forecast table
+}
+
+Table weather_data {
+  // Columns for weather_data table
 }
 
 Table plot_5006 {
-  TIMESTAMP TIMESTAMP not null
-  is_actual INTEGER not null
-  TDR5006B10624 REAL not null
-  TDR5006B13024 REAL not null
-  IRT5006B1xx24 REAL not null
-  TDR5006B11824 REAL not null
-  TDR5006B14224 REAL not null
-  cwsi REAL not null
-  swsi REAL not null
+  // Columns for plot_5006 table
+}
+
+Table plot_5010 {
+  // Columns for plot_5010 table
 }
 
 Table plot_5023 {
-  TIMESTAMP TIMESTAMP not null
-  is_actual INTEGER not null
-  TDR5023A11824 REAL not null
-  IRT5023A1xx24 REAL not null
-  TDR5023A10624 REAL not null
-  TDR5023A13024 REAL not null
-  TDR5023A14224 REAL not null
-  cwsi REAL not null
-  swsi REAL not null
+  // Columns for plot_5023 table
 }
+
+
+The tables we will be interested in:
+
+Here is the complete schema in DBML format for the specified tables: `plot_5006`, `plot_5010`, and `plot_5023`.
+
+### plot_5006
+
+```dbml
+Table plot_5006 {
+  TIMESTAMP TIMESTAMP
+  is_actual INTEGER
+  prediction_timestamp TIMESTAMP
+  applied_irrigation REAL
+  TDR5006B14224 REAL
+  TDR5006B14224_pred REAL
+  DEN5006B1xx24 REAL
+  DEN5006B1xx24_pred REAL
+  IRT5006B1xx24 REAL
+  IRT5006B1xx24_pred REAL
+  TDR5006B13024 REAL
+  TDR5006B13024_pred REAL
+  TDR5006B11824 REAL
+  TDR5006B11824_pred REAL
+  SAP5006B1xx24 REAL
+  SAP5006B1xx24_pred REAL
+  TDR5006B10624 REAL
+  TDR5006B10624_pred REAL
+  cwsi-th1 REAL
+  cwsi-th1_pred REAL
+  cwsi-eb2 REAL
+  cwsi-eb2_pred REAL
+  et REAL
+  et_pred REAL
+  swsi REAL
+  swsi_pred REAL
+  RECORD REAL
+  Ta_2m_Avg REAL
+  TaMax_2m REAL
+  TaMin_2m REAL
+  RH_2m_Avg REAL
+  RHMax_2m REAL
+  RHMin_2m REAL
+  Dp_2m_Avg REAL
+  DpMax_2m REAL
+  DpMin_2m REAL
+  HeatIndex_2m_Avg REAL
+  HeatIndexMax_2m REAL
+  WindChill_2m_Avg REAL
+  WindChillMin_2m REAL
+  WndAveSpd_3m REAL
+  WndVecMagAve_3m REAL
+  WndAveDir_3m REAL
+  WndAveDirSD_3m REAL
+  WndMaxSpd5s_3m REAL
+  WndMax_5sec_Dir_3m REAL
+  PresAvg_1pnt5m REAL
+  PresMax_1pnt5m REAL
+  PresMin_1pnt5m REAL
+  Solar_2m_Avg REAL
+  Ts_bare_10cm_Avg REAL
+  TsMax_bare_10cm REAL
+  TsMin_bare_10cm REAL
+  Ta_2m_Avg_static_forecast REAL
+  TaMax_2m_static_forecast REAL
+  TaMin_2m_static_forecast REAL
+  RH_2m_Avg_static_forecast REAL
+  WndAveSpd_3m_static_forecast REAL
+  WndAveDir_3m_static_forecast REAL
+  WndMaxSpd5s_3m_static_forecast REAL
+  PresAvg_1pnt5m_static_forecast REAL
+  Rain_1m_Tot_static_forecast REAL
+  UV_index_static_forecast REAL
+  Visibility_static_forecast REAL
+  Clouds_static_forecast REAL
+  Ta_2m_Avg_rolling_forecast REAL
+  TaMax_2m_rolling_forecast REAL
+  TaMin_2m_rolling_forecast REAL
+  RH_2m_Avg_rolling_forecast REAL
+  WndAveSpd_3m_rolling_forecast REAL
+  WndAveDir_3m_rolling_forecast REAL
+  WndMaxSpd5s_3m_rolling_forecast REAL
+  PresAvg_1pnt5m_rolling_forecast REAL
+  Rain_1m_Tot_rolling_forecast REAL
+  UV_index_rolling_forecast REAL
+  Visibility_rolling_forecast REAL
+  Clouds_rolling_forecast REAL
+  Rain_1m_Tot REAL
+}
+```
+
+### plot_5010
+
+```dbml
+Table plot_5010 {
+  TIMESTAMP TIMESTAMP
+  is_actual INTEGER
+  prediction_timestamp TIMESTAMP
+  applied_irrigation REAL
+  TDR5010B14224 REAL
+  TDR5010B14224_pred REAL
+  DEN5010B1xx24 REAL
+  DEN5010B1xx24_pred REAL
+  IRT5010B1xx24 REAL
+  IRT5010B1xx24_pred REAL
+  TDR5010B13024 REAL
+  TDR5010B13024_pred REAL
+  TDR5010B11824 REAL
+  TDR5010B11824_pred REAL
+  SAP5010B1xx24 REAL
+  SAP5010B1xx24_pred REAL
+  TDR5010B10624 REAL
+  TDR5010B10624_pred REAL
+  cwsi-th1 REAL
+  cwsi-th1_pred REAL
+  cwsi-eb2 REAL
+  cwsi-eb2_pred REAL
+  et REAL
+  et_pred REAL
+  swsi REAL
+  swsi_pred REAL
+  RECORD REAL
+  Ta_2m_Avg REAL
+  TaMax_2m REAL
+  TaMin_2m REAL
+  RH_2m_Avg REAL
+  RHMax_2m REAL
+  RHMin_2m REAL
+  Dp_2m_Avg REAL
+  DpMax_2m REAL
+  DpMin_2m REAL
+  HeatIndex_2m_Avg REAL
+  HeatIndexMax_2m REAL
+  WindChill_2m_Avg REAL
+  WindChillMin_2m REAL
+  WndAveSpd_3m REAL
+  WndVecMagAve_3m REAL
+  WndAveDir_3m REAL
+  WndAveDirSD_3m REAL
+  WndMaxSpd5s_3m REAL
+  WndMax_5sec_Dir_3m REAL
+  PresAvg_1pnt5m REAL
+  PresMax_1pnt5m REAL
+  PresMin_1pnt5m REAL
+  Solar_2m_Avg REAL
+  Ts_bare_10cm_Avg REAL
+  TsMax_bare_10cm REAL
+  TsMin_bare_10cm REAL
+  Ta_2m_Avg_static_forecast REAL
+  TaMax_2m_static_forecast REAL
+  TaMin_2m_static_forecast REAL
+  RH_2m_Avg_static_forecast REAL
+  WndAveSpd_3m_static_forecast REAL
+  WndAveDir_3m_static_forecast REAL
+  WndMaxSpd5s_3m_static_forecast REAL
+  PresAvg_1pnt5m_static_forecast REAL
+  Rain_1m_Tot_static_forecast REAL
+  UV_index_static_forecast REAL
+  Visibility_static_forecast REAL
+  Clouds_static_forecast REAL
+  Ta_2m_Avg_rolling_forecast REAL
+  TaMax_2m_rolling_forecast REAL
+  TaMin_2m_rolling_forecast REAL
+  RH_2m_Avg_rolling_forecast REAL
+  WndAveSpd_3m_rolling_forecast REAL
+  WndAveDir_3m_rolling_forecast REAL
+  WndMaxSpd5s_3m_rolling_forecast REAL
+  PresAvg_1pnt5m_rolling_forecast REAL
+  Rain_1m_Tot_rolling_forecast REAL
+  UV_index_rolling_forecast REAL
+  Visibility_rolling_forecast REAL
+  Clouds_rolling_forecast REAL
+  Rain_1m_Tot REAL
+}
+```
+
+### plot_5023
+
+```dbml
+Table plot_5023 {
+  TIMESTAMP TIMESTAMP
+  is_actual INTEGER
+  prediction_timestamp TIMESTAMP
+  applied_irrigation REAL
+  TDR5023B14224 REAL
+  TDR5023B14224_pred REAL
+  DEN5023B1xx24 REAL
+  DEN5023B1xx24_pred REAL
+  IRT5023B1xx24 REAL
+  IRT5023B1xx24_pred REAL
+  TDR5023B13024 REAL
+  TDR5023B13024_pred REAL
+  TDR5023B11824 REAL
+  TDR5023B11824_pred REAL
+  SAP5023B1xx24 REAL
+  SAP5023B1xx24_pred REAL
+  TDR5023B10624 REAL
+  TDR5023B10624_pred REAL
+  cwsi-th1 REAL
+  cwsi-th1_pred REAL
+  cwsi-eb2 REAL
+  cwsi-eb2_pred REAL
+  et REAL
+  et_pred REAL
+  swsi REAL
+  swsi_pred REAL
+  RECORD REAL
+  Ta_2m_Avg REAL
+  TaMax_2m REAL
+  TaMin_2m REAL
+  RH_2m_Avg REAL
+  RHMax_2m REAL
+  RHMin_2m REAL
+  Dp_2m_Avg REAL
+  DpMax_2m REAL
+  DpMin_2m REAL
+  HeatIndex_2m_Avg REAL
+  HeatIndexMax_2m REAL
+  WindChill_2m_Avg REAL
+  WindChillMin_2m REAL
+  WndAveSpd_3m REAL
+  WndVecMagAve_3m REAL
+  WndAveDir_3m REAL
+  WndAveDirSD_3m REAL
+  WndMaxSpd5s_3m REAL
+  WndMax_5sec_Dir_3m REAL
+  PresAvg_1pnt5m REAL
+  PresMax_1pnt5m REAL
+  PresMin_1pnt5m REAL
+  Solar_2m_Avg REAL
+  Ts_bare_10cm_Avg REAL
+  TsMax_bare_10cm REAL
+  TsMin_bare_10cm REAL
+  Ta_2m_Avg_static_forecast REAL
+  TaMax_2m_static_forecast REAL
+  TaMin_2m_static_forecast REAL
+  RH_2m_Avg_static_forecast REAL
+  WndAveSpd_3m_static_forecast REAL
+  WndAveDir_3m_static_forecast REAL
+  WndMaxSpd5s_3m_static_forecast REAL
+  PresAvg_1pnt5m_static_forecast REAL
+  Rain_1m_Tot_static_forecast REAL
+  UV_index_static_forecast REAL
+  Visibility_static_forecast REAL
+  Clouds_static_forecast REAL
+  Ta_2m_Avg_rolling_forecast REAL
+  TaMax_2m_rolling_forecast REAL
+  TaMin_2m_rolling_forecast REAL
+  RH_2m_Avg_rolling_forecast REAL
+  WndAveSpd_3m_rolling_forecast REAL
+  WndAveDir_3m_rolling_forecast REAL
+  WndMaxSpd5s_3m_rolling_forecast REAL
+  PresAvg_1pnt5m_rolling_forecast REAL
+  Rain_1m_Tot_rolling_forecast REAL
+  UV_index_rolling_forecast REAL
+  Visibility_rolling_forecast REAL
+  Clouds_rolling_forecast REAL
+  Rain_1m_Tot REAL
+}
+```
+
+Each of these schemas describes the columns and their data types in the respective tables.
 
 Table weather {
   TIMESTAMP TEXT not null
@@ -3133,13 +3390,11 @@ TRIGGER_URLS = [
     'https://us-central1-crop2cloud24.cloudfunctions.net/current-openweathermap',
     'https://us-central1-crop2cloud24.cloudfunctions.net/weather-updater',
     'https://us-central1-crop2cloud24.cloudfunctions.net/forecast_four_day_rolling',
-    'https://us-central1-crop2cloud24.cloudfunctions.net/forecast_four_day_static'
 ]
 
 # Weather table names
 WEATHER_TABLES = [
     'current-weather-mesonet',
-    'forecast_four_day_static',
     'forecast_four_day_rolling'
 ]
 
@@ -3442,18 +3697,6 @@ def create_weather_table(conn):
         Rain_1m_Tot REAL,
         Solar_2m_Avg REAL,
         Ts_bare_10cm_Avg REAL,
-        Ta_2m_Avg_static_forecast REAL,
-        TaMax_2m_static_forecast REAL,
-        TaMin_2m_static_forecast REAL,
-        RH_2m_Avg_static_forecast REAL,
-        WndAveSpd_3m_static_forecast REAL,
-        WndAveDir_3m_static_forecast REAL,
-        WndMaxSpd5s_3m_static_forecast REAL,
-        PresAvg_1pnt5m_static_forecast REAL,
-        Rain_1m_Tot_static_forecast REAL,
-        UV_index_static_forecast REAL,
-        Visibility_static_forecast REAL,
-        Clouds_static_forecast REAL,
         Ta_2m_Avg_rolling_forecast REAL,
         TaMax_2m_rolling_forecast REAL,
         TaMin_2m_rolling_forecast REAL,
@@ -3463,7 +3706,6 @@ def create_weather_table(conn):
         WndMaxSpd5s_3m_rolling_forecast REAL,
         PresAvg_1pnt5m_rolling_forecast REAL,
         Rain_1m_Tot_rolling_forecast REAL,
-        UV_index_rolling_forecast REAL,
         Visibility_rolling_forecast REAL,
         Clouds_rolling_forecast REAL
     )
@@ -3544,12 +3786,12 @@ def align_forecast_timestamps(forecast_df: pd.DataFrame, latest_mesonet_timestam
     
     return forecast_df
 
-def merge_weather_data(mesonet_data: pd.DataFrame, static_forecast: pd.DataFrame, rolling_forecast: pd.DataFrame) -> pd.DataFrame:
+def merge_weather_data(mesonet_data: pd.DataFrame, rolling_forecast: pd.DataFrame) -> pd.DataFrame:
     logger.info("Merging weather data")
     
     # Create a complete timeline of hourly timestamps
-    start_time = min(mesonet_data['TIMESTAMP'].min(), static_forecast['TIMESTAMP'].min(), rolling_forecast['TIMESTAMP'].min())
-    end_time = max(mesonet_data['TIMESTAMP'].max(), static_forecast['TIMESTAMP'].max(), rolling_forecast['TIMESTAMP'].max())
+    start_time = min(mesonet_data['TIMESTAMP'].min(), rolling_forecast['TIMESTAMP'].min())
+    end_time = max(mesonet_data['TIMESTAMP'].max(), rolling_forecast['TIMESTAMP'].max())
     full_timeline = pd.date_range(start=start_time, end=end_time, freq='H')
     
     # Create a base dataframe with the full timeline
@@ -3559,14 +3801,10 @@ def merge_weather_data(mesonet_data: pd.DataFrame, static_forecast: pd.DataFrame
     merged_data = pd.merge(base_df, mesonet_data, on='TIMESTAMP', how='left')
     
     # Add suffixes to forecast columns
-    static_forecast_columns = {col: f"{col}_static_forecast" for col in static_forecast.columns if col != "TIMESTAMP"}
     rolling_forecast_columns = {col: f"{col}_rolling_forecast" for col in rolling_forecast.columns if col != "TIMESTAMP"}
-    
-    static_forecast = static_forecast.rename(columns=static_forecast_columns)
     rolling_forecast = rolling_forecast.rename(columns=rolling_forecast_columns)
     
     # Merge forecast data
-    merged_data = pd.merge(merged_data, static_forecast, on='TIMESTAMP', how='left')
     merged_data = pd.merge(merged_data, rolling_forecast, on='TIMESTAMP', how='left')
     
     logger.info(f"Merged data range: {merged_data['TIMESTAMP'].min()} to {merged_data['TIMESTAMP'].max()}")
@@ -3588,16 +3826,13 @@ def process_weather_data(weather_data: dict[str, pd.DataFrame]) -> pd.DataFrame:
     logger.info("Starting weather data processing")
     
     mesonet_data = weather_data['current-weather-mesonet']
-    static_forecast = weather_data['forecast_four_day_static']
     rolling_forecast = weather_data['forecast_four_day_rolling']
     
     # Remove duplicates
     mesonet_data = mesonet_data.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='last')
-    static_forecast = static_forecast.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='last')
     rolling_forecast = rolling_forecast.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='last')
     
     logger.info(f"Mesonet data shape after removing duplicates: {mesonet_data.shape}")
-    logger.info(f"Static forecast data shape after removing duplicates: {static_forecast.shape}")
     logger.info(f"Rolling forecast data shape after removing duplicates: {rolling_forecast.shape}")
 
     # Resample mesonet data to hourly intervals
@@ -3605,11 +3840,10 @@ def process_weather_data(weather_data: dict[str, pd.DataFrame]) -> pd.DataFrame:
 
     # Align forecast timestamps
     latest_mesonet_timestamp = mesonet_data['TIMESTAMP'].max()
-    static_forecast = align_forecast_timestamps(static_forecast, latest_mesonet_timestamp)
     rolling_forecast = align_forecast_timestamps(rolling_forecast, latest_mesonet_timestamp)
 
     # Merge weather data
-    merged_data = merge_weather_data(mesonet_data, static_forecast, rolling_forecast)
+    merged_data = merge_weather_data(mesonet_data, rolling_forecast)
 
     return merged_data
         </content>
@@ -3634,7 +3868,7 @@ EXCLUDE_COLUMNS = [
     'DpMaxTime_2m', 'DpMinTime_2m', 'HeatIndexMaxTime_2m',
     'WindChillMinTime_2m', 'WndMaxSpd5sTime_3m', 'PresMaxTime_1pnt5m',
     'PresMinTime_1pnt5m', 'TsMaxTime_bare_10cm', 'TsMinTime_bare_10cm', 'is_forecast', 
-    'collection_time', 'BattVolts_Min', 'LithBatt_Min', 'MaintMode'
+    'collection_time', 'BattVolts_Min', 'LithBatt_Min', 'MaintMode', 'UV_index'
 ]
 
 def get_columns_to_exclude(df, threshold=0.95):
@@ -5351,9 +5585,8 @@ from google.cloud import bigquery
 from google.api_core import exceptions
 from dotenv import load_dotenv
 import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta
 import pytz
+from datetime import datetime, timedelta
 from logger import get_logger
 
 # Load environment variables
@@ -5368,7 +5601,7 @@ DATASET_ID = "weather"
 TABLE_ID = "current-weather-mesonet"
 
 # Local file path (update this to your local file path)
-LOCAL_CSV_PATH = r"C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (6).csv"
+LOCAL_CSV_PATH = r"C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (7).csv"
 
 # Number of days of data to keep
 DAYS_TO_KEEP = 30
@@ -5388,15 +5621,10 @@ def create_bigquery_client():
         raise ValueError("GOOGLE_APPLICATION_CREDENTIALS not set in .env file")
     return bigquery.Client()
 
-def delete_existing_table(client):
-    table_ref = client.dataset(DATASET_ID).table(TABLE_ID)
-    try:
-        client.delete_table(table_ref)
-        logger.info(f"Table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID} deleted.")
-    except exceptions.NotFound:
-        logger.info(f"Table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID} does not exist.")
+def create_or_replace_table(client):
+    dataset_ref = client.dataset(DATASET_ID)
+    table_ref = dataset_ref.table(TABLE_ID)
 
-def create_table(client):
     schema = [
         bigquery.SchemaField("TIMESTAMP", "TIMESTAMP"),
         bigquery.SchemaField("RECORD", "FLOAT"),
@@ -5429,9 +5657,25 @@ def create_table(client):
         bigquery.SchemaField("TsMin_bare_10cm", "FLOAT"),
     ]
 
-    table = bigquery.Table(client.dataset(DATASET_ID).table(TABLE_ID), schema=schema)
+    table = bigquery.Table(table_ref, schema=schema)
+    table.time_partitioning = bigquery.TimePartitioning(
+        type_=bigquery.TimePartitioningType.DAY,
+        field="TIMESTAMP"
+    )
+
+    # Check if the table exists
+    try:
+        client.get_table(table_ref)
+        # If we reach here, the table exists. Delete it.
+        client.delete_table(table_ref)
+        logger.info(f"Existing table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID} deleted.")
+    except exceptions.NotFound:
+        # Table doesn't exist, which is fine
+        pass
+
+    # Create the new table
     table = client.create_table(table)
-    logger.info(f"Created table {table.project}.{table.dataset_id}.{table.table_id}")
+    logger.info(f"Table {table.project}.{table.dataset_id}.{table.table_id} created.")
 
 def process_and_upload_csv(client):
     cutoff_date = datetime.now(pytz.UTC) - timedelta(days=DAYS_TO_KEEP)
@@ -5497,12 +5741,11 @@ def process_and_upload_csv(client):
 def main():
     client = create_bigquery_client()
     
-    #delete_existing_table(client)
-    #create_table(client)
+    #create_or_replace_table(client)
     
-    # Add a small delay (5 seconds) between table creation and data insertion
-    logger.info("Waiting for 5 seconds before starting data insertion...")
-    time.sleep(5)
+    # Add a 60-second delay between table creation and data insertion
+    logger.info("Waiting for 60 seconds to ensure table creation is fully processed...")
+    #time.sleep(60)
     
     process_and_upload_csv(client)
 
@@ -6482,9 +6725,10 @@ def main(folders):
 if __name__ == "__main__":
     folders = [
         r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024",
-        r"c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous"
+        r"c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous",
+        r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only"
     ]
-    main(folders)
+    main(folders)   
         </content>
     </file>
     <file>

@@ -4,9 +4,8 @@ from google.cloud import bigquery
 from google.api_core import exceptions
 from dotenv import load_dotenv
 import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta
 import pytz
+from datetime import datetime, timedelta
 from logger import get_logger
 
 # Load environment variables
@@ -21,7 +20,7 @@ DATASET_ID = "weather"
 TABLE_ID = "current-weather-mesonet"
 
 # Local file path (update this to your local file path)
-LOCAL_CSV_PATH = r"C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (6).csv"
+LOCAL_CSV_PATH = r"C:\Users\bnsoh2\Downloads\North_Platte_3SW_Beta_1min (7).csv"
 
 # Number of days of data to keep
 DAYS_TO_KEEP = 30
@@ -41,15 +40,10 @@ def create_bigquery_client():
         raise ValueError("GOOGLE_APPLICATION_CREDENTIALS not set in .env file")
     return bigquery.Client()
 
-def delete_existing_table(client):
-    table_ref = client.dataset(DATASET_ID).table(TABLE_ID)
-    try:
-        client.delete_table(table_ref)
-        logger.info(f"Table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID} deleted.")
-    except exceptions.NotFound:
-        logger.info(f"Table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID} does not exist.")
+def create_or_replace_table(client):
+    dataset_ref = client.dataset(DATASET_ID)
+    table_ref = dataset_ref.table(TABLE_ID)
 
-def create_table(client):
     schema = [
         bigquery.SchemaField("TIMESTAMP", "TIMESTAMP"),
         bigquery.SchemaField("RECORD", "FLOAT"),
@@ -82,9 +76,25 @@ def create_table(client):
         bigquery.SchemaField("TsMin_bare_10cm", "FLOAT"),
     ]
 
-    table = bigquery.Table(client.dataset(DATASET_ID).table(TABLE_ID), schema=schema)
+    table = bigquery.Table(table_ref, schema=schema)
+    table.time_partitioning = bigquery.TimePartitioning(
+        type_=bigquery.TimePartitioningType.DAY,
+        field="TIMESTAMP"
+    )
+
+    # Check if the table exists
+    try:
+        client.get_table(table_ref)
+        # If we reach here, the table exists. Delete it.
+        client.delete_table(table_ref)
+        logger.info(f"Existing table {PROJECT_ID}.{DATASET_ID}.{TABLE_ID} deleted.")
+    except exceptions.NotFound:
+        # Table doesn't exist, which is fine
+        pass
+
+    # Create the new table
     table = client.create_table(table)
-    logger.info(f"Created table {table.project}.{table.dataset_id}.{table.table_id}")
+    logger.info(f"Table {table.project}.{table.dataset_id}.{table.table_id} created.")
 
 def process_and_upload_csv(client):
     cutoff_date = datetime.now(pytz.UTC) - timedelta(days=DAYS_TO_KEEP)
@@ -150,12 +160,11 @@ def process_and_upload_csv(client):
 def main():
     client = create_bigquery_client()
     
-    #delete_existing_table(client)
-    #create_table(client)
+    #create_or_replace_table(client)
     
-    # Add a small delay (5 seconds) between table creation and data insertion
-    logger.info("Waiting for 5 seconds before starting data insertion...")
-    time.sleep(5)
+    # Add a 60-second delay between table creation and data insertion
+    logger.info("Waiting for 60 seconds to ensure table creation is fully processed...")
+    #time.sleep(60)
     
     process_and_upload_csv(client)
 

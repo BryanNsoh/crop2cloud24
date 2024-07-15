@@ -55,12 +55,12 @@ def align_forecast_timestamps(forecast_df: pd.DataFrame, latest_mesonet_timestam
     
     return forecast_df
 
-def merge_weather_data(mesonet_data: pd.DataFrame, static_forecast: pd.DataFrame, rolling_forecast: pd.DataFrame) -> pd.DataFrame:
+def merge_weather_data(mesonet_data: pd.DataFrame, rolling_forecast: pd.DataFrame) -> pd.DataFrame:
     logger.info("Merging weather data")
     
     # Create a complete timeline of hourly timestamps
-    start_time = min(mesonet_data['TIMESTAMP'].min(), static_forecast['TIMESTAMP'].min(), rolling_forecast['TIMESTAMP'].min())
-    end_time = max(mesonet_data['TIMESTAMP'].max(), static_forecast['TIMESTAMP'].max(), rolling_forecast['TIMESTAMP'].max())
+    start_time = min(mesonet_data['TIMESTAMP'].min(), rolling_forecast['TIMESTAMP'].min())
+    end_time = max(mesonet_data['TIMESTAMP'].max(), rolling_forecast['TIMESTAMP'].max())
     full_timeline = pd.date_range(start=start_time, end=end_time, freq='H')
     
     # Create a base dataframe with the full timeline
@@ -70,14 +70,10 @@ def merge_weather_data(mesonet_data: pd.DataFrame, static_forecast: pd.DataFrame
     merged_data = pd.merge(base_df, mesonet_data, on='TIMESTAMP', how='left')
     
     # Add suffixes to forecast columns
-    static_forecast_columns = {col: f"{col}_static_forecast" for col in static_forecast.columns if col != "TIMESTAMP"}
     rolling_forecast_columns = {col: f"{col}_rolling_forecast" for col in rolling_forecast.columns if col != "TIMESTAMP"}
-    
-    static_forecast = static_forecast.rename(columns=static_forecast_columns)
     rolling_forecast = rolling_forecast.rename(columns=rolling_forecast_columns)
     
     # Merge forecast data
-    merged_data = pd.merge(merged_data, static_forecast, on='TIMESTAMP', how='left')
     merged_data = pd.merge(merged_data, rolling_forecast, on='TIMESTAMP', how='left')
     
     logger.info(f"Merged data range: {merged_data['TIMESTAMP'].min()} to {merged_data['TIMESTAMP'].max()}")
@@ -99,16 +95,13 @@ def process_weather_data(weather_data: dict[str, pd.DataFrame]) -> pd.DataFrame:
     logger.info("Starting weather data processing")
     
     mesonet_data = weather_data['current-weather-mesonet']
-    static_forecast = weather_data['forecast_four_day_static']
     rolling_forecast = weather_data['forecast_four_day_rolling']
     
     # Remove duplicates
     mesonet_data = mesonet_data.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='last')
-    static_forecast = static_forecast.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='last')
     rolling_forecast = rolling_forecast.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='last')
     
     logger.info(f"Mesonet data shape after removing duplicates: {mesonet_data.shape}")
-    logger.info(f"Static forecast data shape after removing duplicates: {static_forecast.shape}")
     logger.info(f"Rolling forecast data shape after removing duplicates: {rolling_forecast.shape}")
 
     # Resample mesonet data to hourly intervals
@@ -116,10 +109,9 @@ def process_weather_data(weather_data: dict[str, pd.DataFrame]) -> pd.DataFrame:
 
     # Align forecast timestamps
     latest_mesonet_timestamp = mesonet_data['TIMESTAMP'].max()
-    static_forecast = align_forecast_timestamps(static_forecast, latest_mesonet_timestamp)
     rolling_forecast = align_forecast_timestamps(rolling_forecast, latest_mesonet_timestamp)
 
     # Merge weather data
-    merged_data = merge_weather_data(mesonet_data, static_forecast, rolling_forecast)
+    merged_data = merge_weather_data(mesonet_data, rolling_forecast)
 
     return merged_data

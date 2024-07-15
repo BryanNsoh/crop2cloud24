@@ -1,37 +1,294 @@
-Table plot_5010 {
-  TIMESTAMP TIMESTAMP not null
-  is_actual INTEGER not null
-  TDR5010C11824 REAL not null
-  TDR5010C13024 REAL not null
-  IRT5010C1xx24 REAL not null
-  TDR5010C10624 REAL not null
-  cwsi REAL not null
-  swsi REAL not null
+Database Metadata:
+
+Table mesonet_data {
+  // Columns for mesonet_data table
+}
+
+Table static_forecast {
+  // Columns for static_forecast table
+}
+
+Table rolling_forecast {
+  // Columns for rolling_forecast table
+}
+
+Table weather_data {
+  // Columns for weather_data table
 }
 
 Table plot_5006 {
-  TIMESTAMP TIMESTAMP not null
-  is_actual INTEGER not null
-  TDR5006B10624 REAL not null
-  TDR5006B13024 REAL not null
-  IRT5006B1xx24 REAL not null
-  TDR5006B11824 REAL not null
-  TDR5006B14224 REAL not null
-  cwsi REAL not null
-  swsi REAL not null
+  // Columns for plot_5006 table
+}
+
+Table plot_5010 {
+  // Columns for plot_5010 table
 }
 
 Table plot_5023 {
-  TIMESTAMP TIMESTAMP not null
-  is_actual INTEGER not null
-  TDR5023A11824 REAL not null
-  IRT5023A1xx24 REAL not null
-  TDR5023A10624 REAL not null
-  TDR5023A13024 REAL not null
-  TDR5023A14224 REAL not null
-  cwsi REAL not null
-  swsi REAL not null
+  // Columns for plot_5023 table
 }
+
+
+The tables we will be interested in:
+
+Here is the complete schema in DBML format for the specified tables: `plot_5006`, `plot_5010`, and `plot_5023`.
+
+### plot_5006
+
+```dbml
+Table plot_5006 {
+  TIMESTAMP TIMESTAMP
+  is_actual INTEGER
+  prediction_timestamp TIMESTAMP
+  applied_irrigation REAL
+  TDR5006B14224 REAL
+  TDR5006B14224_pred REAL
+  DEN5006B1xx24 REAL
+  DEN5006B1xx24_pred REAL
+  IRT5006B1xx24 REAL
+  IRT5006B1xx24_pred REAL
+  TDR5006B13024 REAL
+  TDR5006B13024_pred REAL
+  TDR5006B11824 REAL
+  TDR5006B11824_pred REAL
+  SAP5006B1xx24 REAL
+  SAP5006B1xx24_pred REAL
+  TDR5006B10624 REAL
+  TDR5006B10624_pred REAL
+  cwsi-th1 REAL
+  cwsi-th1_pred REAL
+  cwsi-eb2 REAL
+  cwsi-eb2_pred REAL
+  et REAL
+  et_pred REAL
+  swsi REAL
+  swsi_pred REAL
+  RECORD REAL
+  Ta_2m_Avg REAL
+  TaMax_2m REAL
+  TaMin_2m REAL
+  RH_2m_Avg REAL
+  RHMax_2m REAL
+  RHMin_2m REAL
+  Dp_2m_Avg REAL
+  DpMax_2m REAL
+  DpMin_2m REAL
+  HeatIndex_2m_Avg REAL
+  HeatIndexMax_2m REAL
+  WindChill_2m_Avg REAL
+  WindChillMin_2m REAL
+  WndAveSpd_3m REAL
+  WndVecMagAve_3m REAL
+  WndAveDir_3m REAL
+  WndAveDirSD_3m REAL
+  WndMaxSpd5s_3m REAL
+  WndMax_5sec_Dir_3m REAL
+  PresAvg_1pnt5m REAL
+  PresMax_1pnt5m REAL
+  PresMin_1pnt5m REAL
+  Solar_2m_Avg REAL
+  Ts_bare_10cm_Avg REAL
+  TsMax_bare_10cm REAL
+  TsMin_bare_10cm REAL
+  Ta_2m_Avg_static_forecast REAL
+  TaMax_2m_static_forecast REAL
+  TaMin_2m_static_forecast REAL
+  RH_2m_Avg_static_forecast REAL
+  WndAveSpd_3m_static_forecast REAL
+  WndAveDir_3m_static_forecast REAL
+  WndMaxSpd5s_3m_static_forecast REAL
+  PresAvg_1pnt5m_static_forecast REAL
+  Rain_1m_Tot_static_forecast REAL
+  UV_index_static_forecast REAL
+  Visibility_static_forecast REAL
+  Clouds_static_forecast REAL
+  Ta_2m_Avg_rolling_forecast REAL
+  TaMax_2m_rolling_forecast REAL
+  TaMin_2m_rolling_forecast REAL
+  RH_2m_Avg_rolling_forecast REAL
+  WndAveSpd_3m_rolling_forecast REAL
+  WndAveDir_3m_rolling_forecast REAL
+  WndMaxSpd5s_3m_rolling_forecast REAL
+  PresAvg_1pnt5m_rolling_forecast REAL
+  Rain_1m_Tot_rolling_forecast REAL
+  UV_index_rolling_forecast REAL
+  Visibility_rolling_forecast REAL
+  Clouds_rolling_forecast REAL
+  Rain_1m_Tot REAL
+}
+```
+
+### plot_5010
+
+```dbml
+Table plot_5010 {
+  TIMESTAMP TIMESTAMP
+  is_actual INTEGER
+  prediction_timestamp TIMESTAMP
+  applied_irrigation REAL
+  TDR5010B14224 REAL
+  TDR5010B14224_pred REAL
+  DEN5010B1xx24 REAL
+  DEN5010B1xx24_pred REAL
+  IRT5010B1xx24 REAL
+  IRT5010B1xx24_pred REAL
+  TDR5010B13024 REAL
+  TDR5010B13024_pred REAL
+  TDR5010B11824 REAL
+  TDR5010B11824_pred REAL
+  SAP5010B1xx24 REAL
+  SAP5010B1xx24_pred REAL
+  TDR5010B10624 REAL
+  TDR5010B10624_pred REAL
+  cwsi-th1 REAL
+  cwsi-th1_pred REAL
+  cwsi-eb2 REAL
+  cwsi-eb2_pred REAL
+  et REAL
+  et_pred REAL
+  swsi REAL
+  swsi_pred REAL
+  RECORD REAL
+  Ta_2m_Avg REAL
+  TaMax_2m REAL
+  TaMin_2m REAL
+  RH_2m_Avg REAL
+  RHMax_2m REAL
+  RHMin_2m REAL
+  Dp_2m_Avg REAL
+  DpMax_2m REAL
+  DpMin_2m REAL
+  HeatIndex_2m_Avg REAL
+  HeatIndexMax_2m REAL
+  WindChill_2m_Avg REAL
+  WindChillMin_2m REAL
+  WndAveSpd_3m REAL
+  WndVecMagAve_3m REAL
+  WndAveDir_3m REAL
+  WndAveDirSD_3m REAL
+  WndMaxSpd5s_3m REAL
+  WndMax_5sec_Dir_3m REAL
+  PresAvg_1pnt5m REAL
+  PresMax_1pnt5m REAL
+  PresMin_1pnt5m REAL
+  Solar_2m_Avg REAL
+  Ts_bare_10cm_Avg REAL
+  TsMax_bare_10cm REAL
+  TsMin_bare_10cm REAL
+  Ta_2m_Avg_static_forecast REAL
+  TaMax_2m_static_forecast REAL
+  TaMin_2m_static_forecast REAL
+  RH_2m_Avg_static_forecast REAL
+  WndAveSpd_3m_static_forecast REAL
+  WndAveDir_3m_static_forecast REAL
+  WndMaxSpd5s_3m_static_forecast REAL
+  PresAvg_1pnt5m_static_forecast REAL
+  Rain_1m_Tot_static_forecast REAL
+  UV_index_static_forecast REAL
+  Visibility_static_forecast REAL
+  Clouds_static_forecast REAL
+  Ta_2m_Avg_rolling_forecast REAL
+  TaMax_2m_rolling_forecast REAL
+  TaMin_2m_rolling_forecast REAL
+  RH_2m_Avg_rolling_forecast REAL
+  WndAveSpd_3m_rolling_forecast REAL
+  WndAveDir_3m_rolling_forecast REAL
+  WndMaxSpd5s_3m_rolling_forecast REAL
+  PresAvg_1pnt5m_rolling_forecast REAL
+  Rain_1m_Tot_rolling_forecast REAL
+  UV_index_rolling_forecast REAL
+  Visibility_rolling_forecast REAL
+  Clouds_rolling_forecast REAL
+  Rain_1m_Tot REAL
+}
+```
+
+### plot_5023
+
+```dbml
+Table plot_5023 {
+  TIMESTAMP TIMESTAMP
+  is_actual INTEGER
+  prediction_timestamp TIMESTAMP
+  applied_irrigation REAL
+  TDR5023B14224 REAL
+  TDR5023B14224_pred REAL
+  DEN5023B1xx24 REAL
+  DEN5023B1xx24_pred REAL
+  IRT5023B1xx24 REAL
+  IRT5023B1xx24_pred REAL
+  TDR5023B13024 REAL
+  TDR5023B13024_pred REAL
+  TDR5023B11824 REAL
+  TDR5023B11824_pred REAL
+  SAP5023B1xx24 REAL
+  SAP5023B1xx24_pred REAL
+  TDR5023B10624 REAL
+  TDR5023B10624_pred REAL
+  cwsi-th1 REAL
+  cwsi-th1_pred REAL
+  cwsi-eb2 REAL
+  cwsi-eb2_pred REAL
+  et REAL
+  et_pred REAL
+  swsi REAL
+  swsi_pred REAL
+  RECORD REAL
+  Ta_2m_Avg REAL
+  TaMax_2m REAL
+  TaMin_2m REAL
+  RH_2m_Avg REAL
+  RHMax_2m REAL
+  RHMin_2m REAL
+  Dp_2m_Avg REAL
+  DpMax_2m REAL
+  DpMin_2m REAL
+  HeatIndex_2m_Avg REAL
+  HeatIndexMax_2m REAL
+  WindChill_2m_Avg REAL
+  WindChillMin_2m REAL
+  WndAveSpd_3m REAL
+  WndVecMagAve_3m REAL
+  WndAveDir_3m REAL
+  WndAveDirSD_3m REAL
+  WndMaxSpd5s_3m REAL
+  WndMax_5sec_Dir_3m REAL
+  PresAvg_1pnt5m REAL
+  PresMax_1pnt5m REAL
+  PresMin_1pnt5m REAL
+  Solar_2m_Avg REAL
+  Ts_bare_10cm_Avg REAL
+  TsMax_bare_10cm REAL
+  TsMin_bare_10cm REAL
+  Ta_2m_Avg_static_forecast REAL
+  TaMax_2m_static_forecast REAL
+  TaMin_2m_static_forecast REAL
+  RH_2m_Avg_static_forecast REAL
+  WndAveSpd_3m_static_forecast REAL
+  WndAveDir_3m_static_forecast REAL
+  WndMaxSpd5s_3m_static_forecast REAL
+  PresAvg_1pnt5m_static_forecast REAL
+  Rain_1m_Tot_static_forecast REAL
+  UV_index_static_forecast REAL
+  Visibility_static_forecast REAL
+  Clouds_static_forecast REAL
+  Ta_2m_Avg_rolling_forecast REAL
+  TaMax_2m_rolling_forecast REAL
+  TaMin_2m_rolling_forecast REAL
+  RH_2m_Avg_rolling_forecast REAL
+  WndAveSpd_3m_rolling_forecast REAL
+  WndAveDir_3m_rolling_forecast REAL
+  WndMaxSpd5s_3m_rolling_forecast REAL
+  PresAvg_1pnt5m_rolling_forecast REAL
+  Rain_1m_Tot_rolling_forecast REAL
+  UV_index_rolling_forecast REAL
+  Visibility_rolling_forecast REAL
+  Clouds_rolling_forecast REAL
+  Rain_1m_Tot REAL
+}
+```
+
+Each of these schemas describes the columns and their data types in the respective tables.
 
 Table weather {
   TIMESTAMP TEXT not null
