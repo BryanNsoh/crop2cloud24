@@ -8,10 +8,6 @@ import pytz
 logger = logging.getLogger(__name__)
 
 def resample_mesonet_data(mesonet_data: pd.DataFrame) -> pd.DataFrame:
-    """
-    Resample mesonet data to hourly intervals.
-    Average all columns except 'Rain_1m_Tot', which is summed.
-    """
     logger.info("Resampling mesonet data to hourly intervals")
     
     # Set TIMESTAMP as index for resampling
@@ -23,8 +19,9 @@ def resample_mesonet_data(mesonet_data: pd.DataFrame) -> pd.DataFrame:
     # Create a dictionary for resampling operations
     resampling_dict = {col: 'mean' for col in columns_to_average}
     resampling_dict['Rain_1m_Tot'] = 'sum'
+    
     # Resample data
-    resampled_data = mesonet_data.resample('H').agg(resampling_dict)
+    resampled_data = mesonet_data.resample('h').agg(resampling_dict)
     
     # Reset index to make TIMESTAMP a column again
     resampled_data = resampled_data.reset_index()
@@ -91,6 +88,42 @@ def merge_weather_data(mesonet_data: pd.DataFrame, rolling_forecast: pd.DataFram
     
     return merged_data
 
+def interpolate_forecast_data(df: pd.DataFrame) -> pd.DataFrame:
+    print(f"Original forecast data shape: {df.shape}")
+    print(f"Original forecast data sample:\n{df.head().to_string()}")
+    print(f"Original forecast data range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
+    
+    # Set TIMESTAMP as index
+    df = df.set_index('TIMESTAMP')
+    
+    # Create a new date range with hourly frequency
+    new_index = pd.date_range(start=df.index.min(), end=df.index.max(), freq='h')
+    
+    # Reindex the dataframe to hourly frequency, this will introduce NaNs for missing hours
+    df_hourly = df.reindex(new_index)
+    
+    # Interpolate all columns except Rain_1m_Tot
+    columns_to_interpolate = [col for col in df_hourly.columns if col != 'Rain_1m_Tot']
+    df_hourly[columns_to_interpolate] = df_hourly[columns_to_interpolate].interpolate(method='time')
+    
+    # Handle Rain_1m_Tot separately: fill NaNs with 0, but don't interpolate
+    df_hourly['Rain_1m_Tot'] = df_hourly['Rain_1m_Tot'].fillna(0)
+    
+    df_hourly = df_hourly.reset_index().rename(columns={'index': 'TIMESTAMP'})
+    
+    print(f"Interpolated forecast data shape: {df_hourly.shape}")
+    print(f"Interpolated forecast data sample:\n{df_hourly.head().to_string()}")
+    print(f"Interpolated forecast data range: {df_hourly['TIMESTAMP'].min()} to {df_hourly['TIMESTAMP'].max()}")
+    
+    print(f"Rain_1m_Tot column summary:")
+    print(f"  Original non-zero count: {(df['Rain_1m_Tot'] != 0).sum()}")
+    print(f"  Interpolated non-zero count: {(df_hourly['Rain_1m_Tot'] != 0).sum()}")
+    print(f"  Original unique timestamps: {df.index.nunique()}")
+    print(f"  Interpolated unique timestamps: {df_hourly['TIMESTAMP'].nunique()}")
+    
+    return df_hourly
+    
+    return df_hourly
 def process_weather_data(weather_data: dict[str, pd.DataFrame]) -> pd.DataFrame:
     logger.info("Starting weather data processing")
     
@@ -107,11 +140,24 @@ def process_weather_data(weather_data: dict[str, pd.DataFrame]) -> pd.DataFrame:
     # Resample mesonet data to hourly intervals
     mesonet_data = resample_mesonet_data(mesonet_data)
 
-    # Align forecast timestamps
-    latest_mesonet_timestamp = mesonet_data['TIMESTAMP'].max()
-    rolling_forecast = align_forecast_timestamps(rolling_forecast, latest_mesonet_timestamp)
+    # Interpolate forecast data to hourly intervals
+    rolling_forecast = interpolate_forecast_data(rolling_forecast)
 
     # Merge weather data
-    merged_data = merge_weather_data(mesonet_data, rolling_forecast)
+    merged_data = pd.concat([mesonet_data, rolling_forecast], axis=0, sort=True)
+    merged_data = merged_data.sort_values('TIMESTAMP')
 
+    logger.info(f"Merged data range: {merged_data['TIMESTAMP'].min()} to {merged_data['TIMESTAMP'].max()}")
+    logger.info(f"Total rows in merged data: {len(merged_data)}")
+    
+    # Log number of non-null datapoints in merged table
+    non_null_counts = merged_data.notna().sum()
+    logger.info(f"Number of non-null datapoints in merged table:")
+    for col, count in non_null_counts.items():
+        logger.info(f"{col}: {count}")
+    
+    # Log a sample of the merged data to show the structure
+    logger.info("Sample of merged data:")
+    logger.info(merged_data.sample(10).to_string())
+    
     return merged_data

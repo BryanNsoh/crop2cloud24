@@ -143,48 +143,6 @@ def create_plot_table(plot_number, df):
     logger.info(f"Created table: {table_name}")
     logger.info(f"Sample of data in {table_name}:\n{df.head().to_string()}")
 
-def add_weather_and_forecast_data_to_tables(weather_df, forecast_df):
-    logger.info(f"Adding weather and forecast data to plot tables. Weather data shape: {weather_df.shape}, Forecast data shape: {forecast_df.shape}")
-    logger.info(f"Weather data columns: {weather_df.columns.tolist()}")
-    logger.info(f"Forecast data columns: {forecast_df.columns.tolist()}")
-
-    conn = sqlite3.connect(DB_NAME)
-    cursor = conn.cursor()
-
-    # Get list of plot tables
-    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name LIKE 'plot_%'")
-    plot_tables = [row[0] for row in cursor.fetchall()]
-    logger.info(f"Found plot tables: {plot_tables}")
-
-    for table in plot_tables:
-        logger.info(f"Processing table: {table}")
-        
-        # Read the plot data
-        plot_df = pd.read_sql_query(f"SELECT * FROM {table}", conn)
-        plot_df['TIMESTAMP'] = pd.to_datetime(plot_df['TIMESTAMP'])
-        
-        # Merge weather data
-        merged_df = pd.merge_asof(plot_df, weather_df, on='TIMESTAMP', direction='nearest', tolerance=pd.Timedelta('1h'))
-        
-        # Merge forecast data without aligning timestamps
-        forecast_columns = [col for col in forecast_df.columns if col != 'TIMESTAMP']
-        for col in forecast_columns:
-            merged_df[f'{col}_rolling'] = np.nan
-
-        merged_df = merged_df.set_index('TIMESTAMP')
-        forecast_df = forecast_df.set_index('TIMESTAMP')
-        
-        merged_df.update(forecast_df, overwrite=False)
-        merged_df = merged_df.reset_index()
-        
-        # Update the table
-        merged_df.to_sql(table, conn, if_exists='replace', index=False)
-        
-        logger.info(f"Updated table {table}. New shape: {merged_df.shape}")
-        logger.info(f"Sample of updated data in {table}:\n{merged_df.head().to_string()}")
-
-    conn.close()
-    logger.info("Added weather and forecast data to all plot tables")
 
 def main():
     logger.info("Starting MPC data preparation")
