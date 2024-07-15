@@ -10,3 +10,4 @@ plotly
 kaleido
 refet
 db-dtypes
+pyet

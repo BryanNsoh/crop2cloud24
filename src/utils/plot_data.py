@@ -43,7 +43,7 @@ def clean_data(conn, table_name):
     query = f"""
     SELECT *
     FROM {table_name}
-    WHERE TIMESTAMP IS NOT NULL AND is_actual = 1
+    WHERE TIMESTAMP IS NOT NULL
     ORDER BY TIMESTAMP
     """
     
@@ -79,7 +79,7 @@ def log_data_summary(df, plot_number):
     logger.info(f"Date range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
     
     for column in df.columns:
-        if column != 'TIMESTAMP' and column != 'is_actual':
+        if column != 'TIMESTAMP':
             non_null_data = df[column].dropna()
             if not non_null_data.empty:
                 logger.info(f"{column}:")
