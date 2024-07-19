@@ -1,10 +1,11 @@
 import os
+import re   
 import pandas as pd
 import numpy as np
 from google.cloud import bigquery
 from google.api_core.exceptions import NotFound
 from logger import get_logger
-from bigquery_operations import load_sensor_mapping, create_bigquery_client
+from bigquery_operations import load_sensor_mapping, create_bigquery_client, insert_or_update_data
 
 logger = get_logger(__name__)
 
@@ -61,111 +62,112 @@ def parse_dat_file(file_name):
     
     return data
 
-def insert_or_update_data(client, table_id, df, is_actual=True):
-    logger.info(f"Preparing to merge data in {table_id}")
-    logger.info(f"DataFrame columns: {df.columns.tolist()}")
-    logger.info(f"DataFrame shape: {df.shape}")
-
-    df.index = df.index.tz_convert('UTC')
-    df['is_actual'] = is_actual
-
-    table = client.get_table(table_id)
-    current_schema = {field.name: field.field_type for field in table.schema}
-    logger.info(f"Current schema for table {table_id}: {current_schema}")
-
-    data_to_upload = df.reset_index()
-    columns_to_upload = [col for col in current_schema if col in data_to_upload.columns]
-    data_to_upload = data_to_upload[columns_to_upload]
-    data_to_upload = data_to_upload.where(pd.notnull(data_to_upload), None)
-    data_to_upload = data_to_upload.sort_values('TIMESTAMP')
-
-    temp_table_id = f"{table_id}_temp"
+def get_dat_files(folder_path, crop_type):
+    if crop_type == 'corn':
+        patterns = [
+            r'nodeA.*\.dat',
+            r'nodeB.*\.dat',
+            r'nodeC.*\.dat'
+        ]
+    elif crop_type == 'soybean':
+        patterns = [
+            r'SoyNodeA.*_NodeA\.dat',
+            r'SoyNodeB.*_NodeB\.dat',
+            r'SoyNodeC.*_NodeC\.dat'
+        ]
     
-    job_config = bigquery.LoadJobConfig(
-        schema=[field for field in table.schema if field.name in columns_to_upload],
-        write_disposition="WRITE_TRUNCATE"
-    )
+    dat_files = []
+    for file in os.listdir(folder_path):
+        for pattern in patterns:
+            if re.match(pattern, file, re.IGNORECASE):
+                dat_files.append(os.path.join(folder_path, file))
+                break
+    return dat_files
 
-    try:
-        job = client.load_table_from_dataframe(data_to_upload, temp_table_id, job_config=job_config)
-        job.result()
-        logger.info(f"Successfully loaded {len(data_to_upload)} rows into temporary table {temp_table_id}")
-
-        merge_query = f"""
-        MERGE `{table_id}` T
-        USING `{temp_table_id}` S
-        ON T.TIMESTAMP = S.TIMESTAMP
-        WHEN MATCHED THEN
-          UPDATE SET {', '.join([f'{col} = S.{col}' for col in columns_to_upload if col != 'TIMESTAMP'])}
-        WHEN NOT MATCHED THEN
-          INSERT ({', '.join(columns_to_upload)})
-          VALUES ({', '.join([f'S.{col}' for col in columns_to_upload])})
-        """
-
-        merge_job = client.query(merge_query)
-        merge_job.result()
-        logger.info(f"Successfully merged data into {table_id}")
-
-    except Exception as e:
-        logger.error(f"Error uploading and merging data to {table_id}: {str(e)}")
-        raise
-    finally:
-        client.delete_table(temp_table_id, not_found_ok=True)
-        logger.info(f"Temporary table {temp_table_id} deleted")
-
-def process_and_upload_data(df, sensor_mapping, is_actual=True):
-    client = create_bigquery_client()
-    
-    sensor_groups = {}
-    for sensor in sensor_mapping:
-        key = (sensor['treatment'], sensor['plot_number'])
-        if key not in sensor_groups:
-            sensor_groups[key] = []
-        sensor_groups[key].append(sensor['sensor_id'])
-
-    for (treatment, plot_number), sensors in sensor_groups.items():
-        table_id = f"LINEAR_CORN_trt{treatment}.plot_{plot_number}"
-        dataset_id = f"LINEAR_CORN_trt{treatment}"
-        full_table_id = f"{client.project}.{dataset_id}.plot_{plot_number}"
-        
-        columns_to_upload = sensors
-        df_to_upload = df[df.columns.intersection(columns_to_upload)].copy()
-        
-        if not df_to_upload.empty:
-            try:
-                insert_or_update_data(client, full_table_id, df_to_upload, is_actual)
-            except Exception as e:
-                logger.error(f"Failed to upload data for plot {plot_number} to {full_table_id}: {str(e)}")
-        else:
-            logger.info(f"No data to upload for plot {plot_number}")
-
-def process_folder(folder_path, sensor_mapping):
-    dat_files = [
-        os.path.join(folder_path, "nodeC_NodeC.dat"),
-        os.path.join(folder_path, "nodeB_NodeB.dat"),
-        os.path.join(folder_path, "nodeA_NodeA.dat")
-    ]
+def process_folder(folder_path, sensor_mapping, crop_type):
+    dat_files = get_dat_files(folder_path, crop_type)
 
     for dat_file in dat_files:
         if os.path.exists(dat_file):
             logger.info(f"Processing file: {dat_file}")
             df = parse_dat_file(dat_file)
-            process_and_upload_data(df, sensor_mapping, is_actual=True)
+            crop_specific_mapping = [sensor for sensor in sensor_mapping if sensor['field'] == f'LINEAR_{crop_type.upper()}']
+            process_and_upload_data(df, crop_specific_mapping, is_actual=True, crop_type=crop_type)
         else:
             logger.warning(f"File not found: {dat_file}")
 
-def main(folders):
+def process_and_upload_data(df, sensor_mapping, is_actual=True, crop_type='corn'):
+    client = create_bigquery_client()
+    
+    # Reset the index to make 'TIMESTAMP' a regular column
+    df = df.reset_index()
+    
+    sensor_groups = {}
+    for sensor in sensor_mapping:
+        key = (sensor['treatment'], sensor['plot_number'], sensor['field'])
+        if key not in sensor_groups:
+            sensor_groups[key] = []
+        sensor_groups[key].append(sensor['sensor_id'])
+
+    for (treatment, plot_number, field), sensors in sensor_groups.items():
+        table_id = f"{field}_trt{treatment}.plot_{plot_number}"
+        dataset_id = f"{field}_trt{treatment}"
+        full_table_id = f"{client.project}.{dataset_id}.plot_{plot_number}"
+        
+        columns_to_upload = ['TIMESTAMP'] + sensors
+        df_to_upload = df[df.columns.intersection(columns_to_upload)].copy()
+        
+        if not df_to_upload.empty:
+            try:
+                # Check if the table exists, if not, create it
+                try:
+                    client.get_table(full_table_id)
+                except NotFound:
+                    logger.info(f"Table {full_table_id} not found. Creating it.")
+                    create_table(client, full_table_id, df_to_upload.columns)
+
+                insert_or_update_data(client, full_table_id, df_to_upload, is_actual)
+            except Exception as e:
+                logger.error(f"Failed to upload data for {field} plot {plot_number} to {full_table_id}: {str(e)}")
+        else:
+            logger.info(f"No data to upload for {field} plot {plot_number}")
+
+def create_table(client, full_table_id, columns):
+    schema = [
+        bigquery.SchemaField("TIMESTAMP", "TIMESTAMP", mode="REQUIRED"),
+        bigquery.SchemaField("is_actual", "BOOLEAN", mode="REQUIRED"),
+    ]
+    for column in columns:
+        if column not in ["TIMESTAMP", "is_actual"]:
+            schema.append(bigquery.SchemaField(column, "FLOAT"))
+
+    table = bigquery.Table(full_table_id, schema=schema)
+    client.create_table(table)
+    logger.info(f"Created table {full_table_id}")
+
+def main(corn_folders, soybean_folders):
     sensor_mapping = load_sensor_mapping()
     
-    for folder in folders:
-        logger.info(f"Processing folder: {folder}")
-        process_folder(folder, sensor_mapping)
+    logger.info("Processing corn data")
+    for folder in corn_folders:
+        logger.info(f"Processing corn folder: {folder}")
+        process_folder(folder, sensor_mapping, crop_type='corn')
+    
+    logger.info("Processing soybean data")
+    for folder in soybean_folders:
+        logger.info(f"Processing soybean folder: {folder}")
+        process_folder(folder, sensor_mapping, crop_type='soybean')
 
 if __name__ == "__main__":
-    folders = [
+    corn_folders = [
         r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024",
         r"c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous",
         r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only",
-        r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2014-discont-unsure"
+        r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2014-discont-unsure",
+        r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024"
     ]
-    main(folders)   
+    soybean_folders = [
+        r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24",
+        r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024"
+    ]
+    main(corn_folders, soybean_folders)

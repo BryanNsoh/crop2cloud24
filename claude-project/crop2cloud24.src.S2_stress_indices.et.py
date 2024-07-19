@@ -11,7 +11,6 @@ import logging
 import time
 import pyet
 from dotenv import load_dotenv
-from crop2cloud24.src.utils import generate_plots
 
 # Load environment variables from .env file
 load_dotenv()
@@ -37,8 +36,25 @@ def get_db_connection():
     return sqlite3.connect(DB_PATH)
 
 class ETCalculator:
-    def __init__(self, db_path):
+    def __init__(self, db_path, plot_numbers):
         self.db_path = db_path
+        self.plot_numbers = plot_numbers
+        self.plot_tables = [f"LINEAR_CORN_trt1_plot_{num}" for num in plot_numbers]
+
+    def reset_et_columns(self):
+        logger.info("Resetting ET columns to NULL for all plots")
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        for table in self.plot_tables:
+            logger.info(f"Resetting ET column in {table}")
+            cursor.execute(f"UPDATE `{table}` SET et = NULL")
+            rows_affected = cursor.rowcount
+            logger.info(f"Reset {rows_affected} rows in {table}")
+            conn.commit()
+
+        conn.close()
+        logger.info("ET columns reset completed")
 
     def get_weather_data(self):
         conn = get_db_connection()
@@ -105,14 +121,10 @@ class ETCalculator:
         logger.info("Updating ET values in plot tables")
         
         conn = get_db_connection()
-        plot_tables = ['plot_5006', 'plot_5010', 'plot_5023']
-        
         cursor = conn.cursor()
-        for table in plot_tables:
-            # Log current ET values
-            cursor.execute(f"SELECT MIN(et), MAX(et), AVG(et) FROM {table}")
-            min_et, max_et, avg_et = cursor.fetchone()
-            logger.info(f"Current ET values in {table}: Min: {min_et}, Max: {max_et}, Avg: {avg_et}")
+
+        for table in self.plot_tables:
+            logger.info(f"Processing table: {table}")
             
             # Update ET values
             rows_updated = 0
@@ -120,30 +132,51 @@ class ETCalculator:
                 et_timestamp = row['TIMESTAMP']
                 # Use a 1-hour window to match timestamps
                 cursor.execute(f"""
-                UPDATE {table}
+                UPDATE `{table}`
                 SET et = ?
                 WHERE TIMESTAMP BETWEEN ? AND ?
                 """, (row['et'], 
-                      (et_timestamp - timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S'),
-                      (et_timestamp + timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S')))
+                    (et_timestamp - timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S'),
+                    (et_timestamp + timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S')))
                 rows_updated += cursor.rowcount
+                
+                # Immediately verify the update
+                cursor.execute(f"""
+                SELECT TIMESTAMP, et FROM `{table}`
+                WHERE TIMESTAMP BETWEEN ? AND ?
+                """, ((et_timestamp - timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S'),
+                      (et_timestamp + timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S')))
+                updated_data = cursor.fetchone()
+                if updated_data:
+                    logger.info(f"Updated ET data in {table}: Timestamp={updated_data[0]}, ET={updated_data[1]}")
+                else:
+                    logger.warning(f"No ET data found immediately after update for timestamp: {et_timestamp}")
             
             conn.commit()
             logger.info(f"Updated {rows_updated} rows in {table}")
             
             # Log new ET values
-            cursor.execute(f"SELECT MIN(et), MAX(et), AVG(et) FROM {table}")
+            cursor.execute(f"SELECT MIN(et), MAX(et), AVG(et) FROM `{table}` WHERE et IS NOT NULL")
             min_et, max_et, avg_et = cursor.fetchone()
             logger.info(f"New ET values in {table}: Min: {min_et}, Max: {max_et}, Avg: {avg_et}")
-        
+            
+            # Sample of updated data
+            cursor.execute(f"SELECT TIMESTAMP, et FROM `{table}` WHERE et IS NOT NULL LIMIT 5")
+            sample_data = cursor.fetchall()
+            logger.info(f"Sample of updated ET data in {table}: {sample_data}")
+            
         conn.close()
         logger.info(f"Successfully updated ET values in all plot tables.")
 
-def compute_et():
+def compute_et(plot_numbers):
     start_time = time.time()
-    logger.info("Starting ET computation")
+    logger.info(f"Starting ET computation for plots: {plot_numbers}")
     
-    et_calculator = ETCalculator(DB_PATH)
+    et_calculator = ETCalculator(DB_PATH, plot_numbers)
+    
+    # Reset ET columns to NULL
+    et_calculator.reset_et_columns()
+    
     df = et_calculator.get_weather_data()
     
     if df.empty:
@@ -168,10 +201,11 @@ def compute_et():
     duration = end_time - start_time
     logger.info(f"ET computation completed. Rows processed: {len(df_et)}")
     logger.info(f"Total execution time: {duration:.2f} seconds")
-    return f"ET computation completed. Rows processed: {len(df_et)}. Execution time: {duration:.2f} seconds"
+    return f"ET computation completed for plots {plot_numbers}. Rows processed: {len(df_et)}. Execution time: {duration:.2f} seconds"
 
 def main():
-    result = compute_et()
+    plot_numbers = [5001, 5003, 5012, 5020, 5006, 5001, 5018, 5025, 5007, 5009, 5027]
+    result = compute_et(plot_numbers)
     print(result)
 
 if __name__ == "__main__":

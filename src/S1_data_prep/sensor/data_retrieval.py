@@ -1,6 +1,5 @@
-import pandas as pd
-import numpy as np
 from google.cloud import bigquery
+import pandas as pd
 import logging
 from datetime import datetime, timedelta
 import pytz
@@ -9,15 +8,15 @@ from ..config import PROJECT_ID, HISTORICAL_DAYS
 
 logger = logging.getLogger(__name__)
 
-def get_corn_treatment_datasets(client):
+def get_treatment_datasets(client):
     query = f"""
     SELECT schema_name
     FROM `{PROJECT_ID}.INFORMATION_SCHEMA.SCHEMATA`
-    WHERE schema_name LIKE 'LINEAR_CORN_trt%'
+    WHERE schema_name LIKE 'LINEAR_CORN_trt%' OR schema_name LIKE 'LINEAR_SOYBEAN_trt%'
     """
-    logger.info(f"Executing query to get corn treatment datasets:\n{query}")
+    logger.info(f"Executing query to get treatment datasets:\n{query}")
     datasets = [row.schema_name for row in client.query(query).result()]
-    logger.info(f"Found corn treatment datasets: {datasets}")
+    logger.info(f"Found treatment datasets: {datasets}")
     return sorted(datasets)
 
 def get_treatment_plots(client, dataset):
@@ -57,11 +56,16 @@ def get_plot_data(client, dataset, plot_number):
 def get_all_plot_data(client):
     all_data = {}
     
-    datasets = get_corn_treatment_datasets(client)
+    datasets = get_treatment_datasets(client)
     for dataset in datasets:
+        crop_type = 'LINEAR_CORN' if 'CORN' in dataset else 'LINEAR_SOYBEAN'
+        treatment = dataset.split('_')[-1]  # e.g., 'trt1'
         plot_numbers = get_treatment_plots(client, dataset)
-        all_data[dataset] = {}
+        if crop_type not in all_data:
+            all_data[crop_type] = {}
+        if treatment not in all_data[crop_type]:
+            all_data[crop_type][treatment] = {}
         for plot_number in plot_numbers:
-            all_data[dataset][plot_number] = get_plot_data(client, dataset, plot_number)
+            all_data[crop_type][treatment][plot_number] = get_plot_data(client, dataset, plot_number)
     
     return all_data

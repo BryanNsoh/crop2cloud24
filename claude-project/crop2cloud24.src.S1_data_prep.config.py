@@ -26,6 +26,3 @@ WEATHER_TABLES = [
     'current-weather-mesonet',
     'forecast_four_day_rolling'
 ]
-
-# Sensor data configuration
-TREATMENT_1_DATASET = "LINEAR_CORN_trt1"

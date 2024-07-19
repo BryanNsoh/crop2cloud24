@@ -4923,3 +4923,361 @@ Job ID: 4c7041c0-f355-4672-a254-d58d07bae690
 2024-07-18 23:49:06,731 - __main__ - INFO - Final shape: (245, 13)
 2024-07-18 23:49:06,731 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
 2024-07-18 23:49:06,733 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:37:09,956 - __main__ - INFO - Processing corn data
+2024-07-19 07:37:09,956 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-19 07:37:09,956 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 07:37:09,956 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 07:37:09,985 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-19 07:37:10,007 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-19 07:37:10,017 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-19 07:37:10,401 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-19 07:37:10,401 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-19 07:37:10,402 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-19 07:37:10,402 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:37:10,403 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:37:24,886 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-19 07:37:24,888 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-19 07:37:24,903 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-19 07:37:24,921 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-19 07:37:24,924 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-19 07:37:24,928 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 07:37:24,930 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'TDR5006B11824']
+2024-07-19 07:37:24,934 - __main__ - INFO - Final shape: (608, 16)
+2024-07-19 07:37:24,936 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:37:24,937 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:37:37,841 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-19 07:37:37,844 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-19 07:37:37,863 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-19 07:37:37,886 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-19 07:37:37,891 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-19 07:37:37,895 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-19 07:37:37,899 - __main__ - INFO - Final shape: (608, 15)
+2024-07-19 07:37:37,916 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:37:37,916 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:37:50,103 - __main__ - INFO - Processing corn folder: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous
+2024-07-19 07:37:50,107 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-19 07:37:50,110 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-19 07:37:50,125 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:37:50,135 - __main__ - INFO - Number of rows before dropping NaT timestamps: 234
+2024-07-19 07:37:50,138 - __main__ - INFO - Number of rows after dropping NaT timestamps: 234
+2024-07-19 07:37:50,141 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:37:50,143 - __main__ - INFO - Final shape: (234, 17)
+2024-07-19 07:37:50,147 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:37:50,149 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:38:01,731 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-19 07:38:01,732 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-19 07:38:01,739 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 07:38:01,748 - __main__ - INFO - Number of rows before dropping NaT timestamps: 233
+2024-07-19 07:38:01,750 - __main__ - INFO - Number of rows after dropping NaT timestamps: 233
+2024-07-19 07:38:01,753 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 07:38:01,755 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 07:38:01,756 - __main__ - INFO - Final shape: (233, 17)
+2024-07-19 07:38:01,757 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:38:01,758 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:38:13,389 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-19 07:38:13,389 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-19 07:38:13,396 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:38:13,398 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-19 07:38:13,406 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-19 07:38:13,409 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:38:13,411 - __main__ - INFO - Final shape: (232, 16)
+2024-07-19 07:38:13,413 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:38:13,415 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:38:25,199 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only
+2024-07-19 07:38:25,199 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-19 07:38:25,199 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-19 07:38:25,217 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:38:25,229 - __main__ - INFO - Number of rows before dropping NaT timestamps: 522
+2024-07-19 07:38:25,232 - __main__ - INFO - Number of rows after dropping NaT timestamps: 522
+2024-07-19 07:38:25,234 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:38:25,236 - __main__ - INFO - Final shape: (522, 17)
+2024-07-19 07:38:25,237 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:38:25,239 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:38:36,753 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-19 07:38:36,753 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-19 07:38:36,767 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 07:38:36,788 - __main__ - INFO - Number of rows before dropping NaT timestamps: 757
+2024-07-19 07:38:36,791 - __main__ - INFO - Number of rows after dropping NaT timestamps: 757
+2024-07-19 07:38:36,795 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 07:38:36,797 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 07:38:36,800 - __main__ - INFO - Final shape: (757, 17)
+2024-07-19 07:38:36,801 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:38:36,802 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:38:48,513 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-19 07:38:48,513 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-19 07:38:48,513 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:38:48,531 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-19 07:38:48,533 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-19 07:38:48,536 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:38:48,538 - __main__ - INFO - Final shape: (232, 16)
+2024-07-19 07:38:48,538 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:38:48,538 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:39:00,656 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2014-discont-unsure
+2024-07-19 07:39:00,656 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024
+2024-07-19 07:43:25,274 - __main__ - INFO - Processing corn data
+2024-07-19 07:43:25,286 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-19 07:43:25,286 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 07:43:25,286 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 07:43:25,298 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-19 07:43:25,307 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-19 07:43:25,309 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-19 07:43:25,443 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-19 07:43:25,443 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-19 07:43:25,443 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-19 07:43:25,443 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:43:25,443 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:43:39,400 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-19 07:43:39,401 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-19 07:43:39,403 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-19 07:43:39,424 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-19 07:43:39,426 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-19 07:43:39,429 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 07:43:39,430 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'TDR5006B11824']
+2024-07-19 07:43:39,431 - __main__ - INFO - Final shape: (608, 16)
+2024-07-19 07:43:39,432 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:43:39,432 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:43:51,463 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-19 07:43:51,463 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-19 07:43:51,473 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-19 07:43:51,503 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-19 07:43:51,508 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-19 07:43:51,514 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-19 07:43:51,515 - __main__ - INFO - Final shape: (608, 15)
+2024-07-19 07:43:51,517 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:43:51,522 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:44:03,512 - __main__ - INFO - Processing corn folder: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous
+2024-07-19 07:44:03,512 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-19 07:44:03,523 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-19 07:44:03,535 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:44:03,551 - __main__ - INFO - Number of rows before dropping NaT timestamps: 234
+2024-07-19 07:44:03,554 - __main__ - INFO - Number of rows after dropping NaT timestamps: 234
+2024-07-19 07:44:03,554 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:44:03,554 - __main__ - INFO - Final shape: (234, 17)
+2024-07-19 07:44:03,554 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:44:03,564 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:44:15,522 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-19 07:44:15,522 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-19 07:44:15,532 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 07:44:15,545 - __main__ - INFO - Number of rows before dropping NaT timestamps: 233
+2024-07-19 07:44:15,547 - __main__ - INFO - Number of rows after dropping NaT timestamps: 233
+2024-07-19 07:44:15,550 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 07:44:15,550 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 07:44:15,550 - __main__ - INFO - Final shape: (233, 17)
+2024-07-19 07:44:15,550 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:44:15,550 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:44:27,244 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-19 07:44:27,244 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-19 07:44:27,254 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:44:27,268 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-19 07:44:27,268 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-19 07:44:27,274 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:44:27,274 - __main__ - INFO - Final shape: (232, 16)
+2024-07-19 07:44:27,274 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:44:27,274 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:44:39,006 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only
+2024-07-19 07:44:39,006 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-19 07:44:39,006 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-19 07:44:39,027 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:44:39,039 - __main__ - INFO - Number of rows before dropping NaT timestamps: 522
+2024-07-19 07:44:39,041 - __main__ - INFO - Number of rows after dropping NaT timestamps: 522
+2024-07-19 07:44:39,041 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:44:39,047 - __main__ - INFO - Final shape: (522, 17)
+2024-07-19 07:44:39,048 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:44:39,051 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:44:51,665 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-19 07:44:51,666 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-19 07:44:51,680 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 07:44:51,700 - __main__ - INFO - Number of rows before dropping NaT timestamps: 757
+2024-07-19 07:44:51,706 - __main__ - INFO - Number of rows after dropping NaT timestamps: 757
+2024-07-19 07:44:51,711 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 07:44:51,714 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 07:44:51,716 - __main__ - INFO - Final shape: (757, 17)
+2024-07-19 07:44:51,718 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:44:51,720 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:45:03,454 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-19 07:45:03,454 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-19 07:45:03,463 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:45:03,483 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-19 07:45:03,483 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-19 07:45:03,493 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:45:03,493 - __main__ - INFO - Final shape: (232, 16)
+2024-07-19 07:45:03,493 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:45:03,493 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:45:15,630 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2024-discont-unsure
+2024-07-19 07:45:15,630 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024
+2024-07-19 07:45:53,496 - __main__ - INFO - Processing corn data
+2024-07-19 07:45:53,496 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-19 07:45:53,506 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 07:45:53,506 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 07:45:53,538 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-19 07:45:53,556 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-19 07:45:53,564 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-19 07:45:53,845 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-19 07:45:53,845 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-19 07:45:53,845 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-19 07:45:53,845 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:45:53,845 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:46:05,830 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-19 07:46:05,830 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-19 07:46:05,851 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-19 07:46:05,867 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-19 07:46:05,876 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-19 07:46:05,882 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 07:46:05,886 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'TDR5006B11824']
+2024-07-19 07:46:05,894 - __main__ - INFO - Final shape: (608, 16)
+2024-07-19 07:46:05,894 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:46:05,904 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:46:17,412 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-19 07:46:17,414 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-19 07:46:17,428 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-19 07:46:17,449 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-19 07:46:17,450 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-19 07:46:17,450 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-19 07:46:17,450 - __main__ - INFO - Final shape: (608, 15)
+2024-07-19 07:46:17,450 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:46:17,450 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:46:29,009 - __main__ - INFO - Processing corn folder: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous
+2024-07-19 07:46:29,011 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-19 07:46:29,013 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-19 07:46:29,020 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:46:29,029 - __main__ - INFO - Number of rows before dropping NaT timestamps: 234
+2024-07-19 07:46:29,032 - __main__ - INFO - Number of rows after dropping NaT timestamps: 234
+2024-07-19 07:46:29,034 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:46:29,035 - __main__ - INFO - Final shape: (234, 17)
+2024-07-19 07:46:29,036 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:46:29,037 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:46:40,052 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-19 07:46:40,053 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-19 07:46:40,065 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 07:46:40,079 - __main__ - INFO - Number of rows before dropping NaT timestamps: 233
+2024-07-19 07:46:40,084 - __main__ - INFO - Number of rows after dropping NaT timestamps: 233
+2024-07-19 07:46:40,088 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 07:46:40,090 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 07:46:40,094 - __main__ - INFO - Final shape: (233, 17)
+2024-07-19 07:46:40,096 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:46:40,098 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:46:51,827 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-19 07:46:51,828 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-19 07:46:51,861 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:46:51,877 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-19 07:46:51,881 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-19 07:46:51,885 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:46:51,887 - __main__ - INFO - Final shape: (232, 16)
+2024-07-19 07:46:51,889 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:46:51,892 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:47:03,697 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only
+2024-07-19 07:47:03,699 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-19 07:47:03,700 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-19 07:47:03,715 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:47:03,734 - __main__ - INFO - Number of rows before dropping NaT timestamps: 522
+2024-07-19 07:47:03,738 - __main__ - INFO - Number of rows after dropping NaT timestamps: 522
+2024-07-19 07:47:03,742 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:47:03,744 - __main__ - INFO - Final shape: (522, 17)
+2024-07-19 07:47:03,746 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:47:03,749 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:47:14,507 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-19 07:47:14,507 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-19 07:47:14,520 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 07:47:14,532 - __main__ - INFO - Number of rows before dropping NaT timestamps: 757
+2024-07-19 07:47:14,532 - __main__ - INFO - Number of rows after dropping NaT timestamps: 757
+2024-07-19 07:47:14,537 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 07:47:14,538 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 07:47:14,539 - __main__ - INFO - Final shape: (757, 17)
+2024-07-19 07:47:14,540 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:47:14,540 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:47:25,571 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-19 07:47:25,571 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-19 07:47:25,573 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:47:25,579 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-19 07:47:25,579 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-19 07:47:25,581 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:47:25,581 - __main__ - INFO - Final shape: (232, 16)
+2024-07-19 07:47:25,582 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:47:25,582 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:47:36,205 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2024-discont-unsure
+2024-07-19 07:47:36,205 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024
+2024-07-19 07:47:36,205 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeA_NodeA.dat
+2024-07-19 07:47:36,205 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeA_NodeA.dat
+2024-07-19 07:47:36,217 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:47:36,228 - __main__ - INFO - Number of rows before dropping NaT timestamps: 686
+2024-07-19 07:47:36,230 - __main__ - INFO - Number of rows after dropping NaT timestamps: 686
+2024-07-19 07:47:36,232 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 07:47:36,232 - __main__ - INFO - Final shape: (686, 17)
+2024-07-19 07:47:36,234 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:47:36,234 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:48:07,678 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeB_NodeB.dat
+2024-07-19 07:48:07,680 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeB_NodeB.dat
+2024-07-19 07:48:07,711 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 07:48:07,733 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1946
+2024-07-19 07:48:07,735 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1946
+2024-07-19 07:48:07,737 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 07:48:07,738 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 07:48:07,740 - __main__ - INFO - Final shape: (1946, 17)
+2024-07-19 07:48:07,741 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:48:07,742 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:48:19,417 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeC2_NodeC.dat
+2024-07-19 07:48:19,426 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeC2_NodeC.dat
+2024-07-19 07:48:19,435 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:48:19,435 - __main__ - INFO - Number of rows before dropping NaT timestamps: 109
+2024-07-19 07:48:19,445 - __main__ - INFO - Number of rows after dropping NaT timestamps: 109
+2024-07-19 07:48:19,451 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 07:48:19,454 - __main__ - INFO - Final shape: (109, 16)
+2024-07-19 07:48:19,455 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:48:19,455 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:48:29,128 - __main__ - INFO - Processing soybean data
+2024-07-19 07:48:29,128 - __main__ - INFO - Processing soybean folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24
+2024-07-19 07:48:29,137 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeA_NodeA.dat
+2024-07-19 07:48:29,140 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeA_NodeA.dat
+2024-07-19 07:48:29,147 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-19 07:48:29,151 - __main__ - INFO - Number of rows before dropping NaT timestamps: 145
+2024-07-19 07:48:29,157 - __main__ - INFO - Number of rows after dropping NaT timestamps: 145
+2024-07-19 07:48:29,159 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-19 07:48:29,160 - __main__ - INFO - Final shape: (145, 11)
+2024-07-19 07:48:29,162 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:48:29,163 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:48:40,518 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeB2_NodeB.dat
+2024-07-19 07:48:40,518 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeB2_NodeB.dat
+2024-07-19 07:48:40,529 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-19 07:48:40,536 - __main__ - INFO - Number of rows before dropping NaT timestamps: 93
+2024-07-19 07:48:40,541 - __main__ - INFO - Number of rows after dropping NaT timestamps: 93
+2024-07-19 07:48:40,543 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-19 07:48:40,544 - __main__ - INFO - Final shape: (93, 15)
+2024-07-19 07:48:40,546 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:48:40,547 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:48:49,824 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeC2_NodeC.dat
+2024-07-19 07:48:49,824 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeC2_NodeC.dat
+2024-07-19 07:48:49,840 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224']
+2024-07-19 07:48:49,848 - __main__ - INFO - Number of rows before dropping NaT timestamps: 245
+2024-07-19 07:48:49,851 - __main__ - INFO - Number of rows after dropping NaT timestamps: 245
+2024-07-19 07:48:49,854 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224']
+2024-07-19 07:48:49,854 - __main__ - INFO - Final shape: (245, 13)
+2024-07-19 07:48:49,858 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:48:49,860 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:48:59,313 - __main__ - INFO - Processing soybean folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024
+2024-07-19 07:48:59,323 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeA_NodeA.dat
+2024-07-19 07:48:59,323 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeA_NodeA.dat
+2024-07-19 07:48:59,348 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-19 07:48:59,363 - __main__ - INFO - Number of rows before dropping NaT timestamps: 376
+2024-07-19 07:48:59,369 - __main__ - INFO - Number of rows after dropping NaT timestamps: 376
+2024-07-19 07:48:59,376 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-19 07:48:59,376 - __main__ - INFO - Final shape: (376, 11)
+2024-07-19 07:48:59,376 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:48:59,385 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:49:41,544 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeB2_NodeB.dat
+2024-07-19 07:49:41,544 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeB2_NodeB.dat
+2024-07-19 07:49:41,561 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-19 07:49:41,580 - __main__ - INFO - Number of rows before dropping NaT timestamps: 284
+2024-07-19 07:49:41,586 - __main__ - INFO - Number of rows after dropping NaT timestamps: 284
+2024-07-19 07:49:41,591 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-19 07:49:41,594 - __main__ - INFO - Final shape: (284, 15)
+2024-07-19 07:49:41,598 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:49:41,601 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 07:50:29,141 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeC2_NodeC.dat
+2024-07-19 07:50:29,145 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeC2_NodeC.dat
+2024-07-19 07:50:29,153 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatteryVoltage', 'PanelTemperatureC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'IRT2018C3xx24', 'IRT2020C3xx24', 'IRT2026C2xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224', 'TDR2026C20624', 'TDR2026C21824', 'TDR2026C23024']
+2024-07-19 07:50:29,166 - __main__ - INFO - Number of rows before dropping NaT timestamps: 38
+2024-07-19 07:50:29,168 - __main__ - INFO - Number of rows after dropping NaT timestamps: 38
+2024-07-19 07:50:29,172 - __main__ - INFO - Final columns: ['RecNbr', 'BatteryVoltage', 'PanelTemperatureC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'IRT2018C3xx24', 'IRT2020C3xx24', 'IRT2026C2xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224', 'TDR2026C20624', 'TDR2026C21824', 'TDR2026C23024']
+2024-07-19 07:50:29,174 - __main__ - INFO - Final shape: (38, 19)
+2024-07-19 07:50:29,176 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 07:50:29,177 - __main__ - INFO - TIMESTAMP null count: 0

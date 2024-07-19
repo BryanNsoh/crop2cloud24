@@ -3450,6 +3450,78 @@ pyet
   node: C
   field: LINEAR_SOYBEAN
 
+- hash: "081"
+  treatment: 3
+  plot_number: 2018
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: IRT2018C3xx24
+  span: 5
+  sdi-12_address: "b"
+  depth: 
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "082"
+  treatment: 3
+  plot_number: 2020
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: IRT2020C3xx24
+  span: 5
+  sdi-12_address: "g"
+  depth: 
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "083"
+  treatment: 2
+  plot_number: 2026
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2026C23024
+  span: 5
+  sdi-12_address: "c"
+  depth: 30
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "084"
+  treatment: 2
+  plot_number: 2026
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2026C21824
+  span: 5
+  sdi-12_address: "d"
+  depth: 18
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "085"
+  treatment: 2
+  plot_number: 2026
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2026C20624
+  span: 5
+  sdi-12_address: "e"
+  depth: 6
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "086"
+  treatment: 2
+  plot_number: 2026
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: IRT2026C2xx24
+  span: 5
+  sdi-12_address: "h"
+  depth: 
+  node: C
+  field: LINEAR_SOYBEAN
+
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   #         SOYBEAN FIELDS
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3769,8 +3841,6 @@ WEATHER_TABLES = [
     'forecast_four_day_rolling'
 ]
 
-# Sensor data configuration
-TREATMENT_1_DATASET = "LINEAR_CORN_trt1"
         </content>
     </file>
     <file>
@@ -3847,9 +3917,9 @@ from ..config import DB_NAME
 
 logger = logging.getLogger(__name__)
 
-def create_plot_table(conn, plot_number):
+def create_plot_table(conn, treatment, plot_number):
     conn.execute(f"""
-    CREATE TABLE IF NOT EXISTS plot_{plot_number} (
+    CREATE TABLE IF NOT EXISTS {treatment}_plot_{plot_number} (
         TIMESTAMP TEXT PRIMARY KEY,
         is_actual INTEGER,
         prediction_timestamp TEXT,
@@ -3868,24 +3938,25 @@ def create_plot_table(conn, plot_number):
         DEN_{plot_number}_1xx24_pred REAL,
         TDR_{plot_number}_14224 REAL,
         TDR_{plot_number}_14224_pred REAL,
-        cwsi REAL,
-        cwsi_pred REAL,
+        cwsi_th2 REAL,
+        cwsi_th2_pred REAL,
         et REAL,
         et_pred REAL,
         swsi REAL,
         swsi_pred REAL
     )
     """)
-    logger.info(f"Created plot_{plot_number} table")
+    logger.info(f"Created {treatment}_plot_{plot_number} table")
 
 def store_plot_data(plot_data):
     logger.info("Storing plot data")
     conn = sqlite3.connect(DB_NAME)
     
-    for plot_number, df in plot_data.items():
-        create_plot_table(conn, plot_number)
-        df.to_sql(f'plot_{plot_number}', conn, if_exists='replace', index=False)
-        logger.info(f"Stored {len(df)} records for plot {plot_number}")
+    for treatment, plots in plot_data.items():
+        for plot_number, df in plots.items():
+            create_plot_table(conn, treatment, plot_number)
+            df.to_sql(f'{treatment}_plot_{plot_number}', conn, if_exists='replace', index=False)
+            logger.info(f"Stored {len(df)} records for {treatment} plot {plot_number}")
     
     conn.close()
     logger.info("Finished storing plot data")
@@ -3895,8 +3966,6 @@ def store_plot_data(plot_data):
         <name>crop2cloud24.src.S1_data_prep.sensor.data_processing.py</name>
         <path>crop2cloud24.src.S1_data_prep.sensor.data_processing.py</path>
         <content>
-# src/S1_data_prep/sensor/data_processing.py
-
 import pandas as pd
 import numpy as np
 import logging
@@ -3909,56 +3978,58 @@ def process_plot_data(plot_data, weather_data):
     # Convert weather data TIMESTAMP to nanosecond precision once
     weather_data['TIMESTAMP'] = pd.to_datetime(weather_data['TIMESTAMP'], utc=True).astype('datetime64[ns, UTC]')
     
-    for plot_number, df in plot_data.items():
-        logger.info(f"Processing data for plot {plot_number}")
-        
-        # Determine actual data range
-        actual_start = df['TIMESTAMP'].min()
-        actual_end = df['TIMESTAMP'].max()
-        logger.info(f"Actual data range for plot {plot_number}: {actual_start} to {actual_end}")
-        
-        # Remove duplicate timestamps
-        df = df.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='first')
-        
-        # Convert plot data TIMESTAMP to nanosecond precision
-        df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True).astype('datetime64[ns, UTC]')
-        
-        # Resample to hourly intervals without interpolation
-        df = resample_hourly(df)
-        
-        # Log timestamp dtypes for debugging
-        logger.info(f"Plot data TIMESTAMP dtype: {df['TIMESTAMP'].dtype}")
-        logger.info(f"Weather data TIMESTAMP dtype: {weather_data['TIMESTAMP'].dtype}")
-        
-        # Perform the merge
-        df = pd.merge(df, weather_data, on='TIMESTAMP', how='outer')
-        
-        # Drop all-null columns except 'swsi', 'et', and 'cwsi-th2'
-        cols_to_keep = ['TIMESTAMP', 'swsi', 'et', 'cwsi-th2']
-        null_columns = df.columns[df.isnull().all()].tolist()
-        cols_to_drop = [col for col in null_columns if col not in cols_to_keep]
-        df = df.drop(columns=cols_to_drop)
-        
-        # Explicitly drop 'is_actual' column if it exists
-        if 'is_actual' in df.columns:
-            df = df.drop(columns=['is_actual'])
-        
-        # Rename 'cwsi-th1' to 'cwsi-th2' if it exists, otherwise add it as a null column
-        if 'cwsi-th1' in df.columns:
-            df = df.rename(columns={'cwsi-th1': 'cwsi-th2'})
-        else:
-            df['cwsi-th2'] = np.nan
-        
-        # Remove other CWSI columns
-        cwsi_columns_to_remove = [col for col in df.columns if col.startswith('cwsi') and col != 'cwsi-th2']
-        df = df.drop(columns=cwsi_columns_to_remove)
-        
-        processed_data[plot_number] = df
-        
-        logger.info(f"Processed data for plot {plot_number}. Shape: {df.shape}")
-        logger.info(f"Processed data range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
-        logger.info(f"Sample of processed data for plot {plot_number}:\n{df.head().to_string()}")
-        logger.info(f"Columns in processed data: {df.columns.tolist()}")
+    for treatment, plots in plot_data.items():
+        processed_data[treatment] = {}
+        for plot_number, df in plots.items():
+            logger.info(f"Processing data for {treatment}.plot_{plot_number}")
+            
+            # Determine actual data range
+            actual_start = df['TIMESTAMP'].min()
+            actual_end = df['TIMESTAMP'].max()
+            logger.info(f"Actual data range for {treatment}.plot_{plot_number}: {actual_start} to {actual_end}")
+            
+            # Remove duplicate timestamps
+            df = df.sort_values('TIMESTAMP').drop_duplicates(subset='TIMESTAMP', keep='first')
+            
+            # Convert plot data TIMESTAMP to nanosecond precision
+            df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True).astype('datetime64[ns, UTC]')
+            
+            # Resample to hourly intervals without interpolation
+            df = resample_hourly(df)
+            
+            # Log timestamp dtypes for debugging
+            logger.info(f"Plot data TIMESTAMP dtype: {df['TIMESTAMP'].dtype}")
+            logger.info(f"Weather data TIMESTAMP dtype: {weather_data['TIMESTAMP'].dtype}")
+            
+            # Perform the merge
+            df = pd.merge(df, weather_data, on='TIMESTAMP', how='outer')
+            
+            # Identify sensor data columns (all numeric columns except TIMESTAMP and weather columns)
+            weather_columns = set(weather_data.columns)
+            numeric_columns = df.select_dtypes(include=['int64', 'float64']).columns
+            sensor_columns = [col for col in numeric_columns if col not in weather_columns and col != 'TIMESTAMP']
+            
+            # Replace values below -50 with null for sensor data columns
+            df[sensor_columns] = df[sensor_columns].apply(lambda x: x.where(x >= -50, pd.NA))
+            
+            logger.info(f"Replaced values below -50 with null for sensor columns: {sensor_columns}")
+            
+            # Drop all-null columns except 'swsi', 'et', and 'cwsi-th2'
+            cols_to_keep = ['TIMESTAMP', 'swsi', 'et', 'cwsi-th1']
+            null_columns = df.columns[df.isnull().all()].tolist()
+            cols_to_drop = [col for col in null_columns if col not in cols_to_keep]
+            df = df.drop(columns=cols_to_drop)
+            
+            # Explicitly drop 'is_actual' column if it exists
+            if 'is_actual' in df.columns:
+                df = df.drop(columns=['is_actual'])
+            
+            processed_data[treatment][plot_number] = df
+            
+            logger.info(f"Processed data for {treatment}.plot_{plot_number}. Shape: {df.shape}")
+            logger.info(f"Processed data range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
+            logger.info(f"Sample of processed data for {treatment}.plot_{plot_number}:\n{df.head().to_string()}")
+            logger.info(f"Columns in processed data: {df.columns.tolist()}")
     
     return processed_data
 
@@ -3989,8 +4060,6 @@ def resample_hourly(df):
         <name>crop2cloud24.src.S1_data_prep.sensor.data_retrieval.py</name>
         <path>crop2cloud24.src.S1_data_prep.sensor.data_retrieval.py</path>
         <content>
-# File: crop2cloud24/src/S1_data_prep/sensor/data_retrieval.py
-
 import pandas as pd
 import numpy as np
 from google.cloud import bigquery
@@ -4047,47 +4116,15 @@ def get_plot_data(client, dataset, plot_number):
     
     return df
 
-def get_weather_data(client):
-    end_time = datetime.now(pytz.UTC)
-    start_time = end_time - timedelta(days=HISTORICAL_DAYS)
+def get_all_plot_data(client):
+    all_data = {}
     
-    weather_tables = ['current-weather-mesonet', 'current-openweathermap', 'four-day-forecast-openweathermap']
-    weather_data = {}
-    
-    for table in weather_tables:
-        query = f"""
-        SELECT *
-        FROM `{PROJECT_ID}.weather.{table}`
-        WHERE TIMESTAMP BETWEEN '{start_time}' AND '{end_time}'
-        ORDER BY TIMESTAMP
-        """
-        
-        logger.info(f"Executing query for weather.{table}:\n{query}")
-        df = client.query(query).to_dataframe()
-        df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
-        
-        logger.info(f"weather.{table} data range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
-        logger.info(f"weather.{table} data shape: {df.shape}")
-        logger.info(f"weather.{table} columns: {df.columns.tolist()}")
-        logger.info(f"Sample of weather.{table} data:\n{df.head().to_string()}")
-        
-        weather_data[table] = df
-    
-    return weather_data
-
-def get_all_data(client):
-    all_data = {'plot_data': {}, 'weather_data': {}}
-    
-    # Get plot data for all corn treatments
-    corn_datasets = get_corn_treatment_datasets(client)
-    for dataset in corn_datasets:
+    datasets = get_corn_treatment_datasets(client)
+    for dataset in datasets:
         plot_numbers = get_treatment_plots(client, dataset)
-        all_data['plot_data'][dataset] = {}
+        all_data[dataset] = {}
         for plot_number in plot_numbers:
-            all_data['plot_data'][dataset][plot_number] = get_plot_data(client, dataset, plot_number)
-    
-    # Get weather data
-    all_data['weather_data'] = get_weather_data(client)
+            all_data[dataset][plot_number] = get_plot_data(client, dataset, plot_number)
     
     return all_data
         </content>
@@ -4744,14 +4781,15 @@ import requests
 import math
 import json
 from dotenv import load_dotenv
+import statistics 
 import os
 from crop2cloud24.src.utils import generate_plots
+import matplotlib.pyplot as plt
 
 # Load environment variables from .env file
 load_dotenv()
 
 # Configuration
-DAYS_BACK = None  # Set to None for all available data, or specify a number of days
 DB_PATH = 'mpc_data.db'
 STEFAN_BOLTZMANN = 5.67e-8
 CP = 1005
@@ -4875,7 +4913,9 @@ def net_radiation(solar_radiation, air_temp_celsius, canopy_temp_celsius, surfac
     return Rns - Rnl
 
 def soil_heat_flux(net_radiation, lai):
-    return net_radiation * np.exp(-0.6 * lai)
+    result = net_radiation * 0.1
+
+    return result
 
 def aerodynamic_resistance(wind_speed, measurement_height, zero_plane_displacement, roughness_length):
     return (np.log((measurement_height - zero_plane_displacement) / roughness_length) * 
@@ -4935,19 +4975,11 @@ def get_db_connection():
     return sqlite3.connect(DB_PATH)
 
 def get_plot_data(conn, plot_number, irt_column):
-    if DAYS_BACK is None:
-        query = f"""
-        SELECT TIMESTAMP, {irt_column}, is_actual
-        FROM plot_{plot_number}
-        ORDER BY TIMESTAMP
-        """
-    else:
-        query = f"""
-        SELECT TIMESTAMP, {irt_column}, is_actual
-        FROM plot_{plot_number}
-        WHERE TIMESTAMP >= datetime('now', '-{DAYS_BACK} days')
-        ORDER BY TIMESTAMP
-        """
+    query = f"""
+    SELECT TIMESTAMP, {irt_column}
+    FROM `LINEAR_CORN_trt1_plot_{plot_number}`
+    ORDER BY TIMESTAMP
+    """
     df = pd.read_sql_query(query, conn, parse_dates=['TIMESTAMP'])
     df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
     return df
@@ -4970,23 +5002,124 @@ def update_cwsi(conn, plot_number, df_cwsi):
     
     cursor = conn.cursor()
     
-    # First, set all rows to NULL
+    # Print columns before changes
+    cursor.execute(f"PRAGMA table_info(`LINEAR_CORN_trt1_plot_{plot_number}`)")
+    columns_before = [column[1] for column in cursor.fetchall()]
+    logger.info(f"Columns before update: {columns_before}")
+    
+    # Check if the column exists, if not, create it
+    if 'cwsi_th1' not in columns_before:
+        cursor.execute(f"""
+        ALTER TABLE `LINEAR_CORN_trt1_plot_{plot_number}`
+        ADD COLUMN cwsi_th1 REAL
+        """)
+        logger.info(f"Added cwsi_th1 column to `LINEAR_CORN_trt1_plot_{plot_number}`")
+    
+    # Print columns after potential addition
+    cursor.execute(f"PRAGMA table_info(`LINEAR_CORN_trt1_plot_{plot_number}`)")
+    columns_after = [column[1] for column in cursor.fetchall()]
+    logger.info(f"Columns after potential addition: {columns_after}")
+    
+    # Rename the column in df_cwsi to match the database
+    df_cwsi = df_cwsi.rename(columns={'cwsi-th1': 'cwsi_th1'})
+    
+    # Ensure TIMESTAMP format is consistent
+    df_cwsi['TIMESTAMP'] = df_cwsi['TIMESTAMP'].dt.strftime('%Y-%m-%d %H:%M:%S')
+    
+    # Reset all cwsi_th1 values to NULL
     cursor.execute(f"""
-    UPDATE plot_{plot_number}
-    SET `cwsi-th1` = NULL, is_actual = 0
+    UPDATE `LINEAR_CORN_trt1_plot_{plot_number}`
+    SET cwsi_th1 = NULL
     """)
+    logger.info(f"Reset all cwsi_th1 values to NULL")
     
     # Then, update with new values
+    updated_rows = 0
     for _, row in df_cwsi.iterrows():
         cursor.execute(f"""
-        UPDATE plot_{plot_number}
-        SET `cwsi-th1` = ?, is_actual = 1
+        UPDATE `LINEAR_CORN_trt1_plot_{plot_number}`
+        SET cwsi_th1 = ?
         WHERE TIMESTAMP = ?
-        """, (row['cwsi-th1'], row['TIMESTAMP'].strftime('%Y-%m-%d %H:%M:%S')))
+        """, (row['cwsi_th1'], row['TIMESTAMP']))
+        updated_rows += cursor.rowcount
     
     conn.commit()
     
-    logger.info(f"Successfully updated CWSI for plot {plot_number}. Rows processed: {len(df_cwsi)}")
+    logger.info(f"Attempted to update {len(df_cwsi)} rows, actually updated {updated_rows} rows")
+    
+    # Confirm the update
+    cursor.execute(f"SELECT COUNT(*) FROM `LINEAR_CORN_trt1_plot_{plot_number}` WHERE cwsi_th1 IS NOT NULL")
+    count = cursor.fetchone()[0]
+    logger.info(f"Number of rows with CWSI values in DB for plot {plot_number}: {count}")
+    
+    # Print sample data
+    cursor.execute(f"""
+    SELECT TIMESTAMP, cwsi_th1 FROM `LINEAR_CORN_trt1_plot_{plot_number}`
+    WHERE cwsi_th1 IS NOT NULL
+    LIMIT 5
+    """)
+    sample_data = cursor.fetchall()
+    logger.info(f"Sample data after update: {sample_data}")
+    
+    # Debug: print a few rows from df_cwsi
+    logger.info(f"Sample data from df_cwsi:")
+    logger.info(df_cwsi.head().to_string())
+
+def plot_cwsi(df_cwsi, plot_number):
+    plt.figure(figsize=(10, 6))
+    plt.plot(df_cwsi['TIMESTAMP'], df_cwsi['cwsi_th1'], label=f'Plot {plot_number}')
+    plt.xlabel('Timestamp')
+    plt.ylabel('CWSI')
+    plt.title(f'CWSI over Time for Plot {plot_number}')
+    plt.legend()
+    plt.grid(True)
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+
+def update_cwsi_th1(conn, plot_number, df_cwsi):
+    logger.info(f"Updating CWSI-TH1 for plot {plot_number}")
+
+    cursor = conn.cursor()
+
+    # Check if the column exists, if not, create it
+    cursor.execute(f"PRAGMA table_info(plot_{plot_number})")
+    columns = [column[1] for column in cursor.fetchall()]
+    if 'cwsi_th1' not in columns:
+        cursor.execute(f"ALTER TABLE plot_{plot_number} ADD COLUMN 'cwsi_th1' REAL")
+        conn.commit()
+        logger.info(f"Added 'cwsi_th1' column to plot_{plot_number} table")
+
+    rows_updated = 0
+    for _, row in df_cwsi.iterrows():
+        timestamp = row['TIMESTAMP'].tz_convert('UTC')
+        start_time = timestamp - timedelta(minutes=30)
+        end_time = timestamp + timedelta(minutes=30)
+        
+        cursor.execute(f"""
+        UPDATE plot_{plot_number}
+        SET 'cwsi_th1' = ?
+        WHERE TIMESTAMP BETWEEN ? AND ?
+        """, (row['cwsi_th1'], start_time.strftime('%Y-%m-%d %H:%M:%S'), end_time.strftime('%Y-%m-%d %H:%M:%S')))
+        
+        if cursor.rowcount > 0:
+            rows_updated += cursor.rowcount
+        else:
+            logger.warning(f"No matching row found for timestamp: {timestamp}")
+
+    conn.commit()
+    
+    logger.info(f"Successfully updated CWSI-TH1 for plot {plot_number}. Rows updated: {rows_updated}")
+    
+    # Check for any rows that weren't updated
+    cursor.execute(f"""
+    SELECT COUNT(*) FROM plot_{plot_number}
+    WHERE 'cwsi_th1' IS NULL
+    """)
+    unupdated_rows = cursor.fetchone()[0]
+    logger.info(f"Rows not updated: {unupdated_rows}")
+
+    return rows_updated
 
 def compute_cwsi(plot_number):
     start_time = time.time()
@@ -5042,10 +5175,42 @@ def compute_cwsi(plot_number):
     df['canopy_temp'] = df[irt_column]
     
     logger.info(f"Calculating CWSI for {len(df)} rows")
-    df['cwsi-th1'] = df.apply(lambda row: calculate_cwsi_th1(row, CROP_HEIGHT, LAI, LATITUDE, SURFACE_ALBEDO), axis=1)
-    df_cwsi = df[['TIMESTAMP', 'cwsi-th1', 'is_actual']].dropna()
+    df['cwsi_th1'] = df.apply(lambda row: calculate_cwsi_th1(row, CROP_HEIGHT, LAI, LATITUDE, SURFACE_ALBEDO), axis=1)
+    df_cwsi = df[['TIMESTAMP', 'cwsi_th1', 'WndAveSpd_3m', 'Solar_2m_Avg']].dropna()
     
-    update_cwsi(conn, plot_number, df_cwsi)
+    # Ensure TIMESTAMP format is consistent
+    df_cwsi['TIMESTAMP'] = df_cwsi['TIMESTAMP'].dt.tz_convert('UTC')
+    
+    update_cwsi_th1(conn, plot_number, df_cwsi)
+    
+    # Confirm if values were inserted into DB
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT COUNT(*) FROM plot_{plot_number} WHERE cwsi_th1 IS NOT NULL")
+    count = cursor.fetchone()[0]
+    logger.info(f"Number of rows with CWSI values in DB for plot {plot_number}: {count}")
+    
+    # Perform analytics
+    if not df_cwsi.empty:
+        max_cwsi = df_cwsi['cwsi_th1'].max()
+        min_cwsi = df_cwsi['cwsi_th1'].min()
+        avg_cwsi = df_cwsi['cwsi_th1'].mean()
+        
+        max_cwsi_row = df_cwsi.loc[df_cwsi['cwsi_th1'].idxmax()]
+        min_cwsi_row = df_cwsi.loc[df_cwsi['cwsi_th1'].idxmin()]
+        
+        analytics = {
+            'max_cwsi': max_cwsi,
+            'min_cwsi': min_cwsi,
+            'avg_cwsi': avg_cwsi,
+            'max_cwsi_windspeed': max_cwsi_row['WndAveSpd_3m'],
+            'max_cwsi_solar_rad': max_cwsi_row['Solar_2m_Avg'],
+            'min_cwsi_windspeed': min_cwsi_row['WndAveSpd_3m'],
+            'min_cwsi_solar_rad': min_cwsi_row['Solar_2m_Avg'],
+        }
+        
+        logger.info(f"Analytics for plot {plot_number}:")
+        for key, value in analytics.items():
+            logger.info(f"{key}: {value}")
     
     conn.close()
     
@@ -5053,16 +5218,158 @@ def compute_cwsi(plot_number):
     duration = end_time - start_time
     logger.info(f"CWSI computation completed for plot {plot_number}. Rows processed: {len(df_cwsi)}")
     logger.info(f"Total execution time: {duration:.2f} seconds")
-    return f"CWSI computation completed for plot {plot_number}. Rows processed: {len(df_cwsi)}. Execution time: {duration:.2f} seconds"
+    
+    # Plot the CWSI values
+    plot_cwsi(df_cwsi, plot_number)
+    
+    return analytics
+
+def update_cwsi_th1(conn, plot_number, df_cwsi):
+    table_name = f"LINEAR_CORN_trt1_plot_{plot_number}"
+    logger.info(f"Updating CWSI-TH1 for {table_name}")
+
+    cursor = conn.cursor()
+
+    # Check if the column exists, if not, create it
+    cursor.execute(f"PRAGMA table_info({table_name})")
+    columns = [column[1] for column in cursor.fetchall()]
+    if 'cwsi_th1' not in columns:
+        cursor.execute(f"ALTER TABLE {table_name} ADD COLUMN 'cwsi_th1' REAL")
+        conn.commit()
+        logger.info(f"Added 'cwsi_th1' column to {table_name} table")
+
+    rows_updated = 0
+    for _, row in df_cwsi.iterrows():
+        timestamp = row['TIMESTAMP'].tz_convert('UTC')
+        start_time = timestamp - timedelta(minutes=30)
+        end_time = timestamp + timedelta(minutes=30)
+        
+        query = f"""
+        UPDATE {table_name}
+        SET 'cwsi_th1' = ?
+        WHERE TIMESTAMP BETWEEN ? AND ?
+        """
+        logger.debug(f"Executing query: {query} with params: {row['cwsi_th1']}, {start_time}, {end_time}")
+        
+        cursor.execute(query, (row['cwsi_th1'], start_time.strftime('%Y-%m-%d %H:%M:%S'), end_time.strftime('%Y-%m-%d %H:%M:%S')))
+        
+        if cursor.rowcount > 0:
+            rows_updated += cursor.rowcount
+            # Immediately fetch and log the updated value
+            verify_query = f"""
+            SELECT TIMESTAMP, cwsi_th1 FROM {table_name}
+            WHERE TIMESTAMP BETWEEN ? AND ?
+            """
+            cursor.execute(verify_query, (start_time.strftime('%Y-%m-%d %H:%M:%S'), end_time.strftime('%Y-%m-%d %H:%M:%S')))
+            updated_data = cursor.fetchone()
+            if updated_data:
+                logger.info(f"Updated data: Timestamp={updated_data[0]}, CWSI-TH1={updated_data[1]}")
+            else:
+                logger.warning(f"No data found immediately after update for timestamp: {timestamp}")
+        else:
+            logger.warning(f"No matching row found for timestamp: {timestamp}")
+
+    conn.commit()
+    
+    logger.info(f"Successfully updated CWSI-TH1 for {table_name}. Rows updated: {rows_updated}")
+    
+    # Verify the update with a sample of data
+    cursor.execute(f"SELECT TIMESTAMP, cwsi_th1 FROM {table_name} WHERE cwsi_th1 IS NOT NULL LIMIT 5")
+    sample_data = cursor.fetchall()
+    logger.info(f"Sample of updated data: {sample_data}")
+
+    # Check for any rows that weren't updated
+    cursor.execute(f"""
+    SELECT COUNT(*) FROM {table_name}
+    WHERE 'cwsi_th1' IS NULL
+    """)
+    unupdated_rows = cursor.fetchone()[0]
+    logger.info(f"Rows not updated: {unupdated_rows}")
+
+    return rows_updated
+
+def update_cwsi(conn, plot_number, df_cwsi):
+    logger.info(f"Updating CWSI for plot {plot_number}")
+    
+    cursor = conn.cursor()
+    
+    # Print columns before changes
+    cursor.execute(f"PRAGMA table_info(`LINEAR_CORN_trt1_plot_{plot_number}`)")
+    columns_before = [column[1] for column in cursor.fetchall()]
+    logger.info(f"Columns before update: {columns_before}")
+    
+    # Check if the column exists, if not, create it
+    if 'cwsi_th1' not in columns_before:
+        cursor.execute(f"""
+        ALTER TABLE `LINEAR_CORN_trt1_plot_{plot_number}`
+        ADD COLUMN cwsi_th1 REAL
+        """)
+        logger.info(f"Added cwsi_th1 column to `LINEAR_CORN_trt1_plot_{plot_number}`")
+    
+    # Print columns after potential addition
+    cursor.execute(f"PRAGMA table_info(`LINEAR_CORN_trt1_plot_{plot_number}`)")
+    columns_after = [column[1] for column in cursor.fetchall()]
+    logger.info(f"Columns after potential addition: {columns_after}")
+    
+    # Reset all cwsi_th1 values to NULL
+    cursor.execute(f"""
+    UPDATE `LINEAR_CORN_trt1_plot_{plot_number}`
+    SET cwsi_th1 = NULL
+    """)
+    logger.info(f"Reset all cwsi_th1 values to NULL")
+    
+    # Then, update with new values
+    updated_rows = 0
+    for _, row in df_cwsi.iterrows():
+        cursor.execute(f"""
+        UPDATE `LINEAR_CORN_trt1_plot_{plot_number}`
+        SET cwsi_th1 = ?
+        WHERE TIMESTAMP = ?
+        """, (row['cwsi_th1'], row['TIMESTAMP']))
+        updated_rows += cursor.rowcount
+    
+    conn.commit()
+    
+    logger.info(f"Attempted to update {len(df_cwsi)} rows, actually updated {updated_rows} rows")
+    
+    # Confirm the update
+    cursor.execute(f"SELECT COUNT(*) FROM `LINEAR_CORN_trt1_plot_{plot_number}` WHERE cwsi_th1 IS NOT NULL")
+    count = cursor.fetchone()[0]
+    logger.info(f"Number of rows with CWSI values in DB for plot {plot_number}: {count}")
+    
+    # Print sample data
+    cursor.execute(f"""
+    SELECT TIMESTAMP, cwsi_th1 FROM `LINEAR_CORN_trt1_plot_{plot_number}`
+    WHERE cwsi_th1 IS NOT NULL
+    LIMIT 5
+    """)
+    sample_data = cursor.fetchall()
+    logger.info(f"Sample data after update: {sample_data}")
+    
+    # Debug: print a few rows from df_cwsi
+    logger.info(f"Sample data from df_cwsi:")
+    logger.info(df_cwsi.head().to_string())
 
 def main():
+    logger.info(f"Using database at path: {DB_PATH}")
     plot_numbers = ['5006', '5010', '5023']
+    all_analytics = {}
     for plot_number in plot_numbers:
         result = compute_cwsi(plot_number)
         print(result)
+        
+        # Store analytics for each plot
+        all_analytics[plot_number] = result
     
-    # Generate plots using the imported function
-    generate_plots(plot_numbers=plot_numbers, days=DAYS_BACK)
+    # Compute overall statistics
+    all_max_cwsi = max(analytics['max_cwsi'] for analytics in all_analytics.values())
+    all_min_cwsi = min(analytics['min_cwsi'] for analytics in all_analytics.values())
+    all_avg_cwsi = statistics.mean(analytics['avg_cwsi'] for analytics in all_analytics.values())
+    
+    logger.info("Overall CWSI Statistics:")
+    logger.info(f"Max CWSI across all plots: {all_max_cwsi}")
+    logger.info(f"Min CWSI across all plots: {all_min_cwsi}")
+    logger.info(f"Average CWSI across all plots: {all_avg_cwsi}")
 
 if __name__ == "__main__":
     main()
@@ -5254,7 +5561,6 @@ import logging
 import time
 import pyet
 from dotenv import load_dotenv
-from crop2cloud24.src.utils import generate_plots
 
 # Load environment variables from .env file
 load_dotenv()
@@ -5280,8 +5586,25 @@ def get_db_connection():
     return sqlite3.connect(DB_PATH)
 
 class ETCalculator:
-    def __init__(self, db_path):
+    def __init__(self, db_path, plot_numbers):
         self.db_path = db_path
+        self.plot_numbers = plot_numbers
+        self.plot_tables = [f"LINEAR_CORN_trt1_plot_{num}" for num in plot_numbers]
+
+    def reset_et_columns(self):
+        logger.info("Resetting ET columns to NULL for all plots")
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        for table in self.plot_tables:
+            logger.info(f"Resetting ET column in {table}")
+            cursor.execute(f"UPDATE `{table}` SET et = NULL")
+            rows_affected = cursor.rowcount
+            logger.info(f"Reset {rows_affected} rows in {table}")
+            conn.commit()
+
+        conn.close()
+        logger.info("ET columns reset completed")
 
     def get_weather_data(self):
         conn = get_db_connection()
@@ -5348,14 +5671,10 @@ class ETCalculator:
         logger.info("Updating ET values in plot tables")
         
         conn = get_db_connection()
-        plot_tables = ['plot_5006', 'plot_5010', 'plot_5023']
-        
         cursor = conn.cursor()
-        for table in plot_tables:
-            # Log current ET values
-            cursor.execute(f"SELECT MIN(et), MAX(et), AVG(et) FROM {table}")
-            min_et, max_et, avg_et = cursor.fetchone()
-            logger.info(f"Current ET values in {table}: Min: {min_et}, Max: {max_et}, Avg: {avg_et}")
+
+        for table in self.plot_tables:
+            logger.info(f"Processing table: {table}")
             
             # Update ET values
             rows_updated = 0
@@ -5363,30 +5682,51 @@ class ETCalculator:
                 et_timestamp = row['TIMESTAMP']
                 # Use a 1-hour window to match timestamps
                 cursor.execute(f"""
-                UPDATE {table}
+                UPDATE `{table}`
                 SET et = ?
                 WHERE TIMESTAMP BETWEEN ? AND ?
                 """, (row['et'], 
-                      (et_timestamp - timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S'),
-                      (et_timestamp + timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S')))
+                    (et_timestamp - timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S'),
+                    (et_timestamp + timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S')))
                 rows_updated += cursor.rowcount
+                
+                # Immediately verify the update
+                cursor.execute(f"""
+                SELECT TIMESTAMP, et FROM `{table}`
+                WHERE TIMESTAMP BETWEEN ? AND ?
+                """, ((et_timestamp - timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S'),
+                      (et_timestamp + timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S')))
+                updated_data = cursor.fetchone()
+                if updated_data:
+                    logger.info(f"Updated ET data in {table}: Timestamp={updated_data[0]}, ET={updated_data[1]}")
+                else:
+                    logger.warning(f"No ET data found immediately after update for timestamp: {et_timestamp}")
             
             conn.commit()
             logger.info(f"Updated {rows_updated} rows in {table}")
             
             # Log new ET values
-            cursor.execute(f"SELECT MIN(et), MAX(et), AVG(et) FROM {table}")
+            cursor.execute(f"SELECT MIN(et), MAX(et), AVG(et) FROM `{table}` WHERE et IS NOT NULL")
             min_et, max_et, avg_et = cursor.fetchone()
             logger.info(f"New ET values in {table}: Min: {min_et}, Max: {max_et}, Avg: {avg_et}")
-        
+            
+            # Sample of updated data
+            cursor.execute(f"SELECT TIMESTAMP, et FROM `{table}` WHERE et IS NOT NULL LIMIT 5")
+            sample_data = cursor.fetchall()
+            logger.info(f"Sample of updated ET data in {table}: {sample_data}")
+            
         conn.close()
         logger.info(f"Successfully updated ET values in all plot tables.")
 
-def compute_et():
+def compute_et(plot_numbers):
     start_time = time.time()
-    logger.info("Starting ET computation")
+    logger.info(f"Starting ET computation for plots: {plot_numbers}")
     
-    et_calculator = ETCalculator(DB_PATH)
+    et_calculator = ETCalculator(DB_PATH, plot_numbers)
+    
+    # Reset ET columns to NULL
+    et_calculator.reset_et_columns()
+    
     df = et_calculator.get_weather_data()
     
     if df.empty:
@@ -5411,10 +5751,11 @@ def compute_et():
     duration = end_time - start_time
     logger.info(f"ET computation completed. Rows processed: {len(df_et)}")
     logger.info(f"Total execution time: {duration:.2f} seconds")
-    return f"ET computation completed. Rows processed: {len(df_et)}. Execution time: {duration:.2f} seconds"
+    return f"ET computation completed for plots {plot_numbers}. Rows processed: {len(df_et)}. Execution time: {duration:.2f} seconds"
 
 def main():
-    result = compute_et()
+    plot_numbers = [5001, 5003, 5012, 5020, 5006, 5001, 5018, 5025, 5007, 5009, 5027]
+    result = compute_et(plot_numbers)
     print(result)
 
 if __name__ == "__main__":
@@ -5434,8 +5775,7 @@ if __name__ == "__main__":
         <content>
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
-
+import json
 import sqlite3
 import pandas as pd
 import numpy as np
@@ -5443,8 +5783,8 @@ from datetime import datetime, timedelta
 import pytz
 import logging
 import time
+import traceback
 from dotenv import load_dotenv
-from crop2cloud24.src.utils import generate_plots
 
 # Load environment variables from .env file
 load_dotenv()
@@ -5458,7 +5798,7 @@ WIND_HEIGHT = 3  # meters
 
 class CustomFormatter(logging.Formatter):
     def format(self, record):
-        return f"{datetime.now(pytz.timezone('America/Chicago')).strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} CST - {record.levelname} - {record.message}"
+        return f"{datetime.now(pytz.timezone('America/Chicago')).strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} CST - {record.levelname} - {record.getMessage()}"
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -5472,6 +5812,14 @@ class DataManager:
 
     def get_db_connection(self):
         return sqlite3.connect(self.db_path)
+
+    def table_exists(self, table_name):
+        conn = self.get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table_name}'")
+        result = cursor.fetchone()
+        conn.close()
+        return result is not None
 
     def load_data(self, table_name, columns=None, days_back=None):
         conn = self.get_db_connection()
@@ -5520,36 +5868,21 @@ class DataManager:
         conn.commit()
         conn.close()
 
+    def print_db_schema(self):
+        conn = self.get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+        tables = cursor.fetchall()
+        logger.info(f"Database contains {len(tables)} tables.")
+        logger.info(f"Tables: {', '.join([table[0] for table in tables])}")
+        conn.close()
+
 class SWSICalculator:
-    """
-    This class calculates the Soil Water Stress Index (SWSI) for agricultural plots.
-
-    Data Sources:
-    1. Soil properties: Obtained from Web Soil Survey, specific to the experimental site.
-       Includes field capacity and permanent wilting point for different soil types.
-    2. Plot data: Retrieved from a SQLite database containing time series of soil moisture measurements.
-    3. Management Allowed Depletion (MAD): Set to 0.45 (45%) based on the recommendation by Panda et al. (2004) 
-       for maize grown in sandy loam soils in sub-tropical regions.
-
-    Calculations:
-    1. Volumetric Water Content (VWC): Measured directly by soil moisture sensors at different depths.
-    2. Weighted averages: Calculated for field capacity (fc) and permanent wilting point (pwp) based on soil composition.
-    3. Available Water Capacity (AWC): Difference between fc and pwp.
-    4. Threshold VWC (VWCt): Calculated as fc - MAD * AWC.
-    5. SWSI: Calculated as (VWCt - avg_vwc) / (VWCt - pwp) when avg_vwc < VWCt, otherwise 0.
-
-    The SWSI calculation methodology is based on the paper:
-    Panda, R.K., Behera, S.K., Kashyap, P.S., 2004. Effective management of irrigation water for maize under 
-    stressed conditions. Agricultural Water Management, 66(3), 181-203.
-    https://doi.org/10.1016/j.agwat.2003.12.001
-
-    The paper recommends scheduling irrigation at 45% MAD of available soil water during non-critical growth 
-    stages for optimal yield, water use efficiency, and net return for maize in sandy loam soils in sub-tropical regions.
-    """
-
-    def __init__(self, db_path):
+    def __init__(self, db_path, crop_type, plot_mapping):
         self.data_manager = DataManager(db_path)
-        self.logger = logging.getLogger(__name__)
+        self.crop_type = crop_type
+        self.plot_mapping = plot_mapping
+        self.plot_tables = self.get_plot_tables()
         
         # Soil data from Web Soil Survey (WSS)
         self.soil_data = {
@@ -5558,36 +5891,44 @@ class SWSICalculator:
             '8869': {'fc': 0.291, 'pwp': 0.143}
         }
         
-        # Plot-specific soil compositions
-        self.plot_soil_composition = {
-            'plot_5006': {'8816': 1.0},
-            'plot_5023': {'8816': 0.1, '8815': 0.9},
-            'plot_5010': {'8816': 1.0}
-        }
+        # Calculate average fc and pwp
+        self.avg_fc = np.mean([data['fc'] for data in self.soil_data.values()])
+        self.avg_pwp = np.mean([data['pwp'] for data in self.soil_data.values()])
         
         # Management Allowed Depletion (MAD)
         self.MAD = 0.45
         
         # TDR columns for each plot
         self.tdr_columns = {
-            'plot_5006': ['TDR5006B10624', 'TDR5006B11824', 'TDR5006B13024'],
-            'plot_5010': ['TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024'],
-            'plot_5023': ['TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024']
+            'LINEAR_CORN_trt1_plot_5006': ['TDR5006B10624', 'TDR5006B11824', 'TDR5006B13024'],
+            'LINEAR_CORN_trt1_plot_5010': ['TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024'],
+            'LINEAR_CORN_trt1_plot_5023': ['TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024'],
+            'LINEAR_CORN_trt2_plot_5003': ['TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024'],
+            'LINEAR_CORN_trt2_plot_5012': ['TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024'],
+            'LINEAR_CORN_trt2_plot_5026': ['TDR5026A20624', 'TDR5026A21824'],  # Note: Only two TDR columns available
+            'LINEAR_CORN_trt3_plot_5001': [],  # No TDR columns available
+            'LINEAR_CORN_trt3_plot_5018': [],  # No TDR columns available
+            'LINEAR_CORN_trt3_plot_5020': [],  # No TDR columns available
+            'LINEAR_CORN_trt4_plot_5007': ['TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024'],
+            'LINEAR_CORN_trt4_plot_5009': ['TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024'],
+            'LINEAR_CORN_trt4_plot_5027': ['TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
         }
 
-    def calculate_plot_soil_properties(self, plot_number):
-        """
-        Calculate soil properties for a specific plot based on its soil composition.
+    def get_plot_tables(self):
+        plot_tables = []
+        for treatment, plots in self.plot_mapping[self.crop_type].items():
+            trt_number = treatment[3]  # Assuming treatment is 'trt1', 'trt2', etc.
+            for plot in plots:
+                table_name = f"LINEAR_CORN_{treatment}_plot_{plot}"
+                plot_tables.append(table_name)
+        return plot_tables
 
-        Args:
-            plot_number (str): The plot number to calculate properties for.
-
-        Returns:
-            tuple: (field capacity, permanent wilting point, available water capacity, volumetric water content threshold)
+    def calculate_soil_properties(self):
         """
-        composition = self.plot_soil_composition[plot_number]
-        fc = sum(self.soil_data[soil_type]['fc'] * ratio for soil_type, ratio in composition.items())
-        pwp = sum(self.soil_data[soil_type]['pwp'] * ratio for soil_type, ratio in composition.items())
+        Calculate soil properties using average fc and pwp values.
+        """
+        fc = self.avg_fc
+        pwp = self.avg_pwp
         awc = fc - pwp
         vwct = fc - self.MAD * awc
         return fc, pwp, awc, vwct
@@ -5595,14 +5936,12 @@ class SWSICalculator:
     def get_plot_data(self, plot_number):
         """
         Retrieve and preprocess data for a specific plot.
-
-        Args:
-            plot_number (str): The plot number to retrieve data for.
-
-        Returns:
-            pandas.DataFrame: Preprocessed data for the specified plot.
         """
         columns = ['TIMESTAMP'] + self.tdr_columns[plot_number]
+        if not columns:
+            logger.warning(f"No TDR columns available for {plot_number}. Skipping.")
+            return pd.DataFrame()  # Return an empty DataFrame if no TDR columns
+
         df = self.data_manager.load_data(plot_number, columns=columns)
         
         for col in self.tdr_columns[plot_number]:
@@ -5610,63 +5949,52 @@ class SWSICalculator:
         
         df = df.dropna(subset=self.tdr_columns[plot_number], how='all')
         
-        self.logger.info(f"{plot_number}: Retrieved {len(df)} rows. Date range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
+        logger.info(f"{plot_number}: Retrieved {len(df)} rows. Date range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
         
         return df
 
-    def calculate_swsi(self, vwc_values, plot_number):
+    def calculate_swsi(self, vwc_values):
         """
         Calculate SWSI for a set of VWC values.
-
-        Args:
-            vwc_values (list): List of volumetric water content values.
-            plot_number (str): The plot number for which SWSI is being calculated.
-
-        Returns:
-            tuple: (SWSI value, average VWC, error message if any)
         """
         valid_vwc = [vwc for vwc in vwc_values if pd.notna(vwc)]
         
         if len(valid_vwc) < 3:
-            return None, None, f"Insufficient valid VWC values: {len(valid_vwc)}"
+            return None, None, f"Insufficient valid VWC values: {len(valid_vwc)} out of {len(vwc_values)}"
         
         avg_vwc = np.mean(valid_vwc)
-        fc, pwp, awc, vwct = self.calculate_plot_soil_properties(plot_number)
+        fc, pwp, awc, vwct = self.calculate_soil_properties()
         
         if avg_vwc < vwct:
             swsi = (vwct - avg_vwc) / (vwct - pwp)
             return swsi, avg_vwc, None
         else:
-            return 0, avg_vwc, "VWC above threshold"
+            return 0, avg_vwc, f"VWC above threshold: {avg_vwc:.4f} > {vwct:.4f}"
 
     def compute_swsi_for_plot(self, plot_number):
         """
         Compute SWSI for all timestamps of a specific plot.
-
-        Args:
-            plot_number (str): The plot number to compute SWSI for.
-
-        Returns:
-            pandas.DataFrame: DataFrame containing TIMESTAMP and calculated SWSI values.
         """
+        logger.info(f"Starting computation for {plot_number}")
         df = self.get_plot_data(plot_number)
         if df.empty:
-            self.logger.warning(f"No data available for {plot_number}")
+            logger.warning(f"No data available for {plot_number}")
             return pd.DataFrame()
 
+        logger.info(f"Retrieved {len(df)} rows for {plot_number}. Date range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
+
         swsi_values = []
-        all_swsi = []
         error_counts = {"Insufficient VWC": 0, "VWC above threshold": 0, "Other": 0}
         
-        fc, pwp, awc, vwct = self.calculate_plot_soil_properties(plot_number)
-        self.logger.info(f"{plot_number} - VWCt: {vwct:.4f}, AWC: {awc:.4f}, FC: {fc:.4f}, PWP: {pwp:.4f}")
+        fc, pwp, awc, vwct = self.calculate_soil_properties()
+        logger.info(f"{plot_number} - Soil properties: VWCt: {vwct:.4f}, AWC: {awc:.4f}, FC: {fc:.4f}, PWP: {pwp:.4f}")
         
         for _, row in df.iterrows():
             vwc_values = [row[col] for col in self.tdr_columns[plot_number]]
-            swsi, avg_vwc, error_reason = self.calculate_swsi(vwc_values, plot_number)
+            swsi, avg_vwc, error_reason = self.calculate_swsi(vwc_values)
             
             if swsi is not None:
-                all_swsi.append(swsi)
+                swsi_values.append({'TIMESTAMP': row['TIMESTAMP'], 'swsi': swsi})
             elif error_reason:
                 if "Insufficient" in error_reason:
                     error_counts["Insufficient VWC"] += 1
@@ -5674,73 +6002,103 @@ class SWSICalculator:
                     error_counts["VWC above threshold"] += 1
                 else:
                     error_counts["Other"] += 1
-            
-            swsi_values.append({
-                'TIMESTAMP': row['TIMESTAMP'],
-                'swsi': swsi if swsi is not None else 0  # Replace None with 0
-            })
-        
+
         swsi_df = pd.DataFrame(swsi_values)
         
-        self.log_swsi_summary(plot_number, df, all_swsi, error_counts)
+        self.log_swsi_summary(plot_number, df, swsi_df, error_counts)
         
         return swsi_df
 
-    def log_swsi_summary(self, plot_number, df, all_swsi, error_counts):
+    def log_swsi_summary(self, plot_number, input_df, swsi_df, error_counts):
         """
         Log summary statistics for SWSI calculations.
-
-        Args:
-            plot_number (str): The plot number being processed.
-            df (pandas.DataFrame): The original data frame for the plot.
-            all_swsi (list): List of all valid SWSI values calculated.
-            error_counts (dict): Dictionary containing counts of different error types.
         """
-        self.logger.info(f"SWSI Summary for {plot_number}:")
-        self.logger.info(f"  Total timestamps processed: {len(df)}")
-        self.logger.info(f"  SWSI calculated for: {len(all_swsi)} timestamps")
-        self.logger.info(f"  Failed calculations:")
+        logger.info(f"SWSI Summary for {plot_number}:")
+        logger.info(f"  Total timestamps processed: {len(input_df)}")
+        logger.info(f"  SWSI calculated for: {len(swsi_df)} timestamps")
+        logger.info(f"  Failed calculations:")
         for reason, count in error_counts.items():
-            self.logger.info(f"    {reason}: {count}")
+            logger.info(f"    {reason}: {count}")
         
-        if all_swsi:
-            self.logger.info(f"  SWSI statistics: Min: {min(all_swsi):.4f}, Max: {max(all_swsi):.4f}, Avg: {np.mean(all_swsi):.4f}, Median: {np.median(all_swsi):.4f}")
+        if not swsi_df.empty:
+            logger.info(f"  SWSI statistics: Min: {swsi_df['swsi'].min():.4f}, Max: {swsi_df['swsi'].max():.4f}, "
+                        f"Avg: {swsi_df['swsi'].mean():.4f}, Median: {swsi_df['swsi'].median():.4f}")
         else:
-            self.logger.warning(f"  No valid SWSI values calculated for {plot_number}")
+            logger.warning(f"  No valid SWSI values calculated for {plot_number}")
+
+        logger.info(f"  Input data summary:")
+        for col in self.tdr_columns[plot_number]:
+            logger.info(f"    {col}: Min: {input_df[col].min():.4f}, Max: {input_df[col].max():.4f}, "
+                        f"Avg: {input_df[col].mean():.4f}, Null count: {input_df[col].isnull().sum()}")
 
     def update_swsi_in_database(self, plot_number, swsi_df):
         """
         Update the calculated SWSI values in the database for a specific plot.
-
-        Args:
-            plot_number (str): The plot number to update SWSI values for.
-            swsi_df (pandas.DataFrame): DataFrame containing TIMESTAMP and SWSI values.
         """
-        self.logger.info(f"Updating SWSI for {plot_number}")
-        self.data_manager.update_database(plot_number, swsi_df, 'swsi')
+        logger.info(f"Updating SWSI for {plot_number}")
+        
+        conn = self.data_manager.get_db_connection()
+        cursor = conn.cursor()
+
+        for _, row in swsi_df.iterrows():
+            swsi_timestamp = row['TIMESTAMP']
+            cursor.execute(f"""
+            UPDATE `{plot_number}`
+            SET swsi = ?
+            WHERE TIMESTAMP BETWEEN ? AND ?
+            """, (row['swsi'], 
+                  (swsi_timestamp - timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S'),
+                  (swsi_timestamp + timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S')))
+        
+        conn.commit()
+        conn.close()
         
         updated_data = self.data_manager.load_data(plot_number, columns=['TIMESTAMP', 'swsi'])
         valid_swsi = updated_data['swsi'].dropna()
         if not valid_swsi.empty:
-            self.logger.info(f"New SWSI values in {plot_number}: Min: {valid_swsi.min():.4f}, Max: {valid_swsi.max():.4f}, Avg: {valid_swsi.mean():.4f}")
+            logger.info(f"New SWSI values in {plot_number}: Min: {valid_swsi.min():.4f}, Max: {valid_swsi.max():.4f}, Avg: {valid_swsi.mean():.4f}")
         else:
-            self.logger.warning(f"No valid SWSI values found in {plot_number} after update")
+            logger.warning(f"No valid SWSI values found in {plot_number} after update")
 
     def run(self):
         """
         Run the SWSI calculation process for all plots.
         """
-        for plot in self.plot_soil_composition.keys():
+        for plot in self.plot_tables:
+            if not self.data_manager.table_exists(plot):
+                logger.error(f"Table {plot} does not exist in the database. Skipping.")
+                continue
             try:
+                logger.info(f"Processing plot: {plot}")
+                if plot not in self.tdr_columns or not self.tdr_columns[plot]:
+                    logger.warning(f"No TDR columns defined for {plot}. Skipping.")
+                    continue
                 swsi_df = self.compute_swsi_for_plot(plot)
-                if not swsi_df.empty:
+                if swsi_df.empty:
+                    logger.warning(f"No SWSI values calculated for {plot}. Check input data.")
+                else:
                     self.update_swsi_in_database(plot, swsi_df)
+                    logger.info(f"Successfully updated SWSI values for {plot}")
             except Exception as e:
-                self.logger.error(f"Error processing {plot}: {str(e)}")
+                logger.error(f"Error processing {plot}: {str(e)}", exc_info=True)
 
 def main():
+    plot_mapping = {
+        "corn": {
+            "trt1": [5006, 5010, 5023],
+            "trt2": [5003, 5012, 5026],
+            "trt3": [5001, 5018, 5020],
+            "trt4": [5007, 5009, 5027]
+        }
+    }
+    crop_type = "corn"
     logger.info(f"Using database: {DB_PATH}")
-    swsi_calculator = SWSICalculator(DB_PATH)
+    
+    # Print the database schema summary
+    data_manager = DataManager(DB_PATH)
+    data_manager.print_db_schema()
+    
+    swsi_calculator = SWSICalculator(DB_PATH, crop_type, plot_mapping)
     swsi_calculator.run()
 
 if __name__ == "__main__":
@@ -5958,7 +6316,7 @@ from google.cloud import bigquery
 from google.oauth2 import service_account
 from google.api_core import exceptions
 from dotenv import load_dotenv
-from .logger import get_logger
+from logger import get_logger
 import pandas as pd
 from datetime import datetime
 import pytz
@@ -6618,201 +6976,6 @@ def get_logger(name=None, level=logging.INFO):
         </content>
     </file>
     <file>
-        <name>crop2cloud24.src.utils.mpc_data_prep.py</name>
-        <path>crop2cloud24.src.utils.mpc_data_prep.py</path>
-        <content>
-# src/utils/mpc_data_prep.py
-
-import os
-import requests
-import sqlite3
-import pandas as pd
-import numpy as np
-from google.cloud import bigquery
-from dotenv import load_dotenv
-from datetime import datetime, timedelta
-import pytz
-import logging
-
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
-
-# Load environment variables
-load_dotenv()
-
-# BigQuery client
-client = bigquery.Client()
-
-# SQLite database
-DB_NAME = 'mpc_data.db'
-
-# Specify the number of historical days to retrieve
-HISTORICAL_DAYS = 30
-
-# Cloud function trigger URLs
-TRIGGER_URLS = [
-    'https://us-central1-crop2cloud24.cloudfunctions.net/compute-cwsi',
-    'https://us-central1-crop2cloud24.cloudfunctions.net/compute-swsi',
-    'https://us-central1-crop2cloud24.cloudfunctions.net/current-openweathermap',
-    'https://us-central1-crop2cloud24.cloudfunctions.net/weather-updater',
-    'https://us-central1-crop2cloud24.cloudfunctions.net/forecast_four_day_rolling',
-]
-
-def trigger_cloud_functions():
-    for url in TRIGGER_URLS:
-        try:
-            response = requests.get(url)
-            if response.status_code == 200:
-                logger.info(f"Successfully triggered: {url}")
-            else:
-                logger.warning(f"Failed to trigger: {url}. Status code: {response.status_code}")
-        except requests.RequestException as e:
-            logger.error(f"Error triggering {url}: {e}")
-
-def get_data_with_history(table_name):
-    end_time = datetime.now(pytz.UTC)
-    start_time = end_time - timedelta(days=HISTORICAL_DAYS)
-    
-    query = f"""
-    SELECT *
-    FROM `crop2cloud24.weather.{table_name}`
-    WHERE TIMESTAMP BETWEEN '{start_time}' AND '{end_time}'
-    ORDER BY TIMESTAMP
-    """
-    
-    logger.info(f"Executing query for {table_name}:\n{query}")
-    df = client.query(query).to_dataframe()
-    logger.info(f"Raw data retrieved for {table_name}. Shape: {df.shape}")
-    
-    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
-    df = df.dropna(subset=['TIMESTAMP'])
-    
-    logger.info(f"{table_name} data range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
-    logger.info(f"{table_name} data shape: {df.shape}")
-    logger.info(f"{table_name} columns: {df.columns.tolist()}")
-    logger.info(f"Sample of {table_name} data:\n{df.head().to_string()}")
-    
-    return df
-
-def resample_hourly(df, is_forecast=False):
-    logger.info(f"Resampling data to hourly intervals. Initial shape: {df.shape}")
-    df = df.set_index('TIMESTAMP')
-    
-    if is_forecast:
-        # For forecast data, interpolate to hourly frequency
-        df_resampled = df.resample('H').interpolate(method='time')
-        logger.info("Interpolated forecast data to hourly frequency")
-    else:
-        # For non-forecast data, use the previous resampling method
-        columns_to_average = [col for col in df.columns if col != 'Rain_1m_Tot']
-        resampling_dict = {col: 'mean' for col in columns_to_average}
-        if 'Rain_1m_Tot' in df.columns:
-            resampling_dict['Rain_1m_Tot'] = 'sum'
-        df_resampled = df.resample('H').agg(resampling_dict)
-    
-    # Reset index to make TIMESTAMP a column again
-    df_resampled = df_resampled.reset_index()
-    
-    logger.info(f"Resampled data shape: {df_resampled.shape}")
-    logger.info(f"Sample of resampled data:\n{df_resampled.head().to_string()}")
-    
-    return df_resampled
-
-def get_treatment_1_plots():
-    query = """
-    SELECT table_name
-    FROM `crop2cloud24.LINEAR_CORN_trt1.INFORMATION_SCHEMA.TABLES`
-    WHERE table_name LIKE 'plot_%'
-    """
-    logger.info(f"Executing query to get treatment 1 plots:\n{query}")
-    tables = [row.table_name for row in client.query(query).result()]
-    plot_numbers = [int(table_name.split('_')[1]) for table_name in tables]
-    logger.info(f"Found plot numbers: {plot_numbers}")
-    return sorted(plot_numbers)
-
-def get_plot_data(plot_number):
-    end_time = datetime.now(pytz.UTC)
-    start_time = end_time - timedelta(days=HISTORICAL_DAYS)
-    
-    query = f"""
-    SELECT *
-    FROM `crop2cloud24.LINEAR_CORN_trt1.plot_{plot_number}`
-    WHERE TIMESTAMP BETWEEN '{start_time}' AND '{end_time}'
-    ORDER BY TIMESTAMP
-    """
-    
-    logger.info(f"Executing query for plot {plot_number}:\n{query}")
-    df = client.query(query).to_dataframe()
-    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
-    
-    logger.info(f"Plot {plot_number} data range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
-    logger.info(f"Plot {plot_number} data shape: {df.shape}")
-    logger.info(f"Plot {plot_number} columns: {df.columns.tolist()}")
-    logger.info(f"Sample of plot {plot_number} data:\n{df.head().to_string()}")
-    
-    return df
-
-def create_sqlite_db():
-    conn = sqlite3.connect(DB_NAME)
-    conn.close()
-    logger.info(f"Created SQLite database: {DB_NAME}")
-
-def create_plot_table(plot_number, df):
-    conn = sqlite3.connect(DB_NAME)
-    table_name = f"plot_{plot_number}"
-    df.to_sql(table_name, conn, if_exists='replace', index=False)
-    conn.close()
-    logger.info(f"Created table: {table_name}")
-    logger.info(f"Sample of data in {table_name}:\n{df.head().to_string()}")
-
-
-def main():
-    logger.info("Starting MPC data preparation")
-    logger.info("Triggering cloud functions...")
-    trigger_cloud_functions()
-
-    logger.info("Retrieving and processing weather data...")
-    try:
-        mesonet_data = get_data_with_history('current-weather-mesonet')
-        rolling_forecast = get_data_with_history('forecast_four_day_rolling')
-
-        logger.info("Resampling data to hourly intervals...")
-        mesonet_hourly = resample_hourly(mesonet_data)
-        rolling_forecast_hourly = resample_hourly(rolling_forecast, is_forecast=True)
-
-        logger.info("Creating SQLite database...")
-        create_sqlite_db()
-
-        logger.info("Retrieving treatment 1 plots...")
-        plots = get_treatment_1_plots()
-        logger.info(f"Found {len(plots)} plots: {plots}")
-
-        for plot in plots:
-            logger.info(f"Processing plot {plot}...")
-            try:
-                plot_data = get_plot_data(plot)
-                plot_data_hourly = resample_hourly(plot_data)
-                create_plot_table(plot, plot_data_hourly)
-            except Exception as e:
-                logger.error(f"Error processing plot {plot}: {str(e)}")
-                continue
-
-        logger.info("Adding weather and forecast data to plot tables...")
-        add_weather_and_forecast_data_to_tables(mesonet_hourly, rolling_forecast_hourly)
-
-        logger.info("Data preparation complete.")
-    except Exception as e:
-        logger.error(f"An error occurred: {str(e)}")
-        import traceback
-        logger.error(traceback.format_exc())
-        raise
-
-if __name__ == "__main__":
-    main()
-        </content>
-    </file>
-    <file>
         <name>crop2cloud24.src.utils.plot_data.py</name>
         <path>crop2cloud24.src.utils.plot_data.py</path>
         <content>
@@ -6850,249 +7013,247 @@ COLORS = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"]
 # Define CST timezone
 CST = pytz.timezone('America/Chicago')
 
-def get_plot_tables(conn):
-    """Get all plot tables from the database."""
-    cursor = conn.cursor()
-    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name LIKE 'plot_%'")
-    return [row[0] for row in cursor.fetchall()]
+class PlotGenerator:
+    def __init__(self, db_path, plot_numbers):
+        self.db_path = db_path
+        self.plot_numbers = plot_numbers
+        self.conn = sqlite3.connect(self.db_path)
 
-def clean_data(conn, table_name):
-    """Clean and prepare data for a specific plot."""
-    query = f"""
-    SELECT *
-    FROM {table_name}
-    WHERE TIMESTAMP IS NOT NULL
-    ORDER BY TIMESTAMP
-    """
-    
-    df = pd.read_sql_query(query, conn, parse_dates=['TIMESTAMP'])
-    
-    # Convert TIMESTAMP to datetime, interpret as UTC, then convert to CST
-    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True).dt.tz_convert(CST)
-    
-    df = df.dropna(subset=['TIMESTAMP'])
-    
-    # Replace negative values with NaN for numeric columns
-    numeric_columns = df.select_dtypes(include=['float64']).columns
-    for col in numeric_columns:
-        df[col] = df[col].where(df[col] >= 0)
-    
-    # Replace VWC values of 0 with NaN
-    tdr_columns = [col for col in df.columns if col.startswith('TDR') and not col.endswith('_pred')]
-    df[tdr_columns] = df[tdr_columns].replace(0, np.nan)
-    
-    # Filter CWSI data to include only measurements between 12 PM and 5 PM CST
-    cwsi_columns = ['cwsi-eb2', 'cwsi-th1', 'swsi']
-    df_cwsi = df[df['TIMESTAMP'].dt.hour.between(12, 16)]  # 12 PM to 4:59 PM
-    
-    logger.info(f"Data cleaned for {table_name}. Shape: {df.shape}")
-    logger.info(f"Date range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()} (CST)")
-    logger.info(f"CWSI data filtered. Shape: {df_cwsi.shape}")
-    
-    return df, df_cwsi
+    def get_plot_tables(self):
+        return [f"LINEAR_CORN_trt1_plot_{num}" for num in self.plot_numbers]
 
-def log_data_summary(df, plot_number):
-    """Log summary statistics for the dataframe."""
-    logger.info(f"Data summary for plot {plot_number}:")
-    logger.info(f"Date range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
-    
-    for column in df.columns:
-        if column != 'TIMESTAMP':
-            non_null_data = df[column].dropna()
-            if not non_null_data.empty:
-                logger.info(f"{column}:")
-                logger.info(f"  Range: {non_null_data.min():.2f} to {non_null_data.max():.2f}")
-                logger.info(f"  Mean: {non_null_data.mean():.2f}")
-                logger.info(f"  Median: {non_null_data.median():.2f}")
-                logger.info(f"  Non-null count: {non_null_data.count()} out of {len(df)}")
+    def clean_data(self, table_name):
+        query = f"""
+        SELECT *
+        FROM {table_name}
+        WHERE TIMESTAMP IS NOT NULL
+        ORDER BY TIMESTAMP
+        """
+        
+        df = pd.read_sql_query(query, self.conn, parse_dates=['TIMESTAMP'])
+        df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True).dt.tz_convert(CST)
+        df = df.dropna(subset=['TIMESTAMP'])
+        
+        numeric_columns = df.select_dtypes(include=['float64']).columns
+        for col in numeric_columns:
+            df[col] = df[col].where(df[col] >= 0)
+        
+        tdr_columns = [col for col in df.columns if col.startswith('TDR') and not col.endswith('_pred')]
+        df[tdr_columns] = df[tdr_columns].replace(0, np.nan)
+        
+        df_cwsi = df[df['TIMESTAMP'].dt.hour.between(12, 16)]
+        
+        logger.info(f"Data cleaned for {table_name}. Shape: {df.shape}")
+        logger.info(f"Date range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()} (CST)")
+        logger.info(f"CWSI data filtered. Shape: {df_cwsi.shape}")
+        
+        return df, df_cwsi
+
+    def log_data_summary(self, df, plot_number):
+        logger.info(f"Data summary for plot {plot_number}:")
+        logger.info(f"Date range: {df['TIMESTAMP'].min()} to {df['TIMESTAMP'].max()}")
+        
+        plot_columns = ['TIMESTAMP', 'Ta_2m_Avg', 'Rain_1m_Tot', 'et', 'RH_2m_Avg']
+        plot_columns += [col for col in df.columns if col.startswith('TDR') and not col.endswith('_pred')]
+        plot_columns += ['IRT', 'cwsi_th1']
+
+        for column in plot_columns:
+            if column in df.columns:
+                non_null_data = df[column].dropna()
+                if not non_null_data.empty:
+                    logger.info(f"{column}:")
+                    logger.info(f"  Range: {non_null_data.min():.2f} to {non_null_data.max():.2f}")
+                    logger.info(f"  Mean: {non_null_data.mean():.2f}")
+                    logger.info(f"  Median: {non_null_data.median():.2f}")
+                    logger.info(f"  Non-null count: {non_null_data.count()} out of {len(df)}")
+                else:
+                    logger.warning(f"{column}: All values are null")
             else:
-                logger.warning(f"{column}: All values are null")
+                logger.warning(f"{column} column not found in dataframe")
 
-def create_static_plot(df, df_cwsi, plot_number):
-    """Create a static plot using matplotlib."""
-    fig, axs = plt.subplots(3, 2, figsize=(20, 30), sharex=True)
-    fig.suptitle(f'Data for Plot {plot_number}', fontsize=16)
+    def create_static_plot(self, df, df_cwsi, plot_number):
+        fig, axs = plt.subplots(3, 2, figsize=(20, 30), sharex=True)
+        fig.suptitle(f'Data for Plot {plot_number}', fontsize=16)
 
-    # VWC Plot
-    tdr_columns = [col for col in df.columns if col.startswith('TDR') and not col.endswith('_pred')]
-    for i, col in enumerate(tdr_columns):
-        axs[0, 0].plot(df['TIMESTAMP'], df[col], label=col, color=COLORS[i % len(COLORS)])
-    axs[0, 0].set_ylabel('VWC (%)')
-    axs[0, 0].legend()
+        self._plot_vwc(axs[0, 0], df)
+        self._plot_temperature(axs[1, 0], df)
+        self._plot_precipitation(axs[2, 0], df)
+        self._plot_cwsi(axs[0, 1], df_cwsi)
+        self._plot_et(axs[1, 1], df)
+        self._plot_humidity(axs[2, 1], df)
 
-    # Canopy Temperature and Air Temperature Plot
-    irt_column = next((col for col in df.columns if col.startswith('IRT') and not col.endswith('_pred')), None)
-    if irt_column:
-        axs[1, 0].plot(df['TIMESTAMP'], df[irt_column], label='Canopy Temp', color=COLORS[0])
-        logger.info(f"Plotting canopy temperature from column: {irt_column}")
-    else:
-        logger.warning("No IRT column found for canopy temperature")
-    if 'Ta_2m_Avg' in df.columns:
-        axs[1, 0].plot(df['TIMESTAMP'], df['Ta_2m_Avg'], label='Air Temp', color=COLORS[1])
-        logger.info("Plotting air temperature from Ta_2m_Avg column")
-    else:
-        logger.warning("Ta_2m_Avg column not found in dataframe")
-    axs[1, 0].set_ylabel('Temperature (°C)')
-    axs[1, 0].legend()
+        for ax in axs.flat:
+            ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d %H:%M', tz=CST))
+            plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right')
 
-    # Precipitation Plot
-    if 'Rain_1m_Tot' in df.columns:
-        axs[2, 0].bar(df['TIMESTAMP'], df['Rain_1m_Tot'], label='Precipitation', color=COLORS[2])
-        axs[2, 0].set_ylabel('Precipitation (mm)')
-        axs[2, 0].legend()
-        logger.info("Plotting precipitation data")
-    else:
-        logger.warning("Rain_1m_Tot column not found in dataframe")
+        plt.tight_layout()
+        plt.savefig(os.path.join(PLOTS_DIR, f'{plot_number}_static.png'))
+        plt.close()
+        logger.info(f"Static plot saved for plot {plot_number}")
 
-    # CWSI-EB2, CWSI-TH1, and SWSI Plot
-    if 'cwsi-eb2' in df_cwsi.columns and 'cwsi-th1' in df_cwsi.columns and 'swsi' in df_cwsi.columns:
-        axs[0, 1].plot(df_cwsi['TIMESTAMP'], df_cwsi['cwsi-eb2'], label='CWSI-EB2', color=COLORS[2])
-        axs[0, 1].plot(df_cwsi['TIMESTAMP'], df_cwsi['cwsi-th1'], label='CWSI-TH1', color=COLORS[3])
-        axs[0, 1].plot(df_cwsi['TIMESTAMP'], df_cwsi['swsi'], label='SWSI', color=COLORS[4])
-        axs[0, 1].set_ylabel('Index')
-        axs[0, 1].legend()
-        logger.info("Plotting CWSI-EB2, CWSI-TH1, and SWSI data (12 PM - 5 PM CST)")
-    else:
-        logger.warning("CWSI-EB2, CWSI-TH1, or SWSI column not found in dataframe")
+    def create_interactive_plot(self, df, df_cwsi, plot_number):
+        fig = make_subplots(rows=3, cols=2, shared_xaxes=True, shared_yaxes=False)
 
-    # ET Plot
-    if 'et' in df.columns:
-        axs[1, 1].plot(df['TIMESTAMP'], df['et'], label='ET', color=COLORS[4])
-        axs[1, 1].set_ylabel('ET (mm)')
-        axs[1, 1].legend()
-        logger.info("Plotting ET data")
-    else:
-        logger.warning("ET column not found in dataframe")
+        self._add_vwc_trace(fig, df, row=1, col=1)
+        self._add_temperature_trace(fig, df, row=2, col=1)
+        self._add_precipitation_trace(fig, df, row=3, col=1)
+        self._add_cwsi_trace(fig, df_cwsi, row=1, col=2)
+        self._add_et_trace(fig, df, row=2, col=2)
+        self._add_humidity_trace(fig, df, row=3, col=2)
 
-    # Relative Humidity Plot
-    if 'RH_2m_Avg' in df.columns:
-        axs[2, 1].plot(df['TIMESTAMP'], df['RH_2m_Avg'], label='RH', color=COLORS[1])
-        axs[2, 1].set_ylabel('Relative Humidity (%)')
-        axs[2, 1].legend()
-        logger.info("Plotting Relative Humidity data")
-    else:
-        logger.warning("RH_2m_Avg column not found in dataframe")
+        fig.update_layout(title=f'Data for Plot {plot_number}', height=900, width=1200)
 
-    # Format x-axis
-    for ax in axs.flat:
-        ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d %H:%M', tz=CST))
-        plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right')
+        fig.update_yaxes(title_text="VWC (%)", row=1, col=1)
+        fig.update_yaxes(title_text="Temperature (°C)", row=2, col=1)
+        fig.update_yaxes(title_text="Precipitation (mm)", row=3, col=1)
+        fig.update_yaxes(title_text="Index", row=1, col=2)
+        fig.update_yaxes(title_text="ET (mm)", row=2, col=2)
+        fig.update_yaxes(title_text="Relative Humidity (%)", row=3, col=2)
 
-    plt.tight_layout()
-    plt.savefig(os.path.join(PLOTS_DIR, f'{plot_number}_static.png'))
-    plt.close()
-    logger.info(f"Static plot saved for plot {plot_number}")
+        fig.update_xaxes(tickformat="%Y-%m-%d %H:%M")
 
-def create_interactive_plot(df, df_cwsi, plot_number):
-    """Create an interactive plot using plotly."""
-    fig = make_subplots(rows=3, cols=2, shared_xaxes=True, shared_yaxes=False)
+        fig.write_html(os.path.join(HTML_PLOTS_DIR, f'{plot_number}_interactive.html'))
+        logger.info(f"Interactive plot saved for plot {plot_number}")
 
-    # VWC Plot
-    tdr_columns = [col for col in df.columns if col.startswith('TDR') and not col.endswith('_pred')]
-    for i, col in enumerate(tdr_columns):
-        fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df[col], name=col, line=dict(color=COLORS[i % len(COLORS)])),
-                      row=1, col=1)
+    def _plot_vwc(self, ax, df):
+        tdr_columns = [col for col in df.columns if col.startswith('TDR') and not col.endswith('_pred')]
+        for i, col in enumerate(tdr_columns):
+            ax.plot(df['TIMESTAMP'], df[col], label=col, color=COLORS[i % len(COLORS)])
+        ax.set_ylabel('VWC (%)')
+        ax.legend()
 
-    # Canopy Temperature and Air Temperature Plot
-    irt_column = next((col for col in df.columns if col.startswith('IRT') and not col.endswith('_pred')), None)
-    if irt_column:
-        fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df[irt_column], name='Canopy Temp', line=dict(color=COLORS[0])),
-                      row=2, col=1)
-        logger.info(f"Plotting canopy temperature from column: {irt_column}")
-    else:
-        logger.warning("No IRT column found for canopy temperature")
-    if 'Ta_2m_Avg' in df.columns:
-        fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['Ta_2m_Avg'], name='Air Temp', line=dict(color=COLORS[1])),
-                      row=2, col=1)
-        logger.info("Plotting air temperature from Ta_2m_Avg column")
-    else:
-        logger.warning("Ta_2m_Avg column not found in dataframe")
-
-    # Precipitation Plot
-    if 'Rain_1m_Tot' in df.columns:
-        fig.add_trace(go.Bar(x=df['TIMESTAMP'], y=df['Rain_1m_Tot'], name='Precipitation', marker_color=COLORS[2]),
-                      row=3, col=1)
-        logger.info("Plotting precipitation data")
-    else:
-        logger.warning("Rain_1m_Tot column not found in dataframe")
-
-    # CWSI-EB2, CWSI-TH1, and SWSI Plot
-    if 'cwsi-eb2' in df_cwsi.columns and 'cwsi-th1' in df_cwsi.columns and 'swsi' in df_cwsi.columns:
-        fig.add_trace(go.Scatter(x=df_cwsi['TIMESTAMP'], y=df_cwsi['cwsi-eb2'], name='CWSI-EB2', line=dict(color=COLORS[2])),
-                      row=1, col=2)
-        fig.add_trace(go.Scatter(x=df_cwsi['TIMESTAMP'], y=df_cwsi['cwsi-th1'], name='CWSI-TH1', line=dict(color=COLORS[3])),
-                      row=1, col=2)
-        fig.add_trace(go.Scatter(x=df_cwsi['TIMESTAMP'], y=df_cwsi['swsi'], name='SWSI', line=dict(color=COLORS[4])),
-                      row=1, col=2)
-        logger.info("Plotting CWSI-EB2, CWSI-TH1, and SWSI data (12 PM - 5 PM CST)")
-    else:
-        logger.warning("CWSI-EB2, CWSI-TH1, or SWSI column not found in dataframe")
-
-    # ET Plot
-    if 'et' in df.columns:
-        fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['et'], name='ET', line=dict(color=COLORS[4])),
-                      row=2, col=2)
-        logger.info("Plotting ET data")
-    else:
-        logger.warning("ET column not found in dataframe")
-
-    # Relative Humidity Plot
-    if 'RH_2m_Avg' in df.columns:
-        fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['RH_2m_Avg'], name='RH', line=dict(color=COLORS[1])),
-                      row=3, col=2)
-        logger.info("Plotting Relative Humidity data")
-    else:
-        logger.warning("RH_2m_Avg column not found in dataframe")
-
-    fig.update_layout(title=f'Data for Plot {plot_number}', height=900, width=1200)
-
-    # Update y-axis titles
-    fig.update_yaxes(title_text="VWC (%)", row=1, col=1)
-    fig.update_yaxes(title_text="Temperature (°C)", row=2, col=1)
-    fig.update_yaxes(title_text="Precipitation (mm)", row=3, col=1)
-    fig.update_yaxes(title_text="Index", row=1, col=2)
-    fig.update_yaxes(title_text="ET (mm)", row=2, col=2)
-    fig.update_yaxes(title_text="Relative Humidity (%)", row=3, col=2)
-
-    # Update x-axis to show CST time
-    fig.update_xaxes(tickformat="%Y-%m-%d %H:%M")
-
-    fig.write_html(os.path.join(HTML_PLOTS_DIR, f'{plot_number}_interactive.html'))
-    logger.info(f"Interactive plot saved for plot {plot_number}")
-
-def generate_plots(plot_numbers=None):
-    """
-    Generate plots for specified plot numbers or all plots if none specified.
-    
-    :param plot_numbers: List of plot numbers to generate plots for. If None, generates for all plots.
-    """
-    conn = sqlite3.connect(DB_PATH)
-    all_plot_tables = get_plot_tables(conn)
-    
-    if plot_numbers is None:
-        plot_tables = all_plot_tables
-    else:
-        plot_tables = [f"plot_{num}" for num in plot_numbers if f"plot_{num}" in all_plot_tables]
-
-    for table in plot_tables:
-        plot_number = table.split('_')[1]
-        logger.info(f"Processing data for plot {plot_number}")
-        
-        df, df_cwsi = clean_data(conn, table)
-        
-        if not df.empty:
-            log_data_summary(df, plot_number)
-            create_static_plot(df, df_cwsi, plot_number)
-            create_interactive_plot(df, df_cwsi, plot_number)
-            logger.info(f"Generated plots for {table}")
+    def _plot_temperature(self, ax, df):
+        irt_column = next((col for col in df.columns if col.startswith('IRT') and not col.endswith('_pred')), None)
+        if irt_column:
+            ax.plot(df['TIMESTAMP'], df[irt_column], label='Canopy Temp', color=COLORS[0])
+            logger.info(f"Plotting canopy temperature from column: {irt_column}")
         else:
-            logger.warning(f"No data available for {table}")
+            logger.warning("No IRT column found for canopy temperature")
+        if 'Ta_2m_Avg' in df.columns:
+            ax.plot(df['TIMESTAMP'], df['Ta_2m_Avg'], label='Air Temp', color=COLORS[1])
+            logger.info("Plotting air temperature from Ta_2m_Avg column")
+        else:
+            logger.warning("Ta_2m_Avg column not found in dataframe")
+        ax.set_ylabel('Temperature (°C)')
+        ax.legend()
 
-    conn.close()
-    logger.info("All plots generated successfully.")
+    def _plot_precipitation(self, ax, df):
+        if 'Rain_1m_Tot' in df.columns:
+            ax.bar(df['TIMESTAMP'], df['Rain_1m_Tot'], label='Precipitation', color=COLORS[2])
+            ax.set_ylabel('Precipitation (mm)')
+            ax.legend()
+            logger.info("Plotting precipitation data")
+        else:
+            logger.warning("Rain_1m_Tot column not found in dataframe")
+
+    def _plot_cwsi(self, ax, df_cwsi):
+        if 'cwsi_th1' in df_cwsi.columns:
+            ax.plot(df_cwsi['TIMESTAMP'], df_cwsi['cwsi_th1'], label='CWSI-TH1', color=COLORS[3])
+            ax.set_ylabel('Index')
+            ax.legend()
+            logger.info("Plotting CWSI-TH1 data (12 PM - 5 PM CST)")
+        else:
+            logger.warning("cwsi_th1 column not found in dataframe")
+
+    def _plot_et(self, ax, df):
+        if 'et' in df.columns:
+            ax.plot(df['TIMESTAMP'], df['et'], label='ET', color=COLORS[4])
+            ax.set_ylabel('ET (mm)')
+            ax.legend()
+            logger.info("Plotting ET data")
+        else:
+            logger.warning("ET column not found in dataframe")
+
+    def _plot_humidity(self, ax, df):
+        if 'RH_2m_Avg' in df.columns:
+            ax.plot(df['TIMESTAMP'], df['RH_2m_Avg'], label='RH', color=COLORS[1])
+            ax.set_ylabel('Relative Humidity (%)')
+            ax.legend()
+            logger.info("Plotting Relative Humidity data")
+        else:
+            logger.warning("RH_2m_Avg column not found in dataframe")
+
+    def _add_vwc_trace(self, fig, df, row, col):
+        tdr_columns = [col for col in df.columns if col.startswith('TDR') and not col.endswith('_pred')]
+        for i, tdr_col in enumerate(tdr_columns):
+            fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df[tdr_col], name=tdr_col, line=dict(color=COLORS[i % len(COLORS)])),
+                          row=row, col=col)
+
+    def _add_temperature_trace(self, fig, df, row, col):
+        irt_column = next((col for col in df.columns if col.startswith('IRT') and not col.endswith('_pred')), None)
+        if irt_column:
+            fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df[irt_column], name='Canopy Temp', line=dict(color=COLORS[0])),
+                          row=row, col=col)
+            logger.info(f"Plotting canopy temperature from column: {irt_column}")
+        else:
+            logger.warning("No IRT column found for canopy temperature")
+        if 'Ta_2m_Avg' in df.columns:
+            fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['Ta_2m_Avg'], name='Air Temp', line=dict(color=COLORS[1])),
+                          row=row, col=col)
+            logger.info("Plotting air temperature from Ta_2m_Avg column")
+        else:
+            logger.warning("Ta_2m_Avg column not found in dataframe")
+
+    def _add_precipitation_trace(self, fig, df, row, col):
+        if 'Rain_1m_Tot' in df.columns:
+            fig.add_trace(go.Bar(x=df['TIMESTAMP'], y=df['Rain_1m_Tot'], name='Precipitation', marker_color=COLORS[2]),
+                          row=row, col=col)
+            logger.info("Plotting precipitation data")
+        else:
+            logger.warning("Rain_1m_Tot column not found in dataframe")
+
+    def _add_cwsi_trace(self, fig, df_cwsi, row, col):
+        if 'cwsi_th1' in df_cwsi.columns:
+            fig.add_trace(go.Scatter(x=df_cwsi['TIMESTAMP'], y=df_cwsi['cwsi_th1'], name='CWSI-TH1', line=dict(color=COLORS[3])),
+                          row=row, col=col)
+            logger.info("Plotting CWSI-TH1 data (12 PM - 5 PM CST)")
+        else:
+            logger.warning("cwsi_th1 column not found in dataframe")
+
+    def _add_et_trace(self, fig, df, row, col):
+        if 'et' in df.columns:
+            fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['et'], name='ET', line=dict(color=COLORS[4])),
+                          row=row, col=col)
+            logger.info("Plotting ET data")
+        else:
+            logger.warning("ET column not found in dataframe")
+
+    def _add_humidity_trace(self, fig, df, row, col):
+        if 'RH_2m_Avg' in df.columns:
+            fig.add_trace(go.Scatter(x=df['TIMESTAMP'], y=df['RH_2m_Avg'], name='RH', line=dict(color=COLORS[1])),
+                          row=row, col=col)
+            logger.info("Plotting Relative Humidity data")
+        else:
+            logger.warning("RH_2m_Avg column not found in dataframe")
+
+    def generate_plots(self):
+        plot_tables = self.get_plot_tables()
+        
+        for table in plot_tables:
+            plot_number = table.split('_')[-1]
+            logger.info(f"Processing data for plot {plot_number}")
+            
+            df, df_cwsi = self.clean_data(table)
+            
+            if not df.empty:
+                self.log_data_summary(df, plot_number)
+                self.create_static_plot(df, df_cwsi, plot_number)
+                self.create_interactive_plot(df, df_cwsi, plot_number)
+                logger.info(f"Generated plots for {table}")
+            else:
+                logger.warning(f"No data available for {table}")
+
+        self.conn.close()
+        logger.info("All plots generated successfully.")
+
+def main():
+    plot_numbers = [5006, 5010, 5023]  # You can modify this list as needed
+    plot_generator = PlotGenerator(DB_PATH, plot_numbers)
+    plot_generator.generate_plots()
 
 if __name__ == "__main__":
-    generate_plots()
+    main()
+                
         </content>
     </file>
     <file>
@@ -7183,12 +7344,13 @@ def get_latest_data_for_prediction(client, table_id, hours=24):
         <path>crop2cloud24.src.utils.update_bigquery_tables.py</path>
         <content>
 import os
+import re   
 import pandas as pd
 import numpy as np
 from google.cloud import bigquery
 from google.api_core.exceptions import NotFound
 from logger import get_logger
-from bigquery_operations import load_sensor_mapping, create_bigquery_client
+from bigquery_operations import load_sensor_mapping, create_bigquery_client, insert_or_update_data
 
 logger = get_logger(__name__)
 
@@ -7245,114 +7407,115 @@ def parse_dat_file(file_name):
     
     return data
 
-def insert_or_update_data(client, table_id, df, is_actual=True):
-    logger.info(f"Preparing to merge data in {table_id}")
-    logger.info(f"DataFrame columns: {df.columns.tolist()}")
-    logger.info(f"DataFrame shape: {df.shape}")
-
-    df.index = df.index.tz_convert('UTC')
-    df['is_actual'] = is_actual
-
-    table = client.get_table(table_id)
-    current_schema = {field.name: field.field_type for field in table.schema}
-    logger.info(f"Current schema for table {table_id}: {current_schema}")
-
-    data_to_upload = df.reset_index()
-    columns_to_upload = [col for col in current_schema if col in data_to_upload.columns]
-    data_to_upload = data_to_upload[columns_to_upload]
-    data_to_upload = data_to_upload.where(pd.notnull(data_to_upload), None)
-    data_to_upload = data_to_upload.sort_values('TIMESTAMP')
-
-    temp_table_id = f"{table_id}_temp"
+def get_dat_files(folder_path, crop_type):
+    if crop_type == 'corn':
+        patterns = [
+            r'nodeA.*\.dat',
+            r'nodeB.*\.dat',
+            r'nodeC.*\.dat'
+        ]
+    elif crop_type == 'soybean':
+        patterns = [
+            r'SoyNodeA.*_NodeA\.dat',
+            r'SoyNodeB.*_NodeB\.dat',
+            r'SoyNodeC.*_NodeC\.dat'
+        ]
     
-    job_config = bigquery.LoadJobConfig(
-        schema=[field for field in table.schema if field.name in columns_to_upload],
-        write_disposition="WRITE_TRUNCATE"
-    )
+    dat_files = []
+    for file in os.listdir(folder_path):
+        for pattern in patterns:
+            if re.match(pattern, file, re.IGNORECASE):
+                dat_files.append(os.path.join(folder_path, file))
+                break
+    return dat_files
 
-    try:
-        job = client.load_table_from_dataframe(data_to_upload, temp_table_id, job_config=job_config)
-        job.result()
-        logger.info(f"Successfully loaded {len(data_to_upload)} rows into temporary table {temp_table_id}")
-
-        merge_query = f"""
-        MERGE `{table_id}` T
-        USING `{temp_table_id}` S
-        ON T.TIMESTAMP = S.TIMESTAMP
-        WHEN MATCHED THEN
-          UPDATE SET {', '.join([f'{col} = S.{col}' for col in columns_to_upload if col != 'TIMESTAMP'])}
-        WHEN NOT MATCHED THEN
-          INSERT ({', '.join(columns_to_upload)})
-          VALUES ({', '.join([f'S.{col}' for col in columns_to_upload])})
-        """
-
-        merge_job = client.query(merge_query)
-        merge_job.result()
-        logger.info(f"Successfully merged data into {table_id}")
-
-    except Exception as e:
-        logger.error(f"Error uploading and merging data to {table_id}: {str(e)}")
-        raise
-    finally:
-        client.delete_table(temp_table_id, not_found_ok=True)
-        logger.info(f"Temporary table {temp_table_id} deleted")
-
-def process_and_upload_data(df, sensor_mapping, is_actual=True):
-    client = create_bigquery_client()
-    
-    sensor_groups = {}
-    for sensor in sensor_mapping:
-        key = (sensor['treatment'], sensor['plot_number'])
-        if key not in sensor_groups:
-            sensor_groups[key] = []
-        sensor_groups[key].append(sensor['sensor_id'])
-
-    for (treatment, plot_number), sensors in sensor_groups.items():
-        table_id = f"LINEAR_CORN_trt{treatment}.plot_{plot_number}"
-        dataset_id = f"LINEAR_CORN_trt{treatment}"
-        full_table_id = f"{client.project}.{dataset_id}.plot_{plot_number}"
-        
-        columns_to_upload = sensors
-        df_to_upload = df[df.columns.intersection(columns_to_upload)].copy()
-        
-        if not df_to_upload.empty:
-            try:
-                insert_or_update_data(client, full_table_id, df_to_upload, is_actual)
-            except Exception as e:
-                logger.error(f"Failed to upload data for plot {plot_number} to {full_table_id}: {str(e)}")
-        else:
-            logger.info(f"No data to upload for plot {plot_number}")
-
-def process_folder(folder_path, sensor_mapping):
-    dat_files = [
-        os.path.join(folder_path, "nodeC_NodeC.dat"),
-        os.path.join(folder_path, "nodeB_NodeB.dat"),
-        os.path.join(folder_path, "nodeA_NodeA.dat")
-    ]
+def process_folder(folder_path, sensor_mapping, crop_type):
+    dat_files = get_dat_files(folder_path, crop_type)
 
     for dat_file in dat_files:
         if os.path.exists(dat_file):
             logger.info(f"Processing file: {dat_file}")
             df = parse_dat_file(dat_file)
-            process_and_upload_data(df, sensor_mapping, is_actual=True)
+            crop_specific_mapping = [sensor for sensor in sensor_mapping if sensor['field'] == f'LINEAR_{crop_type.upper()}']
+            process_and_upload_data(df, crop_specific_mapping, is_actual=True, crop_type=crop_type)
         else:
             logger.warning(f"File not found: {dat_file}")
 
-def main(folders):
+def process_and_upload_data(df, sensor_mapping, is_actual=True, crop_type='corn'):
+    client = create_bigquery_client()
+    
+    # Reset the index to make 'TIMESTAMP' a regular column
+    df = df.reset_index()
+    
+    sensor_groups = {}
+    for sensor in sensor_mapping:
+        key = (sensor['treatment'], sensor['plot_number'], sensor['field'])
+        if key not in sensor_groups:
+            sensor_groups[key] = []
+        sensor_groups[key].append(sensor['sensor_id'])
+
+    for (treatment, plot_number, field), sensors in sensor_groups.items():
+        table_id = f"{field}_trt{treatment}.plot_{plot_number}"
+        dataset_id = f"{field}_trt{treatment}"
+        full_table_id = f"{client.project}.{dataset_id}.plot_{plot_number}"
+        
+        columns_to_upload = ['TIMESTAMP'] + sensors
+        df_to_upload = df[df.columns.intersection(columns_to_upload)].copy()
+        
+        if not df_to_upload.empty:
+            try:
+                # Check if the table exists, if not, create it
+                try:
+                    client.get_table(full_table_id)
+                except NotFound:
+                    logger.info(f"Table {full_table_id} not found. Creating it.")
+                    create_table(client, full_table_id, df_to_upload.columns)
+
+                insert_or_update_data(client, full_table_id, df_to_upload, is_actual)
+            except Exception as e:
+                logger.error(f"Failed to upload data for {field} plot {plot_number} to {full_table_id}: {str(e)}")
+        else:
+            logger.info(f"No data to upload for {field} plot {plot_number}")
+
+def create_table(client, full_table_id, columns):
+    schema = [
+        bigquery.SchemaField("TIMESTAMP", "TIMESTAMP", mode="REQUIRED"),
+        bigquery.SchemaField("is_actual", "BOOLEAN", mode="REQUIRED"),
+    ]
+    for column in columns:
+        if column not in ["TIMESTAMP", "is_actual"]:
+            schema.append(bigquery.SchemaField(column, "FLOAT"))
+
+    table = bigquery.Table(full_table_id, schema=schema)
+    client.create_table(table)
+    logger.info(f"Created table {full_table_id}")
+
+def main(corn_folders, soybean_folders):
     sensor_mapping = load_sensor_mapping()
     
-    for folder in folders:
-        logger.info(f"Processing folder: {folder}")
-        process_folder(folder, sensor_mapping)
+    logger.info("Processing corn data")
+    for folder in corn_folders:
+        logger.info(f"Processing corn folder: {folder}")
+        process_folder(folder, sensor_mapping, crop_type='corn')
+    
+    logger.info("Processing soybean data")
+    for folder in soybean_folders:
+        logger.info(f"Processing soybean folder: {folder}")
+        process_folder(folder, sensor_mapping, crop_type='soybean')
 
 if __name__ == "__main__":
-    folders = [
+    corn_folders = [
         r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024",
         r"c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous",
         r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only",
-        r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2014-discont-unsure"
+        r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2014-discont-unsure",
+        r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024"
     ]
-    main(folders)   
+    soybean_folders = [
+        r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24",
+        r"C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024"
+    ]
+    main(corn_folders, soybean_folders)
         </content>
     </file>
     <file>
