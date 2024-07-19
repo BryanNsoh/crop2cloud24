@@ -14,14 +14,15 @@ import requests
 import math
 import json
 from dotenv import load_dotenv
+import statistics 
 import os
 from crop2cloud24.src.utils import generate_plots
+import matplotlib.pyplot as plt
 
 # Load environment variables from .env file
 load_dotenv()
 
 # Configuration
-DAYS_BACK = None  # Set to None for all available data, or specify a number of days
 DB_PATH = 'mpc_data.db'
 STEFAN_BOLTZMANN = 5.67e-8
 CP = 1005
@@ -205,19 +206,11 @@ def get_db_connection():
     return sqlite3.connect(DB_PATH)
 
 def get_plot_data(conn, plot_number, irt_column):
-    if DAYS_BACK is None:
-        query = f"""
-        SELECT TIMESTAMP, {irt_column}, is_actual
-        FROM plot_{plot_number}
-        ORDER BY TIMESTAMP
-        """
-    else:
-        query = f"""
-        SELECT TIMESTAMP, {irt_column}, is_actual
-        FROM plot_{plot_number}
-        WHERE TIMESTAMP >= datetime('now', '-{DAYS_BACK} days')
-        ORDER BY TIMESTAMP
-        """
+    query = f"""
+    SELECT TIMESTAMP, {irt_column}
+    FROM `LINEAR_CORN_trt1_plot_{plot_number}`
+    ORDER BY TIMESTAMP
+    """
     df = pd.read_sql_query(query, conn, parse_dates=['TIMESTAMP'])
     df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
     return df
@@ -240,23 +233,46 @@ def update_cwsi(conn, plot_number, df_cwsi):
     
     cursor = conn.cursor()
     
+    # Check if the column exists, if not, create it
+    cursor.execute(f"""
+    PRAGMA table_info(`LINEAR_CORN_trt1_plot_{plot_number}`)
+    """)
+    columns = [column[1] for column in cursor.fetchall()]
+    if 'cwsi_th1' not in columns:
+        cursor.execute(f"""
+        ALTER TABLE `LINEAR_CORN_trt1_plot_{plot_number}`
+        ADD COLUMN cwsi_th1 REAL
+        """)
+    
     # First, set all rows to NULL
     cursor.execute(f"""
-    UPDATE plot_{plot_number}
-    SET `cwsi-th1` = NULL, is_actual = 0
+    UPDATE `LINEAR_CORN_trt1_plot_{plot_number}`
+    SET cwsi_th1 = NULL
     """)
     
     # Then, update with new values
     for _, row in df_cwsi.iterrows():
         cursor.execute(f"""
-        UPDATE plot_{plot_number}
-        SET `cwsi-th1` = ?, is_actual = 1
+        UPDATE `LINEAR_CORN_trt1_plot_{plot_number}`
+        SET cwsi_th1 = ?
         WHERE TIMESTAMP = ?
         """, (row['cwsi-th1'], row['TIMESTAMP'].strftime('%Y-%m-%d %H:%M:%S')))
     
     conn.commit()
     
     logger.info(f"Successfully updated CWSI for plot {plot_number}. Rows processed: {len(df_cwsi)}")
+
+def plot_cwsi(df_cwsi, plot_number):
+    plt.figure(figsize=(10, 6))
+    plt.plot(df_cwsi['TIMESTAMP'], df_cwsi['cwsi-th1'], label=f'Plot {plot_number}')
+    plt.xlabel('Timestamp')
+    plt.ylabel('CWSI')
+    plt.title(f'CWSI over Time for Plot {plot_number}')
+    plt.legend()
+    plt.grid(True)
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
 
 def compute_cwsi(plot_number):
     start_time = time.time()
@@ -313,9 +329,38 @@ def compute_cwsi(plot_number):
     
     logger.info(f"Calculating CWSI for {len(df)} rows")
     df['cwsi-th1'] = df.apply(lambda row: calculate_cwsi_th1(row, CROP_HEIGHT, LAI, LATITUDE, SURFACE_ALBEDO), axis=1)
-    df_cwsi = df[['TIMESTAMP', 'cwsi-th1', 'is_actual']].dropna()
+    df_cwsi = df[['TIMESTAMP', 'cwsi-th1', 'WndAveSpd_3m', 'Solar_2m_Avg']].dropna()
+    
+    # Perform analytics
+    if not df_cwsi.empty:
+        max_cwsi = df_cwsi['cwsi-th1'].max()
+        min_cwsi = df_cwsi['cwsi-th1'].min()
+        avg_cwsi = df_cwsi['cwsi-th1'].mean()
+        
+        max_cwsi_row = df_cwsi.loc[df_cwsi['cwsi-th1'].idxmax()]
+        min_cwsi_row = df_cwsi.loc[df_cwsi['cwsi-th1'].idxmin()]
+        
+        analytics = {
+            'max_cwsi': max_cwsi,
+            'min_cwsi': min_cwsi,
+            'avg_cwsi': avg_cwsi,
+            'max_cwsi_windspeed': max_cwsi_row['WndAveSpd_3m'],
+            'max_cwsi_solar_rad': max_cwsi_row['Solar_2m_Avg'],
+            'min_cwsi_windspeed': min_cwsi_row['WndAveSpd_3m'],
+            'min_cwsi_solar_rad': min_cwsi_row['Solar_2m_Avg'],
+        }
+        
+        logger.info(f"Analytics for plot {plot_number}:")
+        for key, value in analytics.items():
+            logger.info(f"{key}: {value}")
     
     update_cwsi(conn, plot_number, df_cwsi)
+    
+    # Confirm if values were inserted into DB
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT COUNT(*) FROM `LINEAR_CORN_trt1_plot_{plot_number}` WHERE cwsi_th1 IS NOT NULL")
+    count = cursor.fetchone()[0]
+    logger.info(f"Number of rows with CWSI values in DB for plot {plot_number}: {count}")
     
     conn.close()
     
@@ -323,16 +368,31 @@ def compute_cwsi(plot_number):
     duration = end_time - start_time
     logger.info(f"CWSI computation completed for plot {plot_number}. Rows processed: {len(df_cwsi)}")
     logger.info(f"Total execution time: {duration:.2f} seconds")
-    return f"CWSI computation completed for plot {plot_number}. Rows processed: {len(df_cwsi)}. Execution time: {duration:.2f} seconds"
+    
+    # Plot the CWSI values
+    plot_cwsi(df_cwsi, plot_number)
+    
+    return analytics
 
 def main():
     plot_numbers = ['5006', '5010', '5023']
+    all_analytics = {}
     for plot_number in plot_numbers:
         result = compute_cwsi(plot_number)
         print(result)
+        
+        # Store analytics for each plot
+        all_analytics[plot_number] = result
     
-    # Generate plots using the imported function
-    generate_plots(plot_numbers=plot_numbers, days=DAYS_BACK)
+    # Compute overall statistics
+    all_max_cwsi = max(analytics['max_cwsi'] for analytics in all_analytics.values())
+    all_min_cwsi = min(analytics['min_cwsi'] for analytics in all_analytics.values())
+    all_avg_cwsi = statistics.mean(analytics['avg_cwsi'] for analytics in all_analytics.values())
+    
+    logger.info("Overall CWSI Statistics:")
+    logger.info(f"Max CWSI across all plots: {all_max_cwsi}")
+    logger.info(f"Min CWSI across all plots: {all_min_cwsi}")
+    logger.info(f"Average CWSI across all plots: {all_avg_cwsi}")
 
 if __name__ == "__main__":
     main()

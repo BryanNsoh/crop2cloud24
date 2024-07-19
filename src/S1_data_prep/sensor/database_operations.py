@@ -5,9 +5,9 @@ from ..config import DB_NAME
 
 logger = logging.getLogger(__name__)
 
-def create_plot_table(conn, plot_number):
+def create_plot_table(conn, treatment, plot_number):
     conn.execute(f"""
-    CREATE TABLE IF NOT EXISTS plot_{plot_number} (
+    CREATE TABLE IF NOT EXISTS {treatment}_plot_{plot_number} (
         TIMESTAMP TEXT PRIMARY KEY,
         is_actual INTEGER,
         prediction_timestamp TEXT,
@@ -26,24 +26,25 @@ def create_plot_table(conn, plot_number):
         DEN_{plot_number}_1xx24_pred REAL,
         TDR_{plot_number}_14224 REAL,
         TDR_{plot_number}_14224_pred REAL,
-        cwsi REAL,
-        cwsi_pred REAL,
+        cwsi_th2 REAL,
+        cwsi_th2_pred REAL,
         et REAL,
         et_pred REAL,
         swsi REAL,
         swsi_pred REAL
     )
     """)
-    logger.info(f"Created plot_{plot_number} table")
+    logger.info(f"Created {treatment}_plot_{plot_number} table")
 
 def store_plot_data(plot_data):
     logger.info("Storing plot data")
     conn = sqlite3.connect(DB_NAME)
     
-    for plot_number, df in plot_data.items():
-        create_plot_table(conn, plot_number)
-        df.to_sql(f'plot_{plot_number}', conn, if_exists='replace', index=False)
-        logger.info(f"Stored {len(df)} records for plot {plot_number}")
+    for treatment, plots in plot_data.items():
+        for plot_number, df in plots.items():
+            create_plot_table(conn, treatment, plot_number)
+            df.to_sql(f'{treatment}_plot_{plot_number}', conn, if_exists='replace', index=False)
+            logger.info(f"Stored {len(df)} records for {treatment} plot {plot_number}")
     
     conn.close()
     logger.info("Finished storing plot data")

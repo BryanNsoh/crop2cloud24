@@ -105,12 +105,12 @@ class ETCalculator:
         logger.info("Updating ET values in plot tables")
         
         conn = get_db_connection()
-        plot_tables = ['plot_5006', 'plot_5010', 'plot_5023']
+        plot_tables = ['LINEAR_CORN_trt1.plot_5006', 'LINEAR_CORN_trt1.plot_5010', 'LINEAR_CORN_trt1.plot_5023']
         
         cursor = conn.cursor()
         for table in plot_tables:
             # Log current ET values
-            cursor.execute(f"SELECT MIN(et), MAX(et), AVG(et) FROM {table}")
+            cursor.execute(f"SELECT MIN(et), MAX(et), AVG(et) FROM `{table}`")
             min_et, max_et, avg_et = cursor.fetchone()
             logger.info(f"Current ET values in {table}: Min: {min_et}, Max: {max_et}, Avg: {avg_et}")
             
@@ -120,22 +120,22 @@ class ETCalculator:
                 et_timestamp = row['TIMESTAMP']
                 # Use a 1-hour window to match timestamps
                 cursor.execute(f"""
-                UPDATE {table}
+                UPDATE `{table}`
                 SET et = ?
                 WHERE TIMESTAMP BETWEEN ? AND ?
                 """, (row['et'], 
-                      (et_timestamp - timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S'),
-                      (et_timestamp + timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S')))
+                    (et_timestamp - timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S'),
+                    (et_timestamp + timedelta(minutes=30)).strftime('%Y-%m-%d %H:%M:%S')))
                 rows_updated += cursor.rowcount
             
             conn.commit()
             logger.info(f"Updated {rows_updated} rows in {table}")
             
             # Log new ET values
-            cursor.execute(f"SELECT MIN(et), MAX(et), AVG(et) FROM {table}")
+            cursor.execute(f"SELECT MIN(et), MAX(et), AVG(et) FROM `{table}`")
             min_et, max_et, avg_et = cursor.fetchone()
             logger.info(f"New ET values in {table}: Min: {min_et}, Max: {max_et}, Avg: {avg_et}")
-        
+            
         conn.close()
         logger.info(f"Successfully updated ET values in all plot tables.")
 

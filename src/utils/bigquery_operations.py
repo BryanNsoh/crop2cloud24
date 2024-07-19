@@ -4,7 +4,7 @@ from google.cloud import bigquery
 from google.oauth2 import service_account
 from google.api_core import exceptions
 from dotenv import load_dotenv
-from logger import get_logger
+from .logger import get_logger
 import pandas as pd
 from datetime import datetime
 import pytz
@@ -198,20 +198,21 @@ def verify_bigquery_data(client, table_id, df):
 def process_and_upload_data(df, sensor_mapping, is_actual=True):
     client = create_bigquery_client()
     
-    # Group sensors by treatment and plot
+    # Group sensors by field, treatment, and plot
     sensor_groups = {}
     for sensor in sensor_mapping:
-        key = (sensor['treatment'], sensor['plot_number'])
+        key = (sensor['field'], sensor['treatment'], sensor['plot_number'])
         if key not in sensor_groups:
             sensor_groups[key] = []
         sensor_groups[key].append(sensor['sensor_id'])
 
     # Process and upload data for each group
-    for (treatment, plot_number), sensors in sensor_groups.items():
-        table_id = f"LINEAR_CORN_trt{treatment}.plot_{plot_number}"
-        dataset_id = f"LINEAR_CORN_trt{treatment}"
+    for (field, treatment, plot_number), sensors in sensor_groups.items():
+        dataset_id = f"{field}_trt{treatment}"
+        table_id = f"plot_{plot_number}"
+        full_table_id = f"{client.project}.{dataset_id}.{table_id}"
+        
         ensure_dataset_exists(client, dataset_id)
-        full_table_id = f"{client.project}.{dataset_id}.plot_{plot_number}"
         
         # Select relevant columns for this group
         columns_to_upload = ['TIMESTAMP'] + [s for s in sensors if s in df.columns]
@@ -222,8 +223,8 @@ def process_and_upload_data(df, sensor_mapping, is_actual=True):
                 insert_or_update_data(client, full_table_id, df_to_upload, is_actual)
                 verify_bigquery_data(client, full_table_id, df_to_upload)
             except Exception as e:
-                logger.error(f"Failed to upload or verify data for plot {plot_number} to {full_table_id}: {str(e)}")
+                logger.error(f"Failed to upload or verify data for {field} plot {plot_number} to {full_table_id}: {str(e)}")
         else:
-            logger.info(f"No data to upload for plot {plot_number}")
+            logger.info(f"No data to upload for {field} plot {plot_number}")
 
     return sensor_groups

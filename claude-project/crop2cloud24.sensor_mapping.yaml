@@ -535,6 +535,376 @@
   #         SOYBEAN FIELDS
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #         SOYBEAN FIELDS
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# LINEAR_SOYBEAN Field Sensors (Node A)
+# Total Sensors: 8 (2 IRT, 6 TDR)
+- hash: "051"
+  treatment: 2
+  plot_number: 2001
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: IRT2001A2xx24
+  span: 5
+  sdi-12_address: "0"
+  depth: 
+  node: A
+  field: LINEAR_SOYBEAN
+
+- hash: "052"
+  treatment: 2
+  plot_number: 2001
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR2001A20624
+  span: 5
+  sdi-12_address: "2"
+  depth: 6
+  node: A
+  field: LINEAR_SOYBEAN
+
+- hash: "053"
+  treatment: 2
+  plot_number: 2001
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR2001A21824
+  span: 5
+  sdi-12_address: "1"
+  depth: 18
+  node: A
+  field: LINEAR_SOYBEAN
+
+- hash: "054"
+  treatment: 2
+  plot_number: 2001
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR2001A23024
+  span: 5
+  sdi-12_address: "3"
+  depth: 30
+  node: A
+  field: LINEAR_SOYBEAN
+
+- hash: "055"
+  treatment: 4
+  plot_number: 2009
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR2009A40624
+  span: 5
+  sdi-12_address: "4"
+  depth: 6
+  node: A
+  field: LINEAR_SOYBEAN
+
+- hash: "056"
+  treatment: 4
+  plot_number: 2009
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR2009A41824
+  span: 5
+  sdi-12_address: "5"
+  depth: 18
+  node: A
+  field: LINEAR_SOYBEAN
+
+- hash: "057"
+  treatment: 4
+  plot_number: 2009
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: TDR2009A43024
+  span: 5
+  sdi-12_address: "6"
+  depth: 30
+  node: A
+  field: LINEAR_SOYBEAN
+
+- hash: "058"
+  treatment: 3
+  plot_number: 2003
+  project_id: crop2cloud24
+  dataset_id: node_a
+  sensor_id: IRT2003A3xx24
+  span: 5
+  sdi-12_address: "7"
+  depth: 
+  node: A
+  field: LINEAR_SOYBEAN
+
+# LINEAR_SOYBEAN Field Sensors (Node B)
+# Total Sensors: 11 (2 IRT, 9 TDR)
+- hash: "059"
+  treatment: 2
+  plot_number: 2011
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: IRT2011B2xx24
+  span: 5
+  sdi-12_address: "0"
+  depth: 
+  node: B
+  field: LINEAR_SOYBEAN
+
+- hash: "060"
+  treatment: 2
+  plot_number: 2011
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR2011B20624
+  span: 5
+  sdi-12_address: "1"
+  depth: 6
+  node: B
+  field: LINEAR_SOYBEAN
+
+- hash: "061"
+  treatment: 2
+  plot_number: 2011
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR2011B21824
+  span: 5
+  sdi-12_address: "2"
+  depth: 18
+  node: B
+  field: LINEAR_SOYBEAN
+
+- hash: "062"
+  treatment: 2
+  plot_number: 2011
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR2011B23024
+  span: 5
+  sdi-12_address: "3"
+  depth: 30
+  node: B
+  field: LINEAR_SOYBEAN
+
+- hash: "063"
+  treatment: 1
+  plot_number: 2006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: IRT2006B1xx24
+  span: 5
+  sdi-12_address: "b"
+  depth: 
+  node: B
+  field: LINEAR_SOYBEAN
+
+- hash: "064"
+  treatment: 1
+  plot_number: 2006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR2006B10624
+  span: 5
+  sdi-12_address: "4"
+  depth: 6
+  node: B
+  field: LINEAR_SOYBEAN
+
+- hash: "065"
+  treatment: 1
+  plot_number: 2006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR2006B11824
+  span: 5
+  sdi-12_address: "5"
+  depth: 18
+  node: B
+  field: LINEAR_SOYBEAN
+
+- hash: "066"
+  treatment: 1
+  plot_number: 2006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR2006B13024
+  span: 5
+  sdi-12_address: "6"
+  depth: 30
+  node: B
+  field: LINEAR_SOYBEAN
+
+- hash: "067"
+  treatment: 1
+  plot_number: 2006
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR2006B14224
+  span: 5
+  sdi-12_address: "7"
+  depth: 42
+  node: B
+  field: LINEAR_SOYBEAN
+
+- hash: "068"
+  treatment: 4
+  plot_number: 2012
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR2012B40624
+  span: 5
+  sdi-12_address: "8"
+  depth: 6
+  node: B
+  field: LINEAR_SOYBEAN
+
+- hash: "069"
+  treatment: 4
+  plot_number: 2012
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR2012B41824
+  span: 5
+  sdi-12_address: "9"
+  depth: 18
+  node: B
+  field: LINEAR_SOYBEAN
+
+- hash: "070"
+  treatment: 4
+  plot_number: 2012
+  project_id: crop2cloud24
+  dataset_id: node_b
+  sensor_id: TDR2012B43024
+  span: 5
+  sdi-12_address: "a"
+  depth: 30
+  node: B
+  field: LINEAR_SOYBEAN
+
+# LINEAR_SOYBEAN Field Sensors (Node C)
+# Total Sensors: 10 (2 IRT, 8 TDR)
+- hash: "071"
+  treatment: 1
+  plot_number: 2023
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: IRT2023C1xx24
+  span: 5
+  sdi-12_address: "0"
+  depth: 
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "072"
+  treatment: 1
+  plot_number: 2023
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2023C10624
+  span: 5
+  sdi-12_address: "1"
+  depth: 6
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "073"
+  treatment: 1
+  plot_number: 2023
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2023C11824
+  span: 5
+  sdi-12_address: "2"
+  depth: 18
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "074"
+  treatment: 1
+  plot_number: 2023
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2023C13024
+  span: 5
+  sdi-12_address: "3"
+  depth: 30
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "075"
+  treatment: 1
+  plot_number: 2023
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2023C14224
+  span: 5
+  sdi-12_address: "4"
+  depth: 42
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "076"
+  treatment: 1
+  plot_number: 2015
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: IRT2015C1xx24
+  span: 5
+  sdi-12_address: "6"
+  depth: 
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "077"
+  treatment: 1
+  plot_number: 2015
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2015C10624
+  span: 5
+  sdi-12_address: "7"
+  depth: 6
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "078"
+  treatment: 1
+  plot_number: 2015
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2015C11824
+  span: 5
+  sdi-12_address: "8"
+  depth: 18
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "079"
+  treatment: 1
+  plot_number: 2015
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2015C13024
+  span: 5
+  sdi-12_address: "9"
+  depth: 30
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "080"
+  treatment: 1
+  plot_number: 2015
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2015C14224
+  span: 5
+  sdi-12_address: "a"
+  depth: 42
+  node: C
+  field: LINEAR_SOYBEAN
+
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   #         SOYBEAN FIELDS
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -33,11 +33,8 @@ def process_plot_data(plot_data, weather_data):
         logger.info(f"Plot data TIMESTAMP dtype: {df['TIMESTAMP'].dtype}")
         logger.info(f"Weather data TIMESTAMP dtype: {weather_data['TIMESTAMP'].dtype}")
         
-        # Filter weather data to the actual data range
-        weather_data_filtered = weather_data[(weather_data['TIMESTAMP'] >= actual_start) & (weather_data['TIMESTAMP'] <= actual_end)]
-        
         # Perform the merge
-        df = pd.merge_asof(df, weather_data_filtered, on='TIMESTAMP', direction='nearest', tolerance=pd.Timedelta('1h'))
+        df = pd.merge(df, weather_data, on='TIMESTAMP', how='outer')
         
         # Drop all-null columns except 'swsi', 'et', and 'cwsi-th2'
         cols_to_keep = ['TIMESTAMP', 'swsi', 'et', 'cwsi-th2']
