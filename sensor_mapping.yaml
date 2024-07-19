@@ -905,6 +905,78 @@
   node: C
   field: LINEAR_SOYBEAN
 
+- hash: "081"
+  treatment: 3
+  plot_number: 2018
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: IRT2018C3xx24
+  span: 5
+  sdi-12_address: "b"
+  depth: 
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "082"
+  treatment: 3
+  plot_number: 2020
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: IRT2020C3xx24
+  span: 5
+  sdi-12_address: "g"
+  depth: 
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "083"
+  treatment: 2
+  plot_number: 2026
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2026C23024
+  span: 5
+  sdi-12_address: "c"
+  depth: 30
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "084"
+  treatment: 2
+  plot_number: 2026
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2026C21824
+  span: 5
+  sdi-12_address: "d"
+  depth: 18
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "085"
+  treatment: 2
+  plot_number: 2026
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: TDR2026C20624
+  span: 5
+  sdi-12_address: "e"
+  depth: 6
+  node: C
+  field: LINEAR_SOYBEAN
+
+- hash: "086"
+  treatment: 2
+  plot_number: 2026
+  project_id: crop2cloud24
+  dataset_id: node_c
+  sensor_id: IRT2026C2xx24
+  span: 5
+  sdi-12_address: "h"
+  depth: 
+  node: C
+  field: LINEAR_SOYBEAN
+
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   #         SOYBEAN FIELDS
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -3863,3 +3863,1063 @@ Job ID: 4c7041c0-f355-4672-a254-d58d07bae690
 2024-07-15 08:49:45,370 - __main__ - WARNING - File not found: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2014-discont-unsure\nodeC_NodeC.dat
 2024-07-15 08:49:45,370 - __main__ - WARNING - File not found: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2014-discont-unsure\nodeB_NodeB.dat
 2024-07-15 08:49:45,377 - __main__ - WARNING - File not found: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2014-discont-unsure\nodeA_NodeA.dat
+2024-07-18 23:34:38,427 - __main__ - INFO - Processing corn data
+2024-07-18 23:34:38,427 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-18 23:34:59,940 - __main__ - INFO - Processing corn data
+2024-07-18 23:34:59,950 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-18 23:34:59,950 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-18 23:34:59,950 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-18 23:34:59,976 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-18 23:34:59,991 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-18 23:34:59,994 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-18 23:35:00,379 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-18 23:35:00,379 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-18 23:35:00,379 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-18 23:35:00,379 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:35:00,389 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:35:00,389 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:35:00,389 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:35:00,389 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:35:00,400 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:35:00,402 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:35:00,404 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:35:00,405 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:35:00,994 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:01,195 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:01,425 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:01,658 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:01,892 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:01,892 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-18 23:35:01,892 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-18 23:35:01,909 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-18 23:35:01,918 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-18 23:35:01,918 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-18 23:35:01,928 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:35:01,928 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'TDR5006B11824']
+2024-07-18 23:35:01,932 - __main__ - INFO - Final shape: (608, 16)
+2024-07-18 23:35:01,933 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:35:01,933 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:35:01,933 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:35:01,943 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:35:01,943 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:35:01,949 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:35:02,456 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:02,665 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:02,893 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:02,903 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:35:02,903 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:35:02,903 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:35:02,903 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:35:02,903 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:35:02,912 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-18 23:35:02,913 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-18 23:35:02,934 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:35:02,948 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-18 23:35:02,951 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-18 23:35:02,951 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:35:02,951 - __main__ - INFO - Final shape: (608, 15)
+2024-07-18 23:35:02,951 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:35:02,951 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:35:03,343 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:03,547 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:03,757 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:03,927 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:03,927 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:35:03,937 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:35:03,937 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:35:03,943 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:35:03,945 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:35:03,947 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:35:03,949 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:35:03,951 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:35:03,953 - __main__ - INFO - Processing corn folder: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous
+2024-07-18 23:35:03,956 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-18 23:35:03,956 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-18 23:35:03,968 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:35:03,978 - __main__ - INFO - Number of rows before dropping NaT timestamps: 234
+2024-07-18 23:35:03,978 - __main__ - INFO - Number of rows after dropping NaT timestamps: 234
+2024-07-18 23:35:03,985 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:35:03,985 - __main__ - INFO - Final shape: (234, 17)
+2024-07-18 23:35:03,985 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:35:03,985 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:35:03,994 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:35:04,001 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:35:04,004 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:35:04,007 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:35:04,008 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:35:04,008 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:35:04,008 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:35:04,426 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:04,621 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:04,811 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:05,027 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:05,238 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:05,248 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-18 23:35:05,248 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-18 23:35:05,260 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-18 23:35:05,264 - __main__ - INFO - Number of rows before dropping NaT timestamps: 233
+2024-07-18 23:35:05,269 - __main__ - INFO - Number of rows after dropping NaT timestamps: 233
+2024-07-18 23:35:05,272 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:35:05,273 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:35:05,274 - __main__ - INFO - Final shape: (233, 17)
+2024-07-18 23:35:05,275 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:35:05,276 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:35:05,278 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:35:05,278 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:35:05,284 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:35:05,285 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:35:05,681 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:05,892 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:06,098 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:06,098 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:35:06,098 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:35:06,098 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:35:06,098 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:35:06,108 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:35:06,109 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-18 23:35:06,111 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-18 23:35:06,119 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:35:06,128 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-18 23:35:06,128 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-18 23:35:06,136 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:35:06,137 - __main__ - INFO - Final shape: (232, 16)
+2024-07-18 23:35:06,137 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:35:06,137 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:35:06,531 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:06,713 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:06,916 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:07,083 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:07,086 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:35:07,086 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:35:07,086 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:35:07,093 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:35:07,095 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:35:07,098 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:35:07,098 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:35:07,102 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:35:07,104 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only
+2024-07-18 23:35:07,114 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-18 23:35:07,117 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-18 23:35:07,130 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:35:07,143 - __main__ - INFO - Number of rows before dropping NaT timestamps: 522
+2024-07-18 23:35:07,146 - __main__ - INFO - Number of rows after dropping NaT timestamps: 522
+2024-07-18 23:35:07,147 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:35:07,148 - __main__ - INFO - Final shape: (522, 17)
+2024-07-18 23:35:07,150 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:35:07,150 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:35:07,154 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:35:07,156 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:35:07,157 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:35:07,159 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:35:07,160 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:35:07,162 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:35:07,162 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:35:07,623 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:07,809 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:08,008 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:08,217 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:08,430 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:08,433 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-18 23:35:08,434 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-18 23:35:08,448 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-18 23:35:08,459 - __main__ - INFO - Number of rows before dropping NaT timestamps: 757
+2024-07-18 23:35:08,461 - __main__ - INFO - Number of rows after dropping NaT timestamps: 757
+2024-07-18 23:35:08,463 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:35:08,464 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:35:08,465 - __main__ - INFO - Final shape: (757, 17)
+2024-07-18 23:35:08,466 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:35:08,466 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:35:08,470 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:35:08,471 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:35:08,473 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:35:08,474 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:35:08,931 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:09,138 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:09,328 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:09,331 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:35:09,332 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:35:09,334 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:35:09,335 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:35:09,337 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:35:09,340 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-18 23:35:09,341 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-18 23:35:09,344 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:35:09,346 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-18 23:35:09,354 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-18 23:35:09,354 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:35:09,355 - __main__ - INFO - Final shape: (232, 16)
+2024-07-18 23:35:09,356 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:35:09,357 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:35:09,799 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:09,988 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:10,198 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:10,373 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: name 'insert_or_update_data' is not defined
+2024-07-18 23:35:10,377 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:35:10,379 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:35:10,381 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:35:10,383 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:35:10,386 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:35:10,388 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:35:10,390 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:35:10,393 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:35:10,394 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2014-discont-unsure
+2024-07-18 23:35:10,396 - __main__ - INFO - Processing soybean data
+2024-07-18 23:35:10,398 - __main__ - INFO - Processing soybean folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24
+2024-07-18 23:35:10,401 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeA_NodeA.dat
+2024-07-18 23:35:10,401 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeA_NodeA.dat
+2024-07-18 23:35:10,406 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-18 23:35:10,410 - __main__ - INFO - Number of rows before dropping NaT timestamps: 145
+2024-07-18 23:35:10,411 - __main__ - INFO - Number of rows after dropping NaT timestamps: 145
+2024-07-18 23:35:10,413 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-18 23:35:10,413 - __main__ - INFO - Final shape: (145, 11)
+2024-07-18 23:35:10,414 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:35:10,415 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:35:10,720 - __main__ - INFO - Table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001 not found. Creating it.
+2024-07-18 23:35:10,849 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2001 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/crop2cloud24/datasets/LINEAR_SOYBEAN_trt2/tables?prettyPrint=false: Not found: Dataset crop2cloud24:LINEAR_SOYBEAN_trt2
+2024-07-18 23:35:10,959 - __main__ - INFO - Table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009 not found. Creating it.
+2024-07-18 23:35:11,103 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2009 to crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/crop2cloud24/datasets/LINEAR_SOYBEAN_trt4/tables?prettyPrint=false: Not found: Dataset crop2cloud24:LINEAR_SOYBEAN_trt4
+2024-07-18 23:35:11,218 - __main__ - INFO - Table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003 not found. Creating it.
+2024-07-18 23:35:11,339 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2003 to crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/crop2cloud24/datasets/LINEAR_SOYBEAN_trt3/tables?prettyPrint=false: Not found: Dataset crop2cloud24:LINEAR_SOYBEAN_trt3
+2024-07-18 23:35:11,340 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2011
+2024-07-18 23:35:11,340 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2006
+2024-07-18 23:35:11,342 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2012
+2024-07-18 23:35:11,342 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2023
+2024-07-18 23:35:11,342 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2015
+2024-07-18 23:35:11,342 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2018
+2024-07-18 23:35:11,347 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2020
+2024-07-18 23:35:11,348 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2026
+2024-07-18 23:35:11,349 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeB2_NodeB.dat
+2024-07-18 23:35:11,350 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeB2_NodeB.dat
+2024-07-18 23:35:11,385 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-18 23:35:11,387 - __main__ - INFO - Number of rows before dropping NaT timestamps: 93
+2024-07-18 23:35:11,391 - __main__ - INFO - Number of rows after dropping NaT timestamps: 93
+2024-07-18 23:35:11,391 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-18 23:35:11,391 - __main__ - INFO - Final shape: (93, 15)
+2024-07-18 23:35:11,391 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:35:11,391 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:35:11,399 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2001
+2024-07-18 23:35:11,401 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2009
+2024-07-18 23:35:11,401 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2003
+2024-07-18 23:38:16,350 - __main__ - INFO - Proceeding with table creation without deleting existing ones.
+2024-07-18 23:38:16,829 - __main__ - INFO - Dataset LINEAR_CORN_trt3 already exists
+2024-07-18 23:38:17,230 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:38:17,631 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:38:18,005 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:38:18,256 - __main__ - INFO - Dataset LINEAR_CORN_trt2 already exists
+2024-07-18 23:38:18,612 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:38:19,026 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:38:19,443 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:38:19,669 - __main__ - INFO - Dataset LINEAR_CORN_trt1 already exists
+2024-07-18 23:38:20,027 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:38:20,455 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:38:20,907 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:38:21,346 - __main__ - INFO - Dataset LINEAR_CORN_trt4 already exists
+2024-07-18 23:38:21,688 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:38:22,089 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:38:22,453 - __main__ - INFO - No new fields to add for table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:38:23,112 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt2
+2024-07-18 23:38:23,516 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-18 23:38:23,916 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-18 23:38:24,300 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-18 23:38:24,968 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt4
+2024-07-18 23:38:25,432 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-18 23:38:25,838 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-18 23:38:26,465 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt3
+2024-07-18 23:38:27,026 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-18 23:38:27,516 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-18 23:38:28,005 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-18 23:38:28,695 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt1
+2024-07-18 23:38:29,120 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-18 23:38:29,516 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-18 23:38:29,913 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-18 23:38:29,914 - __main__ - INFO - Process completed successfully
+2024-07-18 23:38:36,467 - __main__ - INFO - Processing corn data
+2024-07-18 23:38:36,467 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-18 23:38:36,467 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-18 23:38:36,467 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-18 23:38:36,477 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-18 23:38:36,495 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-18 23:38:36,497 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-18 23:38:36,657 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-18 23:38:36,657 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-18 23:38:36,657 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-18 23:38:36,663 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:38:36,663 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:38:36,667 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:38:36,669 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:38:36,670 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:38:36,672 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:38:36,673 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:38:36,674 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:38:36,675 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:38:37,108 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:37,288 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:37,539 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:37,719 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:37,905 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:37,907 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-18 23:38:37,908 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-18 23:38:37,915 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-18 23:38:37,923 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-18 23:38:37,925 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-18 23:38:37,928 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:38:37,929 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'TDR5006B11824']
+2024-07-18 23:38:37,931 - __main__ - INFO - Final shape: (608, 16)
+2024-07-18 23:38:37,931 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:38:37,933 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:38:37,936 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:38:37,937 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:38:37,937 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:38:37,937 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:38:38,309 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:38,525 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:38,719 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:38,719 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:38:38,719 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:38:38,719 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:38:38,725 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:38:38,726 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:38:38,726 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-18 23:38:38,726 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-18 23:38:38,736 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:38:38,742 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-18 23:38:38,742 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-18 23:38:38,744 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:38:38,745 - __main__ - INFO - Final shape: (608, 15)
+2024-07-18 23:38:38,745 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:38:38,746 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:38:39,104 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:39,267 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:39,456 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:39,622 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:39,624 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:38:39,626 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:38:39,626 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:38:39,626 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:38:39,626 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:38:39,634 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:38:39,636 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:38:39,636 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:38:39,636 - __main__ - INFO - Processing corn folder: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous
+2024-07-18 23:38:39,636 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-18 23:38:39,636 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-18 23:38:39,645 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:38:39,650 - __main__ - INFO - Number of rows before dropping NaT timestamps: 234
+2024-07-18 23:38:39,651 - __main__ - INFO - Number of rows after dropping NaT timestamps: 234
+2024-07-18 23:38:39,651 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:38:39,651 - __main__ - INFO - Final shape: (234, 17)
+2024-07-18 23:38:39,651 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:38:39,651 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:38:39,659 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:38:39,660 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:38:39,661 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:38:39,662 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:38:39,663 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:38:39,665 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:38:39,666 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:38:40,030 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:40,215 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:40,390 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:40,580 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:40,778 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:40,778 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-18 23:38:40,778 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-18 23:38:40,788 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-18 23:38:40,800 - __main__ - INFO - Number of rows before dropping NaT timestamps: 233
+2024-07-18 23:38:40,804 - __main__ - INFO - Number of rows after dropping NaT timestamps: 233
+2024-07-18 23:38:40,804 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:38:40,804 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:38:40,810 - __main__ - INFO - Final shape: (233, 17)
+2024-07-18 23:38:40,811 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:38:40,811 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:38:40,811 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:38:40,811 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:38:40,811 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:38:40,811 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:38:41,214 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:41,375 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:41,561 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:41,563 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:38:41,565 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:38:41,566 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:38:41,568 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:38:41,570 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:38:41,571 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-18 23:38:41,572 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-18 23:38:41,578 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:38:41,580 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-18 23:38:41,580 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-18 23:38:41,580 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:38:41,590 - __main__ - INFO - Final shape: (232, 16)
+2024-07-18 23:38:41,590 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:38:41,590 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:38:42,100 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:42,269 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:42,421 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:42,573 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:42,573 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:38:42,573 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:38:42,573 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:38:42,573 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:38:42,583 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:38:42,583 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:38:42,583 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:38:42,586 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:38:42,586 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only
+2024-07-18 23:38:42,587 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-18 23:38:42,588 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-18 23:38:42,593 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:38:42,599 - __main__ - INFO - Number of rows before dropping NaT timestamps: 522
+2024-07-18 23:38:42,600 - __main__ - INFO - Number of rows after dropping NaT timestamps: 522
+2024-07-18 23:38:42,602 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:38:42,603 - __main__ - INFO - Final shape: (522, 17)
+2024-07-18 23:38:42,604 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:38:42,605 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:38:42,607 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:38:42,607 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:38:42,611 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:38:42,613 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:38:42,614 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:38:42,615 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:38:42,616 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:38:43,053 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:43,224 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:43,509 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:43,715 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:43,904 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:43,904 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-18 23:38:43,904 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-18 23:38:43,914 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-18 23:38:43,922 - __main__ - INFO - Number of rows before dropping NaT timestamps: 757
+2024-07-18 23:38:43,924 - __main__ - INFO - Number of rows after dropping NaT timestamps: 757
+2024-07-18 23:38:43,924 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:38:43,924 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:38:43,924 - __main__ - INFO - Final shape: (757, 17)
+2024-07-18 23:38:43,929 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:38:43,930 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:38:43,934 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:38:43,936 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:38:43,937 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:38:43,938 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:38:44,314 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:44,509 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:44,679 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:44,679 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:38:44,679 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:38:44,684 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:38:44,684 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:38:44,684 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:38:44,684 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-18 23:38:44,684 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-18 23:38:44,691 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:38:44,695 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-18 23:38:44,697 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-18 23:38:44,699 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:38:44,701 - __main__ - INFO - Final shape: (232, 16)
+2024-07-18 23:38:44,702 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:38:44,703 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:38:45,041 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:45,415 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:45,615 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:45,826 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:45,828 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:38:45,829 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:38:45,832 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:38:45,834 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:38:45,836 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:38:45,840 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:38:45,842 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:38:45,845 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:38:45,847 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2014-discont-unsure
+2024-07-18 23:38:45,849 - __main__ - INFO - Processing soybean data
+2024-07-18 23:38:45,850 - __main__ - INFO - Processing soybean folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24
+2024-07-18 23:38:45,850 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeA_NodeA.dat
+2024-07-18 23:38:45,850 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeA_NodeA.dat
+2024-07-18 23:38:45,860 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-18 23:38:45,866 - __main__ - INFO - Number of rows before dropping NaT timestamps: 145
+2024-07-18 23:38:45,866 - __main__ - INFO - Number of rows after dropping NaT timestamps: 145
+2024-07-18 23:38:45,866 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-18 23:38:45,866 - __main__ - INFO - Final shape: (145, 11)
+2024-07-18 23:38:45,866 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:38:45,866 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:38:46,313 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2001 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:46,495 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2009 to crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:46,717 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2003 to crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:46,717 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2011
+2024-07-18 23:38:46,717 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2006
+2024-07-18 23:38:46,727 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2012
+2024-07-18 23:38:46,727 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2023
+2024-07-18 23:38:46,727 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2015
+2024-07-18 23:38:46,735 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2018
+2024-07-18 23:38:46,738 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2020
+2024-07-18 23:38:46,740 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2026
+2024-07-18 23:38:46,742 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeB2_NodeB.dat
+2024-07-18 23:38:46,743 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeB2_NodeB.dat
+2024-07-18 23:38:46,748 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-18 23:38:46,752 - __main__ - INFO - Number of rows before dropping NaT timestamps: 93
+2024-07-18 23:38:46,754 - __main__ - INFO - Number of rows after dropping NaT timestamps: 93
+2024-07-18 23:38:46,755 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-18 23:38:46,756 - __main__ - INFO - Final shape: (93, 15)
+2024-07-18 23:38:46,757 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:38:46,758 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:38:46,760 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2001
+2024-07-18 23:38:46,760 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2009
+2024-07-18 23:38:46,760 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2003
+2024-07-18 23:38:47,397 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2011 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:47,616 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2006 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:47,803 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2012 to crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:47,813 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2023
+2024-07-18 23:38:47,813 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2015
+2024-07-18 23:38:47,813 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2018
+2024-07-18 23:38:47,813 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2020
+2024-07-18 23:38:47,822 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2026
+2024-07-18 23:38:47,824 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeC2_NodeC.dat
+2024-07-18 23:38:47,825 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeC2_NodeC.dat
+2024-07-18 23:38:47,836 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224']
+2024-07-18 23:38:47,851 - __main__ - INFO - Number of rows before dropping NaT timestamps: 245
+2024-07-18 23:38:47,851 - __main__ - INFO - Number of rows after dropping NaT timestamps: 245
+2024-07-18 23:38:47,851 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224']
+2024-07-18 23:38:47,861 - __main__ - INFO - Final shape: (245, 13)
+2024-07-18 23:38:47,861 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:38:47,861 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:38:47,868 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2001
+2024-07-18 23:38:47,868 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2009
+2024-07-18 23:38:47,868 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2003
+2024-07-18 23:38:47,868 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2011
+2024-07-18 23:38:47,878 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2006
+2024-07-18 23:38:47,878 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2012
+2024-07-18 23:38:48,316 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2023 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:48,634 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2015 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015: name 'insert_or_update_data' is not defined
+2024-07-18 23:38:48,644 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2018
+2024-07-18 23:38:48,644 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2020
+2024-07-18 23:38:48,644 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2026
+2024-07-18 23:43:44,511 - __main__ - INFO - Processing corn data
+2024-07-18 23:43:44,511 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-18 23:43:44,511 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-18 23:43:44,511 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-18 23:43:44,524 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-18 23:43:44,533 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-18 23:43:44,536 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-18 23:43:44,672 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-18 23:43:44,672 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-18 23:43:44,672 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-18 23:43:44,672 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:43:44,676 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:43:44,678 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:43:44,678 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:43:44,678 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:43:44,678 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:43:44,678 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:43:44,678 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:43:44,678 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:43:45,111 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:45,374 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:45,580 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:45,790 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:45,969 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:45,976 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-18 23:43:45,978 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-18 23:43:45,986 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-18 23:43:46,002 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-18 23:43:46,004 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-18 23:43:46,006 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:43:46,007 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'TDR5006B11824']
+2024-07-18 23:43:46,007 - __main__ - INFO - Final shape: (608, 16)
+2024-07-18 23:43:46,007 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:43:46,007 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:43:46,011 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:43:46,011 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:43:46,011 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:43:46,011 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:43:46,376 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:46,537 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:46,718 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:46,721 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:43:46,723 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:43:46,725 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:43:46,727 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:43:46,729 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:43:46,731 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-18 23:43:46,732 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-18 23:43:46,742 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:43:46,749 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-18 23:43:46,750 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-18 23:43:46,752 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:43:46,753 - __main__ - INFO - Final shape: (608, 15)
+2024-07-18 23:43:46,754 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:43:46,754 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:43:47,179 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:47,334 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:47,552 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:47,758 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:47,758 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:43:47,758 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:43:47,758 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:43:47,768 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:43:47,768 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:43:47,772 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:43:47,775 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:43:47,777 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:43:47,778 - __main__ - INFO - Processing corn folder: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous
+2024-07-18 23:43:47,779 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-18 23:43:47,779 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-18 23:43:47,782 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:43:47,792 - __main__ - INFO - Number of rows before dropping NaT timestamps: 234
+2024-07-18 23:43:47,796 - __main__ - INFO - Number of rows after dropping NaT timestamps: 234
+2024-07-18 23:43:47,796 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:43:47,796 - __main__ - INFO - Final shape: (234, 17)
+2024-07-18 23:43:47,796 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:43:47,796 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:43:47,806 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:43:47,813 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:43:47,814 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:43:47,816 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:43:47,818 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:43:47,819 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:43:47,821 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:43:48,187 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:48,360 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:48,546 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:48,722 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:48,916 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:48,916 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-18 23:43:48,916 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-18 23:43:48,926 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-18 23:43:48,938 - __main__ - INFO - Number of rows before dropping NaT timestamps: 233
+2024-07-18 23:43:48,942 - __main__ - INFO - Number of rows after dropping NaT timestamps: 233
+2024-07-18 23:43:48,946 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:43:48,947 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:43:48,948 - __main__ - INFO - Final shape: (233, 17)
+2024-07-18 23:43:48,949 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:43:48,952 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:43:48,958 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:43:48,960 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:43:48,963 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:43:48,966 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:43:49,423 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:49,653 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:49,856 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:49,858 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:43:49,862 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:43:49,863 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:43:49,864 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:43:49,865 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:43:49,866 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-18 23:43:49,867 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-18 23:43:49,871 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:43:49,875 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-18 23:43:49,877 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-18 23:43:49,878 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:43:49,880 - __main__ - INFO - Final shape: (232, 16)
+2024-07-18 23:43:49,880 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:43:49,881 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:43:50,227 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:50,397 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:50,599 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:50,792 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:50,795 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:43:50,797 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:43:50,800 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:43:50,802 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:43:50,805 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:43:50,807 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:43:50,809 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:43:50,812 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:43:50,813 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only
+2024-07-18 23:43:50,814 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-18 23:43:50,816 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-18 23:43:50,816 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:43:50,832 - __main__ - INFO - Number of rows before dropping NaT timestamps: 522
+2024-07-18 23:43:50,832 - __main__ - INFO - Number of rows after dropping NaT timestamps: 522
+2024-07-18 23:43:50,842 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:43:50,842 - __main__ - INFO - Final shape: (522, 17)
+2024-07-18 23:43:50,842 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:43:50,842 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:43:50,851 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:43:50,851 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:43:50,851 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:43:50,851 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:43:50,860 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:43:50,866 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:43:50,867 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:43:51,262 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: name 'insert_or_update_data' is not defined
+2024-07-18 23:43:51,434 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: name 'insert_or_update_data' is not defined
+2024-07-18 23:44:03,892 - __main__ - INFO - Processing corn data
+2024-07-18 23:44:03,892 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-18 23:44:03,892 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-18 23:44:03,892 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-18 23:44:03,905 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-18 23:44:03,915 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-18 23:44:03,916 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-18 23:44:04,042 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-18 23:44:04,051 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-18 23:44:04,051 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-18 23:44:04,051 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:44:04,051 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:44:04,058 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:44:04,060 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:44:04,060 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:44:04,060 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:44:04,060 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:44:04,060 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:44:04,060 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:44:04,461 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: 'TIMESTAMP'
+2024-07-18 23:44:04,685 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: 'TIMESTAMP'
+2024-07-18 23:44:04,869 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: 'TIMESTAMP'
+2024-07-18 23:44:05,072 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: 'TIMESTAMP'
+2024-07-18 23:44:05,259 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: 'TIMESTAMP'
+2024-07-18 23:44:05,259 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-18 23:44:05,259 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-18 23:44:05,277 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-18 23:44:05,291 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-18 23:44:05,294 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-18 23:44:05,298 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:44:05,299 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'TDR5006B11824']
+2024-07-18 23:44:05,301 - __main__ - INFO - Final shape: (608, 16)
+2024-07-18 23:44:05,302 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:44:05,303 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:44:05,305 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:44:05,310 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:44:05,311 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:44:05,311 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:44:05,755 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: 'TIMESTAMP'
+2024-07-18 23:44:05,962 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: 'TIMESTAMP'
+2024-07-18 23:44:06,140 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: 'TIMESTAMP'
+2024-07-18 23:44:06,150 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:44:06,152 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:44:06,154 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:44:06,155 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:44:06,156 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:44:06,157 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-18 23:44:06,157 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-18 23:44:06,160 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:44:06,176 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-18 23:44:06,178 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-18 23:44:06,178 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:44:06,178 - __main__ - INFO - Final shape: (608, 15)
+2024-07-18 23:44:06,178 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:44:06,178 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:44:06,560 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: 'TIMESTAMP'
+2024-07-18 23:44:06,717 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: 'TIMESTAMP'
+2024-07-18 23:44:06,891 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: 'TIMESTAMP'
+2024-07-18 23:44:07,074 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: 'TIMESTAMP'
+2024-07-18 23:44:07,074 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:44:07,084 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:44:07,084 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:44:07,084 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:44:07,087 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:44:07,088 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:44:07,090 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:44:07,091 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:44:07,091 - __main__ - INFO - Processing corn folder: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous
+2024-07-18 23:44:07,092 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-18 23:44:07,094 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-18 23:44:07,094 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:44:07,094 - __main__ - INFO - Number of rows before dropping NaT timestamps: 234
+2024-07-18 23:44:07,104 - __main__ - INFO - Number of rows after dropping NaT timestamps: 234
+2024-07-18 23:44:07,105 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:44:07,107 - __main__ - INFO - Final shape: (234, 17)
+2024-07-18 23:44:07,108 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:44:07,108 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:44:07,112 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:44:07,112 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:44:07,112 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:44:07,112 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:44:07,112 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:44:07,112 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:44:07,112 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:44:07,534 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: 'TIMESTAMP'
+2024-07-18 23:44:07,691 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: 'TIMESTAMP'
+2024-07-18 23:44:07,871 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: 'TIMESTAMP'
+2024-07-18 23:44:08,065 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: 'TIMESTAMP'
+2024-07-18 23:44:08,232 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: 'TIMESTAMP'
+2024-07-18 23:44:08,234 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-18 23:44:08,235 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-18 23:44:08,241 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-18 23:44:08,250 - __main__ - INFO - Number of rows before dropping NaT timestamps: 233
+2024-07-18 23:44:08,250 - __main__ - INFO - Number of rows after dropping NaT timestamps: 233
+2024-07-18 23:44:08,260 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:44:08,262 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:44:08,263 - __main__ - INFO - Final shape: (233, 17)
+2024-07-18 23:44:08,263 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:44:08,263 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:44:08,273 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:44:08,273 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:44:08,278 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:44:08,281 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:44:08,727 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: 'TIMESTAMP'
+2024-07-18 23:44:08,899 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: 'TIMESTAMP'
+2024-07-18 23:44:09,069 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: 'TIMESTAMP'
+2024-07-18 23:44:09,069 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:44:09,069 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:44:09,069 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:44:09,076 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:44:09,080 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:44:09,081 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-18 23:44:09,082 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-18 23:44:09,086 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:44:09,086 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-18 23:44:09,095 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-18 23:44:09,096 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:44:09,096 - __main__ - INFO - Final shape: (232, 16)
+2024-07-18 23:44:09,096 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:44:09,096 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:44:09,596 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: 'TIMESTAMP'
+2024-07-18 23:44:09,794 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: 'TIMESTAMP'
+2024-07-18 23:44:09,966 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: 'TIMESTAMP'
+2024-07-18 23:44:10,143 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: 'TIMESTAMP'
+2024-07-18 23:44:10,143 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:44:10,143 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:44:10,143 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:44:10,152 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:44:10,154 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:44:10,156 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:44:10,159 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:44:10,161 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:44:10,163 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only
+2024-07-18 23:44:10,165 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-18 23:44:10,166 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-18 23:44:10,176 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:44:10,190 - __main__ - INFO - Number of rows before dropping NaT timestamps: 522
+2024-07-18 23:44:10,192 - __main__ - INFO - Number of rows after dropping NaT timestamps: 522
+2024-07-18 23:44:10,194 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:44:10,196 - __main__ - INFO - Final shape: (522, 17)
+2024-07-18 23:44:10,197 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:44:10,199 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:44:10,199 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:44:10,199 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:44:10,199 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:44:10,209 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:44:10,214 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:44:10,215 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:44:10,215 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:44:10,613 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: 'TIMESTAMP'
+2024-07-18 23:44:10,803 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: 'TIMESTAMP'
+2024-07-18 23:44:11,011 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: 'TIMESTAMP'
+2024-07-18 23:44:11,241 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: 'TIMESTAMP'
+2024-07-18 23:44:11,415 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: 'TIMESTAMP'
+2024-07-18 23:44:11,425 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-18 23:44:11,426 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-18 23:44:11,435 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-18 23:44:11,449 - __main__ - INFO - Number of rows before dropping NaT timestamps: 757
+2024-07-18 23:44:11,449 - __main__ - INFO - Number of rows after dropping NaT timestamps: 757
+2024-07-18 23:44:11,458 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:44:11,460 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:44:11,462 - __main__ - INFO - Final shape: (757, 17)
+2024-07-18 23:44:11,463 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:44:11,465 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:44:11,466 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5001
+2024-07-18 23:44:11,466 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5003
+2024-07-18 23:44:11,466 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5010
+2024-07-18 23:44:11,466 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5009
+2024-07-18 23:44:12,022 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: 'TIMESTAMP'
+2024-07-18 23:44:12,198 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: 'TIMESTAMP'
+2024-07-18 23:44:12,402 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: 'TIMESTAMP'
+2024-07-18 23:44:12,403 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:44:12,405 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:44:12,407 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:44:12,409 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:44:12,411 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:44:12,414 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-18 23:44:12,415 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-18 23:44:12,416 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:44:12,426 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-18 23:44:12,431 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-18 23:44:12,433 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:44:12,433 - __main__ - INFO - Final shape: (232, 16)
+2024-07-18 23:44:12,433 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:44:12,433 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:44:12,825 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: 'TIMESTAMP'
+2024-07-18 23:44:13,050 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: 'TIMESTAMP'
+2024-07-18 23:44:13,239 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: 'TIMESTAMP'
+2024-07-18 23:44:13,420 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: 'TIMESTAMP'
+2024-07-18 23:44:13,420 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5006
+2024-07-18 23:44:13,420 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5012
+2024-07-18 23:44:13,420 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5007
+2024-07-18 23:44:13,427 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5023
+2024-07-18 23:44:13,428 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5020
+2024-07-18 23:44:13,430 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5018
+2024-07-18 23:44:13,431 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5026
+2024-07-18 23:44:13,434 - __main__ - INFO - No data to upload for LINEAR_CORN plot 5027
+2024-07-18 23:44:13,435 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2014-discont-unsure
+2024-07-18 23:44:13,437 - __main__ - INFO - Processing soybean data
+2024-07-18 23:44:13,438 - __main__ - INFO - Processing soybean folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24
+2024-07-18 23:44:13,439 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeA_NodeA.dat
+2024-07-18 23:44:13,440 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeA_NodeA.dat
+2024-07-18 23:44:13,444 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-18 23:44:13,449 - __main__ - INFO - Number of rows before dropping NaT timestamps: 145
+2024-07-18 23:44:13,451 - __main__ - INFO - Number of rows after dropping NaT timestamps: 145
+2024-07-18 23:44:13,452 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-18 23:44:13,454 - __main__ - INFO - Final shape: (145, 11)
+2024-07-18 23:44:13,455 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:44:13,455 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:44:13,803 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2001 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001: 'TIMESTAMP'
+2024-07-18 23:44:14,027 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2009 to crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009: 'TIMESTAMP'
+2024-07-18 23:44:14,184 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2003 to crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003: 'TIMESTAMP'
+2024-07-18 23:44:14,186 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2011
+2024-07-18 23:44:14,186 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2006
+2024-07-18 23:44:14,186 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2012
+2024-07-18 23:44:14,193 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2023
+2024-07-18 23:44:14,195 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2015
+2024-07-18 23:44:14,196 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2018
+2024-07-18 23:44:14,197 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2020
+2024-07-18 23:44:14,197 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2026
+2024-07-18 23:44:14,197 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeB2_NodeB.dat
+2024-07-18 23:44:14,201 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeB2_NodeB.dat
+2024-07-18 23:44:14,205 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-18 23:44:14,208 - __main__ - INFO - Number of rows before dropping NaT timestamps: 93
+2024-07-18 23:44:14,210 - __main__ - INFO - Number of rows after dropping NaT timestamps: 93
+2024-07-18 23:44:14,211 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-18 23:44:14,212 - __main__ - INFO - Final shape: (93, 15)
+2024-07-18 23:44:14,213 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:44:14,213 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:44:14,217 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2001
+2024-07-18 23:44:14,218 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2009
+2024-07-18 23:44:14,219 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2003
+2024-07-18 23:44:14,600 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2011 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011: 'TIMESTAMP'
+2024-07-18 23:44:14,770 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2006 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006: 'TIMESTAMP'
+2024-07-18 23:44:14,945 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2012 to crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012: 'TIMESTAMP'
+2024-07-18 23:44:14,947 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2023
+2024-07-18 23:44:14,949 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2015
+2024-07-18 23:44:14,951 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2018
+2024-07-18 23:44:14,953 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2020
+2024-07-18 23:44:14,955 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2026
+2024-07-18 23:44:14,957 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeC2_NodeC.dat
+2024-07-18 23:44:14,958 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeC2_NodeC.dat
+2024-07-18 23:44:14,964 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224']
+2024-07-18 23:44:14,971 - __main__ - INFO - Number of rows before dropping NaT timestamps: 245
+2024-07-18 23:44:14,974 - __main__ - INFO - Number of rows after dropping NaT timestamps: 245
+2024-07-18 23:44:14,977 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224']
+2024-07-18 23:44:14,978 - __main__ - INFO - Final shape: (245, 13)
+2024-07-18 23:44:14,980 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:44:14,981 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:44:14,988 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2001
+2024-07-18 23:44:14,991 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2009
+2024-07-18 23:44:14,993 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2003
+2024-07-18 23:44:14,995 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2011
+2024-07-18 23:44:14,998 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2006
+2024-07-18 23:44:15,000 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2012
+2024-07-18 23:44:15,375 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2023 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023: 'TIMESTAMP'
+2024-07-18 23:44:15,537 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2015 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015: 'TIMESTAMP'
+2024-07-18 23:44:15,539 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2018
+2024-07-18 23:44:15,542 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2020
+2024-07-18 23:44:15,544 - __main__ - INFO - No data to upload for LINEAR_SOYBEAN plot 2026
+2024-07-18 23:46:03,071 - __main__ - INFO - Processing corn data
+2024-07-18 23:46:03,080 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-18 23:46:03,082 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-18 23:46:03,082 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-18 23:46:03,092 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-18 23:46:03,097 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-18 23:46:03,097 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-18 23:46:03,222 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-18 23:46:03,222 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-18 23:46:03,222 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-18 23:46:03,222 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:46:03,232 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:46:17,685 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-18 23:46:17,685 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-18 23:46:17,703 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-18 23:46:17,712 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-18 23:46:17,717 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-18 23:46:17,720 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:46:17,720 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'TDR5006B11824']
+2024-07-18 23:46:17,722 - __main__ - INFO - Final shape: (608, 16)
+2024-07-18 23:46:17,724 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:46:17,725 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:46:29,303 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-18 23:46:29,316 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-18 23:46:29,326 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:46:29,336 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-18 23:46:29,338 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-18 23:46:29,340 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:46:29,341 - __main__ - INFO - Final shape: (608, 15)
+2024-07-18 23:46:29,342 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:46:29,343 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:46:40,177 - __main__ - INFO - Processing corn folder: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous
+2024-07-18 23:46:40,177 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-18 23:46:40,177 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-18 23:46:40,194 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:46:40,205 - __main__ - INFO - Number of rows before dropping NaT timestamps: 234
+2024-07-18 23:46:40,207 - __main__ - INFO - Number of rows after dropping NaT timestamps: 234
+2024-07-18 23:46:40,209 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:46:40,211 - __main__ - INFO - Final shape: (234, 17)
+2024-07-18 23:46:40,211 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:46:40,211 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:46:51,565 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-18 23:46:51,575 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-18 23:46:51,583 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-18 23:46:51,590 - __main__ - INFO - Number of rows before dropping NaT timestamps: 233
+2024-07-18 23:46:51,596 - __main__ - INFO - Number of rows after dropping NaT timestamps: 233
+2024-07-18 23:46:51,600 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:46:51,601 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:46:51,603 - __main__ - INFO - Final shape: (233, 17)
+2024-07-18 23:46:51,605 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:46:51,607 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:47:02,124 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-18 23:47:02,124 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-18 23:47:02,124 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:47:02,140 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-18 23:47:02,140 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-18 23:47:02,145 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:47:02,147 - __main__ - INFO - Final shape: (232, 16)
+2024-07-18 23:47:02,148 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:47:02,148 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:47:12,653 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only
+2024-07-18 23:47:12,653 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-18 23:47:12,663 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-18 23:47:12,675 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:47:12,687 - __main__ - INFO - Number of rows before dropping NaT timestamps: 522
+2024-07-18 23:47:12,687 - __main__ - INFO - Number of rows after dropping NaT timestamps: 522
+2024-07-18 23:47:12,687 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-18 23:47:12,697 - __main__ - INFO - Final shape: (522, 17)
+2024-07-18 23:47:12,699 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:47:12,701 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:47:33,834 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-18 23:47:33,834 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-18 23:47:33,850 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-18 23:47:33,861 - __main__ - INFO - Number of rows before dropping NaT timestamps: 757
+2024-07-18 23:47:33,864 - __main__ - INFO - Number of rows after dropping NaT timestamps: 757
+2024-07-18 23:47:33,866 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-18 23:47:33,870 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:47:33,871 - __main__ - INFO - Final shape: (757, 17)
+2024-07-18 23:47:33,873 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:47:33,874 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:47:57,549 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-18 23:47:57,559 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-18 23:47:57,564 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:47:57,573 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-18 23:47:57,575 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-18 23:47:57,575 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-18 23:47:57,576 - __main__ - INFO - Final shape: (232, 16)
+2024-07-18 23:47:57,576 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:47:57,579 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:48:08,665 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2014-discont-unsure
+2024-07-18 23:48:08,665 - __main__ - INFO - Processing soybean data
+2024-07-18 23:48:08,665 - __main__ - INFO - Processing soybean folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24
+2024-07-18 23:48:08,665 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeA_NodeA.dat
+2024-07-18 23:48:08,665 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeA_NodeA.dat
+2024-07-18 23:48:08,673 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-18 23:48:08,683 - __main__ - INFO - Number of rows before dropping NaT timestamps: 145
+2024-07-18 23:48:08,683 - __main__ - INFO - Number of rows after dropping NaT timestamps: 145
+2024-07-18 23:48:08,693 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-18 23:48:08,696 - __main__ - INFO - Final shape: (145, 11)
+2024-07-18 23:48:08,699 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:48:08,700 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:48:55,983 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeB2_NodeB.dat
+2024-07-18 23:48:55,983 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeB2_NodeB.dat
+2024-07-18 23:48:55,983 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-18 23:48:55,993 - __main__ - INFO - Number of rows before dropping NaT timestamps: 93
+2024-07-18 23:48:55,993 - __main__ - INFO - Number of rows after dropping NaT timestamps: 93
+2024-07-18 23:48:55,993 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-18 23:48:56,004 - __main__ - INFO - Final shape: (93, 15)
+2024-07-18 23:48:56,004 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:48:56,004 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-18 23:49:06,682 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeC2_NodeC.dat
+2024-07-18 23:49:06,692 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeC2_NodeC.dat
+2024-07-18 23:49:06,702 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224']
+2024-07-18 23:49:06,712 - __main__ - INFO - Number of rows before dropping NaT timestamps: 245
+2024-07-18 23:49:06,717 - __main__ - INFO - Number of rows after dropping NaT timestamps: 245
+2024-07-18 23:49:06,724 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224']
+2024-07-18 23:49:06,731 - __main__ - INFO - Final shape: (245, 13)
+2024-07-18 23:49:06,731 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-18 23:49:06,733 - __main__ - INFO - TIMESTAMP null count: 0

@@ -3327,3 +3327,861 @@ Job ID: 11f883dd-aabe-48a6-b3aa-b441b06a612d
 2024-06-28 20:42:22,816 - bigquery_operations - INFO - Row((datetime.datetime(2024, 6, 25, 2, 0, tzinfo=datetime.timezone.utc), True, None, 23.6, 18.4, 20.4, None, None, None), {'TIMESTAMP': 0, 'is_actual': 1, 'prediction_timestamp': 2, 'TDR5027A41824': 3, 'TDR5027A40624': 4, 'TDR5027A43024': 5, 'predicted_cwsi': 6, 'predicted_et': 7, 'predicted_irrigation': 8})
 2024-06-28 20:42:22,820 - bigquery_operations - INFO - Row((datetime.datetime(2024, 6, 25, 1, 0, tzinfo=datetime.timezone.utc), True, None, 23.591665, 18.4, 20.43333, None, None, None), {'TIMESTAMP': 0, 'is_actual': 1, 'prediction_timestamp': 2, 'TDR5027A41824': 3, 'TDR5027A40624': 4, 'TDR5027A43024': 5, 'predicted_cwsi': 6, 'predicted_et': 7, 'predicted_irrigation': 8})
 2024-06-28 20:42:22,822 - bigquery_operations - INFO - Row((datetime.datetime(2024, 6, 25, 0, 0, tzinfo=datetime.timezone.utc), True, None, 23.583334999999998, 18.4, 20.416665000000002, None, None, None), {'TIMESTAMP': 0, 'is_actual': 1, 'prediction_timestamp': 2, 'TDR5027A41824': 3, 'TDR5027A40624': 4, 'TDR5027A43024': 5, 'predicted_cwsi': 6, 'predicted_et': 7, 'predicted_irrigation': 8})
+2024-07-18 23:33:26,842 - bigquery_operations - ERROR - Error parsing YAML file: while parsing a block mapping
+  in "sensor_mapping.yaml", line 896, column 3
+expected <block end>, but found '-'
+  in "sensor_mapping.yaml", line 908, column 3
+2024-07-18 23:44:04,461 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:44:04,461 - bigquery_operations - INFO - DataFrame columns: ['IRT5023A1xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224']
+2024-07-18 23:44:04,461 - bigquery_operations - INFO - DataFrame shape: (1006, 5)
+2024-07-18 23:44:04,675 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:44:04,685 - bigquery_operations - INFO - DataFrame columns: ['IRT5020A3xx24']
+2024-07-18 23:44:04,685 - bigquery_operations - INFO - DataFrame shape: (1006, 1)
+2024-07-18 23:44:04,869 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:44:04,869 - bigquery_operations - INFO - DataFrame columns: ['IRT5018A3xx24']
+2024-07-18 23:44:04,869 - bigquery_operations - INFO - DataFrame shape: (1006, 1)
+2024-07-18 23:44:05,072 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:44:05,072 - bigquery_operations - INFO - DataFrame columns: ['TDR5026A20624', 'TDR5026A21824']
+2024-07-18 23:44:05,072 - bigquery_operations - INFO - DataFrame shape: (1006, 2)
+2024-07-18 23:44:05,259 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:44:05,259 - bigquery_operations - INFO - DataFrame columns: ['TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-18 23:44:05,259 - bigquery_operations - INFO - DataFrame shape: (1006, 3)
+2024-07-18 23:44:05,750 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:44:05,752 - bigquery_operations - INFO - DataFrame columns: ['IRT5006B1xx24', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5006B11824']
+2024-07-18 23:44:05,753 - bigquery_operations - INFO - DataFrame shape: (608, 5)
+2024-07-18 23:44:05,957 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:44:05,959 - bigquery_operations - INFO - DataFrame columns: ['IRT5012B2xx24', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-18 23:44:05,961 - bigquery_operations - INFO - DataFrame shape: (608, 4)
+2024-07-18 23:44:06,140 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:44:06,140 - bigquery_operations - INFO - DataFrame columns: ['TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224']
+2024-07-18 23:44:06,140 - bigquery_operations - INFO - DataFrame shape: (608, 4)
+2024-07-18 23:44:06,550 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:44:06,550 - bigquery_operations - INFO - DataFrame columns: ['IRT5001C3xx24']
+2024-07-18 23:44:06,550 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:44:06,713 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:44:06,714 - bigquery_operations - INFO - DataFrame columns: ['IRT5003C2xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024']
+2024-07-18 23:44:06,716 - bigquery_operations - INFO - DataFrame shape: (608, 4)
+2024-07-18 23:44:06,881 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:44:06,881 - bigquery_operations - INFO - DataFrame columns: ['IRT5010C1xx24', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024']
+2024-07-18 23:44:06,881 - bigquery_operations - INFO - DataFrame shape: (608, 4)
+2024-07-18 23:44:07,074 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:44:07,074 - bigquery_operations - INFO - DataFrame columns: ['TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:44:07,074 - bigquery_operations - INFO - DataFrame shape: (608, 3)
+2024-07-18 23:44:07,534 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:44:07,534 - bigquery_operations - INFO - DataFrame columns: ['IRT5023A1xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'DEN5023A1xx24']
+2024-07-18 23:44:07,534 - bigquery_operations - INFO - DataFrame shape: (234, 6)
+2024-07-18 23:44:07,691 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:44:07,691 - bigquery_operations - INFO - DataFrame columns: ['IRT5020A3xx24']
+2024-07-18 23:44:07,691 - bigquery_operations - INFO - DataFrame shape: (234, 1)
+2024-07-18 23:44:07,861 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:44:07,861 - bigquery_operations - INFO - DataFrame columns: ['IRT5018A3xx24']
+2024-07-18 23:44:07,861 - bigquery_operations - INFO - DataFrame shape: (234, 1)
+2024-07-18 23:44:08,055 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:44:08,065 - bigquery_operations - INFO - DataFrame columns: ['TDR5026A20624', 'TDR5026A21824']
+2024-07-18 23:44:08,065 - bigquery_operations - INFO - DataFrame shape: (234, 2)
+2024-07-18 23:44:08,228 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:44:08,230 - bigquery_operations - INFO - DataFrame columns: ['TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-18 23:44:08,231 - bigquery_operations - INFO - DataFrame shape: (234, 3)
+2024-07-18 23:44:08,722 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:44:08,724 - bigquery_operations - INFO - DataFrame columns: ['IRT5006B1xx24', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:44:08,725 - bigquery_operations - INFO - DataFrame shape: (233, 6)
+2024-07-18 23:44:08,899 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:44:08,899 - bigquery_operations - INFO - DataFrame columns: ['IRT5012B2xx24', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-18 23:44:08,899 - bigquery_operations - INFO - DataFrame shape: (233, 4)
+2024-07-18 23:44:09,059 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:44:09,059 - bigquery_operations - INFO - DataFrame columns: ['TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224']
+2024-07-18 23:44:09,059 - bigquery_operations - INFO - DataFrame shape: (233, 4)
+2024-07-18 23:44:09,596 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:44:09,596 - bigquery_operations - INFO - DataFrame columns: ['IRT5001C3xx24']
+2024-07-18 23:44:09,596 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:44:09,784 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:44:09,784 - bigquery_operations - INFO - DataFrame columns: ['IRT5003C2xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024']
+2024-07-18 23:44:09,784 - bigquery_operations - INFO - DataFrame shape: (232, 4)
+2024-07-18 23:44:09,966 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:44:09,966 - bigquery_operations - INFO - DataFrame columns: ['IRT5010C1xx24', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'DEN5010C1xx24']
+2024-07-18 23:44:09,966 - bigquery_operations - INFO - DataFrame shape: (232, 5)
+2024-07-18 23:44:10,133 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:44:10,143 - bigquery_operations - INFO - DataFrame columns: ['TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:44:10,143 - bigquery_operations - INFO - DataFrame shape: (232, 3)
+2024-07-18 23:44:10,603 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:44:10,603 - bigquery_operations - INFO - DataFrame columns: ['IRT5023A1xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'DEN5023A1xx24']
+2024-07-18 23:44:10,613 - bigquery_operations - INFO - DataFrame shape: (522, 6)
+2024-07-18 23:44:10,793 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:44:10,793 - bigquery_operations - INFO - DataFrame columns: ['IRT5020A3xx24']
+2024-07-18 23:44:10,793 - bigquery_operations - INFO - DataFrame shape: (522, 1)
+2024-07-18 23:44:11,001 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:44:11,011 - bigquery_operations - INFO - DataFrame columns: ['IRT5018A3xx24']
+2024-07-18 23:44:11,011 - bigquery_operations - INFO - DataFrame shape: (522, 1)
+2024-07-18 23:44:11,237 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:44:11,238 - bigquery_operations - INFO - DataFrame columns: ['TDR5026A20624', 'TDR5026A21824']
+2024-07-18 23:44:11,239 - bigquery_operations - INFO - DataFrame shape: (522, 2)
+2024-07-18 23:44:11,415 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:44:11,415 - bigquery_operations - INFO - DataFrame columns: ['TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-18 23:44:11,415 - bigquery_operations - INFO - DataFrame shape: (522, 3)
+2024-07-18 23:44:12,019 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:44:12,021 - bigquery_operations - INFO - DataFrame columns: ['IRT5006B1xx24', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:44:12,022 - bigquery_operations - INFO - DataFrame shape: (757, 6)
+2024-07-18 23:44:12,198 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:44:12,198 - bigquery_operations - INFO - DataFrame columns: ['IRT5012B2xx24', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-18 23:44:12,198 - bigquery_operations - INFO - DataFrame shape: (757, 4)
+2024-07-18 23:44:12,392 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:44:12,392 - bigquery_operations - INFO - DataFrame columns: ['TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224']
+2024-07-18 23:44:12,392 - bigquery_operations - INFO - DataFrame shape: (757, 4)
+2024-07-18 23:44:12,815 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:44:12,815 - bigquery_operations - INFO - DataFrame columns: ['IRT5001C3xx24']
+2024-07-18 23:44:12,815 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:44:13,046 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:44:13,047 - bigquery_operations - INFO - DataFrame columns: ['IRT5003C2xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024']
+2024-07-18 23:44:13,049 - bigquery_operations - INFO - DataFrame shape: (232, 4)
+2024-07-18 23:44:13,236 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:44:13,237 - bigquery_operations - INFO - DataFrame columns: ['IRT5010C1xx24', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'DEN5010C1xx24']
+2024-07-18 23:44:13,238 - bigquery_operations - INFO - DataFrame shape: (232, 5)
+2024-07-18 23:44:13,419 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:44:13,420 - bigquery_operations - INFO - DataFrame columns: ['TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:44:13,420 - bigquery_operations - INFO - DataFrame shape: (232, 3)
+2024-07-18 23:44:13,803 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-18 23:44:13,803 - bigquery_operations - INFO - DataFrame columns: ['IRT2001A2xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024']
+2024-07-18 23:44:13,803 - bigquery_operations - INFO - DataFrame shape: (145, 4)
+2024-07-18 23:44:14,017 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-18 23:44:14,017 - bigquery_operations - INFO - DataFrame columns: ['TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-18 23:44:14,017 - bigquery_operations - INFO - DataFrame shape: (145, 3)
+2024-07-18 23:44:14,180 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-18 23:44:14,180 - bigquery_operations - INFO - DataFrame columns: ['IRT2003A3xx24']
+2024-07-18 23:44:14,183 - bigquery_operations - INFO - DataFrame shape: (145, 1)
+2024-07-18 23:44:14,596 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-18 23:44:14,597 - bigquery_operations - INFO - DataFrame columns: ['IRT2011B2xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024']
+2024-07-18 23:44:14,599 - bigquery_operations - INFO - DataFrame shape: (93, 4)
+2024-07-18 23:44:14,770 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-18 23:44:14,770 - bigquery_operations - INFO - DataFrame columns: ['IRT2006B1xx24', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224']
+2024-07-18 23:44:14,770 - bigquery_operations - INFO - DataFrame shape: (93, 5)
+2024-07-18 23:44:14,941 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-18 23:44:14,942 - bigquery_operations - INFO - DataFrame columns: ['TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-18 23:44:14,944 - bigquery_operations - INFO - DataFrame shape: (93, 3)
+2024-07-18 23:44:15,372 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-18 23:44:15,373 - bigquery_operations - INFO - DataFrame columns: ['IRT2023C1xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224']
+2024-07-18 23:44:15,374 - bigquery_operations - INFO - DataFrame shape: (245, 5)
+2024-07-18 23:44:15,532 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-18 23:44:15,533 - bigquery_operations - INFO - DataFrame columns: ['IRT2015C1xx24', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224']
+2024-07-18 23:44:15,535 - bigquery_operations - INFO - DataFrame shape: (245, 5)
+2024-07-18 23:46:03,627 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:46:03,627 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:03,637 - bigquery_operations - INFO - DataFrame shape: (1006, 1)
+2024-07-18 23:46:04,567 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:04,571 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:46:04,776 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:46:04,778 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:04,778 - bigquery_operations - INFO - DataFrame shape: (1006, 1)
+2024-07-18 23:46:05,911 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:05,911 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:46:06,105 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:46:06,105 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:06,105 - bigquery_operations - INFO - DataFrame shape: (1006, 1)
+2024-07-18 23:46:07,102 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:46:07,102 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:46:07,280 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:46:07,280 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:07,280 - bigquery_operations - INFO - DataFrame shape: (1006, 1)
+2024-07-18 23:46:08,180 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:08,180 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:46:08,362 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:46:08,364 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:08,366 - bigquery_operations - INFO - DataFrame shape: (1006, 1)
+2024-07-18 23:46:09,352 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:46:09,354 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:46:09,543 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:46:09,543 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:09,553 - bigquery_operations - INFO - DataFrame shape: (1006, 1)
+2024-07-18 23:46:10,505 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 20:27:57.248097+00:00
+2024-07-18 23:46:10,507 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:46:10,743 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:46:10,743 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:10,743 - bigquery_operations - INFO - DataFrame shape: (1006, 1)
+2024-07-18 23:46:11,744 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 01:30:43.430500+00:00
+2024-07-18 23:46:11,744 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:46:11,947 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:46:11,947 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5023A1xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224']
+2024-07-18 23:46:11,947 - bigquery_operations - INFO - DataFrame shape: (1006, 6)
+2024-07-18 23:46:13,040 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:13,040 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:46:13,218 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:46:13,218 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5020A3xx24']
+2024-07-18 23:46:13,218 - bigquery_operations - INFO - DataFrame shape: (1006, 2)
+2024-07-18 23:46:14,248 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:14,249 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:46:14,463 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:46:14,463 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5018A3xx24']
+2024-07-18 23:46:14,463 - bigquery_operations - INFO - DataFrame shape: (1006, 2)
+2024-07-18 23:46:15,493 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:15,493 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:46:15,730 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:46:15,730 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR5026A20624', 'TDR5026A21824']
+2024-07-18 23:46:15,730 - bigquery_operations - INFO - DataFrame shape: (1006, 3)
+2024-07-18 23:46:16,614 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:46:16,624 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:46:16,796 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:46:16,796 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-18 23:46:16,796 - bigquery_operations - INFO - DataFrame shape: (1006, 4)
+2024-07-18 23:46:17,685 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:46:17,685 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:46:18,068 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:46:18,078 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:18,078 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:18,723 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:18,732 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:46:18,917 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:46:18,917 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:18,917 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:19,610 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:19,613 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:46:19,787 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:46:19,795 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:19,797 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:20,487 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:46:20,487 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:46:20,655 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:46:20,655 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:20,655 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:21,348 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:21,354 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:46:21,598 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:46:21,598 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5006B1xx24', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5006B11824']
+2024-07-18 23:46:21,598 - bigquery_operations - INFO - DataFrame shape: (608, 6)
+2024-07-18 23:46:22,391 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:46:22,393 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:46:22,579 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:46:22,579 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5012B2xx24', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-18 23:46:22,579 - bigquery_operations - INFO - DataFrame shape: (608, 5)
+2024-07-18 23:46:23,293 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 20:27:57.248097+00:00
+2024-07-18 23:46:23,293 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:46:23,504 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:46:23,504 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224']
+2024-07-18 23:46:23,504 - bigquery_operations - INFO - DataFrame shape: (608, 5)
+2024-07-18 23:46:24,190 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 01:30:43.430500+00:00
+2024-07-18 23:46:24,190 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:46:24,375 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:46:24,377 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:24,378 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:25,248 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:25,249 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:46:25,448 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:46:25,448 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:25,448 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:26,513 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:26,513 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:46:26,679 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:46:26,689 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:26,689 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:27,641 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:27,641 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:46:27,833 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:46:27,834 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:27,836 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:28,513 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:46:28,513 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:46:28,694 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:46:28,694 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:28,694 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:29,293 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:46:29,303 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:46:29,718 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:46:29,718 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5001C3xx24']
+2024-07-18 23:46:29,718 - bigquery_operations - INFO - DataFrame shape: (608, 2)
+2024-07-18 23:46:30,434 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:30,435 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:46:30,643 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:46:30,644 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5003C2xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024']
+2024-07-18 23:46:30,645 - bigquery_operations - INFO - DataFrame shape: (608, 5)
+2024-07-18 23:46:31,262 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:31,262 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:46:31,426 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:46:31,426 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5010C1xx24', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024']
+2024-07-18 23:46:31,436 - bigquery_operations - INFO - DataFrame shape: (608, 5)
+2024-07-18 23:46:32,088 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:46:32,088 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:46:32,272 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:46:32,274 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:46:32,276 - bigquery_operations - INFO - DataFrame shape: (608, 4)
+2024-07-18 23:46:32,885 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:32,887 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:46:33,074 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:46:33,074 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:33,074 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:33,629 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:46:33,639 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:46:33,794 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:46:33,794 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:33,794 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:34,455 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 20:27:57.248097+00:00
+2024-07-18 23:46:34,464 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:46:34,690 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:46:34,690 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:34,690 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:35,293 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 01:30:43.430500+00:00
+2024-07-18 23:46:35,293 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:46:35,489 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:46:35,499 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:35,499 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:36,310 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:36,310 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:46:36,618 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:46:36,618 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:36,618 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:37,552 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:37,554 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:46:37,747 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:46:37,747 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:37,747 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:38,554 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:38,554 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:46:38,779 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:46:38,779 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:38,779 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:39,383 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:46:39,385 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:46:39,516 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:46:39,518 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:39,521 - bigquery_operations - INFO - DataFrame shape: (608, 1)
+2024-07-18 23:46:40,177 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:46:40,177 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:46:40,584 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:46:40,584 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:40,584 - bigquery_operations - INFO - DataFrame shape: (234, 1)
+2024-07-18 23:46:41,233 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:41,233 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:46:41,414 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:46:41,414 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:41,414 - bigquery_operations - INFO - DataFrame shape: (234, 1)
+2024-07-18 23:46:42,076 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:42,077 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:46:42,291 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:46:42,291 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:42,291 - bigquery_operations - INFO - DataFrame shape: (234, 1)
+2024-07-18 23:46:43,139 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:46:43,139 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:46:43,305 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:46:43,305 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:43,305 - bigquery_operations - INFO - DataFrame shape: (234, 1)
+2024-07-18 23:46:43,940 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:43,940 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:46:44,162 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:46:44,162 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:44,162 - bigquery_operations - INFO - DataFrame shape: (234, 1)
+2024-07-18 23:46:44,792 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:46:44,792 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:46:45,001 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:46:45,001 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:45,001 - bigquery_operations - INFO - DataFrame shape: (234, 1)
+2024-07-18 23:46:45,645 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 20:27:57.248097+00:00
+2024-07-18 23:46:45,645 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:46:45,825 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:46:45,825 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:45,825 - bigquery_operations - INFO - DataFrame shape: (234, 1)
+2024-07-18 23:46:46,602 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 01:30:43.430500+00:00
+2024-07-18 23:46:46,602 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:46:46,792 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:46:46,792 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5023A1xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'DEN5023A1xx24']
+2024-07-18 23:46:46,792 - bigquery_operations - INFO - DataFrame shape: (234, 7)
+2024-07-18 23:46:47,653 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:47,663 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:46:47,839 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:46:47,840 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5020A3xx24']
+2024-07-18 23:46:47,841 - bigquery_operations - INFO - DataFrame shape: (234, 2)
+2024-07-18 23:46:48,698 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:48,699 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:46:48,887 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:46:48,887 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5018A3xx24']
+2024-07-18 23:46:48,887 - bigquery_operations - INFO - DataFrame shape: (234, 2)
+2024-07-18 23:46:49,761 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:49,761 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:46:49,954 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:46:49,955 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR5026A20624', 'TDR5026A21824']
+2024-07-18 23:46:49,956 - bigquery_operations - INFO - DataFrame shape: (234, 3)
+2024-07-18 23:46:50,596 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:46:50,606 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:46:50,765 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:46:50,765 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-18 23:46:50,765 - bigquery_operations - INFO - DataFrame shape: (234, 4)
+2024-07-18 23:46:51,565 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:46:51,565 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:46:51,992 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:46:51,992 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:51,992 - bigquery_operations - INFO - DataFrame shape: (233, 1)
+2024-07-18 23:46:52,656 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:52,657 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:46:52,816 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:46:52,818 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:52,818 - bigquery_operations - INFO - DataFrame shape: (233, 1)
+2024-07-18 23:46:53,473 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:53,475 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:46:53,624 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:46:53,624 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:53,624 - bigquery_operations - INFO - DataFrame shape: (233, 1)
+2024-07-18 23:46:54,284 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:46:54,284 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:46:54,464 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:46:54,464 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:54,464 - bigquery_operations - INFO - DataFrame shape: (233, 1)
+2024-07-18 23:46:55,065 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:46:55,065 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:46:55,239 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:46:55,239 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5006B1xx24', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:46:55,239 - bigquery_operations - INFO - DataFrame shape: (233, 7)
+2024-07-18 23:46:55,877 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:46:55,879 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:46:56,062 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:46:56,062 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5012B2xx24', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-18 23:46:56,062 - bigquery_operations - INFO - DataFrame shape: (233, 5)
+2024-07-18 23:46:56,789 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 20:27:57.248097+00:00
+2024-07-18 23:46:56,789 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:46:56,950 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:46:56,960 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224']
+2024-07-18 23:46:56,960 - bigquery_operations - INFO - DataFrame shape: (233, 5)
+2024-07-18 23:46:57,454 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 01:30:43.430500+00:00
+2024-07-18 23:46:57,454 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:46:57,637 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:46:57,647 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:57,647 - bigquery_operations - INFO - DataFrame shape: (233, 1)
+2024-07-18 23:46:58,494 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:58,494 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:46:58,708 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:46:58,708 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:58,708 - bigquery_operations - INFO - DataFrame shape: (233, 1)
+2024-07-18 23:46:59,525 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:46:59,525 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:46:59,703 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:46:59,703 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:46:59,703 - bigquery_operations - INFO - DataFrame shape: (233, 1)
+2024-07-18 23:47:00,596 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:47:00,596 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:47:00,785 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:47:00,785 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:00,795 - bigquery_operations - INFO - DataFrame shape: (233, 1)
+2024-07-18 23:47:01,398 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:47:01,398 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:47:01,584 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:47:01,584 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:01,584 - bigquery_operations - INFO - DataFrame shape: (233, 1)
+2024-07-18 23:47:02,114 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:47:02,114 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:47:02,538 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:47:02,538 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5001C3xx24']
+2024-07-18 23:47:02,538 - bigquery_operations - INFO - DataFrame shape: (232, 2)
+2024-07-18 23:47:03,109 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:47:03,109 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:47:03,283 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:47:03,283 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5003C2xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024']
+2024-07-18 23:47:03,283 - bigquery_operations - INFO - DataFrame shape: (232, 5)
+2024-07-18 23:47:03,843 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:47:03,843 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:47:04,040 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:47:04,041 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5010C1xx24', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'DEN5010C1xx24']
+2024-07-18 23:47:04,043 - bigquery_operations - INFO - DataFrame shape: (232, 6)
+2024-07-18 23:47:04,676 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:47:04,676 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:47:04,845 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:47:04,845 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:47:04,845 - bigquery_operations - INFO - DataFrame shape: (232, 4)
+2024-07-18 23:47:05,440 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:47:05,440 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:47:05,617 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:47:05,617 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:05,628 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:47:06,190 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:47:06,190 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:47:06,451 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:47:06,451 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:06,451 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:47:07,101 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 20:27:57.248097+00:00
+2024-07-18 23:47:07,101 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:47:07,288 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:47:07,298 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:07,298 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:47:07,923 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 01:30:43.430500+00:00
+2024-07-18 23:47:07,933 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:47:08,122 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:47:08,132 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:08,132 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:47:09,043 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:47:09,043 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:47:09,230 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:47:09,230 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:09,230 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:47:09,993 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:47:09,993 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:47:10,144 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:47:10,144 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:10,144 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:47:11,011 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:47:11,021 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:47:11,214 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:47:11,214 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:11,214 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:47:11,889 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:47:11,890 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:47:12,109 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:47:12,109 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:12,109 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:47:12,653 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:47:12,653 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:47:13,074 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:47:13,075 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:13,075 - bigquery_operations - INFO - DataFrame shape: (522, 1)
+2024-07-18 23:47:13,764 - bigquery_operations - INFO - Filtered data to 288 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:47:13,930 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt3.plot_5001: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT5001C3xx24': 'FLOAT', 'IRT5001C3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:47:17,070 - bigquery_operations - INFO - Successfully loaded 288 rows into crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:47:17,263 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:47:17,263 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:17,263 - bigquery_operations - INFO - DataFrame shape: (522, 1)
+2024-07-18 23:47:17,730 - bigquery_operations - INFO - Filtered data to 288 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:47:17,920 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt2.plot_5003: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5003C21824': 'FLOAT', 'TDR5003C21824_pred': 'FLOAT', 'TDR5003C20624': 'FLOAT', 'TDR5003C20624_pred': 'FLOAT', 'TDR5003C23024': 'FLOAT', 'TDR5003C23024_pred': 'FLOAT', 'IRT5003C2xx24': 'FLOAT', 'IRT5003C2xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:47:20,286 - bigquery_operations - INFO - Successfully loaded 288 rows into crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:47:20,500 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:47:20,503 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:20,504 - bigquery_operations - INFO - DataFrame shape: (522, 1)
+2024-07-18 23:47:21,071 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:47:21,072 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:47:21,246 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:47:21,247 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:21,249 - bigquery_operations - INFO - DataFrame shape: (522, 1)
+2024-07-18 23:47:22,076 - bigquery_operations - INFO - Filtered data to 288 new rows after 2024-07-08 12:00:00+00:00
+2024-07-18 23:47:22,234 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt4.plot_5009: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5009C40624': 'FLOAT', 'TDR5009C40624_pred': 'FLOAT', 'TDR5009C41824': 'FLOAT', 'TDR5009C41824_pred': 'FLOAT', 'TDR5009C43024': 'FLOAT', 'TDR5009C43024_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:47:26,500 - bigquery_operations - INFO - Successfully loaded 288 rows into crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:47:26,694 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:47:26,694 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:26,704 - bigquery_operations - INFO - DataFrame shape: (522, 1)
+2024-07-18 23:47:27,349 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:47:27,349 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:47:27,545 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:47:27,545 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:27,545 - bigquery_operations - INFO - DataFrame shape: (522, 1)
+2024-07-18 23:47:28,131 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 20:27:57.248097+00:00
+2024-07-18 23:47:28,131 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:47:28,335 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:47:28,337 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:28,339 - bigquery_operations - INFO - DataFrame shape: (522, 1)
+2024-07-18 23:47:28,945 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 01:30:43.430500+00:00
+2024-07-18 23:47:28,945 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:47:29,126 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:47:29,126 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5023A1xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'DEN5023A1xx24']
+2024-07-18 23:47:29,126 - bigquery_operations - INFO - DataFrame shape: (522, 7)
+2024-07-18 23:47:29,889 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:47:29,891 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:47:30,081 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:47:30,081 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5020A3xx24']
+2024-07-18 23:47:30,081 - bigquery_operations - INFO - DataFrame shape: (522, 2)
+2024-07-18 23:47:30,895 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:47:30,895 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:47:31,060 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:47:31,061 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5018A3xx24']
+2024-07-18 23:47:31,061 - bigquery_operations - INFO - DataFrame shape: (522, 2)
+2024-07-18 23:47:32,069 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:47:32,079 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:47:32,266 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:47:32,266 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR5026A20624', 'TDR5026A21824']
+2024-07-18 23:47:32,266 - bigquery_operations - INFO - DataFrame shape: (522, 3)
+2024-07-18 23:47:32,893 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:47:32,895 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:47:33,107 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:47:33,107 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-18 23:47:33,107 - bigquery_operations - INFO - DataFrame shape: (522, 4)
+2024-07-18 23:47:33,834 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:47:33,834 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:47:34,548 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:47:34,548 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:34,548 - bigquery_operations - INFO - DataFrame shape: (757, 1)
+2024-07-18 23:47:35,534 - bigquery_operations - INFO - Filtered data to 2 new rows after 2024-07-14 12:30:00+00:00
+2024-07-18 23:47:35,764 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt3.plot_5001: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT5001C3xx24': 'FLOAT', 'IRT5001C3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:47:38,365 - bigquery_operations - INFO - Successfully loaded 2 rows into crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:47:38,535 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:47:38,545 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:38,545 - bigquery_operations - INFO - DataFrame shape: (757, 1)
+2024-07-18 23:47:39,298 - bigquery_operations - INFO - Filtered data to 2 new rows after 2024-07-14 12:30:00+00:00
+2024-07-18 23:47:39,452 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt2.plot_5003: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5003C21824': 'FLOAT', 'TDR5003C21824_pred': 'FLOAT', 'TDR5003C20624': 'FLOAT', 'TDR5003C20624_pred': 'FLOAT', 'TDR5003C23024': 'FLOAT', 'TDR5003C23024_pred': 'FLOAT', 'IRT5003C2xx24': 'FLOAT', 'IRT5003C2xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:47:43,612 - bigquery_operations - INFO - Successfully loaded 2 rows into crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:47:43,807 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:47:43,809 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:43,810 - bigquery_operations - INFO - DataFrame shape: (757, 1)
+2024-07-18 23:47:44,407 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:47:44,407 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:47:44,588 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:47:44,589 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:44,591 - bigquery_operations - INFO - DataFrame shape: (757, 1)
+2024-07-18 23:47:45,375 - bigquery_operations - INFO - Filtered data to 2 new rows after 2024-07-14 12:30:00+00:00
+2024-07-18 23:47:45,539 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_CORN_trt4.plot_5009: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR5009C40624': 'FLOAT', 'TDR5009C40624_pred': 'FLOAT', 'TDR5009C41824': 'FLOAT', 'TDR5009C41824_pred': 'FLOAT', 'TDR5009C43024': 'FLOAT', 'TDR5009C43024_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:47:50,514 - bigquery_operations - INFO - Successfully loaded 2 rows into crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:47:50,705 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:47:50,708 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5006B1xx24', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-18 23:47:50,710 - bigquery_operations - INFO - DataFrame shape: (757, 7)
+2024-07-18 23:47:51,305 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:47:51,315 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:47:51,479 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:47:51,479 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5012B2xx24', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-18 23:47:51,489 - bigquery_operations - INFO - DataFrame shape: (757, 5)
+2024-07-18 23:47:52,036 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 20:27:57.248097+00:00
+2024-07-18 23:47:52,036 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:47:52,206 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:47:52,206 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224']
+2024-07-18 23:47:52,206 - bigquery_operations - INFO - DataFrame shape: (757, 5)
+2024-07-18 23:47:52,816 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 01:30:43.430500+00:00
+2024-07-18 23:47:52,817 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:47:52,990 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:47:52,990 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:52,990 - bigquery_operations - INFO - DataFrame shape: (757, 1)
+2024-07-18 23:47:53,849 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:47:53,850 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:47:54,025 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:47:54,025 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:54,025 - bigquery_operations - INFO - DataFrame shape: (757, 1)
+2024-07-18 23:47:54,819 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:47:54,819 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:47:54,985 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:47:54,985 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:54,995 - bigquery_operations - INFO - DataFrame shape: (757, 1)
+2024-07-18 23:47:55,853 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:47:55,854 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:47:56,015 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:47:56,015 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:56,015 - bigquery_operations - INFO - DataFrame shape: (757, 1)
+2024-07-18 23:47:56,691 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:47:56,691 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:47:56,928 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:47:56,938 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:47:56,938 - bigquery_operations - INFO - DataFrame shape: (757, 1)
+2024-07-18 23:47:57,547 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:47:57,547 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:47:57,975 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:47:57,985 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5001C3xx24']
+2024-07-18 23:47:57,985 - bigquery_operations - INFO - DataFrame shape: (232, 2)
+2024-07-18 23:47:58,737 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-14 13:30:00+00:00
+2024-07-18 23:47:58,737 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-18 23:47:58,915 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:47:58,915 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5003C2xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024']
+2024-07-18 23:47:58,915 - bigquery_operations - INFO - DataFrame shape: (232, 5)
+2024-07-18 23:47:59,722 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-14 13:30:00+00:00
+2024-07-18 23:47:59,723 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-18 23:47:59,895 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:47:59,895 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT5010C1xx24', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'DEN5010C1xx24']
+2024-07-18 23:47:59,895 - bigquery_operations - INFO - DataFrame shape: (232, 6)
+2024-07-18 23:48:00,457 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:48:00,458 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-18 23:48:00,617 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:48:00,617 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-18 23:48:00,617 - bigquery_operations - INFO - DataFrame shape: (232, 4)
+2024-07-18 23:48:01,371 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-14 13:30:00+00:00
+2024-07-18 23:48:01,373 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-18 23:48:01,658 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:48:01,658 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:01,664 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:48:02,210 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 10:47:00+00:00
+2024-07-18 23:48:02,210 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-18 23:48:02,383 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:48:02,384 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:02,385 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:48:03,046 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 20:27:57.248097+00:00
+2024-07-18 23:48:03,046 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-18 23:48:03,252 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:48:03,252 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:03,252 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:48:03,869 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-17 01:30:43.430500+00:00
+2024-07-18 23:48:03,871 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-18 23:48:04,059 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:48:04,069 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:04,070 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:48:04,953 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:48:04,953 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-18 23:48:05,133 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:48:05,133 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:05,133 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:48:05,921 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:48:05,921 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-18 23:48:06,093 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:48:06,094 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:06,095 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:48:07,125 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-19 04:35:47.091849+00:00
+2024-07-18 23:48:07,125 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-18 23:48:07,319 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:48:07,319 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:07,329 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:48:07,862 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:48:07,864 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-18 23:48:08,026 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:48:08,026 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:08,026 - bigquery_operations - INFO - DataFrame shape: (232, 1)
+2024-07-18 23:48:08,663 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-18 20:10:39.436590+00:00
+2024-07-18 23:48:08,663 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-18 23:48:09,084 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-18 23:48:09,084 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT2001A2xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024']
+2024-07-18 23:48:09,084 - bigquery_operations - INFO - DataFrame shape: (145, 5)
+2024-07-18 23:48:09,995 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2001A21824': 'FLOAT', 'TDR2001A21824_pred': 'FLOAT', 'TDR2001A23024': 'FLOAT', 'TDR2001A23024_pred': 'FLOAT', 'IRT2001A2xx24': 'FLOAT', 'IRT2001A2xx24_pred': 'FLOAT', 'TDR2001A20624': 'FLOAT', 'TDR2001A20624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:48:12,771 - bigquery_operations - INFO - Successfully loaded 145 rows into crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-18 23:48:12,962 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-18 23:48:12,965 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-18 23:48:12,966 - bigquery_operations - INFO - DataFrame shape: (145, 4)
+2024-07-18 23:48:13,868 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2009A41824': 'FLOAT', 'TDR2009A41824_pred': 'FLOAT', 'TDR2009A43024': 'FLOAT', 'TDR2009A43024_pred': 'FLOAT', 'TDR2009A40624': 'FLOAT', 'TDR2009A40624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:48:16,459 - bigquery_operations - INFO - Successfully loaded 145 rows into crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-18 23:48:16,606 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-18 23:48:16,617 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT2003A3xx24']
+2024-07-18 23:48:16,617 - bigquery_operations - INFO - DataFrame shape: (145, 2)
+2024-07-18 23:48:17,493 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT2003A3xx24': 'FLOAT', 'IRT2003A3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:48:20,672 - bigquery_operations - INFO - Successfully loaded 145 rows into crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-18 23:48:20,907 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-18 23:48:20,908 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:20,909 - bigquery_operations - INFO - DataFrame shape: (145, 1)
+2024-07-18 23:48:21,884 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2011B20624': 'FLOAT', 'TDR2011B20624_pred': 'FLOAT', 'TDR2011B21824': 'FLOAT', 'TDR2011B21824_pred': 'FLOAT', 'IRT2011B2xx24': 'FLOAT', 'IRT2011B2xx24_pred': 'FLOAT', 'TDR2011B23024': 'FLOAT', 'TDR2011B23024_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:48:24,360 - bigquery_operations - INFO - Successfully loaded 145 rows into crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-18 23:48:24,530 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-18 23:48:24,532 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:24,532 - bigquery_operations - INFO - DataFrame shape: (145, 1)
+2024-07-18 23:48:25,356 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2006B13024': 'FLOAT', 'TDR2006B13024_pred': 'FLOAT', 'TDR2006B10624': 'FLOAT', 'TDR2006B10624_pred': 'FLOAT', 'TDR2006B11824': 'FLOAT', 'TDR2006B11824_pred': 'FLOAT', 'TDR2006B14224': 'FLOAT', 'TDR2006B14224_pred': 'FLOAT', 'IRT2006B1xx24': 'FLOAT', 'IRT2006B1xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:48:28,933 - bigquery_operations - INFO - Successfully loaded 145 rows into crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-18 23:48:29,098 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-18 23:48:29,098 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:29,098 - bigquery_operations - INFO - DataFrame shape: (145, 1)
+2024-07-18 23:48:30,048 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2012B41824': 'FLOAT', 'TDR2012B41824_pred': 'FLOAT', 'TDR2012B43024': 'FLOAT', 'TDR2012B43024_pred': 'FLOAT', 'TDR2012B40624': 'FLOAT', 'TDR2012B40624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:48:33,571 - bigquery_operations - INFO - Successfully loaded 145 rows into crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-18 23:48:33,752 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-18 23:48:33,752 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:33,752 - bigquery_operations - INFO - DataFrame shape: (145, 1)
+2024-07-18 23:48:34,566 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2023C11824': 'FLOAT', 'TDR2023C11824_pred': 'FLOAT', 'TDR2023C10624': 'FLOAT', 'TDR2023C10624_pred': 'FLOAT', 'IRT2023C1xx24': 'FLOAT', 'IRT2023C1xx24_pred': 'FLOAT', 'TDR2023C13024': 'FLOAT', 'TDR2023C13024_pred': 'FLOAT', 'TDR2023C14224': 'FLOAT', 'TDR2023C14224_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:48:36,885 - bigquery_operations - INFO - Successfully loaded 145 rows into crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-18 23:48:37,056 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-18 23:48:37,066 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:37,066 - bigquery_operations - INFO - DataFrame shape: (145, 1)
+2024-07-18 23:48:37,911 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2015C14224': 'FLOAT', 'TDR2015C14224_pred': 'FLOAT', 'TDR2015C10624': 'FLOAT', 'TDR2015C10624_pred': 'FLOAT', 'IRT2015C1xx24': 'FLOAT', 'IRT2015C1xx24_pred': 'FLOAT', 'TDR2015C13024': 'FLOAT', 'TDR2015C13024_pred': 'FLOAT', 'TDR2015C11824': 'FLOAT', 'TDR2015C11824_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:48:41,071 - bigquery_operations - INFO - Successfully loaded 145 rows into crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-18 23:48:41,236 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-18 23:48:41,246 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:41,246 - bigquery_operations - INFO - DataFrame shape: (145, 1)
+2024-07-18 23:48:42,412 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT2018C3xx24': 'FLOAT', 'IRT2018C3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:48:45,786 - bigquery_operations - INFO - Successfully loaded 145 rows into crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-18 23:48:45,977 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-18 23:48:45,977 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:45,977 - bigquery_operations - INFO - DataFrame shape: (145, 1)
+2024-07-18 23:48:47,021 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT2020C3xx24': 'FLOAT', 'IRT2020C3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:48:49,487 - bigquery_operations - INFO - Successfully loaded 145 rows into crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-18 23:48:49,727 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-18 23:48:49,727 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:49,727 - bigquery_operations - INFO - DataFrame shape: (145, 1)
+2024-07-18 23:48:50,679 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT2026C2xx24': 'FLOAT', 'IRT2026C2xx24_pred': 'FLOAT', 'TDR2026C23024': 'FLOAT', 'TDR2026C23024_pred': 'FLOAT', 'TDR2026C21824': 'FLOAT', 'TDR2026C21824_pred': 'FLOAT', 'TDR2026C20624': 'FLOAT', 'TDR2026C20624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:48:55,963 - bigquery_operations - INFO - Successfully loaded 145 rows into crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-18 23:48:56,444 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-18 23:48:56,444 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:56,444 - bigquery_operations - INFO - DataFrame shape: (93, 1)
+2024-07-18 23:48:57,226 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:48:57,226 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-18 23:48:57,407 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-18 23:48:57,407 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:57,407 - bigquery_operations - INFO - DataFrame shape: (93, 1)
+2024-07-18 23:48:58,208 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:48:58,218 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-18 23:48:58,408 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-18 23:48:58,408 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:48:58,408 - bigquery_operations - INFO - DataFrame shape: (93, 1)
+2024-07-18 23:48:59,160 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:48:59,160 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-18 23:48:59,340 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-18 23:48:59,350 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT2011B2xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024']
+2024-07-18 23:48:59,350 - bigquery_operations - INFO - DataFrame shape: (93, 5)
+2024-07-18 23:49:00,121 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:00,121 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-18 23:49:00,302 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-18 23:49:00,302 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT2006B1xx24', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224']
+2024-07-18 23:49:00,312 - bigquery_operations - INFO - DataFrame shape: (93, 6)
+2024-07-18 23:49:01,033 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:01,033 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-18 23:49:01,203 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-18 23:49:01,203 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-18 23:49:01,213 - bigquery_operations - INFO - DataFrame shape: (93, 4)
+2024-07-18 23:49:02,056 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:02,056 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-18 23:49:02,307 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-18 23:49:02,307 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:02,307 - bigquery_operations - INFO - DataFrame shape: (93, 1)
+2024-07-18 23:49:03,009 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:03,009 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-18 23:49:03,160 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-18 23:49:03,160 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:03,160 - bigquery_operations - INFO - DataFrame shape: (93, 1)
+2024-07-18 23:49:03,881 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:03,881 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-18 23:49:04,051 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-18 23:49:04,051 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:04,051 - bigquery_operations - INFO - DataFrame shape: (93, 1)
+2024-07-18 23:49:04,822 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:04,822 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-18 23:49:04,993 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-18 23:49:04,993 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:04,993 - bigquery_operations - INFO - DataFrame shape: (93, 1)
+2024-07-18 23:49:05,654 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:05,663 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-18 23:49:05,856 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-18 23:49:05,856 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:05,856 - bigquery_operations - INFO - DataFrame shape: (93, 1)
+2024-07-18 23:49:06,682 - bigquery_operations - INFO - Filtered data to 0 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:06,682 - bigquery_operations - INFO - No new data to insert in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-18 23:49:07,106 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-18 23:49:07,116 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:07,118 - bigquery_operations - INFO - DataFrame shape: (245, 1)
+2024-07-18 23:49:07,694 - bigquery_operations - INFO - Filtered data to 150 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:07,855 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2001A21824': 'FLOAT', 'TDR2001A21824_pred': 'FLOAT', 'TDR2001A23024': 'FLOAT', 'TDR2001A23024_pred': 'FLOAT', 'IRT2001A2xx24': 'FLOAT', 'IRT2001A2xx24_pred': 'FLOAT', 'TDR2001A20624': 'FLOAT', 'TDR2001A20624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:49:10,397 - bigquery_operations - INFO - Successfully loaded 150 rows into crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-18 23:49:10,561 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-18 23:49:10,562 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:10,562 - bigquery_operations - INFO - DataFrame shape: (245, 1)
+2024-07-18 23:49:11,096 - bigquery_operations - INFO - Filtered data to 150 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:11,248 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2009A41824': 'FLOAT', 'TDR2009A41824_pred': 'FLOAT', 'TDR2009A43024': 'FLOAT', 'TDR2009A43024_pred': 'FLOAT', 'TDR2009A40624': 'FLOAT', 'TDR2009A40624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:49:14,551 - bigquery_operations - INFO - Successfully loaded 150 rows into crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-18 23:49:14,711 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-18 23:49:14,711 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:14,711 - bigquery_operations - INFO - DataFrame shape: (245, 1)
+2024-07-18 23:49:15,368 - bigquery_operations - INFO - Filtered data to 150 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:15,502 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT2003A3xx24': 'FLOAT', 'IRT2003A3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:49:21,217 - bigquery_operations - INFO - Successfully loaded 150 rows into crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-18 23:49:21,433 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-18 23:49:21,434 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:21,435 - bigquery_operations - INFO - DataFrame shape: (245, 1)
+2024-07-18 23:49:22,003 - bigquery_operations - INFO - Filtered data to 150 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:22,212 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2011B20624': 'FLOAT', 'TDR2011B20624_pred': 'FLOAT', 'TDR2011B21824': 'FLOAT', 'TDR2011B21824_pred': 'FLOAT', 'IRT2011B2xx24': 'FLOAT', 'IRT2011B2xx24_pred': 'FLOAT', 'TDR2011B23024': 'FLOAT', 'TDR2011B23024_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:49:24,849 - bigquery_operations - INFO - Successfully loaded 150 rows into crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-18 23:49:25,075 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-18 23:49:25,075 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:25,075 - bigquery_operations - INFO - DataFrame shape: (245, 1)
+2024-07-18 23:49:25,659 - bigquery_operations - INFO - Filtered data to 150 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:25,807 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2006B13024': 'FLOAT', 'TDR2006B13024_pred': 'FLOAT', 'TDR2006B10624': 'FLOAT', 'TDR2006B10624_pred': 'FLOAT', 'TDR2006B11824': 'FLOAT', 'TDR2006B11824_pred': 'FLOAT', 'TDR2006B14224': 'FLOAT', 'TDR2006B14224_pred': 'FLOAT', 'IRT2006B1xx24': 'FLOAT', 'IRT2006B1xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:49:29,747 - bigquery_operations - INFO - Successfully loaded 150 rows into crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-18 23:49:29,924 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-18 23:49:29,926 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:29,926 - bigquery_operations - INFO - DataFrame shape: (245, 1)
+2024-07-18 23:49:30,608 - bigquery_operations - INFO - Filtered data to 150 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:30,785 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2012B41824': 'FLOAT', 'TDR2012B41824_pred': 'FLOAT', 'TDR2012B43024': 'FLOAT', 'TDR2012B43024_pred': 'FLOAT', 'TDR2012B40624': 'FLOAT', 'TDR2012B40624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:49:33,126 - bigquery_operations - INFO - Successfully loaded 150 rows into crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-18 23:49:33,301 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-18 23:49:33,302 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT2023C1xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224']
+2024-07-18 23:49:33,303 - bigquery_operations - INFO - DataFrame shape: (245, 6)
+2024-07-18 23:49:33,873 - bigquery_operations - INFO - Filtered data to 150 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:34,030 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2023C11824': 'FLOAT', 'TDR2023C11824_pred': 'FLOAT', 'TDR2023C10624': 'FLOAT', 'TDR2023C10624_pred': 'FLOAT', 'IRT2023C1xx24': 'FLOAT', 'IRT2023C1xx24_pred': 'FLOAT', 'TDR2023C13024': 'FLOAT', 'TDR2023C13024_pred': 'FLOAT', 'TDR2023C14224': 'FLOAT', 'TDR2023C14224_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:49:36,698 - bigquery_operations - INFO - Successfully loaded 150 rows into crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-18 23:49:36,864 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-18 23:49:36,864 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP', 'IRT2015C1xx24', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224']
+2024-07-18 23:49:36,864 - bigquery_operations - INFO - DataFrame shape: (245, 6)
+2024-07-18 23:49:37,462 - bigquery_operations - INFO - Filtered data to 150 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:37,622 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'TDR2015C14224': 'FLOAT', 'TDR2015C14224_pred': 'FLOAT', 'TDR2015C10624': 'FLOAT', 'TDR2015C10624_pred': 'FLOAT', 'IRT2015C1xx24': 'FLOAT', 'IRT2015C1xx24_pred': 'FLOAT', 'TDR2015C13024': 'FLOAT', 'TDR2015C13024_pred': 'FLOAT', 'TDR2015C11824': 'FLOAT', 'TDR2015C11824_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:49:40,361 - bigquery_operations - INFO - Successfully loaded 150 rows into crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-18 23:49:40,552 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-18 23:49:40,560 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:40,560 - bigquery_operations - INFO - DataFrame shape: (245, 1)
+2024-07-18 23:49:41,195 - bigquery_operations - INFO - Filtered data to 150 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:41,342 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT2018C3xx24': 'FLOAT', 'IRT2018C3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:49:44,379 - bigquery_operations - INFO - Successfully loaded 150 rows into crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-18 23:49:44,560 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-18 23:49:44,560 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:44,560 - bigquery_operations - INFO - DataFrame shape: (245, 1)
+2024-07-18 23:49:45,186 - bigquery_operations - INFO - Filtered data to 150 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:45,348 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT2020C3xx24': 'FLOAT', 'IRT2020C3xx24_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:49:47,522 - bigquery_operations - INFO - Successfully loaded 150 rows into crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-18 23:49:47,700 - bigquery_operations - INFO - Preparing to insert data in crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-18 23:49:47,710 - bigquery_operations - INFO - DataFrame columns: ['TIMESTAMP']
+2024-07-18 23:49:47,710 - bigquery_operations - INFO - DataFrame shape: (245, 1)
+2024-07-18 23:49:48,318 - bigquery_operations - INFO - Filtered data to 150 new rows after 2024-07-15 12:30:00+00:00
+2024-07-18 23:49:48,484 - bigquery_operations - INFO - Current schema for table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026: {'TIMESTAMP': 'TIMESTAMP', 'is_actual': 'BOOLEAN', 'prediction_timestamp': 'TIMESTAMP', 'applied_irrigation': 'FLOAT', 'IRT2026C2xx24': 'FLOAT', 'IRT2026C2xx24_pred': 'FLOAT', 'TDR2026C23024': 'FLOAT', 'TDR2026C23024_pred': 'FLOAT', 'TDR2026C21824': 'FLOAT', 'TDR2026C21824_pred': 'FLOAT', 'TDR2026C20624': 'FLOAT', 'TDR2026C20624_pred': 'FLOAT', 'cwsi-th1': 'FLOAT', 'cwsi-th1_pred': 'FLOAT', 'cwsi-eb2': 'FLOAT', 'cwsi-eb2_pred': 'FLOAT', 'et': 'FLOAT', 'et_pred': 'FLOAT', 'swsi': 'FLOAT', 'swsi_pred': 'FLOAT'}
+2024-07-18 23:49:50,943 - bigquery_operations - INFO - Successfully loaded 150 rows into crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026

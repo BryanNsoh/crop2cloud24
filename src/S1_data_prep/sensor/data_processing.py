@@ -36,6 +36,16 @@ def process_plot_data(plot_data, weather_data):
             # Perform the merge
             df = pd.merge(df, weather_data, on='TIMESTAMP', how='outer')
             
+            # Identify sensor data columns (all numeric columns except TIMESTAMP and weather columns)
+            weather_columns = set(weather_data.columns)
+            numeric_columns = df.select_dtypes(include=['int64', 'float64']).columns
+            sensor_columns = [col for col in numeric_columns if col not in weather_columns and col != 'TIMESTAMP']
+            
+            # Replace values below -50 with null for sensor data columns
+            df[sensor_columns] = df[sensor_columns].apply(lambda x: x.where(x >= -50, pd.NA))
+            
+            logger.info(f"Replaced values below -50 with null for sensor columns: {sensor_columns}")
+            
             # Drop all-null columns except 'swsi', 'et', and 'cwsi-th2'
             cols_to_keep = ['TIMESTAMP', 'swsi', 'et', 'cwsi-th1']
             null_columns = df.columns[df.isnull().all()].tolist()
@@ -45,16 +55,6 @@ def process_plot_data(plot_data, weather_data):
             # Explicitly drop 'is_actual' column if it exists
             if 'is_actual' in df.columns:
                 df = df.drop(columns=['is_actual'])
-            
-            # Rename 'cwsi-th1' to 'cwsi-th2' if it exists, otherwise add it as a null column
-            if 'cwsi-th1' in df.columns:
-                df = df.rename(columns={'cwsi-th1': 'cwsi-th2'})
-            else:
-                df['cwsi-th2'] = np.nan
-            
-            # Remove other CWSI columns
-            cwsi_columns_to_remove = [col for col in df.columns if col.startswith('cwsi') and col != 'cwsi-th2']
-            df = df.drop(columns=cwsi_columns_to_remove)
             
             processed_data[treatment][plot_number] = df
             
