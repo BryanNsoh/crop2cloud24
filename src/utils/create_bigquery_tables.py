@@ -40,19 +40,14 @@ def create_bigquery_client():
 def create_table_schema(sensor_ids):
     schema = [
         bigquery.SchemaField("TIMESTAMP", "TIMESTAMP", mode="REQUIRED"),
-        bigquery.SchemaField("is_actual", "BOOLEAN", mode="REQUIRED"),
-        bigquery.SchemaField("prediction_timestamp", "TIMESTAMP", mode="NULLABLE"),
-        bigquery.SchemaField("applied_irrigation", "FLOAT64", mode="NULLABLE"),
     ]
     
     for sensor_id in sensor_ids:
         schema.append(bigquery.SchemaField(sensor_id, "FLOAT64", mode="NULLABLE"))
-        schema.append(bigquery.SchemaField(f"{sensor_id}_pred", "FLOAT64", mode="NULLABLE"))
     
     # Add stress indices columns
-    for index in ['cwsi-th1', 'cwsi-eb2', 'et', 'swsi']:
+    for index in ['cwsi', 'et', 'swsi']:
         schema.append(bigquery.SchemaField(index, "FLOAT64", mode="NULLABLE"))
-        schema.append(bigquery.SchemaField(f"{index}_pred", "FLOAT64", mode="NULLABLE"))
     
     return schema
 

@@ -8,15 +8,11 @@ import numpy as np
 from datetime import datetime, timedelta
 import pytz
 import logging
-import sys
-import time
 import requests
 import math
 import json
 from dotenv import load_dotenv
 import statistics 
-import os
-from crop2cloud24.src.utils import generate_plots
 import matplotlib.pyplot as plt
 
 # Load environment variables from .env file
@@ -69,7 +65,7 @@ def get_or_create_polygon():
     [-100.773343, 41.088311],  # Southeast corner (moved slightly east)
     [-100.774050, 41.088311],  # Southwest corner
     [-100.774075, 41.090012]   # Closing the polygon
-]
+    ]
 
     polygon_data = {
         "name": POLYGON_NAME,
@@ -147,7 +143,6 @@ def net_radiation(solar_radiation, air_temp_celsius, canopy_temp_celsius, surfac
 
 def soil_heat_flux(net_radiation, lai):
     result = net_radiation * 0.1
-
     return result
 
 def aerodynamic_resistance(wind_speed, measurement_height, zero_plane_displacement, roughness_length):
@@ -207,402 +202,219 @@ def calculate_cwsi_th1(row, crop_height, lai, latitude, surface_albedo=0.23):
 def get_db_connection():
     return sqlite3.connect(DB_PATH)
 
-def get_plot_data(conn, plot_number, irt_column):
-    query = f"""
-    SELECT TIMESTAMP, {irt_column}
-    FROM `LINEAR_CORN_trt1_plot_{plot_number}`
-    ORDER BY TIMESTAMP
-    """
-    df = pd.read_sql_query(query, conn, parse_dates=['TIMESTAMP'])
-    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
-    return df
-
-def get_weather_data(conn, start_time, end_time):
-    query = """
-    SELECT *
-    FROM weather_data
-    WHERE TIMESTAMP BETWEEN ? AND ?
-    ORDER BY TIMESTAMP
-    """
-    start_time_str = start_time.strftime('%Y-%m-%d %H:%M:%S')
-    end_time_str = end_time.strftime('%Y-%m-%d %H:%M:%S')
-    df = pd.read_sql_query(query, conn, params=(start_time_str, end_time_str), parse_dates=['TIMESTAMP'])
-    df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], utc=True)
-    return df
-
-def update_cwsi(conn, plot_number, df_cwsi):
-    logger.info(f"Updating CWSI for plot {plot_number}")
-    
+def get_all_irt_tables(conn):
     cursor = conn.cursor()
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name != 'weather_data'")
+    tables = [table[0] for table in cursor.fetchall()]
     
-    # Print columns before changes
-    cursor.execute(f"PRAGMA table_info(`LINEAR_CORN_trt1_plot_{plot_number}`)")
-    columns_before = [column[1] for column in cursor.fetchall()]
-    logger.info(f"Columns before update: {columns_before}")
+    logger.info("Selected IRT tables:")
+    for table in tables:
+        logger.info(f"  {table}")
     
-    # Check if the column exists, if not, create it
-    if 'cwsi_th1' not in columns_before:
-        cursor.execute(f"""
-        ALTER TABLE `LINEAR_CORN_trt1_plot_{plot_number}`
-        ADD COLUMN cwsi_th1 REAL
-        """)
-        logger.info(f"Added cwsi_th1 column to `LINEAR_CORN_trt1_plot_{plot_number}`")
-    
-    # Print columns after potential addition
-    cursor.execute(f"PRAGMA table_info(`LINEAR_CORN_trt1_plot_{plot_number}`)")
-    columns_after = [column[1] for column in cursor.fetchall()]
-    logger.info(f"Columns after potential addition: {columns_after}")
-    
-    # Rename the column in df_cwsi to match the database
-    df_cwsi = df_cwsi.rename(columns={'cwsi-th1': 'cwsi_th1'})
-    
-    # Ensure TIMESTAMP format is consistent
-    df_cwsi['TIMESTAMP'] = df_cwsi['TIMESTAMP'].dt.strftime('%Y-%m-%d %H:%M:%S')
-    
-    # Reset all cwsi_th1 values to NULL
-    cursor.execute(f"""
-    UPDATE `LINEAR_CORN_trt1_plot_{plot_number}`
-    SET cwsi_th1 = NULL
-    """)
-    logger.info(f"Reset all cwsi_th1 values to NULL")
-    
-    # Then, update with new values
-    updated_rows = 0
-    for _, row in df_cwsi.iterrows():
-        cursor.execute(f"""
-        UPDATE `LINEAR_CORN_trt1_plot_{plot_number}`
-        SET cwsi_th1 = ?
-        WHERE TIMESTAMP = ?
-        """, (row['cwsi_th1'], row['TIMESTAMP']))
-        updated_rows += cursor.rowcount
-    
-    conn.commit()
-    
-    logger.info(f"Attempted to update {len(df_cwsi)} rows, actually updated {updated_rows} rows")
-    
-    # Confirm the update
-    cursor.execute(f"SELECT COUNT(*) FROM `LINEAR_CORN_trt1_plot_{plot_number}` WHERE cwsi_th1 IS NOT NULL")
-    count = cursor.fetchone()[0]
-    logger.info(f"Number of rows with CWSI values in DB for plot {plot_number}: {count}")
-    
-    # Print sample data
-    cursor.execute(f"""
-    SELECT TIMESTAMP, cwsi_th1 FROM `LINEAR_CORN_trt1_plot_{plot_number}`
-    WHERE cwsi_th1 IS NOT NULL
-    LIMIT 5
-    """)
-    sample_data = cursor.fetchall()
-    logger.info(f"Sample data after update: {sample_data}")
-    
-    # Debug: print a few rows from df_cwsi
-    logger.info(f"Sample data from df_cwsi:")
-    logger.info(df_cwsi.head().to_string())
+    return tables
 
-def plot_cwsi(df_cwsi, plot_number):
-    plt.figure(figsize=(10, 6))
-    plt.plot(df_cwsi['TIMESTAMP'], df_cwsi['cwsi_th1'], label=f'Plot {plot_number}')
-    plt.xlabel('Timestamp')
-    plt.ylabel('CWSI')
-    plt.title(f'CWSI over Time for Plot {plot_number}')
-    plt.legend()
-    plt.grid(True)
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    plt.show()
-
-def update_cwsi_th1(conn, plot_number, df_cwsi):
-    logger.info(f"Updating CWSI-TH1 for plot {plot_number}")
-
+def get_irt_columns(conn, table_name):
     cursor = conn.cursor()
-
-    # Check if the column exists, if not, create it
-    cursor.execute(f"PRAGMA table_info(plot_{plot_number})")
+    cursor.execute(f"PRAGMA table_info({table_name})")
     columns = [column[1] for column in cursor.fetchall()]
-    if 'cwsi_th1' not in columns:
-        cursor.execute(f"ALTER TABLE plot_{plot_number} ADD COLUMN 'cwsi_th1' REAL")
-        conn.commit()
-        logger.info(f"Added 'cwsi_th1' column to plot_{plot_number} table")
-
-    rows_updated = 0
-    for _, row in df_cwsi.iterrows():
-        timestamp = row['TIMESTAMP'].tz_convert('UTC')
-        start_time = timestamp - timedelta(minutes=30)
-        end_time = timestamp + timedelta(minutes=30)
-        
-        cursor.execute(f"""
-        UPDATE plot_{plot_number}
-        SET 'cwsi_th1' = ?
-        WHERE TIMESTAMP BETWEEN ? AND ?
-        """, (row['cwsi_th1'], start_time.strftime('%Y-%m-%d %H:%M:%S'), end_time.strftime('%Y-%m-%d %H:%M:%S')))
-        
-        if cursor.rowcount > 0:
-            rows_updated += cursor.rowcount
-        else:
-            logger.warning(f"No matching row found for timestamp: {timestamp}")
-
-    conn.commit()
+    irt_columns = [col for col in columns if 'irt' in col.lower()]
     
-    logger.info(f"Successfully updated CWSI-TH1 for plot {plot_number}. Rows updated: {rows_updated}")
+    logger.info(f"Found IRT columns for {table_name}:")
+    for col in irt_columns:
+        logger.info(f"  {col}")
     
-    # Check for any rows that weren't updated
-    cursor.execute(f"""
-    SELECT COUNT(*) FROM plot_{plot_number}
-    WHERE 'cwsi_th1' IS NULL
-    """)
-    unupdated_rows = cursor.fetchone()[0]
-    logger.info(f"Rows not updated: {unupdated_rows}")
+    return irt_columns
 
-    return rows_updated
-
-def compute_cwsi(plot_number):
-    start_time = time.time()
-    logger.info(f"Starting CWSI computation for plot {plot_number}")
+def compute_cwsi(conn, table_name):
+    logger.info(f"Starting CWSI computation for {table_name}")
     
     polygon_id = get_or_create_polygon()
     if polygon_id is None:
         logger.error("Failed to get or create polygon. Aborting CWSI computation.")
-        return "CWSI computation aborted due to polygon retrieval/creation failure."
+        return None
     
     latest_ndvi = get_latest_ndvi(polygon_id)
     if latest_ndvi is None:
         logger.error("Failed to retrieve NDVI data. Aborting CWSI computation.")
-        return "CWSI computation aborted due to NDVI data retrieval failure."
+        return None
     
     LAI = calculate_lai(latest_ndvi)
     logger.info(f"Using NDVI: {latest_ndvi}, Calculated LAI: {LAI}")
     
-    conn = get_db_connection()
-
-    irt_column = f'IRT{plot_number}B1xx24' if plot_number == '5006' else f'IRT{plot_number}C1xx24' if plot_number == '5010' else f'IRT{plot_number}A1xx24'
-    df = get_plot_data(conn, plot_number, irt_column)
-    
-    if df.empty:
-        logger.info(f"No data for plot {plot_number}")
-        conn.close()
+    irt_columns = get_irt_columns(conn, table_name)
+    if not irt_columns:
+        logger.warning(f"No IRT columns found for {table_name}")
         return None
     
-    logger.info(f"Processing {len(df)} rows for plot {plot_number}")
+    # Modify to fetch only last 5 days of data
+    end_time = datetime.now()
+    start_time = end_time - timedelta(days=5)
+    
+    logger.info(f"Querying data for {table_name} from {start_time} to {end_time}")
+    query = f"""
+    SELECT TIMESTAMP, {', '.join(irt_columns)}, Ta_2m_Avg, RH_2m_Avg, Solar_2m_Avg, WndAveSpd_3m, PresAvg_1pnt5m
+    FROM {table_name}
+    WHERE TIMESTAMP BETWEEN ? AND ?
+    ORDER BY TIMESTAMP
+    """
+    df = pd.read_sql_query(query, conn, params=(start_time, end_time), parse_dates=['TIMESTAMP'])
+
+    if df.empty:
+        logger.info(f"No data found for {table_name} in the specified date range")
+        return None
+    
+    logger.info(f"Retrieved {len(df)} rows of data for {table_name}")
     
     # Ensure we're working with hourly data
-    df = df.set_index('TIMESTAMP').resample('H').mean().reset_index()
+    df = df.set_index('TIMESTAMP').resample('h').mean().reset_index()
+    
+    # Deduplicate the data focusing on non null columns
+    df = df.drop_duplicates(subset=[col for col in df.columns if col != 'TIMESTAMP'])
+    logger.info(f"Data deduplicated. {len(df)} rows remaining after deduplication.")
+    
+    
     
     # Convert UTC to CST for filtering
     df['TIMESTAMP_CST'] = df['TIMESTAMP'].dt.tz_convert('America/Chicago')
     df = df[(df['TIMESTAMP_CST'].dt.hour >= 12) & (df['TIMESTAMP_CST'].dt.hour < 17)]
     
+    
+    
     if df.empty:
-        logger.info(f"No data within 12 PM to 5 PM CST for plot {plot_number}")
-        conn.close()
+        logger.info(f"No data within 12 PM to 5 PM CST for {table_name}")
         return None
     
-    start_time_weather = df['TIMESTAMP'].min()
-    end_time_weather = df['TIMESTAMP'].max()
-    
-    weather_data = get_weather_data(conn, start_time_weather, end_time_weather)
-    
-    df = df.sort_values('TIMESTAMP')
-    weather_data = weather_data.sort_values('TIMESTAMP')
-    
-    df = pd.merge_asof(df, weather_data, on='TIMESTAMP', direction='nearest')
-    
-    df['canopy_temp'] = df[irt_column]
-    
-    logger.info(f"Calculating CWSI for {len(df)} rows")
-    df['cwsi_th1'] = df.apply(lambda row: calculate_cwsi_th1(row, CROP_HEIGHT, LAI, LATITUDE, SURFACE_ALBEDO), axis=1)
-    df_cwsi = df[['TIMESTAMP', 'cwsi_th1', 'WndAveSpd_3m', 'Solar_2m_Avg']].dropna()
-    
-    # Ensure TIMESTAMP format is consistent
-    df_cwsi['TIMESTAMP'] = df_cwsi['TIMESTAMP'].dt.tz_convert('UTC')
-    
-    update_cwsi_th1(conn, plot_number, df_cwsi)
-    
-    # Confirm if values were inserted into DB
-    cursor = conn.cursor()
-    cursor.execute(f"SELECT COUNT(*) FROM plot_{plot_number} WHERE cwsi_th1 IS NOT NULL")
-    count = cursor.fetchone()[0]
-    logger.info(f"Number of rows with CWSI values in DB for plot {plot_number}: {count}")
-    
-    # Perform analytics
-    if not df_cwsi.empty:
-        max_cwsi = df_cwsi['cwsi_th1'].max()
-        min_cwsi = df_cwsi['cwsi_th1'].min()
-        avg_cwsi = df_cwsi['cwsi_th1'].mean()
+    for irt_column in irt_columns:
+        logger.info(f"Processing IRT column: {irt_column}")
+        df['canopy_temp'] = df[irt_column]
         
-        max_cwsi_row = df_cwsi.loc[df_cwsi['cwsi_th1'].idxmax()]
-        min_cwsi_row = df_cwsi.loc[df_cwsi['cwsi_th1'].idxmin()]
+        #print how many non nan values are in canopy temp and in the irt column
+        print(f"Number of non nan values in canopy temp: {df['canopy_temp'].notna().sum()}")
+        print(f"Number of non nan values in {irt_column}: {df[irt_column].notna().sum()}")
         
-        analytics = {
-            'max_cwsi': max_cwsi,
-            'min_cwsi': min_cwsi,
-            'avg_cwsi': avg_cwsi,
-            'max_cwsi_windspeed': max_cwsi_row['WndAveSpd_3m'],
-            'max_cwsi_solar_rad': max_cwsi_row['Solar_2m_Avg'],
-            'min_cwsi_windspeed': min_cwsi_row['WndAveSpd_3m'],
-            'min_cwsi_solar_rad': min_cwsi_row['Solar_2m_Avg'],
-        }
+        # Filter out rows where any of the following in addition to irt is null (we want rows where values for all are present. be tolerant to variations of timestamp within the hour): ['canopy_temp', 'Ta_2m_Avg', 'RH_2m_Avg', 'Solar_2m_Avg', 'WndAveSpd_3m', 'PresAvg_1pnt5m']. Print stats to show how the process goes and how much data is left
+        required_columns = ['canopy_temp', 'Ta_2m_Avg', 'RH_2m_Avg', 'Solar_2m_Avg', 'WndAveSpd_3m', 'PresAvg_1pnt5m']
+        # keep only required columns
+        df_valid = df[required_columns + [irt_column]]
+        # drop rows with null values in required columns
         
-        logger.info(f"Analytics for plot {plot_number}:")
-        for key, value in analytics.items():
-            logger.info(f"{key}: {value}")
+        
+        
+        df_valid = df_valid.dropna(subset=['canopy_temp'])
+        
+        print(df_valid.head())  
+        
+        logger.info(f"Filtered data: {len(df_valid)} rows remaining out of {len(df)} after dropping rows with null values in required columns")
+        
+        #PRINT df stats
+        print(df_valid.describe())
+        
+        if df_valid.empty:
+            logger.warning(f"No valid data for CWSI calculation in {irt_column}")
+            continue
+        
+        logger.info(f"Calculating CWSI for {len(df_valid)} rows")
+        df_valid[f'cwsi_th1_{irt_column}'] = df_valid.apply(lambda row: calculate_cwsi_th1(row, CROP_HEIGHT, LAI, LATITUDE, SURFACE_ALBEDO), axis=1)
+        
+        df_cwsi = df_valid[['TIMESTAMP', f'cwsi_th1', 'WndAveSpd_3m', 'Solar_2m_Avg']].dropna()
+        
+        # Ensure TIMESTAMP format is consistent
+        df_cwsi['TIMESTAMP'] = df_cwsi['TIMESTAMP'].dt.tz_convert('UTC')
+        
+        update_cwsi_th1(conn, table_name, df_cwsi, irt_column)
+        
+        # Perform analytics and plotting for each IRT column
+        if not df_cwsi.empty:
+            perform_analytics(df_cwsi, table_name, irt_column)
+            plot_cwsi(df_cwsi, table_name, irt_column)
     
-    conn.close()
+    logger.info(f"CWSI computation completed for {table_name}")
     
-    end_time = time.time()
-    duration = end_time - start_time
-    logger.info(f"CWSI computation completed for plot {plot_number}. Rows processed: {len(df_cwsi)}")
-    logger.info(f"Total execution time: {duration:.2f} seconds")
-    
-    # Plot the CWSI values
-    plot_cwsi(df_cwsi, plot_number)
-    
-    return analytics
+    try:
+        return df_cwsi
+    except UnboundLocalError:
+        logger.error("df_cwsi is not defined. Moving on to the next IRT column.")
+        return None
 
-def update_cwsi_th1(conn, plot_number, df_cwsi):
-    table_name = f"LINEAR_CORN_trt1_plot_{plot_number}"
-    logger.info(f"Updating CWSI-TH1 for {table_name}")
+def update_cwsi_th1(conn, table_name, df_cwsi, irt_column):
+    logger.info(f"Updating CWSI-TH1 for {table_name} and {irt_column}")
 
     cursor = conn.cursor()
+    column_name = f'cwsi_th1_{irt_column}'
 
     # Check if the column exists, if not, create it
     cursor.execute(f"PRAGMA table_info({table_name})")
     columns = [column[1] for column in cursor.fetchall()]
-    if 'cwsi_th1' not in columns:
-        cursor.execute(f"ALTER TABLE {table_name} ADD COLUMN 'cwsi_th1' REAL")
+    if column_name not in columns:
+        cursor.execute(f"ALTER TABLE {table_name} ADD COLUMN '{column_name}' REAL")
         conn.commit()
-        logger.info(f"Added 'cwsi_th1' column to {table_name} table")
+        logger.info(f"Added '{column_name}' column to {table_name} table")
 
     rows_updated = 0
     for _, row in df_cwsi.iterrows():
-        timestamp = row['TIMESTAMP'].tz_convert('UTC')
-        start_time = timestamp - timedelta(minutes=30)
-        end_time = timestamp + timedelta(minutes=30)
-        
-        query = f"""
-        UPDATE {table_name}
-        SET 'cwsi_th1' = ?
-        WHERE TIMESTAMP BETWEEN ? AND ?
-        """
-        logger.debug(f"Executing query: {query} with params: {row['cwsi_th1']}, {start_time}, {end_time}")
-        
-        cursor.execute(query, (row['cwsi_th1'], start_time.strftime('%Y-%m-%d %H:%M:%S'), end_time.strftime('%Y-%m-%d %H:%M:%S')))
-        
-        if cursor.rowcount > 0:
-            rows_updated += cursor.rowcount
-            # Immediately fetch and log the updated value
-            verify_query = f"""
-            SELECT TIMESTAMP, cwsi_th1 FROM {table_name}
-            WHERE TIMESTAMP BETWEEN ? AND ?
-            """
-            cursor.execute(verify_query, (start_time.strftime('%Y-%m-%d %H:%M:%S'), end_time.strftime('%Y-%m-%d %H:%M:%S')))
-            updated_data = cursor.fetchone()
-            if updated_data:
-                logger.info(f"Updated data: Timestamp={updated_data[0]}, CWSI-TH1={updated_data[1]}")
-            else:
-                logger.warning(f"No data found immediately after update for timestamp: {timestamp}")
-        else:
-            logger.warning(f"No matching row found for timestamp: {timestamp}")
+        cursor.execute(f"""
+            UPDATE {table_name}
+            SET {column_name} = ?
+            WHERE TIMESTAMP = ?
+        """, (row[column_name], row['TIMESTAMP']))
+        rows_updated += cursor.rowcount
 
     conn.commit()
-    
-    logger.info(f"Successfully updated CWSI-TH1 for {table_name}. Rows updated: {rows_updated}")
-    
-    # Verify the update with a sample of data
-    cursor.execute(f"SELECT TIMESTAMP, cwsi_th1 FROM {table_name} WHERE cwsi_th1 IS NOT NULL LIMIT 5")
-    sample_data = cursor.fetchall()
-    logger.info(f"Sample of updated data: {sample_data}")
+    logger.info(f"Updated {rows_updated} rows in {table_name} for {irt_column}")
 
-    # Check for any rows that weren't updated
-    cursor.execute(f"""
-    SELECT COUNT(*) FROM {table_name}
-    WHERE 'cwsi_th1' IS NULL
-    """)
-    unupdated_rows = cursor.fetchone()[0]
-    logger.info(f"Rows not updated: {unupdated_rows}")
+def perform_analytics(df_cwsi, table_name, irt_column):
+    cwsi_column = f'cwsi_th1_{irt_column}'
+    max_cwsi = df_cwsi[cwsi_column].max()
+    min_cwsi = df_cwsi[cwsi_column].min()
+    avg_cwsi = df_cwsi[cwsi_column].mean()
+    
+    max_cwsi_row = df_cwsi.loc[df_cwsi[cwsi_column].idxmax()]
+    min_cwsi_row = df_cwsi.loc[df_cwsi[cwsi_column].idxmin()]
+    
+    analytics = {
+        'max_cwsi': max_cwsi,
+        'min_cwsi': min_cwsi,
+        'avg_cwsi': avg_cwsi,
+        'max_cwsi_windspeed': max_cwsi_row['WndAveSpd_3m'],
+        'max_cwsi_solar_rad': max_cwsi_row['Solar_2m_Avg'],
+        'min_cwsi_windspeed': min_cwsi_row['WndAveSpd_3m'],
+        'min_cwsi_solar_rad': min_cwsi_row['Solar_2m_Avg'],
+    }
+    
+    logger.info(f"Analytics for {table_name} - {irt_column}:")
+    for key, value in analytics.items():
+        logger.info(f"{key}: {value}")
 
-    return rows_updated
-
-def update_cwsi(conn, plot_number, df_cwsi):
-    logger.info(f"Updating CWSI for plot {plot_number}")
+def plot_cwsi(df_cwsi, table_name, irt_column):
+    cwsi_column = f'cwsi_th1_{irt_column}'
+    plt.figure(figsize=(12, 6))
+    plt.plot(df_cwsi['TIMESTAMP'], df_cwsi[cwsi_column], marker='o')
+    plt.title(f'CWSI-TH1 for {table_name} - {irt_column}')
+    plt.xlabel('Timestamp')
+    plt.ylabel('CWSI-TH1')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
     
-    cursor = conn.cursor()
+    plots_dir = 'cwsi_plots'
+    os.makedirs(plots_dir, exist_ok=True)
     
-    # Print columns before changes
-    cursor.execute(f"PRAGMA table_info(`LINEAR_CORN_trt1_plot_{plot_number}`)")
-    columns_before = [column[1] for column in cursor.fetchall()]
-    logger.info(f"Columns before update: {columns_before}")
+    plot_filename = f'{plots_dir}/cwsi_plot_{table_name}_{irt_column}.png'
+    plt.savefig(plot_filename)
+    plt.close()
     
-    # Check if the column exists, if not, create it
-    if 'cwsi_th1' not in columns_before:
-        cursor.execute(f"""
-        ALTER TABLE `LINEAR_CORN_trt1_plot_{plot_number}`
-        ADD COLUMN cwsi_th1 REAL
-        """)
-        logger.info(f"Added cwsi_th1 column to `LINEAR_CORN_trt1_plot_{plot_number}`")
-    
-    # Print columns after potential addition
-    cursor.execute(f"PRAGMA table_info(`LINEAR_CORN_trt1_plot_{plot_number}`)")
-    columns_after = [column[1] for column in cursor.fetchall()]
-    logger.info(f"Columns after potential addition: {columns_after}")
-    
-    # Reset all cwsi_th1 values to NULL
-    cursor.execute(f"""
-    UPDATE `LINEAR_CORN_trt1_plot_{plot_number}`
-    SET cwsi_th1 = NULL
-    """)
-    logger.info(f"Reset all cwsi_th1 values to NULL")
-    
-    # Then, update with new values
-    updated_rows = 0
-    for _, row in df_cwsi.iterrows():
-        cursor.execute(f"""
-        UPDATE `LINEAR_CORN_trt1_plot_{plot_number}`
-        SET cwsi_th1 = ?
-        WHERE TIMESTAMP = ?
-        """, (row['cwsi_th1'], row['TIMESTAMP']))
-        updated_rows += cursor.rowcount
-    
-    conn.commit()
-    
-    logger.info(f"Attempted to update {len(df_cwsi)} rows, actually updated {updated_rows} rows")
-    
-    # Confirm the update
-    cursor.execute(f"SELECT COUNT(*) FROM `LINEAR_CORN_trt1_plot_{plot_number}` WHERE cwsi_th1 IS NOT NULL")
-    count = cursor.fetchone()[0]
-    logger.info(f"Number of rows with CWSI values in DB for plot {plot_number}: {count}")
-    
-    # Print sample data
-    cursor.execute(f"""
-    SELECT TIMESTAMP, cwsi_th1 FROM `LINEAR_CORN_trt1_plot_{plot_number}`
-    WHERE cwsi_th1 IS NOT NULL
-    LIMIT 5
-    """)
-    sample_data = cursor.fetchall()
-    logger.info(f"Sample data after update: {sample_data}")
-    
-    # Debug: print a few rows from df_cwsi
-    logger.info(f"Sample data from df_cwsi:")
-    logger.info(df_cwsi.head().to_string())
+    logger.info(f"CWSI plot saved as {plot_filename}")
 
 def main():
-    logger.info(f"Using database at path: {DB_PATH}")
-    plot_numbers = ['5006', '5010', '5023']
-    all_analytics = {}
-    for plot_number in plot_numbers:
-        result = compute_cwsi(plot_number)
-        print(result)
+    conn = get_db_connection()
+    try:
+        irt_tables = get_all_irt_tables(conn)
+        logger.info(f"Found {len(irt_tables)} tables in total")
         
-        # Store analytics for each plot
-        all_analytics[plot_number] = result
-    
-    # Compute overall statistics
-    all_max_cwsi = max(analytics['max_cwsi'] for analytics in all_analytics.values())
-    all_min_cwsi = min(analytics['min_cwsi'] for analytics in all_analytics.values())
-    all_avg_cwsi = statistics.mean(analytics['avg_cwsi'] for analytics in all_analytics.values())
-    
-    logger.info("Overall CWSI Statistics:")
-    logger.info(f"Max CWSI across all plots: {all_max_cwsi}")
-    logger.info(f"Min CWSI across all plots: {all_min_cwsi}")
-    logger.info(f"Average CWSI across all plots: {all_avg_cwsi}")
+        for table_name in irt_tables:
+            logger.info(f"Processing {table_name}")
+            compute_cwsi(conn, table_name)
+    finally:
+        conn.close()
 
 if __name__ == "__main__":
     main()

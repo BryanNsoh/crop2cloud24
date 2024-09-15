@@ -9,29 +9,16 @@ def create_plot_table(conn, crop_type, treatment, plot_number):
     conn.execute(f"""
     CREATE TABLE IF NOT EXISTS {crop_type}_{treatment}_plot_{plot_number} (
         TIMESTAMP TEXT PRIMARY KEY,
-        is_actual INTEGER,
-        prediction_timestamp TEXT,
-        applied_irrigation REAL,
-        TDR_{plot_number}_10624 REAL,
-        TDR_{plot_number}_10624_pred REAL,
-        SAP_{plot_number}_1xx24 REAL,
-        SAP_{plot_number}_1xx24_pred REAL,
-        TDR_{plot_number}_13024 REAL,
-        TDR_{plot_number}_13024_pred REAL,
-        IRT_{plot_number}_1xx24 REAL,
-        IRT_{plot_number}_1xx24_pred REAL,
-        TDR_{plot_number}_11824 REAL,
-        TDR_{plot_number}_11824_pred REAL,
-        DEN_{plot_number}_1xx24 REAL,
-        DEN_{plot_number}_1xx24_pred REAL,
-        TDR_{plot_number}_14224 REAL,
-        TDR_{plot_number}_14224_pred REAL,
-        cwsi_th2 REAL,
-        cwsi_th2_pred REAL,
+        TDR_{plot_number}_{treatment}0624 REAL,
+        SAP_{plot_number}_{treatment}xx24 REAL,
+        TDR_{plot_number}_{treatment}3024 REAL,
+        IRT_{plot_number}_{treatment}xx24 REAL,
+        TDR_{plot_number}_{treatment}1824 REAL,
+        DEN_{plot_number}_{treatment}xx24 REAL,
+        TDR_{plot_number}_{treatment}4224 REAL,
+        cwsi REAL,
         et REAL,
-        et_pred REAL,
         swsi REAL,
-        swsi_pred REAL
     )
     """)
     logger.info(f"Created {crop_type}_{treatment}_plot_{plot_number} table")

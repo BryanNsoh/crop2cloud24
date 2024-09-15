@@ -5,7 +5,7 @@ import numpy as np
 from google.cloud import bigquery
 from google.api_core.exceptions import NotFound
 from logger import get_logger
-from bigquery_operations import load_sensor_mapping, create_bigquery_client, insert_or_update_data
+from bigquery_operations import load_sensor_mapping, create_bigquery_client, insert_data
 
 logger = get_logger(__name__)
 
@@ -92,11 +92,11 @@ def process_folder(folder_path, sensor_mapping, crop_type):
             logger.info(f"Processing file: {dat_file}")
             df = parse_dat_file(dat_file)
             crop_specific_mapping = [sensor for sensor in sensor_mapping if sensor['field'] == f'LINEAR_{crop_type.upper()}']
-            process_and_upload_data(df, crop_specific_mapping, is_actual=True, crop_type=crop_type)
+            process_and_upload_data(df, crop_specific_mapping, crop_type=crop_type)
         else:
             logger.warning(f"File not found: {dat_file}")
 
-def process_and_upload_data(df, sensor_mapping, is_actual=True, crop_type='corn'):
+def process_and_upload_data(df, sensor_mapping, crop_type='corn'):
     client = create_bigquery_client()
     
     # Reset the index to make 'TIMESTAMP' a regular column
@@ -126,7 +126,7 @@ def process_and_upload_data(df, sensor_mapping, is_actual=True, crop_type='corn'
                     logger.info(f"Table {full_table_id} not found. Creating it.")
                     create_table(client, full_table_id, df_to_upload.columns)
 
-                insert_or_update_data(client, full_table_id, df_to_upload, is_actual)
+                insert_data(client, full_table_id, df_to_upload)
             except Exception as e:
                 logger.error(f"Failed to upload data for {field} plot {plot_number} to {full_table_id}: {str(e)}")
         else:
@@ -135,10 +135,9 @@ def process_and_upload_data(df, sensor_mapping, is_actual=True, crop_type='corn'
 def create_table(client, full_table_id, columns):
     schema = [
         bigquery.SchemaField("TIMESTAMP", "TIMESTAMP", mode="REQUIRED"),
-        bigquery.SchemaField("is_actual", "BOOLEAN", mode="REQUIRED"),
     ]
     for column in columns:
-        if column not in ["TIMESTAMP", "is_actual"]:
+        if column != "TIMESTAMP":
             schema.append(bigquery.SchemaField(column, "FLOAT"))
 
     table = bigquery.Table(full_table_id, schema=schema)

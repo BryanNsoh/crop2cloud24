@@ -6,7 +6,6 @@ from google.api_core import exceptions
 from dotenv import load_dotenv
 from logger import get_logger
 import pandas as pd
-from datetime import datetime
 import pytz
 
 logger = get_logger(__name__)
@@ -71,11 +70,10 @@ def update_table_schema(client, table_id, new_columns):
         client.update_table(table, ["schema"])
         logger.info(f"Updated schema for table {table_id}")
 
-def get_latest_actual_timestamp(client, table_id):
+def get_latest_timestamp(client, table_id):
     query = f"""
     SELECT MAX(TIMESTAMP) as latest_timestamp
     FROM `{table_id}`
-    WHERE is_actual = TRUE
     """
     query_job = client.query(query)
     results = query_job.result()
@@ -84,8 +82,8 @@ def get_latest_actual_timestamp(client, table_id):
             return row.latest_timestamp
     return None
 
-def insert_or_update_data(client, table_id, df, is_actual=True):
-    logger.info(f"Preparing to {'insert' if is_actual else 'update'} data in {table_id}")
+def insert_data(client, table_id, df):
+    logger.info(f"Preparing to insert data in {table_id}")
     logger.info(f"DataFrame columns: {df.columns.tolist()}")
     logger.info(f"DataFrame shape: {df.shape}")
 
@@ -93,26 +91,14 @@ def insert_or_update_data(client, table_id, df, is_actual=True):
     chicago_tz = pytz.timezone('America/Chicago')
     df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP']).dt.tz_convert(chicago_tz)
 
-    # Add is_actual column
-    df['is_actual'] = is_actual
-
-    if is_actual:
-        # Get the latest actual timestamp from the table (already in Central Time)
-        latest_timestamp = get_latest_actual_timestamp(client, table_id)
-        if latest_timestamp:
-            df = df[df['TIMESTAMP'] > latest_timestamp]
-            logger.info(f"Filtered data to {len(df)} new rows after {latest_timestamp}")
-    else:
-        # For predictions, delete existing predictions before inserting new ones
-        delete_query = f"""
-        DELETE FROM `{table_id}`
-        WHERE is_actual = FALSE AND TIMESTAMP >= '{df['TIMESTAMP'].min()}'
-        """
-        client.query(delete_query).result()
-        logger.info(f"Deleted existing predictions from {df['TIMESTAMP'].min()}")
+    # Get the latest timestamp from the table (already in Central Time)
+    latest_timestamp = get_latest_timestamp(client, table_id)
+    if latest_timestamp:
+        df = df[df['TIMESTAMP'] > latest_timestamp]
+        logger.info(f"Filtered data to {len(df)} new rows after {latest_timestamp}")
 
     if df.empty:
-        logger.info(f"No new data to {'insert' if is_actual else 'update'} in {table_id}")
+        logger.info(f"No new data to insert in {table_id}")
         return
 
     # Sort the dataframe by timestamp
@@ -123,7 +109,7 @@ def insert_or_update_data(client, table_id, df, is_actual=True):
     logger.info(f"Current schema for table {table_id}: {current_schema}")
 
     # Identify new columns
-    new_columns = {col: 'FLOAT64' for col in df.columns if col not in current_schema and col not in ['TIMESTAMP', 'is_actual']}
+    new_columns = {col: 'FLOAT64' for col in df.columns if col not in current_schema and col != 'TIMESTAMP'}
 
     # Update schema if new columns exist
     if new_columns:
@@ -137,11 +123,10 @@ def insert_or_update_data(client, table_id, df, is_actual=True):
     # Prepare job config
     job_config = bigquery.LoadJobConfig(
         schema=[
-            bigquery.SchemaField('TIMESTAMP', 'TIMESTAMP', mode='REQUIRED'),
-            bigquery.SchemaField('is_actual', 'BOOLEAN', mode='REQUIRED')
+            bigquery.SchemaField('TIMESTAMP', 'TIMESTAMP', mode='REQUIRED')
         ] + [
             bigquery.SchemaField(col, 'FLOAT64', mode='NULLABLE') 
-            for col in columns_to_upload if col not in ['TIMESTAMP', 'is_actual']
+            for col in columns_to_upload if col != 'TIMESTAMP'
         ],
         write_disposition="WRITE_APPEND",
     )
@@ -163,9 +148,7 @@ def verify_bigquery_data(client, table_id, df):
     SELECT 
         COUNT(*) as row_count,
         MIN(TIMESTAMP) as min_timestamp,
-        MAX(TIMESTAMP) as max_timestamp,
-        SUM(CASE WHEN is_actual THEN 1 ELSE 0 END) as actual_count,
-        SUM(CASE WHEN NOT is_actual THEN 1 ELSE 0 END) as prediction_count
+        MAX(TIMESTAMP) as max_timestamp
     FROM `{table_id}`
     """
     query_job = client.query(query)
@@ -174,8 +157,6 @@ def verify_bigquery_data(client, table_id, df):
     for row in results:
         logger.info(f"Table {table_id} contains {row.row_count} rows")
         logger.info(f"Timestamp range: {row.min_timestamp} to {row.max_timestamp}")
-        logger.info(f"Actual readings: {row.actual_count}")
-        logger.info(f"Predictions: {row.prediction_count}")
 
     # Compare with the original dataframe
     logger.info(f"Original dataframe contains {len(df)} rows")
@@ -195,7 +176,7 @@ def verify_bigquery_data(client, table_id, df):
     for row in sample_results:
         logger.info(row)
 
-def process_and_upload_data(df, sensor_mapping, is_actual=True):
+def process_and_upload_data(df, sensor_mapping):
     client = create_bigquery_client()
     
     # Group sensors by field, treatment, and plot
@@ -220,7 +201,7 @@ def process_and_upload_data(df, sensor_mapping, is_actual=True):
         
         if not df_to_upload.empty:
             try:
-                insert_or_update_data(client, full_table_id, df_to_upload, is_actual)
+                insert_data(client, full_table_id, df_to_upload)
                 verify_bigquery_data(client, full_table_id, df_to_upload)
             except Exception as e:
                 logger.error(f"Failed to upload or verify data for {field} plot {plot_number} to {full_table_id}: {str(e)}")

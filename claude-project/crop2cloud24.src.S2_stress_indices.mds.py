@@ -1,1 +1,0 @@
-# This is a placeholder for src.S2_stress_indices.mds.py

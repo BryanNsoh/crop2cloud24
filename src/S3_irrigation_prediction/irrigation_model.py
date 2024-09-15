@@ -1,1 +1,0 @@
-# This is a placeholder for src.S3_irrigation_prediction.irrigation_model.py

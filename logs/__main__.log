@@ -5281,3 +5281,1327 @@ Job ID: 4c7041c0-f355-4672-a254-d58d07bae690
 2024-07-19 07:50:29,174 - __main__ - INFO - Final shape: (38, 19)
 2024-07-19 07:50:29,176 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
 2024-07-19 07:50:29,177 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 11:49:49,235 - __main__ - INFO - Processing corn data
+2024-07-19 11:49:49,235 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024
+2024-07-19 11:49:49,235 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeA_NodeA.dat
+2024-07-19 11:49:49,235 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeA_NodeA.dat
+2024-07-19 11:49:49,250 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 11:49:49,258 - __main__ - INFO - Number of rows before dropping NaT timestamps: 686
+2024-07-19 11:49:49,262 - __main__ - INFO - Number of rows after dropping NaT timestamps: 686
+2024-07-19 11:49:49,388 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 11:49:49,388 - __main__ - INFO - Final shape: (686, 17)
+2024-07-19 11:49:49,388 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 11:49:49,388 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 11:50:01,988 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeB_NodeB.dat
+2024-07-19 11:50:01,990 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeB_NodeB.dat
+2024-07-19 11:50:02,029 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 11:50:02,070 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1946
+2024-07-19 11:50:02,072 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1946
+2024-07-19 11:50:02,091 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 11:50:02,095 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 11:50:02,097 - __main__ - INFO - Final shape: (1946, 17)
+2024-07-19 11:50:02,099 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 11:50:02,101 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 11:50:12,864 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeC2_NodeC.dat
+2024-07-19 11:50:12,864 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeC2_NodeC.dat
+2024-07-19 11:50:12,881 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 11:50:12,888 - __main__ - INFO - Number of rows before dropping NaT timestamps: 109
+2024-07-19 11:50:12,892 - __main__ - INFO - Number of rows after dropping NaT timestamps: 109
+2024-07-19 11:50:12,895 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 11:50:12,895 - __main__ - INFO - Final shape: (109, 16)
+2024-07-19 11:50:12,897 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 11:50:12,899 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 11:50:24,083 - __main__ - INFO - Processing soybean data
+2024-07-19 11:50:24,084 - __main__ - INFO - Processing soybean folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024
+2024-07-19 11:50:24,084 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeA_NodeA.dat
+2024-07-19 11:50:24,084 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeA_NodeA.dat
+2024-07-19 11:50:24,093 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-19 11:50:24,099 - __main__ - INFO - Number of rows before dropping NaT timestamps: 376
+2024-07-19 11:50:24,100 - __main__ - INFO - Number of rows after dropping NaT timestamps: 376
+2024-07-19 11:50:24,102 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-19 11:50:24,102 - __main__ - INFO - Final shape: (376, 11)
+2024-07-19 11:50:24,103 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 11:50:24,104 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 11:50:33,575 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeB2_NodeB.dat
+2024-07-19 11:50:33,577 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeB2_NodeB.dat
+2024-07-19 11:50:33,587 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-19 11:50:33,597 - __main__ - INFO - Number of rows before dropping NaT timestamps: 284
+2024-07-19 11:50:33,607 - __main__ - INFO - Number of rows after dropping NaT timestamps: 284
+2024-07-19 11:50:33,607 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-19 11:50:33,607 - __main__ - INFO - Final shape: (284, 15)
+2024-07-19 11:50:33,607 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 11:50:33,618 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 11:50:43,077 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeC2_NodeC.dat
+2024-07-19 11:50:43,077 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeC2_NodeC.dat
+2024-07-19 11:50:43,096 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatteryVoltage', 'PanelTemperatureC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'IRT2018C3xx24', 'IRT2020C3xx24', 'IRT2026C2xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224', 'TDR2026C20624', 'TDR2026C21824', 'TDR2026C23024']
+2024-07-19 11:50:43,116 - __main__ - INFO - Number of rows before dropping NaT timestamps: 38
+2024-07-19 11:50:43,116 - __main__ - INFO - Number of rows after dropping NaT timestamps: 38
+2024-07-19 11:50:43,126 - __main__ - INFO - Final columns: ['RecNbr', 'BatteryVoltage', 'PanelTemperatureC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'IRT2018C3xx24', 'IRT2020C3xx24', 'IRT2026C2xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224', 'TDR2026C20624', 'TDR2026C21824', 'TDR2026C23024']
+2024-07-19 11:50:43,126 - __main__ - INFO - Final shape: (38, 19)
+2024-07-19 11:50:43,126 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 11:50:43,135 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:30:20,449 - __main__ - INFO - Deletion confirmed. Proceeding with table creation (including deletion of existing ones).
+2024-07-19 14:30:21,161 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt3
+2024-07-19 14:30:21,904 - __main__ - INFO - Created dataset LINEAR_CORN_trt3
+2024-07-19 14:30:22,009 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-19 14:30:22,415 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-19 14:30:22,505 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-19 14:30:22,921 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-19 14:30:23,031 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-19 14:30:23,524 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-19 14:30:23,906 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt2
+2024-07-19 14:30:26,520 - __main__ - INFO - Created dataset LINEAR_CORN_trt2
+2024-07-19 14:30:26,686 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-19 14:30:27,234 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-19 14:30:27,351 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-19 14:30:27,825 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-19 14:30:27,925 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-19 14:30:28,328 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-19 14:30:28,731 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt1
+2024-07-19 14:30:29,467 - __main__ - INFO - Created dataset LINEAR_CORN_trt1
+2024-07-19 14:30:29,568 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-19 14:30:30,013 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-19 14:30:30,110 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-19 14:30:30,621 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-19 14:30:30,705 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-19 14:30:31,109 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-19 14:30:31,423 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt4
+2024-07-19 14:30:32,089 - __main__ - INFO - Created dataset LINEAR_CORN_trt4
+2024-07-19 14:30:32,193 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-19 14:30:32,612 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-19 14:30:32,790 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-19 14:30:33,240 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-19 14:30:33,367 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-19 14:30:33,906 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-19 14:30:34,317 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt2
+2024-07-19 14:30:35,137 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt2
+2024-07-19 14:30:35,240 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-19 14:30:35,706 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-19 14:30:35,811 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-19 14:30:36,338 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-19 14:30:36,448 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-19 14:30:36,906 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-19 14:30:37,386 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt4
+2024-07-19 14:30:38,016 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt4
+2024-07-19 14:30:38,138 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-19 14:30:38,611 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-19 14:30:38,701 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-19 14:30:39,126 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-19 14:30:39,528 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt3
+2024-07-19 14:30:40,209 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt3
+2024-07-19 14:30:40,332 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-19 14:30:40,803 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-19 14:30:40,890 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-19 14:30:41,316 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-19 14:30:41,423 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-19 14:30:41,921 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-19 14:30:42,344 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt1
+2024-07-19 14:30:43,327 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt1
+2024-07-19 14:30:43,421 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-19 14:30:43,798 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-19 14:30:43,905 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-19 14:30:44,365 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-19 14:30:44,484 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-19 14:30:44,906 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-19 14:30:44,906 - __main__ - INFO - Process completed successfully
+2024-07-19 14:30:58,134 - __main__ - INFO - Processing corn data
+2024-07-19 14:30:58,144 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024
+2024-07-19 14:30:58,144 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeA_NodeA.dat
+2024-07-19 14:30:58,144 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeA_NodeA.dat
+2024-07-19 14:30:58,157 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 14:30:58,169 - __main__ - INFO - Number of rows before dropping NaT timestamps: 686
+2024-07-19 14:30:58,170 - __main__ - INFO - Number of rows after dropping NaT timestamps: 686
+2024-07-19 14:30:58,565 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 14:30:58,566 - __main__ - INFO - Final shape: (686, 17)
+2024-07-19 14:30:58,567 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:30:58,568 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:30:59,584 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 1e559421-d81b-4236-a027-65deaeabfe98
+
+2024-07-19 14:31:00,199 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 2a90eb3f-da32-494c-bce0-76d5f715c5d2
+
+2024-07-19 14:31:00,822 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: c7f75e21-7ba1-4f8d-842b-6f930dca1075
+
+2024-07-19 14:31:01,532 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 8e6e784a-682c-4bd6-90f0-8f6010a8207b
+
+2024-07-19 14:31:02,206 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: ec652e03-9d41-4bc1-bb2c-30f58d3dffdb
+
+2024-07-19 14:31:02,954 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 16654d85-254f-41d1-9a85-a590d5dba4ca
+
+2024-07-19 14:31:03,629 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 89fcfd62-7440-43e9-abad-d891cf8a2c4e
+
+2024-07-19 14:31:04,323 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 5b69b26a-abc2-4be1-8c2b-eb562e31b69c
+
+2024-07-19 14:31:05,015 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 5eaaa721-6770-4c49-b8d8-3ecd50704271
+
+2024-07-19 14:31:05,623 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: c9a4dcbf-f288-4284-ada4-605accb9834c
+
+2024-07-19 14:31:06,200 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 7dfecee0-347f-4e19-9028-e144a7052d46
+
+2024-07-19 14:31:06,850 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 3117cfa0-b187-4924-a93c-39a8f6660d31
+
+2024-07-19 14:31:06,850 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeB_NodeB.dat
+2024-07-19 14:31:06,850 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeB_NodeB.dat
+2024-07-19 14:31:06,874 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 14:31:06,908 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1946
+2024-07-19 14:31:06,908 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1946
+2024-07-19 14:31:06,918 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 14:31:06,918 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 14:31:06,924 - __main__ - INFO - Final shape: (1946, 17)
+2024-07-19 14:31:06,926 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:31:06,926 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:31:07,784 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 74c3cf6a-4852-429d-961b-7751d0a020b0
+
+2024-07-19 14:31:08,467 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 69c5ae1b-f34d-4df8-b12e-862b1bf5a593
+
+2024-07-19 14:31:09,252 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 643120ba-83cc-43a1-9a7c-4c4b65d93ba0
+
+2024-07-19 14:31:09,853 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 073f46fd-bb7f-4200-98de-4d57c5235308
+
+2024-07-19 14:31:10,510 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 046e8d86-020e-4858-a64d-c8c77ecc7f2c
+
+2024-07-19 14:31:11,011 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 40b1d89c-7c72-45b0-9d4e-67814cb1832b
+
+2024-07-19 14:31:11,654 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 26d73477-e859-4260-a6bc-4d2ac2aea738
+
+2024-07-19 14:31:12,339 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 42b91790-7deb-4778-bc5a-e1532b29b439
+
+2024-07-19 14:31:12,955 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 0b42f0e8-91df-49e4-a349-d322f08fc5da
+
+2024-07-19 14:31:13,555 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: bd7ac7b1-ae63-4546-8894-9abfccbd679b
+
+2024-07-19 14:31:14,223 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 96e2bd16-947c-41c4-a6bc-90b03d741362
+
+2024-07-19 14:31:14,746 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 913b5f02-e96a-43c4-a870-2210e488cae0
+
+2024-07-19 14:31:14,746 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeC2_NodeC.dat
+2024-07-19 14:31:14,746 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeC2_NodeC.dat
+2024-07-19 14:31:14,763 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 14:31:14,772 - __main__ - INFO - Number of rows before dropping NaT timestamps: 109
+2024-07-19 14:31:14,775 - __main__ - INFO - Number of rows after dropping NaT timestamps: 109
+2024-07-19 14:31:14,775 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 14:31:14,775 - __main__ - INFO - Final shape: (109, 16)
+2024-07-19 14:31:14,779 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:31:14,781 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:31:15,857 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 12c79215-628c-47d0-a328-75c032ce429d
+
+2024-07-19 14:31:16,498 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: d97a51ba-27cb-41dc-bf9e-d22ce17eca14
+
+2024-07-19 14:31:17,099 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 77c2f27e-b00e-4d3c-b512-f5c2c110fd5c
+
+2024-07-19 14:31:17,699 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: bc370afa-f548-4cc0-8c46-b6d21345c29d
+
+2024-07-19 14:31:18,242 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 386c66cf-07ae-4dae-8317-65910831340e
+
+2024-07-19 14:31:18,767 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: efbe4ff7-a122-47e6-9665-9b3cf2c27a2e
+
+2024-07-19 14:31:19,361 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 5624b10c-dbcb-4a64-a4f9-47e932e9d25e
+
+2024-07-19 14:31:20,260 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: d144a042-edef-4c2f-8676-d3abac403438
+
+2024-07-19 14:31:20,791 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 76c2670b-3846-4fe2-b929-3d7bb7d12c02
+
+2024-07-19 14:31:21,602 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: ddfdd8cf-664e-4b50-b79d-e504d08aedd3
+
+2024-07-19 14:31:22,113 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 004b3e31-55da-4c76-99dc-d670021c64af
+
+2024-07-19 14:31:22,652 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: e01eecfa-22bf-455c-92a1-03e89c0ef107
+
+2024-07-19 14:31:22,652 - __main__ - INFO - Processing soybean data
+2024-07-19 14:31:22,652 - __main__ - INFO - Processing soybean folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024
+2024-07-19 14:31:22,656 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeA_NodeA.dat
+2024-07-19 14:31:22,656 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeA_NodeA.dat
+2024-07-19 14:31:22,656 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-19 14:31:22,666 - __main__ - INFO - Number of rows before dropping NaT timestamps: 376
+2024-07-19 14:31:22,666 - __main__ - INFO - Number of rows after dropping NaT timestamps: 376
+2024-07-19 14:31:22,677 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-19 14:31:22,677 - __main__ - INFO - Final shape: (376, 11)
+2024-07-19 14:31:22,677 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:31:22,677 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:31:23,493 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2001 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 37635ce6-88bb-4028-9690-23c214fe466d
+
+2024-07-19 14:31:24,081 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2009 to crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 9dde5e1e-03c1-48ff-b3a5-c8f87647d531
+
+2024-07-19 14:31:24,762 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2003 to crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 1fe9a463-5c13-40b5-a643-c5c8b671fe3e
+
+2024-07-19 14:31:25,275 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2011 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: ba361322-d5bc-4581-89b7-b5c5be4d0a57
+
+2024-07-19 14:31:26,171 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2006 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: ebd17401-69a7-4e2f-9416-7be0b5f48156
+
+2024-07-19 14:31:26,733 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2012 to crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: ee88437f-a97c-4110-8b1e-92866803e2c6
+
+2024-07-19 14:31:27,476 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2023 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 55dc0d7c-d7d9-4fda-abcb-a9cc5bfef874
+
+2024-07-19 14:31:28,142 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2015 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 0627e6f3-d13c-4a67-8b3a-5f603192fe6f
+
+2024-07-19 14:31:28,814 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2018 to crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 6e151b0f-a94d-47bf-9b09-7d22f52f06b3
+
+2024-07-19 14:31:29,424 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2020 to crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: a5793e80-82bc-4eff-8a15-ee340d123e9a
+
+2024-07-19 14:31:30,179 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2026 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: fe696843-da35-435f-86bf-cd9f9c35d8e1
+
+2024-07-19 14:31:30,180 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeB2_NodeB.dat
+2024-07-19 14:31:30,181 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeB2_NodeB.dat
+2024-07-19 14:31:30,185 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-19 14:31:30,194 - __main__ - INFO - Number of rows before dropping NaT timestamps: 284
+2024-07-19 14:31:30,197 - __main__ - INFO - Number of rows after dropping NaT timestamps: 284
+2024-07-19 14:31:30,198 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-19 14:31:30,199 - __main__ - INFO - Final shape: (284, 15)
+2024-07-19 14:31:30,200 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:31:30,201 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:31:31,205 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2001 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: ffd62a58-ab0e-47b5-9fa5-c087ff22ea2e
+
+2024-07-19 14:31:31,709 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2009 to crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 85cef772-57dc-4c8d-8940-fbccc5a84f85
+
+2024-07-19 14:31:32,275 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2003 to crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 8447f225-cfb7-4e51-b8e9-c12906f9fb78
+
+2024-07-19 14:31:32,808 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2011 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 25006db8-1600-4228-9f8f-b3feb6768986
+
+2024-07-19 14:31:33,311 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2006 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 616b002a-1d85-446e-bf5f-0cfd6a86b141
+
+2024-07-19 14:31:33,911 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2012 to crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: e424d21b-0222-48c0-84ea-3d4f6dfa4bb9
+
+2024-07-19 14:31:34,485 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2023 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 344ff9f4-28ba-47c7-b421-0755978b91ea
+
+2024-07-19 14:31:35,071 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2015 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 96fd413b-4fe2-42bc-ac3d-62877c779f4f
+
+2024-07-19 14:31:35,644 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2018 to crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 3a8ebea9-e50d-4be8-9c11-c5ed53731d71
+
+2024-07-19 14:31:36,277 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2020 to crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 9ec41644-f3d9-4906-b842-44ed8f24ef1b
+
+2024-07-19 14:31:36,829 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2026 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 684207f1-aaa4-4bb2-ae11-105a076a9691
+
+2024-07-19 14:31:36,832 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeC2_NodeC.dat
+2024-07-19 14:31:36,834 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeC2_NodeC.dat
+2024-07-19 14:31:36,843 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatteryVoltage', 'PanelTemperatureC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'IRT2018C3xx24', 'IRT2020C3xx24', 'IRT2026C2xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224', 'TDR2026C20624', 'TDR2026C21824', 'TDR2026C23024']
+2024-07-19 14:31:36,851 - __main__ - INFO - Number of rows before dropping NaT timestamps: 38
+2024-07-19 14:31:36,853 - __main__ - INFO - Number of rows after dropping NaT timestamps: 38
+2024-07-19 14:31:36,854 - __main__ - INFO - Final columns: ['RecNbr', 'BatteryVoltage', 'PanelTemperatureC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'IRT2018C3xx24', 'IRT2020C3xx24', 'IRT2026C2xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224', 'TDR2026C20624', 'TDR2026C21824', 'TDR2026C23024']
+2024-07-19 14:31:36,854 - __main__ - INFO - Final shape: (38, 19)
+2024-07-19 14:31:36,859 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:31:36,860 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:31:37,609 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2001 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 621399ab-c248-4687-9384-9d1bbcf70e49
+
+2024-07-19 14:31:38,181 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2009 to crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: d5763c36-a84b-4c0a-990a-3df72abcbcad
+
+2024-07-19 14:31:38,885 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2003 to crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: bad7ddda-7b9b-4619-93f5-703be466c90a
+
+2024-07-19 14:31:39,366 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2011 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 633f550e-3a3d-4b2c-a369-4c11142bef0e
+
+2024-07-19 14:31:39,907 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2006 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 6a49794b-2a28-4ff2-be6d-cc06b4700f64
+
+2024-07-19 14:31:40,532 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2012 to crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 54cdfe89-b859-4981-8072-92c753a84fb2
+
+2024-07-19 14:31:41,008 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2023 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: b6a619ad-398d-4985-8f87-72d09b30db50
+
+2024-07-19 14:31:41,564 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2015 to crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 1fefdcf0-48f7-4cd4-a789-ca276aa971b0
+
+2024-07-19 14:31:42,097 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2018 to crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: ec1babbd-bf89-45d0-9dbf-509c9474cd0d
+
+2024-07-19 14:31:42,650 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2020 to crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 8252e7f0-db6b-419c-bb87-8759eedf85e3
+
+2024-07-19 14:31:43,215 - __main__ - ERROR - Failed to upload data for LINEAR_SOYBEAN plot 2026 to crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 4a1754f7-09dc-42f2-917f-39d2fb8a0cd0
+
+2024-07-19 14:32:16,806 - __main__ - INFO - Deletion confirmed. Proceeding with table creation (including deletion of existing ones).
+2024-07-19 14:32:17,377 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt3
+2024-07-19 14:32:18,019 - __main__ - INFO - Created dataset LINEAR_CORN_trt3
+2024-07-19 14:32:18,117 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-19 14:32:18,731 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-19 14:32:18,835 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-19 14:32:19,305 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-19 14:32:19,432 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-19 14:32:19,811 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-19 14:32:20,134 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt2
+2024-07-19 14:32:20,875 - __main__ - INFO - Created dataset LINEAR_CORN_trt2
+2024-07-19 14:32:20,988 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-19 14:32:21,416 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-19 14:32:21,528 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-19 14:32:22,007 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-19 14:32:22,116 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-19 14:32:22,539 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-19 14:32:22,850 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt1
+2024-07-19 14:32:23,514 - __main__ - INFO - Created dataset LINEAR_CORN_trt1
+2024-07-19 14:32:23,621 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-19 14:32:24,088 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-19 14:32:24,201 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-19 14:32:24,612 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-19 14:32:24,709 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-19 14:32:25,121 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-19 14:32:25,486 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt4
+2024-07-19 14:32:26,079 - __main__ - INFO - Created dataset LINEAR_CORN_trt4
+2024-07-19 14:32:26,180 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-19 14:32:26,630 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-19 14:32:26,720 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-19 14:32:27,167 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-19 14:32:27,267 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-19 14:32:27,708 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-19 14:32:28,069 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt2
+2024-07-19 14:32:28,709 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt2
+2024-07-19 14:32:28,798 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-19 14:32:29,206 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-19 14:32:29,298 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-19 14:32:29,726 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-19 14:32:29,839 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-19 14:32:30,303 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-19 14:32:30,878 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt4
+2024-07-19 14:32:31,542 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt4
+2024-07-19 14:32:31,635 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-19 14:32:32,018 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-19 14:32:32,135 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-19 14:32:32,609 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-19 14:32:32,898 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt3
+2024-07-19 14:32:33,535 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt3
+2024-07-19 14:32:33,669 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-19 14:32:34,120 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-19 14:32:34,327 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-19 14:32:34,711 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-19 14:32:34,827 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-19 14:32:35,220 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-19 14:32:35,605 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt1
+2024-07-19 14:32:36,423 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt1
+2024-07-19 14:32:36,538 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-19 14:32:37,012 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-19 14:32:37,112 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-19 14:32:37,612 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-19 14:32:37,696 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-19 14:32:38,113 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-19 14:32:38,113 - __main__ - INFO - Process completed successfully
+2024-07-19 14:34:04,570 - __main__ - INFO - Processing corn data
+2024-07-19 14:34:04,572 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-19 14:34:04,573 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 14:34:04,574 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 14:34:04,593 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-19 14:34:04,613 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-19 14:34:04,619 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-19 14:34:04,843 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-19 14:34:04,854 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-19 14:34:04,855 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-19 14:34:04,857 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:34:04,859 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:34:05,736 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 213a2824-a270-447c-8960-dbff44c413f9
+
+2024-07-19 14:34:06,286 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: b2dc095d-c0c2-44cc-8ad8-bb965dd950f1
+
+2024-07-19 14:34:06,847 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 046bd6bf-3084-4d24-b4ff-7f567d379332
+
+2024-07-19 14:34:07,420 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 1a664f40-0afa-4570-8937-a15654e5a98c
+
+2024-07-19 14:34:07,994 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 6f69bf36-c94c-45d8-9ee0-86d70193da5b
+
+2024-07-19 14:34:08,570 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 1b67b224-263a-4d6b-9c36-3e6b753df959
+
+2024-07-19 14:34:09,086 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 09fd0c63-596a-419f-b9ce-eeef41faffbf
+
+2024-07-19 14:34:09,631 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: f15ca0fe-104b-41cb-b67d-55c2e87f4116
+
+2024-07-19 14:34:10,142 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 33803272-d1de-4af8-84bd-7955ce2150da
+
+2024-07-19 14:34:10,742 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 16c37bde-b7ad-4fd1-b545-8e71738c0d77
+
+2024-07-19 14:34:11,516 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 3efffa43-f06b-4c73-8010-42ec6fa1e1ff
+
+2024-07-19 14:34:12,116 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 3f81b7f0-0bbd-4be2-b8f5-c6dab74198f7
+
+2024-07-19 14:34:12,120 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-19 14:34:12,121 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-19 14:34:12,133 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-19 14:34:12,148 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-19 14:34:12,151 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-19 14:34:12,154 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 14:34:12,155 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'TDR5006B11824']
+2024-07-19 14:34:12,155 - __main__ - INFO - Final shape: (608, 16)
+2024-07-19 14:34:12,157 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:34:12,158 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:34:12,894 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 0e4c785b-c5db-4af8-92a7-200c4c24090b
+
+2024-07-19 14:34:13,394 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 7d79c61b-600b-4252-8c74-e68ca1feb8aa
+
+2024-07-19 14:34:13,894 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 5432bb41-4b9c-4254-aef1-ebc8b5782a83
+
+2024-07-19 14:34:14,364 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 359512a4-f522-4d04-bbf6-18e8370cf744
+
+2024-07-19 14:34:14,949 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 5f2d8e62-b7b2-4aab-a20a-46bce20a38bc
+
+2024-07-19 14:34:15,500 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: f67ea63c-20f1-4fb5-a1ae-f1af0dae56f4
+
+2024-07-19 14:34:15,986 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 039306b1-0ea0-4943-a29b-89687e179eaf
+
+2024-07-19 14:34:16,482 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: e43f3ef8-bb4c-46d4-aa64-61d33b959784
+
+2024-07-19 14:34:17,017 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 9c6fffaa-a31d-4aec-a9e3-0fd40e462c62
+
+2024-07-19 14:34:17,612 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 2912dc05-edd5-4834-8b33-bf7baac338f0
+
+2024-07-19 14:34:18,085 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 24fbccaf-d53d-430c-8364-8e033c3463a5
+
+2024-07-19 14:34:18,644 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 23ecf70c-887f-4854-ada9-9b9e797c8bcf
+
+2024-07-19 14:34:18,644 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-19 14:34:18,644 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-19 14:34:18,661 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-19 14:34:18,672 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-19 14:34:18,677 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-19 14:34:18,680 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-19 14:34:18,681 - __main__ - INFO - Final shape: (608, 15)
+2024-07-19 14:34:18,683 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:34:18,684 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:34:19,446 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 59affffe-958c-424b-b8cf-32dab8dbef0c
+
+2024-07-19 14:34:19,993 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 6f425c01-80d5-428c-91d4-3cd1bb1ec17d
+
+2024-07-19 14:34:20,525 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: d8cbd691-0367-4d8a-8c83-c40702843a29
+
+2024-07-19 14:34:21,012 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: eccf94ea-7bb0-402a-bf77-ef3d183f0e71
+
+2024-07-19 14:34:21,564 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: f0ac38a9-22f1-48b9-a75d-06f8ef74102a
+
+2024-07-19 14:34:22,064 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 23412ddd-6fe9-43f0-8979-586d0020c046
+
+2024-07-19 14:34:22,621 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 224a9cb1-ea65-4060-9615-8540e9d8a347
+
+2024-07-19 14:34:23,156 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 7de2ca8a-418f-4e10-a9f8-9000471bd4d3
+
+2024-07-19 14:34:23,734 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 49b455aa-d16a-45b7-9793-2c8ffadf8981
+
+2024-07-19 14:34:24,230 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: b3ad9168-f237-499b-8539-e9f70225ae0c
+
+2024-07-19 14:34:24,829 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 28c2fb8a-2fc2-40f6-9d82-78a2f7a328c9
+
+2024-07-19 14:34:25,354 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 8d40ef7a-0b6d-48dc-85e3-52b5b6f6c5d1
+
+2024-07-19 14:34:25,357 - __main__ - INFO - Processing corn folder: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous
+2024-07-19 14:34:25,361 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-19 14:34:25,363 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-19 14:34:25,375 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 14:34:25,385 - __main__ - INFO - Number of rows before dropping NaT timestamps: 234
+2024-07-19 14:34:25,387 - __main__ - INFO - Number of rows after dropping NaT timestamps: 234
+2024-07-19 14:34:25,389 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 14:34:25,390 - __main__ - INFO - Final shape: (234, 17)
+2024-07-19 14:34:25,392 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:34:25,393 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:34:26,246 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: c7fd723a-7f6e-40b1-857b-d6d8b11fe71b
+
+2024-07-19 14:34:26,725 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 4e1a602b-2afa-4aa6-9619-65e48466e094
+
+2024-07-19 14:34:27,248 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 2ac3db35-bd67-4165-a74b-c4a389103878
+
+2024-07-19 14:34:27,755 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: e53c9804-e3b9-456d-90de-485abd0118a5
+
+2024-07-19 14:34:28,395 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: ec878014-518d-4ecb-b9b9-5d6ca572c1c6
+
+2024-07-19 14:34:28,863 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: d05ee5b7-d611-44d1-a8ed-360409d4f5f1
+
+2024-07-19 14:34:29,386 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 90bd1b7c-fe0f-459e-be48-69363b536e94
+
+2024-07-19 14:34:29,940 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 625f4aef-c648-4d99-ad6e-7e173613ed03
+
+2024-07-19 14:34:30,373 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 6c282590-e65c-4c93-a687-74bc613fabe0
+
+2024-07-19 14:34:30,887 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: c2400032-74aa-4fd4-99f0-c0aa49635a9c
+
+2024-07-19 14:34:31,423 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 472ae976-bead-41e9-87ca-565f9369bef1
+
+2024-07-19 14:34:32,021 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 06ee45bc-2176-4e72-ab9b-b30065702d6e
+
+2024-07-19 14:34:32,021 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-19 14:34:32,021 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-19 14:34:32,031 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 14:34:32,041 - __main__ - INFO - Number of rows before dropping NaT timestamps: 233
+2024-07-19 14:34:32,044 - __main__ - INFO - Number of rows after dropping NaT timestamps: 233
+2024-07-19 14:34:32,048 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 14:34:32,049 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 14:34:32,051 - __main__ - INFO - Final shape: (233, 17)
+2024-07-19 14:34:32,054 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:34:32,054 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:34:32,784 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: f1fee2bd-f0f0-468b-bd56-3065fc1ac634
+
+2024-07-19 14:34:33,348 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 130908fa-f8a5-4c9b-ad77-8120156a6cab
+
+2024-07-19 14:34:33,914 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: c90c303c-4983-4e8e-bab7-9d21eb389764
+
+2024-07-19 14:34:34,368 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 0ea2307a-faa6-451b-8f9f-d8fa211aa3be
+
+2024-07-19 14:34:34,894 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: fb971635-9329-4d2a-a10c-520765e5baad
+
+2024-07-19 14:34:35,401 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: b124d8ce-6528-4687-97d2-9f3256a80a4e
+
+2024-07-19 14:34:35,870 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 112e0bdf-c9c9-44cb-a8eb-218e791ef17e
+
+2024-07-19 14:34:36,449 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: b2b4eb15-e9e5-42eb-8d7b-f0cf1d997f47
+
+2024-07-19 14:34:36,972 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: f13df34a-47b0-4528-bd8e-9aaedcf02371
+
+2024-07-19 14:34:37,410 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5018 to crop2cloud24.LINEAR_CORN_trt3.plot_5018: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 488e13a8-6f17-4ebd-a072-327bde279561
+
+2024-07-19 14:34:37,960 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5026 to crop2cloud24.LINEAR_CORN_trt2.plot_5026: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 89558c42-f030-4703-93f3-1db511ed1b08
+
+2024-07-19 14:34:38,446 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5027 to crop2cloud24.LINEAR_CORN_trt4.plot_5027: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 245dd887-82b2-4132-a760-ef17b3e240a2
+
+2024-07-19 14:34:38,459 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-19 14:34:38,461 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-19 14:34:38,468 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 14:34:38,474 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-19 14:34:38,476 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-19 14:34:38,478 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 14:34:38,479 - __main__ - INFO - Final shape: (232, 16)
+2024-07-19 14:34:38,480 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:34:38,481 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:34:39,220 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5001 to crop2cloud24.LINEAR_CORN_trt3.plot_5001: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 362ed056-2132-469d-8dfe-f9ac86495dff
+
+2024-07-19 14:34:39,739 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5003 to crop2cloud24.LINEAR_CORN_trt2.plot_5003: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 1fd45f4f-cc6f-4e8c-af4d-1dcc002e80f0
+
+2024-07-19 14:34:40,238 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5010 to crop2cloud24.LINEAR_CORN_trt1.plot_5010: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 3bcfc5ef-4645-4751-983e-57eb8244540f
+
+2024-07-19 14:34:40,693 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5009 to crop2cloud24.LINEAR_CORN_trt4.plot_5009: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: cd1c663d-eeed-4eb3-aad6-8c9469b9a466
+
+2024-07-19 14:34:41,197 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5006 to crop2cloud24.LINEAR_CORN_trt1.plot_5006: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: a0e9fd9c-927d-4400-864d-a450e6279700
+
+2024-07-19 14:34:41,725 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5012 to crop2cloud24.LINEAR_CORN_trt2.plot_5012: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 9afcfe85-c129-4273-a0c1-56002b928dbe
+
+2024-07-19 14:34:42,180 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5007 to crop2cloud24.LINEAR_CORN_trt4.plot_5007: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: d047f212-ff5d-471f-aca8-2bc173514dd7
+
+2024-07-19 14:34:42,714 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5023 to crop2cloud24.LINEAR_CORN_trt1.plot_5023: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: ba973966-1143-4c18-8381-7a9f3768274b
+
+2024-07-19 14:34:43,203 - __main__ - ERROR - Failed to upload data for LINEAR_CORN plot 5020 to crop2cloud24.LINEAR_CORN_trt3.plot_5020: 400 Unrecognized name: is_actual at [4:11]; reason: invalidQuery, location: query, message: Unrecognized name: is_actual at [4:11]
+
+Location: US
+Job ID: 52d1979a-5562-4ad8-959b-a8a9b0048b1f
+
+2024-07-19 14:38:35,668 - __main__ - INFO - Processing corn data
+2024-07-19 14:38:35,668 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-19 14:38:35,668 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 14:38:35,668 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 14:38:35,685 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-19 14:38:35,708 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-19 14:38:35,710 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-19 14:38:35,957 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-19 14:38:35,958 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-19 14:38:35,959 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-19 14:38:35,961 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:38:35,962 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:39:43,145 - __main__ - INFO - Deletion confirmed. Proceeding with table creation (including deletion of existing ones).
+2024-07-19 14:39:43,670 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt3
+2024-07-19 14:39:44,259 - __main__ - INFO - Created dataset LINEAR_CORN_trt3
+2024-07-19 14:39:44,341 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-19 14:39:44,807 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-19 14:39:44,909 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-19 14:39:45,604 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-19 14:39:45,696 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-19 14:39:46,226 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-19 14:39:46,512 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt2
+2024-07-19 14:39:47,084 - __main__ - INFO - Created dataset LINEAR_CORN_trt2
+2024-07-19 14:39:47,196 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-19 14:39:47,590 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-19 14:39:47,688 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-19 14:39:48,111 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-19 14:39:48,253 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-19 14:39:48,715 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-19 14:39:49,003 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt1
+2024-07-19 14:39:49,603 - __main__ - INFO - Created dataset LINEAR_CORN_trt1
+2024-07-19 14:39:49,714 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-19 14:39:50,246 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-19 14:39:50,340 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-19 14:39:50,902 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-19 14:39:50,991 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-19 14:39:51,429 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-19 14:39:51,773 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt4
+2024-07-19 14:39:52,375 - __main__ - INFO - Created dataset LINEAR_CORN_trt4
+2024-07-19 14:39:52,467 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-19 14:39:53,207 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-19 14:39:53,315 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-19 14:39:53,817 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-19 14:39:53,913 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-19 14:39:54,308 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-19 14:39:54,609 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt2
+2024-07-19 14:39:55,260 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt2
+2024-07-19 14:39:55,361 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-19 14:39:55,900 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-19 14:39:56,027 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-19 14:39:56,422 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-19 14:39:56,521 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-19 14:39:57,017 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-19 14:39:57,319 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt4
+2024-07-19 14:39:57,890 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt4
+2024-07-19 14:39:57,980 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-19 14:39:58,416 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-19 14:39:58,526 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-19 14:39:59,017 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-19 14:39:59,364 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt3
+2024-07-19 14:39:59,981 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt3
+2024-07-19 14:40:00,072 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-19 14:40:00,621 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-19 14:40:00,723 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-19 14:40:01,223 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-19 14:40:01,337 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-19 14:40:01,722 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-19 14:40:02,040 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt1
+2024-07-19 14:40:02,826 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt1
+2024-07-19 14:40:02,914 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-19 14:40:03,323 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-19 14:40:03,426 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-19 14:40:03,890 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-19 14:40:03,992 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-19 14:40:04,422 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-19 14:40:04,425 - __main__ - INFO - Process completed successfully
+2024-07-19 14:44:33,416 - __main__ - INFO - Processing corn data
+2024-07-19 14:44:33,418 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-19 14:44:33,419 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 14:44:33,420 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 14:44:33,440 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-19 14:44:33,452 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-19 14:44:33,459 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-19 14:44:33,636 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-19 14:44:33,636 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-19 14:44:33,636 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-19 14:44:33,636 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:44:33,636 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:48:02,839 - __main__ - INFO - Deletion confirmed. Proceeding with table creation (including deletion of existing ones).
+2024-07-19 14:48:03,477 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt3
+2024-07-19 14:48:04,382 - __main__ - INFO - Created dataset LINEAR_CORN_trt3
+2024-07-19 14:48:04,706 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-19 14:48:05,325 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5001
+2024-07-19 14:48:05,516 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-19 14:48:06,019 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5020
+2024-07-19 14:48:06,116 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-19 14:48:06,631 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt3.plot_5018
+2024-07-19 14:48:06,936 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt2
+2024-07-19 14:48:07,615 - __main__ - INFO - Created dataset LINEAR_CORN_trt2
+2024-07-19 14:48:07,723 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-19 14:48:08,125 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5003
+2024-07-19 14:48:08,229 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-19 14:48:08,708 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5012
+2024-07-19 14:48:08,811 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-19 14:48:09,199 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt2.plot_5026
+2024-07-19 14:48:09,577 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt1
+2024-07-19 14:48:10,175 - __main__ - INFO - Created dataset LINEAR_CORN_trt1
+2024-07-19 14:48:10,287 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-19 14:48:10,709 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5010
+2024-07-19 14:48:10,796 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-19 14:48:11,314 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5006
+2024-07-19 14:48:11,408 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-19 14:48:11,817 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt1.plot_5023
+2024-07-19 14:48:12,114 - __main__ - INFO - Deleted existing dataset LINEAR_CORN_trt4
+2024-07-19 14:48:12,664 - __main__ - INFO - Created dataset LINEAR_CORN_trt4
+2024-07-19 14:48:12,766 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-19 14:48:13,206 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5009
+2024-07-19 14:48:13,328 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-19 14:48:13,728 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5007
+2024-07-19 14:48:13,825 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-19 14:48:14,215 - __main__ - INFO - Created table crop2cloud24.LINEAR_CORN_trt4.plot_5027
+2024-07-19 14:48:14,511 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt2
+2024-07-19 14:48:15,060 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt2
+2024-07-19 14:48:15,161 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-19 14:48:15,725 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2001
+2024-07-19 14:48:15,808 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-19 14:48:16,393 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2011
+2024-07-19 14:48:16,492 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-19 14:48:17,003 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt2.plot_2026
+2024-07-19 14:48:17,326 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt4
+2024-07-19 14:48:17,862 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt4
+2024-07-19 14:48:17,974 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-19 14:48:18,398 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2009
+2024-07-19 14:48:18,504 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-19 14:48:18,913 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt4.plot_2012
+2024-07-19 14:48:19,226 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt3
+2024-07-19 14:48:19,846 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt3
+2024-07-19 14:48:19,964 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-19 14:48:20,418 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2003
+2024-07-19 14:48:20,512 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-19 14:48:20,909 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2018
+2024-07-19 14:48:21,009 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-19 14:48:21,518 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt3.plot_2020
+2024-07-19 14:48:21,823 - __main__ - INFO - Deleted existing dataset LINEAR_SOYBEAN_trt1
+2024-07-19 14:48:22,480 - __main__ - INFO - Created dataset LINEAR_SOYBEAN_trt1
+2024-07-19 14:48:22,600 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-19 14:48:23,010 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2006
+2024-07-19 14:48:23,101 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-19 14:48:23,511 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2023
+2024-07-19 14:48:23,613 - __main__ - INFO - Deleted existing table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-19 14:48:24,115 - __main__ - INFO - Created table crop2cloud24.LINEAR_SOYBEAN_trt1.plot_2015
+2024-07-19 14:48:24,115 - __main__ - INFO - Process completed successfully
+2024-07-19 14:48:34,383 - __main__ - INFO - Processing corn data
+2024-07-19 14:48:34,385 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024
+2024-07-19 14:48:34,387 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 14:48:34,387 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeA_NodeA.dat
+2024-07-19 14:48:34,408 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024']
+2024-07-19 14:48:34,425 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1006
+2024-07-19 14:48:34,428 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1006
+2024-07-19 14:48:34,608 - __main__ - INFO - Corrected misspelled column name from TDR5026A23824 to TDR5026A23024
+2024-07-19 14:48:34,608 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'TDR5026A23024']
+2024-07-19 14:48:34,608 - __main__ - INFO - Final shape: (1006, 16)
+2024-07-19 14:48:34,608 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:48:34,608 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:49:29,998 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-19 14:49:30,001 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeB_NodeB.dat
+2024-07-19 14:49:30,012 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024']
+2024-07-19 14:49:30,024 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-19 14:49:30,029 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-19 14:49:30,029 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 14:49:30,034 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'TDR5006B11824']
+2024-07-19 14:49:30,036 - __main__ - INFO - Final shape: (608, 16)
+2024-07-19 14:49:30,037 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:49:30,038 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:50:19,928 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-19 14:50:19,928 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-03-2024\nodeC_NodeC.dat
+2024-07-19 14:50:19,933 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-19 14:50:19,940 - __main__ - INFO - Number of rows before dropping NaT timestamps: 608
+2024-07-19 14:50:19,942 - __main__ - INFO - Number of rows after dropping NaT timestamps: 608
+2024-07-19 14:50:19,944 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024']
+2024-07-19 14:50:19,945 - __main__ - INFO - Final shape: (608, 15)
+2024-07-19 14:50:19,946 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:50:19,947 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:51:22,059 - __main__ - INFO - Processing corn folder: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous
+2024-07-19 14:51:22,059 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-19 14:51:22,066 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeA_NodeA.dat
+2024-07-19 14:51:22,083 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 14:51:22,101 - __main__ - INFO - Number of rows before dropping NaT timestamps: 234
+2024-07-19 14:51:22,114 - __main__ - INFO - Number of rows after dropping NaT timestamps: 234
+2024-07-19 14:51:22,114 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 14:51:22,124 - __main__ - INFO - Final shape: (234, 17)
+2024-07-19 14:51:22,128 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:51:22,129 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:52:20,808 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-19 14:52:20,811 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeB_NodeB.dat
+2024-07-19 14:52:20,822 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 14:52:20,836 - __main__ - INFO - Number of rows before dropping NaT timestamps: 233
+2024-07-19 14:52:20,840 - __main__ - INFO - Number of rows after dropping NaT timestamps: 233
+2024-07-19 14:52:20,846 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 14:52:20,849 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 14:52:20,851 - __main__ - INFO - Final shape: (233, 17)
+2024-07-19 14:52:20,853 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:52:20,856 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:52:33,472 - __main__ - INFO - Processing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-19 14:52:33,472 - __main__ - INFO - Parsing file: c:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-08-2024-discontinuous\nodeC_NodeC.dat
+2024-07-19 14:52:33,479 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 14:52:33,490 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-19 14:52:33,493 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-19 14:52:33,495 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 14:52:33,497 - __main__ - INFO - Final shape: (232, 16)
+2024-07-19 14:52:33,498 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:52:33,499 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:52:43,497 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only
+2024-07-19 14:52:43,500 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-19 14:52:43,501 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeA_NodeA.dat
+2024-07-19 14:52:43,518 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 14:52:43,535 - __main__ - INFO - Number of rows before dropping NaT timestamps: 522
+2024-07-19 14:52:43,538 - __main__ - INFO - Number of rows after dropping NaT timestamps: 522
+2024-07-19 14:52:43,547 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 14:52:43,550 - __main__ - INFO - Final shape: (522, 17)
+2024-07-19 14:52:43,563 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:52:43,565 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:53:33,005 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-19 14:53:33,006 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeB_NodeB.dat
+2024-07-19 14:53:33,030 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 14:53:33,059 - __main__ - INFO - Number of rows before dropping NaT timestamps: 757
+2024-07-19 14:53:33,063 - __main__ - INFO - Number of rows after dropping NaT timestamps: 757
+2024-07-19 14:53:33,071 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 14:53:33,073 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 14:53:33,076 - __main__ - INFO - Final shape: (757, 17)
+2024-07-19 14:53:33,079 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:53:33,083 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:54:25,414 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-19 14:54:25,423 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-14-2024-discont-nodeC only\nodeC_NodeC.dat
+2024-07-19 14:54:25,432 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 14:54:25,440 - __main__ - INFO - Number of rows before dropping NaT timestamps: 232
+2024-07-19 14:54:25,445 - __main__ - INFO - Number of rows after dropping NaT timestamps: 232
+2024-07-19 14:54:25,449 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 14:54:25,450 - __main__ - INFO - Final shape: (232, 16)
+2024-07-19 14:54:25,452 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:54:25,453 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:54:38,438 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-15-2024-discont-unsure
+2024-07-19 14:54:38,439 - __main__ - INFO - Processing corn folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024
+2024-07-19 14:54:38,442 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeA_NodeA.dat
+2024-07-19 14:54:38,444 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeA_NodeA.dat
+2024-07-19 14:54:38,465 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 14:54:38,475 - __main__ - INFO - Number of rows before dropping NaT timestamps: 686
+2024-07-19 14:54:38,476 - __main__ - INFO - Number of rows after dropping NaT timestamps: 686
+2024-07-19 14:54:38,476 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5023A1xx24', 'IRT5020A3xx24', 'IRT5018A3xx24', 'TDR5023A10624', 'TDR5023A11824', 'TDR5023A13024', 'TDR5023A14224', 'TDR5026A20624', 'TDR5026A21824', 'TDR5026A23024', 'TDR5027A40624', 'TDR5027A41824', 'TDR5027A43024', 'DEN5023A1xx24']
+2024-07-19 14:54:38,476 - __main__ - INFO - Final shape: (686, 17)
+2024-07-19 14:54:38,476 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:54:38,482 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:55:31,990 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeB_NodeB.dat
+2024-07-19 14:55:31,992 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeB_NodeB.dat
+2024-07-19 14:55:32,027 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B11724', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24']
+2024-07-19 14:55:32,063 - __main__ - INFO - Number of rows before dropping NaT timestamps: 1946
+2024-07-19 14:55:32,068 - __main__ - INFO - Number of rows after dropping NaT timestamps: 1946
+2024-07-19 14:55:32,075 - __main__ - INFO - Corrected misspelled column name from TDR5006B11724 to TDR5006B11824
+2024-07-19 14:55:32,077 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5006B1xx24', 'IRT5012B2xx24', 'TDR5007B40624', 'TDR5007B41824', 'TDR5007B43024', 'TDR5007B44224', 'TDR5006B10624', 'TDR5006B13024', 'TDR5006B14224', 'TDR5012B20624', 'TDR5012B21824', 'TDR5012B23024', 'DEN5006B1xx24', 'TDR5006B11824']
+2024-07-19 14:55:32,078 - __main__ - INFO - Final shape: (1946, 17)
+2024-07-19 14:55:32,082 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:55:32,085 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:55:44,411 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeC2_NodeC.dat
+2024-07-19 14:55:44,411 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\2024_data_corn_lnr\07-19-2024\nodeC2_NodeC.dat
+2024-07-19 14:55:44,422 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 14:55:44,429 - __main__ - INFO - Number of rows before dropping NaT timestamps: 109
+2024-07-19 14:55:44,430 - __main__ - INFO - Number of rows after dropping NaT timestamps: 109
+2024-07-19 14:55:44,430 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT5001C3xx24', 'IRT5003C2xx24', 'IRT5010C1xx24', 'TDR5003C20624', 'TDR5003C21824', 'TDR5003C23024', 'TDR5010C10624', 'TDR5010C11824', 'TDR5010C13024', 'TDR5009C40624', 'TDR5009C41824', 'TDR5009C43024', 'DEN5010C1xx24']
+2024-07-19 14:55:44,430 - __main__ - INFO - Final shape: (109, 16)
+2024-07-19 14:55:44,430 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:55:44,430 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:55:53,635 - __main__ - INFO - Processing soybean data
+2024-07-19 14:55:53,635 - __main__ - INFO - Processing soybean folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24
+2024-07-19 14:55:53,635 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeA_NodeA.dat
+2024-07-19 14:55:53,635 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeA_NodeA.dat
+2024-07-19 14:55:53,645 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-19 14:55:53,648 - __main__ - INFO - Number of rows before dropping NaT timestamps: 145
+2024-07-19 14:55:53,650 - __main__ - INFO - Number of rows after dropping NaT timestamps: 145
+2024-07-19 14:55:53,651 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-19 14:55:53,651 - __main__ - INFO - Final shape: (145, 11)
+2024-07-19 14:55:53,651 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:55:53,651 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:56:45,652 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeB2_NodeB.dat
+2024-07-19 14:56:45,654 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeB2_NodeB.dat
+2024-07-19 14:56:45,664 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-19 14:56:45,678 - __main__ - INFO - Number of rows before dropping NaT timestamps: 93
+2024-07-19 14:56:45,687 - __main__ - INFO - Number of rows after dropping NaT timestamps: 93
+2024-07-19 14:56:45,697 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-19 14:56:45,703 - __main__ - INFO - Final shape: (93, 15)
+2024-07-19 14:56:45,703 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:56:45,711 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:56:57,228 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeC2_NodeC.dat
+2024-07-19 14:56:57,232 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-15-24\SoyNodeC2_NodeC.dat
+2024-07-19 14:56:57,236 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224']
+2024-07-19 14:56:57,254 - __main__ - INFO - Number of rows before dropping NaT timestamps: 245
+2024-07-19 14:56:57,254 - __main__ - INFO - Number of rows after dropping NaT timestamps: 245
+2024-07-19 14:56:57,264 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224']
+2024-07-19 14:56:57,269 - __main__ - INFO - Final shape: (245, 13)
+2024-07-19 14:56:57,271 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:56:57,273 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:57:42,601 - __main__ - INFO - Processing soybean folder: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024
+2024-07-19 14:57:42,601 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeA_NodeA.dat
+2024-07-19 14:57:42,601 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeA_NodeA.dat
+2024-07-19 14:57:42,613 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-19 14:57:42,618 - __main__ - INFO - Number of rows before dropping NaT timestamps: 376
+2024-07-19 14:57:42,620 - __main__ - INFO - Number of rows after dropping NaT timestamps: 376
+2024-07-19 14:57:42,624 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2001A2xx24', 'IRT2003A3xx24', 'TDR2001A20624', 'TDR2001A21824', 'TDR2001A23024', 'TDR2009A40624', 'TDR2009A41824', 'TDR2009A43024']
+2024-07-19 14:57:42,626 - __main__ - INFO - Final shape: (376, 11)
+2024-07-19 14:57:42,629 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:57:42,632 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:58:32,441 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeB2_NodeB.dat
+2024-07-19 14:58:32,444 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeB2_NodeB.dat
+2024-07-19 14:58:32,454 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-19 14:58:32,467 - __main__ - INFO - Number of rows before dropping NaT timestamps: 284
+2024-07-19 14:58:32,470 - __main__ - INFO - Number of rows after dropping NaT timestamps: 284
+2024-07-19 14:58:32,472 - __main__ - INFO - Final columns: ['RecNbr', 'BatV', 'PanelTempC', 'IRT2011B2xx24', 'IRT2006B1xx24', 'TDR2011B20624', 'TDR2011B21824', 'TDR2011B23024', 'TDR2006B10624', 'TDR2006B11824', 'TDR2006B13024', 'TDR2006B14224', 'TDR2012B40624', 'TDR2012B41824', 'TDR2012B43024']
+2024-07-19 14:58:32,474 - __main__ - INFO - Final shape: (284, 15)
+2024-07-19 14:58:32,475 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:58:32,477 - __main__ - INFO - TIMESTAMP null count: 0
+2024-07-19 14:59:26,712 - __main__ - INFO - Processing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeC2_NodeC.dat
+2024-07-19 14:59:26,714 - __main__ - INFO - Parsing file: C:\Users\bnsoh2\OneDrive - University of Nebraska-Lincoln\Projects\Students\Bryan Nsoh\Data\Soybean Lnr\07-19-2024\SoyNodeC2_NodeC.dat
+2024-07-19 14:59:26,727 - __main__ - INFO - Original columns: ['TIMESTAMP', 'RecNbr', 'BatteryVoltage', 'PanelTemperatureC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'IRT2018C3xx24', 'IRT2020C3xx24', 'IRT2026C2xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224', 'TDR2026C20624', 'TDR2026C21824', 'TDR2026C23024']
+2024-07-19 14:59:26,735 - __main__ - INFO - Number of rows before dropping NaT timestamps: 38
+2024-07-19 14:59:26,737 - __main__ - INFO - Number of rows after dropping NaT timestamps: 38
+2024-07-19 14:59:26,738 - __main__ - INFO - Final columns: ['RecNbr', 'BatteryVoltage', 'PanelTemperatureC', 'IRT2023C1xx24', 'IRT2015C1xx24', 'IRT2018C3xx24', 'IRT2020C3xx24', 'IRT2026C2xx24', 'TDR2023C10624', 'TDR2023C11824', 'TDR2023C13024', 'TDR2023C14224', 'TDR2015C10624', 'TDR2015C11824', 'TDR2015C13024', 'TDR2015C14224', 'TDR2026C20624', 'TDR2026C21824', 'TDR2026C23024']
+2024-07-19 14:59:26,740 - __main__ - INFO - Final shape: (38, 19)
+2024-07-19 14:59:26,741 - __main__ - INFO - TIMESTAMP dtype: datetime64[ns, America/Chicago]
+2024-07-19 14:59:26,743 - __main__ - INFO - TIMESTAMP null count: 0

@@ -1,1 +1,0 @@
-# This is a placeholder for src.models.prediction_model.py
